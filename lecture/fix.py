@@ -16,7 +16,7 @@ for si,(sid,sents) in enumerate(SCENES):
         tries=0
         while best<0.93 and tries<5:
             tries+=1
-            say(t,'tmp.wav',sid=4,speed=1.0,steps=[16,10,16,12,16][tries-1])
+            say(t,'tmp.wav',sid=1,speed=1.15,steps=[16,10,16,12,16][tries-1])
             sc=score('tmp.wav',t)
             if sc>best: best=sc; shutil.copy('tmp.wav',f)
         print(f, round(best,3), tries)

@@ -14,7 +14,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);font-f
 #chap{font-size:21px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);padding:10px 20px;border-radius:999px}
 #chap b{color:var(--coral);margin-right:8px}
 /* slide */
-#slide{position:absolute;left:60px;top:110px;width:1220px;height:760px;background:var(--card);border-radius:28px;box-shadow:0 1px 0 var(--line),0 24px 60px -30px rgba(40,30,10,.25);overflow:hidden}
+#slide{position:absolute;left:60px;top:110px;width:1800px;height:760px;background:var(--card);border-radius:28px;box-shadow:0 1px 0 var(--line),0 24px 60px -30px rgba(40,30,10,.25);overflow:hidden}
 .scene{position:absolute;inset:0;padding:70px 80px;opacity:0}
 .kicker{font-size:22px;font-weight:700;color:var(--coral);letter-spacing:.04em;margin-bottom:18px}
 h1{font-size:84px;line-height:1.12;font-weight:800;letter-spacing:-0.04em}
@@ -24,15 +24,10 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
 .lead{font-size:28px;color:var(--sub);line-height:1.55;font-weight:500}
 .chip{display:inline-flex;align-items:center;gap:8px;font-size:22px;font-weight:600;padding:10px 18px;border-radius:999px;background:var(--bg);color:var(--ink)}
 /* avatar */
-#cam{position:absolute;left:1320px;top:110px;width:540px;height:760px;border-radius:28px;overflow:hidden;background:linear-gradient(165deg,#2B3B57 0%,#1C273B 100%)}
+#cam{position:absolute;left:1566px;top:574px;width:256px;height:256px;border-radius:50%;overflow:hidden;background:linear-gradient(165deg,#34476A 0%,#1C273B 100%);box-shadow:0 0 0 6px #fff,0 18px 40px -12px rgba(30,40,60,.45);opacity:0}
 #cam svg{position:absolute;left:0;top:0}
-.tag{position:absolute;left:28px;top:26px;display:flex;gap:10px;align-items:center;font-size:18px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);padding:8px 14px;border-radius:999px}
-.tag i{width:10px;height:10px;border-radius:50%;background:#FF5D4A;display:block}
-.name{position:absolute;left:28px;right:28px;bottom:26px;background:rgba(255,255,255,.96);border-radius:18px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
-.name b{font-size:28px;font-weight:800}
-.name span{font-size:19px;color:var(--sub);font-weight:600}
-.name em{font-style:normal;font-size:16px;font-weight:700;color:var(--sage);background:var(--sage-soft);padding:6px 12px;border-radius:999px}
-/* subtitle */
+#camlab{position:absolute;left:1694px;top:842px;transform:translateX(-50%);font-size:19px;font-weight:800;color:#fff;background:var(--coral);padding:7px 16px;border-radius:999px;white-space:nowrap;opacity:0;box-shadow:0 6px 14px -6px rgba(226,96,63,.6)}
+#camlab i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff;margin-right:8px;vertical-align:2px}
 #subw{position:absolute;left:60px;width:1800px;top:900px;height:110px;display:flex;align-items:center;justify-content:center}
 #sub{max-width:1700px;font-size:36px;font-weight:600;line-height:1.35;color:#fff;background:rgba(22,30,44,.92);padding:16px 34px;border-radius:16px;text-align:center;opacity:0}
 /* progress */
@@ -64,6 +59,8 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
 .mk.on{background:#FFE2A6}
 .banner{position:absolute;left:80px;right:80px;bottom:56px;background:var(--ink);color:#fff;border-radius:20px;padding:24px 32px;font-size:30px;font-weight:700;display:flex;align-items:center;gap:16px}
 .banner b{color:var(--gold)}
+.banner.narrow{right:420px}
+.scene.nc > :not(.banner):not(.stamp){max-width:1320px}
 .chat{background:var(--bg);border-radius:24px;padding:34px;margin-top:30px;display:flex;flex-direction:column;gap:22px}
 .bub{max-width:82%;font-size:27px;line-height:1.6;padding:20px 26px;border-radius:22px;font-weight:500}
 .me{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:6px}
@@ -101,14 +98,14 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
   <h1>AI를 활용한<br><span class="hl">합격</span> 자소서 쓰기</h1>
   <p class="lead" style="margin-top:30px">인사담당자의 눈으로 쓰고, AI와 함께 다듬는 실전 자기소개서 전략</p>
   <div class="row" style="margin-top:40px;gap:14px"><span class="chip">⏱ 25분</span><span class="chip">🧭 5단계</span><span class="chip">💬 실전 프롬프트</span></div>
-  <div data-at="3" style="position:absolute;left:80px;right:80px;bottom:60px;display:flex;align-items:center;gap:24px;background:var(--coral-soft);border-radius:22px;padding:26px 32px">
+  <div data-at="3" style="position:absolute;left:80px;width:1300px;bottom:60px;display:flex;align-items:center;gap:24px;background:var(--coral-soft);border-radius:22px;padding:26px 32px">
     <div style="font-size:52px">🤔</div>
     <div><div style="font-size:32px;font-weight:800">AI로 쓴 자소서, 왜 서류에서 떨어질까?</div>
     <div data-at="4" style="font-size:24px;color:var(--sub);font-weight:600;margin-top:6px">오늘 강의에서 이유와 해결책을 모두 알려드립니다</div></div>
   </div>
  </div>
  <!-- 1 toc -->
- <div class="scene" data-chap="CURRICULUM|오늘의 강의 구성">
+ <div class="scene nc" data-chap="CURRICULUM|오늘의 강의 구성">
   <div class="kicker">CURRICULUM</div>
   <h2>오늘 강의는 <span class="c">5단계</span>로 진행됩니다</h2>
   <div class="toc">
@@ -135,7 +132,7 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
     <div class="big-num" style="margin:8px 0 6px">짧다<span class="c">.</span></div>
     <div style="font-size:26px;font-weight:600;color:var(--sub);line-height:1.5">"이 사람이 우리 회사에<br>필요한 사람인가?"</div>
   </div>
-  <div data-at="4" class="banner">🔑 짧은 시간에 보는 것, <b>핵심은 딱 3가지</b></div>
+  <div data-at="4" class="banner narrow">🔑 짧은 시간에 보는 것, <b>핵심은 딱 3가지</b></div>
  </div>
  <!-- 3 three -->
  <div class="scene" data-chap="PART 01|합격 자소서의 조건">
@@ -168,7 +165,7 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
   <div data-at="3" class="banner">⚠️ 숫자 0개 + 누가 써도 자연스럽다 = <b>아직 내 이야기가 아닙니다</b></div>
  </div>
  <!-- 6 trap -->
- <div class="scene" data-chap="PART 02|AI 자소서의 함정">
+ <div class="scene nc" data-chap="PART 02|AI 자소서의 함정">
   <div class="kicker">PART 02 · 미리보기</div>
   <h2>"자소서 써줘"라고만 하면?</h2>
   <div class="chat">
@@ -176,10 +173,10 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
    <div class="bub ai" data-at="1"><div class="who">AI</div>저는 어린 시절부터 <span class="u" data-mk="2">끊임없는 도전 정신</span>으로 목표를 이루어 왔습니다. 또한 <span class="u" data-mk="2">원활한 소통 능력</span>을 바탕으로 팀의 성과에 기여하며…</div>
   </div>
   <div class="stamp" data-at="3">어디서 본 듯한 문장</div>
-  <div data-at="4" class="banner">🎯 문제는 AI가 아니라, <b>AI를 쓰는 방식</b>입니다</div>
+  <div data-at="4" class="banner narrow">🎯 문제는 AI가 아니라, <b>AI를 쓰는 방식</b>입니다</div>
  </div>
  <!-- 7 principle -->
- <div class="scene" data-chap="PART 02|핵심 원칙">
+ <div class="scene nc" data-chap="PART 02|핵심 원칙">
   <div class="kicker">오늘의 핵심 원칙</div>
   <h2 data-at="1">AI는 <span class="strike">대필가<i data-strike="1"></i></span>가 아니라 <span class="hl">인터뷰어</span></h2>
   <div class="vs" data-at="2">
@@ -198,7 +195,7 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
    <div class="ok" data-at="0" data-off="0.6"><i>✓</i>말하기보다 숫자와 행동으로 보여주기</div>
    <div class="ok" data-at="0" data-off="1.2"><i>✓</i>AI는 대필가가 아니라 인터뷰어</div>
   </div>
-  <div data-at="1" style="position:absolute;right:80px;top:200px;width:400px;background:var(--ink);color:#fff;border-radius:24px;padding:34px">
+  <div data-at="1" style="position:absolute;left:800px;top:200px;width:440px;background:var(--ink);color:#fff;border-radius:24px;padding:34px">
    <div style="font-size:18px;font-weight:800;letter-spacing:.08em;color:var(--gold)">NEXT · 실습</div>
    <div style="font-size:36px;font-weight:800;line-height:1.3;margin:14px 0 22px">AI 인터뷰로<br>나만의 경험 발굴하기</div>
    <div data-at="2" style="font-size:22px;font-weight:600;background:rgba(255,255,255,.12);padding:14px 18px;border-radius:14px">✏️ 준비물: 펜, 메모장</div>
@@ -207,7 +204,7 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
 </div>
 
 <div id="cam">
- <svg id="av" width="540" height="760" viewBox="0 0 540 760">
+ <svg id="av" width="256" height="256" viewBox="70 160 400 400">
   <defs>
    <radialGradient id="glow" cx="50%" cy="38%" r="55%"><stop offset="0" stop-color="#3E5378"/><stop offset="1" stop-color="#1C273B" stop-opacity="0"/></radialGradient>
    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2A24"/><stop offset="1" stop-color="#241915"/></linearGradient>
@@ -215,10 +212,7 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
    <clipPath id="mclip"><path id="mclipP"/></clipPath>
   </defs>
   <rect width="540" height="760" fill="url(#glow)"/>
-  <!-- shelf / backdrop -->
-  <g opacity=".5"><rect x="36" y="150" width="120" height="8" rx="4" fill="#53688E"/><rect x="50" y="104" width="22" height="46" rx="3" fill="#E2603F"/><rect x="76" y="114" width="18" height="36" rx="3" fill="#F2B544"/><rect x="98" y="98" width="24" height="52" rx="3" fill="#7FB8A6"/>
-  <rect x="404" y="210" width="110" height="8" rx="4" fill="#53688E"/><circle cx="452" cy="186" r="22" fill="#3E8A73"/><rect x="440" y="192" width="24" height="18" rx="4" fill="#C77B55"/></g>
-  <g id="bodyG">
+   <g id="bodyG">
    <!-- hair back -->
    <g id="hairBackG"><path d="M150 300 C150 170 390 170 390 300 L398 470 C360 500 180 500 142 470 Z" fill="url(#hair)"/></g>
    <!-- body -->
@@ -263,10 +257,9 @@ h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
    <path d="M204 206 C240 186 300 184 340 206" stroke="#5A443A" stroke-width="6" fill="none" opacity=".5" stroke-linecap="round"/>
   </g>
  </svg>
- <div class="tag"><i></i>AI 강사</div>
- <div class="name"><div><b>코치 하나</b><br><span>AI 커리어 코치</span></div><em>자소서 · 면접</em></div>
 </div>
 
+<div id="camlab"><i></i>AI 코치 하나</div>
 <div id="subw"><div id="sub"></div></div>
 <div id="prog"><div id="bar"></div></div>
 </div>
@@ -283,6 +276,21 @@ const blinks=[];{let t=1.3,seed=7;const r=()=>(seed=(seed*16807)%2147483647)/214
 const $=id=>document.getElementById(id);
 function sceneStart(i){return T.scenes[i].sents[0].start-0.45}
 function curIdx(sc,t){let k=-1;sc.sents.forEach((s,i)=>{if(t>=s.start-0.05)k=i});return k}
+let AV_RUNS=[];window.FREE=[];
+function computeFree(){
+  const Z={x:1566-36,y:574-36}; // 원형 강사 영역(+여백)
+  const N=T.scenes.length;
+  scenes.forEach((sc,i)=>{const o=sc.style.opacity;sc.style.opacity=1;let free=true;
+    sc.querySelectorAll('*').forEach(e=>{const cs=getComputedStyle(e);
+      const visual=e.children.length==0||cs.backgroundColor!=='rgba(0, 0, 0, 0)'||cs.borderTopWidth!=='0px'||cs.backgroundImage!=='none';
+      if(!visual)return;const r=e.getBoundingClientRect();if(r.width==0)return;
+      if(r.right>Z.x&&r.bottom>Z.y)free=false;});
+    FREE.push(free);sc.style.opacity=o;});
+  // 연속으로 비어 있는 장면 묶음 중 60초 이상인 구간만 강사 표시
+  let i=0;while(i<N){if(!FREE[i]){i++;continue}let j=i;while(j+1<N&&FREE[j+1])j++;
+    const a=i==0?0:sceneStart(i), b=j<N-1?sceneStart(j+1):T.duration;if(b-a>=60)AV_RUNS.push([a,b]);i=j+1;}
+  window.AV_RUNS=AV_RUNS;
+}
 window.setTime=function(t){
   const N=T.scenes.length;let active=0;
   for(let i=0;i<N;i++){
@@ -305,6 +313,10 @@ window.setTime=function(t){
   let txt='',so=0;for(const S of T.scenes)for(const s of S.sents){if(t>=s.start-0.12&&t<=s.end+0.35){txt=s.text;so=clamp((t-s.start+0.12)/0.15)*clamp((s.end+0.35-t)/0.15)}}
   const sub=$('sub'); if(txt){sub.textContent=txt;} sub.style.opacity=txt?so:0;
   $('bar').style.width=(t/T.duration*100)+'%';
+  // avatar visibility
+  let av=0;for(const [a,b] of AV_RUNS){av=Math.max(av,clamp((t-a-0.3)/0.6)*clamp((b-t)/0.5))}
+  const ae=ease(av);$('cam').style.opacity=ae;$('cam').style.transform=`scale(${0.85+0.15*ae})`;
+  $('camlab').style.opacity=ae;$('camlab').style.transform=`translateX(-50%) translateY(${(1-ae)*10}px)`;
   // avatar
   const f=Math.min(env.length-1,Math.max(0,Math.round(t*T.fps))), m=env[f]||0;
   const open=clamp(m*1.15), w=34+open*4-(open>.6?(open-.6)*10:0);
@@ -324,7 +336,7 @@ window.setTime=function(t){
   let lid=1;for(const b of blinks){const d=t-b;if(d>=0&&d<0.16){lid=Math.abs(d-0.08)/0.08*0.9+0.1}}
   document.querySelectorAll('.lid').forEach(e=>e.setAttribute('transform',`scale(1 ${lid})`));
 };
-document.fonts.ready.then(()=>{window.READY=true});
+document.fonts.ready.then(()=>{computeFree();window.READY=true});
 setTime(0);
 </script>
 </body></html>

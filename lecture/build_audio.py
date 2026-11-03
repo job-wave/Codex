@@ -4,8 +4,8 @@ from tts import say
 
 FPS = 30
 SR = 44100
-GAP = 0.38      # 문장 사이
-SCENE_GAP = 0.9 # 장면 사이
+GAP = 0.3      # 문장 사이
+SCENE_GAP = 0.8 # 장면 사이
 LEAD = 0.8      # 시작 여백
 os.makedirs("wav", exist_ok=True)
 
@@ -17,7 +17,7 @@ for si, (sid, sents) in enumerate(SCENES):
     for k, s in enumerate(sents):
         f = f"wav/{si:02d}_{k:02d}.wav"
         if not os.path.exists(f):
-            say(s, f, sid=4, speed=1.0, steps=10)
+            say(s, f, sid=1, speed=1.15, steps=10)
         w = wave.open(f); x = np.frombuffer(w.readframes(w.getnframes()), np.int16)
         assert w.getframerate() == SR
         d = len(x) / SR
