@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;src:url(pre/web/variable/woff2/PretendardVariable.woff2) format("woff2");font-weight:100 900}
+:root{--bg:#F3EEE5;--ink:#1D2939;--sub:#5B6474;--line:#E4DCCD;--card:#FFFFFF;--coral:#E2603F;--coral-soft:#FBE3DA;--sage:#3E8A73;--sage-soft:#DCEFE7;--navy:#22314A;--gold:#F2B544}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);font-family:P,sans-serif;color:var(--ink);letter-spacing:-0.02em;word-break:keep-all}
+#stage{position:absolute;inset:0;background:radial-gradient(1200px 700px at 20% 0%,#FBF7F0 0%,transparent 60%),var(--bg)}
+/* header */
+#hdr{position:absolute;left:60px;right:60px;top:34px;height:52px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:14px;font-weight:700;font-size:24px}
+.brand .mark{width:40px;height:40px;border-radius:12px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:17px;font-weight:800;letter-spacing:0}
+.brand small{font-weight:500;color:var(--sub);font-size:20px;margin-left:4px}
+#chap{font-size:21px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);padding:10px 20px;border-radius:999px}
+#chap b{color:var(--coral);margin-right:8px}
+/* slide */
+#slide{position:absolute;left:60px;top:110px;width:1220px;height:760px;background:var(--card);border-radius:28px;box-shadow:0 1px 0 var(--line),0 24px 60px -30px rgba(40,30,10,.25);overflow:hidden}
+.scene{position:absolute;inset:0;padding:70px 80px;opacity:0}
+.kicker{font-size:22px;font-weight:700;color:var(--coral);letter-spacing:.04em;margin-bottom:18px}
+h1{font-size:84px;line-height:1.12;font-weight:800;letter-spacing:-0.04em}
+h2{font-size:54px;line-height:1.2;font-weight:800;letter-spacing:-0.035em}
+.hl{background:linear-gradient(transparent 62%,var(--coral-soft) 62%);padding:0 4px}
+.c{color:var(--coral)} .g{color:var(--sage)}
+.lead{font-size:28px;color:var(--sub);line-height:1.55;font-weight:500}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:22px;font-weight:600;padding:10px 18px;border-radius:999px;background:var(--bg);color:var(--ink)}
+/* avatar */
+#cam{position:absolute;left:1320px;top:110px;width:540px;height:760px;border-radius:28px;overflow:hidden;background:linear-gradient(165deg,#2B3B57 0%,#1C273B 100%)}
+#cam svg{position:absolute;left:0;top:0}
+.tag{position:absolute;left:28px;top:26px;display:flex;gap:10px;align-items:center;font-size:18px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);padding:8px 14px;border-radius:999px}
+.tag i{width:10px;height:10px;border-radius:50%;background:#FF5D4A;display:block}
+.name{position:absolute;left:28px;right:28px;bottom:26px;background:rgba(255,255,255,.96);border-radius:18px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
+.name b{font-size:28px;font-weight:800}
+.name span{font-size:19px;color:var(--sub);font-weight:600}
+.name em{font-style:normal;font-size:16px;font-weight:700;color:var(--sage);background:var(--sage-soft);padding:6px 12px;border-radius:999px}
+/* subtitle */
+#subw{position:absolute;left:60px;width:1800px;top:900px;height:110px;display:flex;align-items:center;justify-content:center}
+#sub{max-width:1700px;font-size:36px;font-weight:600;line-height:1.35;color:#fff;background:rgba(22,30,44,.92);padding:16px 34px;border-radius:16px;text-align:center;opacity:0}
+/* progress */
+#prog{position:absolute;left:60px;right:60px;bottom:28px;height:6px;border-radius:3px;background:#E3DACA}
+#bar{height:100%;width:0;border-radius:3px;background:var(--coral)}
+.tick{position:absolute;top:-3px;width:2px;height:12px;background:#CDBFA8}
+/* components */
+.row{display:flex;gap:24px}
+.toc{display:flex;flex-direction:column;gap:14px;margin-top:36px}
+.toc .it{display:flex;align-items:center;gap:26px;padding:20px 28px;border-radius:20px;border:2px solid var(--line);background:#fff;transition:none}
+.toc .n{font-size:26px;font-weight:800;color:var(--sub);width:48px}
+.toc .t{font-size:32px;font-weight:700;flex:1}
+.toc .m{font-size:20px;color:var(--sub);font-weight:600}
+.toc .it.active{border-color:var(--coral);background:#FFF6F2}
+.toc .it.active .n{color:var(--coral)}
+.card3{flex:1;border-radius:24px;padding:36px 32px;background:var(--bg);border:2px solid transparent;min-height:430px;display:flex;flex-direction:column}
+.card3 .num{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:30px;font-weight:800;color:#fff;background:var(--ink);margin-bottom:28px}
+.card3 .en{font-size:20px;font-weight:700;letter-spacing:.06em;color:var(--sub);margin-bottom:8px}
+.card3 h3{font-size:40px;font-weight:800;margin-bottom:18px}
+.card3 p{font-size:25px;line-height:1.55;color:var(--sub);font-weight:500}
+.card3.active{background:#fff;border-color:var(--coral);box-shadow:0 20px 40px -24px rgba(226,96,63,.55)}
+.card3.active .num{background:var(--coral)}
+.cmp{flex:1;border-radius:24px;padding:34px 34px;min-height:400px}
+.cmp .lab{display:inline-flex;align-items:center;gap:10px;font-size:22px;font-weight:800;padding:8px 16px;border-radius:999px;margin-bottom:26px}
+.cmp p{font-size:31px;line-height:1.6;font-weight:600}
+.bad{background:#F4F1EC} .bad .lab{background:#E8E2D8;color:#6E6658} .bad p{color:#6E6658}
+.good{background:var(--sage-soft)} .good .lab{background:var(--sage);color:#fff}
+.mk{border-radius:6px;padding:0 4px;transition:none}
+.mk.on{background:#FFE2A6}
+.banner{position:absolute;left:80px;right:80px;bottom:56px;background:var(--ink);color:#fff;border-radius:20px;padding:24px 32px;font-size:30px;font-weight:700;display:flex;align-items:center;gap:16px}
+.banner b{color:var(--gold)}
+.chat{background:var(--bg);border-radius:24px;padding:34px;margin-top:30px;display:flex;flex-direction:column;gap:22px}
+.bub{max-width:82%;font-size:27px;line-height:1.6;padding:20px 26px;border-radius:22px;font-weight:500}
+.me{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:6px}
+.ai{align-self:flex-start;background:#fff;border-bottom-left-radius:6px;color:#3A4352}
+.ai .who{font-size:18px;font-weight:800;color:var(--sub);margin-bottom:6px;letter-spacing:.04em}
+.u{border-radius:4px}
+.u.on{background:var(--coral-soft);box-shadow:inset 0 -4px 0 var(--coral)}
+.stamp{position:absolute;right:90px;top:150px;border:5px solid var(--coral);color:var(--coral);font-size:34px;font-weight:900;padding:12px 24px;border-radius:14px;transform:rotate(-8deg);background:rgba(255,255,255,.85)}
+.q{display:flex;gap:26px;align-items:flex-start;background:var(--bg);border-radius:22px;padding:30px 34px;margin-top:22px}
+.q .box{width:52px;height:52px;border-radius:14px;border:4px solid var(--ink);flex:none;margin-top:4px}
+.q .tx{font-size:34px;font-weight:700;line-height:1.4}
+.q .tx small{display:block;font-size:22px;color:var(--sub);font-weight:600;margin-bottom:4px}
+.prompt{background:#1E2738;color:#E9EEF6;border-radius:22px;padding:30px 34px;font-size:28px;line-height:1.65;font-weight:500;position:relative}
+.prompt .pl{font-size:17px;font-weight:800;letter-spacing:.08em;color:var(--gold);margin-bottom:10px}
+.flow{display:flex;align-items:center;gap:14px;margin-top:26px}
+.flow .st{flex:1;text-align:center;background:var(--sage-soft);color:#245C4B;font-weight:800;font-size:25px;padding:18px 10px;border-radius:16px}
+.flow .ar{font-size:28px;color:var(--sub);font-weight:800}
+.strike{position:relative;display:inline-block}
+.strike i{position:absolute;left:-4px;right:-4px;top:54%;height:8px;background:var(--coral);border-radius:4px;transform-origin:left center;transform:scaleX(0)}
+.vs{display:flex;gap:22px;margin-top:30px}
+.vs > div{flex:1;border-radius:20px;padding:24px 28px;font-size:29px;font-weight:700}
+.big-num{font-size:120px;font-weight:900;letter-spacing:-0.05em;line-height:1}
+.paper{position:absolute;width:210px;height:270px;background:#fff;border:2px solid var(--line);border-radius:14px;box-shadow:0 10px 24px -14px rgba(0,0,0,.25)}
+.paper:before{content:"";position:absolute;left:26px;right:26px;top:34px;height:120px;background:repeating-linear-gradient(#E9E2D5 0 8px,transparent 8px 26px)}
+.ok{display:flex;gap:18px;align-items:center;font-size:31px;font-weight:700;padding:16px 0;border-bottom:2px dashed var(--line)}
+.ok i{width:44px;height:44px;border-radius:50%;background:var(--sage);color:#fff;display:grid;place-items:center;font-style:normal;font-size:24px;font-weight:900;flex:none}
+</style></head>
+<body><div id="stage">
+<div id="hdr"><div class="brand"><div class="mark">AI</div>합격 자소서 쓰기 특강<small>· 취업 역량 강화 시리즈</small></div><div id="chap"></div></div>
+
+<div id="slide">
+ <!-- 0 title -->
+ <div class="scene" data-chap="OPENING|강의 소개">
+  <div class="kicker">취업 특강 · 25분 과정</div>
+  <h1>AI를 활용한<br><span class="hl">합격</span> 자소서 쓰기</h1>
+  <p class="lead" style="margin-top:30px">인사담당자의 눈으로 쓰고, AI와 함께 다듬는 실전 자기소개서 전략</p>
+  <div class="row" style="margin-top:40px;gap:14px"><span class="chip">⏱ 25분</span><span class="chip">🧭 5단계</span><span class="chip">💬 실전 프롬프트</span></div>
+  <div data-at="3" style="position:absolute;left:80px;right:80px;bottom:60px;display:flex;align-items:center;gap:24px;background:var(--coral-soft);border-radius:22px;padding:26px 32px">
+    <div style="font-size:52px">🤔</div>
+    <div><div style="font-size:32px;font-weight:800">AI로 쓴 자소서, 왜 서류에서 떨어질까?</div>
+    <div data-at="4" style="font-size:24px;color:var(--sub);font-weight:600;margin-top:6px">오늘 강의에서 이유와 해결책을 모두 알려드립니다</div></div>
+  </div>
+ </div>
+ <!-- 1 toc -->
+ <div class="scene" data-chap="CURRICULUM|오늘의 강의 구성">
+  <div class="kicker">CURRICULUM</div>
+  <h2>오늘 강의는 <span class="c">5단계</span>로 진행됩니다</h2>
+  <div class="toc">
+   <div class="it" data-at="1" data-active="1"><span class="n">01</span><span class="t">인사담당자가 보는 합격 자소서의 조건</span><span class="m">4분</span></div>
+   <div class="it" data-at="2" data-active="2"><span class="n">02</span><span class="t">AI 자소서가 떨어지는 3가지 함정</span><span class="m">4분</span></div>
+   <div class="it" data-at="3" data-active="3"><span class="n">03</span><span class="t">AI 인터뷰로 나만의 경험 발굴하기</span><span class="m">6분</span></div>
+   <div class="it" data-at="4" data-active="4"><span class="n">04</span><span class="t">문항 분석 &amp; STAR 구조로 초안 쓰기</span><span class="m">6분</span></div>
+   <div class="it" data-at="5" data-active="5"><span class="n">05</span><span class="t">AI 면접관 첨삭으로 완성하기</span><span class="m">5분</span></div>
+  </div>
+ </div>
+ <!-- 2 part1 -->
+ <div class="scene" data-chap="PART 01|합격 자소서의 조건">
+  <div class="kicker">PART 01</div>
+  <h2>합격 자소서의 조건</h2>
+  <p class="lead" style="margin-top:14px">인사담당자는 무엇을 보고 판단할까?</p>
+  <div data-at="1" style="position:absolute;left:80px;top:330px;width:500px;height:330px">
+    <div class="paper" style="left:120px;top:40px;transform:rotate(-9deg)"></div>
+    <div class="paper" style="left:160px;top:30px;transform:rotate(4deg)"></div>
+    <div class="paper" style="left:140px;top:44px;transform:rotate(-2deg)"></div>
+    <div style="position:absolute;left:0;bottom:-6px;background:var(--ink);color:#fff;font-weight:800;font-size:28px;padding:12px 22px;border-radius:14px">수백 ~ 수천 편</div>
+  </div>
+  <div data-at="3" style="position:absolute;left:640px;top:350px;width:500px">
+    <div style="font-size:24px;font-weight:700;color:var(--sub)">한 편을 판단하는 시간</div>
+    <div class="big-num" style="margin:8px 0 6px">짧다<span class="c">.</span></div>
+    <div style="font-size:26px;font-weight:600;color:var(--sub);line-height:1.5">"이 사람이 우리 회사에<br>필요한 사람인가?"</div>
+  </div>
+  <div data-at="4" class="banner">🔑 짧은 시간에 보는 것, <b>핵심은 딱 3가지</b></div>
+ </div>
+ <!-- 3 three -->
+ <div class="scene" data-chap="PART 01|합격 자소서의 조건">
+  <div class="kicker">PART 01 · 핵심 3요소</div>
+  <h2>인사담당자가 보는 <span class="c">3가지</span></h2>
+  <div class="row" style="margin-top:44px">
+   <div class="card3" data-at="0" data-active="0,1"><div class="num">1</div><div class="en">FIT</div><h3>직무 적합성</h3><p>내 역량이 이 직무에서<br>어떻게 쓰일 수 있는가</p></div>
+   <div class="card3" data-at="2" data-active="2,3"><div class="num">2</div><div class="en">EVIDENCE</div><h3>구체적 경험</h3><p>"성실하다" 대신<br>숫자와 사례로 증명</p></div>
+   <div class="card3" data-at="4" data-active="4,5"><div class="num">3</div><div class="en">VOICE</div><h3>진정성</h3><p>누구나 쓰는 문장 말고<br>나만 쓸 수 있는 이야기</p></div>
+  </div>
+ </div>
+ <!-- 4 compare -->
+ <div class="scene" data-chap="PART 01|합격 자소서의 조건">
+  <div class="kicker">PART 01 · 예시</div>
+  <h2>말하기 vs <span class="g">보여주기</span></h2>
+  <div class="row" style="margin-top:40px">
+   <div class="cmp bad" data-at="1"><div class="lab">✕ 말하기 (Telling)</div><p>"저는 책임감이 강하고 성실한 사람입니다. 팀 프로젝트에서도 항상 최선을 다했습니다."</p></div>
+   <div class="cmp good" data-at="3"><div class="lab">✓ 보여주기 (Showing)</div><p>"<span class="mk" data-mk="4">6명</span> 팀 프로젝트에서 일정이 <span class="mk" data-mk="4">2주</span> 밀리자, 업무를 다시 나누고 <span class="mk" data-mk="4">주간 점검표</span>를 만들어 마감 <span class="mk" data-mk="4">3일 전</span>에 제출했습니다."</p></div>
+  </div>
+  <div data-at="6" class="banner">💡 '책임감'이라는 단어 없이도 <b>행동이 책임감을 증명</b>합니다</div>
+ </div>
+ <!-- 5 check -->
+ <div class="scene" data-chap="PART 01|셀프 체크">
+  <div class="kicker">SELF CHECK</div>
+  <h2>내 자소서, <span class="c">2가지 질문</span>으로 점검하기</h2>
+  <div style="margin-top:30px">
+   <div class="q" data-at="1"><div class="box"></div><div class="tx"><small>질문 1</small>내 자소서 안에 <span class="c">숫자</span>는 몇 개 들어 있나요?</div></div>
+   <div class="q" data-at="2"><div class="box"></div><div class="tx"><small>질문 2</small>그 문장, <span class="c">다른 지원자</span>가 써도 어색하지 않나요?</div></div>
+  </div>
+  <div data-at="3" class="banner">⚠️ 숫자 0개 + 누가 써도 자연스럽다 = <b>아직 내 이야기가 아닙니다</b></div>
+ </div>
+ <!-- 6 trap -->
+ <div class="scene" data-chap="PART 02|AI 자소서의 함정">
+  <div class="kicker">PART 02 · 미리보기</div>
+  <h2>"자소서 써줘"라고만 하면?</h2>
+  <div class="chat">
+   <div class="bub me" data-at="0">마케팅 직무 자기소개서 써줘</div>
+   <div class="bub ai" data-at="1"><div class="who">AI</div>저는 어린 시절부터 <span class="u" data-mk="2">끊임없는 도전 정신</span>으로 목표를 이루어 왔습니다. 또한 <span class="u" data-mk="2">원활한 소통 능력</span>을 바탕으로 팀의 성과에 기여하며…</div>
+  </div>
+  <div class="stamp" data-at="3">어디서 본 듯한 문장</div>
+  <div data-at="4" class="banner">🎯 문제는 AI가 아니라, <b>AI를 쓰는 방식</b>입니다</div>
+ </div>
+ <!-- 7 principle -->
+ <div class="scene" data-chap="PART 02|핵심 원칙">
+  <div class="kicker">오늘의 핵심 원칙</div>
+  <h2 data-at="1">AI는 <span class="strike">대필가<i data-strike="1"></i></span>가 아니라 <span class="hl">인터뷰어</span></h2>
+  <div class="vs" data-at="2">
+   <div style="background:#F4F1EC;color:#6E6658">✕ "자소서 써줘"</div>
+   <div style="background:var(--sage-soft);color:#245C4B">✓ "나에게 질문해 줘"</div>
+  </div>
+  <div class="prompt" data-at="3" style="margin-top:26px"><div class="pl">PROMPT 예시</div>너는 <span style="color:var(--gold)">10년 차 인사담당자</span>야. 내가 지원하는 직무에 맞는 경험을 끌어낼 수 있도록, <span style="color:var(--gold)">한 번에 하나씩 질문</span>해 줘.</div>
+  <div class="flow" data-at="5"><div class="st">AI의 질문</div><div class="ar">→</div><div class="st">나의 답변</div><div class="ar">→</div><div class="st">경험 발굴</div><div class="ar">→</div><div class="st" style="background:var(--sage);color:#fff">진짜 내 이야기</div></div>
+ </div>
+ <!-- 8 outro -->
+ <div class="scene" data-chap="SUMMARY|정리 & 다음 파트">
+  <div class="kicker">SUMMARY</div>
+  <h2>오늘 배운 것</h2>
+  <div style="margin-top:24px;width:640px">
+   <div class="ok" data-at="0"><i>✓</i>합격 자소서 3요소: 적합성 · 경험 · 진정성</div>
+   <div class="ok" data-at="0" data-off="0.6"><i>✓</i>말하기보다 숫자와 행동으로 보여주기</div>
+   <div class="ok" data-at="0" data-off="1.2"><i>✓</i>AI는 대필가가 아니라 인터뷰어</div>
+  </div>
+  <div data-at="1" style="position:absolute;right:80px;top:200px;width:400px;background:var(--ink);color:#fff;border-radius:24px;padding:34px">
+   <div style="font-size:18px;font-weight:800;letter-spacing:.08em;color:var(--gold)">NEXT · 실습</div>
+   <div style="font-size:36px;font-weight:800;line-height:1.3;margin:14px 0 22px">AI 인터뷰로<br>나만의 경험 발굴하기</div>
+   <div data-at="2" style="font-size:22px;font-weight:600;background:rgba(255,255,255,.12);padding:14px 18px;border-radius:14px">✏️ 준비물: 펜, 메모장</div>
+  </div>
+ </div>
+</div>
+
+<div id="cam">
+ <svg id="av" width="540" height="760" viewBox="0 0 540 760">
+  <defs>
+   <radialGradient id="glow" cx="50%" cy="38%" r="55%"><stop offset="0" stop-color="#3E5378"/><stop offset="1" stop-color="#1C273B" stop-opacity="0"/></radialGradient>
+   <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2A24"/><stop offset="1" stop-color="#241915"/></linearGradient>
+   <linearGradient id="blz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9805F"/><stop offset="1" stop-color="#D9643F"/></linearGradient>
+   <clipPath id="mclip"><path id="mclipP"/></clipPath>
+  </defs>
+  <rect width="540" height="760" fill="url(#glow)"/>
+  <!-- shelf / backdrop -->
+  <g opacity=".5"><rect x="36" y="150" width="120" height="8" rx="4" fill="#53688E"/><rect x="50" y="104" width="22" height="46" rx="3" fill="#E2603F"/><rect x="76" y="114" width="18" height="36" rx="3" fill="#F2B544"/><rect x="98" y="98" width="24" height="52" rx="3" fill="#7FB8A6"/>
+  <rect x="404" y="210" width="110" height="8" rx="4" fill="#53688E"/><circle cx="452" cy="186" r="22" fill="#3E8A73"/><rect x="440" y="192" width="24" height="18" rx="4" fill="#C77B55"/></g>
+  <g id="bodyG">
+   <!-- hair back -->
+   <g id="hairBackG"><path d="M150 300 C150 170 390 170 390 300 L398 470 C360 500 180 500 142 470 Z" fill="url(#hair)"/></g>
+   <!-- body -->
+   <path d="M90 760 C92 610 150 548 270 540 C390 548 448 610 450 760 Z" fill="url(#blz)"/>
+   <path d="M218 548 L270 640 L322 548 Z" fill="#FFFFFF"/>
+   <path d="M228 545 L270 615 L312 545 L300 540 L270 590 L240 540 Z" fill="#F7EFE6"/>
+   <path d="M210 552 L262 700 L238 760 L180 760 L175 600 Z" fill="#C9553A" opacity=".55"/>
+   <path d="M330 552 L278 700 L302 760 L360 760 L365 600 Z" fill="#C9553A" opacity=".55"/>
+   <rect x="242" y="470" width="56" height="86" rx="24" fill="#E8B48F"/>
+   <path d="M242 520 Q270 545 298 520 L298 540 Q270 556 242 540 Z" fill="#D99F7A"/>
+   <!-- lapel mic -->
+   <circle cx="214" cy="620" r="9" fill="#1C222B"/><rect x="210" y="628" width="8" height="10" rx="2" fill="#333B47"/>
+   <!-- name pin -->
+   <rect x="320" y="612" width="58" height="22" rx="6" fill="#fff" opacity=".92"/><rect x="328" y="620" width="40" height="5" rx="2.5" fill="#E2603F"/>
+  </g>
+  <g id="headG">
+   <!-- ears -->
+   <ellipse cx="174" cy="318" rx="18" ry="26" fill="#EBB892"/><ellipse cx="366" cy="318" rx="18" ry="26" fill="#EBB892"/>
+   <circle cx="176" cy="350" r="6" fill="#F2B544"/><circle cx="364" cy="350" r="6" fill="#F2B544"/>
+   <!-- face -->
+   <path d="M178 300 C178 200 362 200 362 300 C362 392 318 452 270 452 C222 452 178 392 178 300 Z" fill="#F4C7A3"/>
+   <!-- cheeks -->
+   <ellipse cx="212" cy="368" rx="22" ry="13" fill="#F09A86" opacity=".45"/><ellipse cx="328" cy="368" rx="22" ry="13" fill="#F09A86" opacity=".45"/>
+   <!-- brows -->
+   <g id="browG"><path d="M204 270 Q228 258 252 268" stroke="#3A2A24" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M288 268 Q312 258 336 270" stroke="#3A2A24" stroke-width="7" fill="none" stroke-linecap="round"/></g>
+   <!-- eyes -->
+   <g id="eyeL" transform="translate(228 312)"><g class="lid"><ellipse rx="15" ry="18" fill="#2A1E1A"/><circle cx="5" cy="-6" r="5" fill="#fff"/><circle cx="-5" cy="6" r="2.2" fill="#fff" opacity=".7"/></g></g>
+   <g id="eyeR" transform="translate(312 312)"><g class="lid"><ellipse rx="15" ry="18" fill="#2A1E1A"/><circle cx="5" cy="-6" r="5" fill="#fff"/><circle cx="-5" cy="6" r="2.2" fill="#fff" opacity=".7"/></g></g>
+   <path d="M210 296 Q228 288 246 296" stroke="#2A1E1A" stroke-width="3" fill="none" opacity=".35"/>
+   <path d="M294 296 Q312 288 330 296" stroke="#2A1E1A" stroke-width="3" fill="none" opacity=".35"/>
+   <!-- nose -->
+   <path d="M266 334 Q262 356 272 360" stroke="#D99572" stroke-width="5" fill="none" stroke-linecap="round"/>
+   <!-- mouth -->
+   <g transform="translate(270 394)">
+    <path id="mouth" fill="#8A2F3C"/>
+    <g clip-path="url(#mclip)"><rect id="teeth" x="-40" y="-20" width="80" height="12" fill="#fff"/><ellipse id="tongue" cx="0" cy="22" rx="20" ry="11" fill="#E0707A"/></g>
+    <path id="lip" fill="none" stroke="#B4505A" stroke-width="3" stroke-linecap="round"/>
+   </g>
+   <!-- hair front: bangs + side -->
+   <path d="M168 300 C150 190 240 160 300 176 C360 190 392 240 372 318 C360 270 336 240 300 226 C280 258 228 276 186 282 C178 292 172 300 168 300 Z" fill="url(#hair)"/>
+   
+   <path d="M204 206 C240 186 300 184 340 206" stroke="#5A443A" stroke-width="6" fill="none" opacity=".5" stroke-linecap="round"/>
+  </g>
+ </svg>
+ <div class="tag"><i></i>AI 강사</div>
+ <div class="name"><div><b>코치 하나</b><br><span>AI 커리어 코치</span></div><em>자소서 · 면접</em></div>
+</div>
+
+<div id="subw"><div id="sub"></div></div>
+<div id="prog"><div id="bar"></div></div>
+</div>
+<script src="timeline.js"></script>
+<script>
+const T=window.TL, scenes=[...document.querySelectorAll('.scene')];
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), ease=p=>1-Math.pow(1-p,3);
+// smoothed mouth envelope
+const env=[];{let v=0;for(const e of T.env){v+= (e>v? .55:.32)*(e-v); env.push(v);}}
+// ticks
+T.scenes.forEach(s=>{const d=document.createElement('div');d.className='tick';d.style.left=(s.start/T.duration*100)+'%';document.getElementById('prog').appendChild(d)});
+// deterministic blinks
+const blinks=[];{let t=1.3,seed=7;const r=()=>(seed=(seed*16807)%2147483647)/2147483647;while(t<T.duration+5){blinks.push(t);t+=2.6+r()*2.8;if(r()<.15){blinks.push(t-2.2+.28)}}}
+const $=id=>document.getElementById(id);
+function sceneStart(i){return T.scenes[i].sents[0].start-0.45}
+function curIdx(sc,t){let k=-1;sc.sents.forEach((s,i)=>{if(t>=s.start-0.05)k=i});return k}
+window.setTime=function(t){
+  const N=T.scenes.length;let active=0;
+  for(let i=0;i<N;i++){
+    const st=i==0?-1:sceneStart(i), nx=i<N-1?sceneStart(i+1):1e9;
+    let o=clamp((t-st)/0.5)*clamp((nx+0.25-t)/0.4); if(i==0&&t<nx)o=Math.min(1,clamp((nx+0.25-t)/0.4));
+    const el=scenes[i]; el.style.opacity=o; el.style.transform=`translateX(${(1-clamp((t-st)/0.6))*30}px)`;
+    if(t>=st) active=i;
+    if(o<=0) continue;
+    const sc=T.scenes[i], k=curIdx(sc,t);
+    el.querySelectorAll('[data-at]').forEach(e=>{
+      const at=+e.dataset.at, t0=sc.sents[at].start-0.15+(+(e.dataset.off||0));
+      const p=ease(clamp((t-t0)/0.55)); e.style.opacity=p; e.style.transform=(e.classList.contains('stamp')?`rotate(-8deg) scale(${1.4-0.4*p})`:`translateY(${(1-p)*26}px)`);
+    });
+    el.querySelectorAll('[data-active]').forEach(e=>{const L=e.dataset.active.split(',').map(Number);e.classList.toggle('active',L.includes(k))});
+    el.querySelectorAll('[data-mk]').forEach(e=>e.classList.toggle('on',t>=sc.sents[+e.dataset.mk].start+0.6));
+    el.querySelectorAll('[data-strike]').forEach(e=>{const t0=sc.sents[+e.dataset.strike].start+0.4;e.style.transform=`scaleX(${ease(clamp((t-t0)/0.5))})`});
+  }
+  const sc=T.scenes[active]; const [a,b]=scenes[active].dataset.chap.split('|'); $('chap').innerHTML=`<b>${a}</b>${b}`;
+  // subtitle
+  let txt='',so=0;for(const S of T.scenes)for(const s of S.sents){if(t>=s.start-0.12&&t<=s.end+0.35){txt=s.text;so=clamp((t-s.start+0.12)/0.15)*clamp((s.end+0.35-t)/0.15)}}
+  const sub=$('sub'); if(txt){sub.textContent=txt;} sub.style.opacity=txt?so:0;
+  $('bar').style.width=(t/T.duration*100)+'%';
+  // avatar
+  const f=Math.min(env.length-1,Math.max(0,Math.round(t*T.fps))), m=env[f]||0;
+  const open=clamp(m*1.15), w=34+open*4-(open>.6?(open-.6)*10:0);
+  const h=open*30;
+  const dpath=`M${-w} 0 Q0 ${-4-open*4} ${w} 0 Q${w*0.7} ${h*0.9+6} 0 ${h+8} Q${-w*0.7} ${h*0.9+6} ${-w} 0 Z`;
+  $('mouth').setAttribute('d',dpath); $('mclipP').setAttribute('d',dpath);
+  $('mouth').style.opacity=open>.06?1:0; $('teeth').setAttribute('y',-6-open*2); $('tongue').setAttribute('cy',h+6);
+  $('lip').setAttribute('d',open>.06?'':`M-30 -2 Q0 16 30 -2`);
+  $('lip').setAttribute('stroke-width',open>.06?0:5);
+  // talking energy (smoothed over ~0.5s)
+  let en=0;for(let j=-8;j<=8;j++)en+=env[clamp(f+j,0,env.length-1)]||0;en/=17;
+  const nod=Math.sin(t*2.1)*2.2*en+Math.sin(t*5.3)*1.6*en, sway=Math.sin(t*0.7)*1.6+Math.sin(t*1.9)*0.8*en;
+  $('headG').setAttribute('transform',`translate(${sway*1.5} ${nod+Math.sin(t*1.3)*1.2}) rotate(${sway*0.9+Math.sin(t*1.1)*1.2} 270 450)`);
+  $('hairBackG').setAttribute('transform',`translate(${sway*1.3} ${nod*0.8})`);
+  const br=Math.sin(t*1.6)*1.6; $('bodyG').querySelectorAll(':scope > :not(#hairBackG)').forEach(e=>e.setAttribute('transform',`translate(${sway*0.4} ${br})`));
+  $('browG').setAttribute('transform',`translate(0 ${-en*5*Math.max(0,Math.sin(t*1.7))})`);
+  let lid=1;for(const b of blinks){const d=t-b;if(d>=0&&d<0.16){lid=Math.abs(d-0.08)/0.08*0.9+0.1}}
+  document.querySelectorAll('.lid').forEach(e=>e.setAttribute('transform',`scale(1 ${lid})`));
+};
+document.fonts.ready.then(()=>{window.READY=true});
+setTime(0);
+</script>
+</body></html>
