@@ -128,17 +128,47 @@ function divider(num, title, items) {
   section("표지");
   {
     const s = pres.addSlide({ masterName: "DARK", sectionTitle: curSection });
-    s.addImage({ path: ARC, x: 5.13, y: 0.15, w: 8.2, h: 6.23 });
-    T(s, "JobWave", M, 0.5, 3, 0.4, { fontSize: 16, bold: true, color: WHITE });
-    pill(s, "제안서", M, 1.6, 1.2, 0.4, ORANGE, WHITE, { fs: 14 });
-    T(s, "충북대학교\n외국인 유학생\n취업지원 프로그램", M, 2.2, 7, 2.4, { fontSize: 44, bold: true, color: WHITE, lineSpacingMultiple: 1.05, valign: "middle" });
-    const chips = ["취업 특강", "1:1 멘토링", "맞춤 채용정보 사이트", "인사담당자 상담", "소규모 잡페어"];
-    const cw = [1.4, 1.5, 2.3, 1.85, 1.75];
-    let cx = M;
-    chips.forEach((c, i) => { pill(s, c, cx, 4.95, cw[i], 0.45, NAVY2, WHITE, { fs: 13, line: "4A5466" }); cx += cw[i] + 0.15; });
-    T(s, "2026. 11.   잡웨이브(JobWave)", M, 6.5, 6, 0.35, { fontSize: 14, color: "C9CED6" });
-    T(s, "충북대학교", 7.6, 2.65, 1.6, 0.3, { fontSize: 12, bold: true, color: WHITE, align: "right" });
-    T(s, "충북 기업", 10.6, 0.95, 1.4, 0.3, { fontSize: 12, bold: true, color: WHITE, align: "right" });
+    s.background = { color: WHITE };
+    // 오른쪽: 오렌지 패널 + 충북대학교 → 5개 프로그램 → 충북 기업 경로
+    const px = 6.9;
+    s.addShape(pres.shapes.RECTANGLE, { x: px, y: 0, w: W - px, h: 7.5, fill: { color: ORANGE }, line: { color: ORANGE } });
+    [2.2, 3.6, 5.0, 6.4].forEach((r) => s.addShape(pres.shapes.OVAL, { x: W - r, y: 7.5 - r, w: 2 * r, h: 2 * r, fill: { type: "none" }, line: { color: WHITE, width: 1, transparency: 75 } }));
+    const nodes = [
+      ["충북대학교", "외국인 유학생", "LuSchool", true],
+      ["01  취업 특강", "", "LuPresentation"],
+      ["02  1:1 멘토링", "", "LuUsers"],
+      ["03  맞춤 채용정보 사이트", "", "LuMonitor"],
+      ["04  인사담당자 상담", "", "LuMessagesSquare"],
+      ["05  소규모 잡페어", "", "LuHandshake"],
+      ["충북 기업", "첫 직장", "LuBuilding2", true],
+    ];
+    const pos = (i) => [7.65 + 0.42 * i, 6.45 - 0.95 * i];
+    const [x0, y0] = pos(0), [x6, y6] = pos(6);
+    s.addShape(pres.shapes.LINE, { x: x0, y: y6, w: x6 - x0, h: y0 - y6, flipV: true, line: { color: WHITE, width: 2.5, dashType: "dash" } });
+    for (let i = 0; i < 7; i++) {
+      const [cx, cy] = pos(i), [t, sub, ic, end] = nodes[i];
+      const d = end ? 0.9 : 0.72;
+      if (end) await iconCircle(s, cx - d / 2, cy - d / 2, d, ic, NAVY, WHITE);
+      else await iconCircle(s, cx - d / 2, cy - d / 2, d, ic, WHITE, ORANGE);
+      if (end) {
+        T(s, t, cx + 0.6, cy - 0.38, 2.6, 0.42, { fontSize: 20, bold: true, color: WHITE, valign: "middle" });
+        T(s, sub, cx + 0.6, cy + 0.04, 2.6, 0.32, { fontSize: 13, color: "FFE3D9", valign: "middle" });
+      } else {
+        T(s, t, cx + 0.52, cy - 0.22, 2.9, 0.44, { fontSize: 15, bold: true, color: WHITE, valign: "middle" });
+      }
+    }
+    // 왼쪽: 타이틀
+    T(s, "JobWave", M, 0.55, 3, 0.4, { fontSize: 18, bold: true, color: NAVY });
+    pill(s, "제안서", M, 1.75, 1.15, 0.42, NAVY, WHITE, { fs: 14 });
+    T(s, "2026. 11.", M + 1.3, 1.75, 2, 0.42, { fontSize: 14, color: GRAY, valign: "middle" });
+    T(s, [
+      { text: "충북대학교", options: { breakLine: true } },
+      { text: "외국인 유학생", options: { breakLine: true } },
+      { text: "취업지원 프로그램", options: { color: ORANGE } },
+    ], M, 2.45, 6.1, 2.55, { fontSize: 42, bold: true, color: NAVY, lineSpacingMultiple: 1.05, valign: "middle" });
+    T(s, "공부한 충북에서, 일하는 충북으로", M, 5.2, 6, 0.45, { fontSize: 18, color: GRAY, valign: "middle" });
+    T(s, "Study in Chungbuk, Work in Korea", M, 5.65, 6, 0.35, { fontSize: 13, bold: true, color: ORANGE, valign: "middle" });
+    T(s, "잡웨이브(JobWave)", M, 6.55, 4, 0.35, { fontSize: 14, bold: true, color: NAVY, valign: "middle" });
   }
 
   // ===== 2. 핵심 메시지 =====
