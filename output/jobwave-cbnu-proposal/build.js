@@ -112,9 +112,22 @@ function content(crumb, title, sub) {
 let curSection = "표지";
 function section(t) { curSection = t; pres.addSection({ title: t }); }
 
-function divider(num, title, items) {
+// Canva로 생성한 사진(photos/)을 박스 비율에 맞게 가운데 기준으로 잘라 넣는다
+async function photo(s, name, x, y, w, h, focusY = 0.5) {
+  const file = path.resolve(__dirname, "photos", name + ".jpg");
+  const meta = await sharp(file).metadata();
+  const target = w / h, src = meta.width / meta.height;
+  let cw = meta.width, ch = meta.height;
+  if (src > target) cw = Math.round(meta.height * target); else ch = Math.round(meta.width / target);
+  const left = Math.round((meta.width - cw) / 2);
+  const top = Math.round(Math.min(Math.max((meta.height - ch) * focusY, 0), meta.height - ch));
+  const buf = await sharp(file).extract({ left, top, width: cw, height: ch }).jpeg({ quality: 88 }).toBuffer();
+  s.addImage({ data: "image/jpeg;base64," + buf.toString("base64"), x, y, w, h });
+}
+
+async function divider(num, title, items, img) {
   const s = pres.addSlide({ masterName: "DARK", sectionTitle: curSection });
-  s.addImage({ path: ARC, x: 5.13, y: 0.15, w: 8.2, h: 6.23 });
+  await photo(s, img, 6.2, 0, W - 6.2, 7.5);
   T(s, num, M, 1.5, 4, 1.4, { fontSize: 96, bold: true, color: ORANGE, valign: "bottom" });
   T(s, title, M, 3.0, 6, 0.9, { fontSize: 44, bold: true, color: WHITE, valign: "middle" });
   items.forEach((it, i) => {
@@ -135,8 +148,9 @@ function divider(num, title, items) {
   {
     const s = pres.addSlide({ masterName: "BLANK", sectionTitle: curSection });
     T(s, "Study in Chungbuk, Work in Korea", M, 0.55, 8, 0.35, { fontSize: 14, bold: true, color: ORANGE });
-    T(s, [{ text: "공부한 충북에서, ", options: { color: NAVY } }, { text: "일하는 충북으로", options: { color: ORANGE } }], M, 0.95, 12, 0.9, { fontSize: 40, bold: true, valign: "middle" });
-    T(s, "충북대에서 공부한 유학생이 충북 기업에서 첫 직장을 갖도록, 진단부터 채용까지 네 단계로 지원합니다.", M, 1.95, 12, 0.4, { fontSize: 16, color: GRAY });
+    T(s, [{ text: "공부한 충북에서,", options: { color: NAVY, breakLine: true } }, { text: "일하는 충북으로", options: { color: ORANGE } }], M, 0.95, 7.4, 1.35, { fontSize: 36, bold: true, valign: "middle" });
+    T(s, "충북대에서 공부한 유학생이 충북 기업에서 첫 직장을 갖도록, 진단부터 채용까지 네 단계로 지원합니다.", M, 2.4, 7.4, 0.65, { fontSize: 15, color: GRAY });
+    await photo(s, "handshake", 8.45, 0.5, W - M - 8.45, 2.55, 0.4);
     const steps = [
       ["01", "진단", "사전진단 · 취업플랜", "LuSearch"],
       ["02", "역량강화", "심화 특강 · 1:1 멘토링", "LuGraduationCap"],
@@ -144,7 +158,7 @@ function divider(num, title, items) {
       ["04", "채용", "소규모 잡페어 · 사후관리", "LuBriefcase"],
     ];
     const fills = [BG, NTINT, NAVY, ORANGE];
-    const cw = 2.75, gap = 0.33, y = 2.9, h = 3.6;
+    const cw = 2.75, gap = 0.33, y = 3.3, h = 3.35;
     for (let i = 0; i < 4; i++) {
       const x = M + i * (cw + gap);
       const dark = i >= 2;
@@ -184,7 +198,7 @@ function divider(num, title, items) {
 
   // ===== 4. 간지 01 =====
   section("01 제안 개요");
-  divider("01", "제안 개요", ["제안 배경", "해결 방향", "프로그램 구성"]);
+  await divider("01", "제안 개요", ["제안 배경", "해결 방향", "프로그램 구성"], "div01");
 
   // ===== 5. 데이터 =====
   {
@@ -296,7 +310,7 @@ function divider(num, title, items) {
 
   // ===== 8. 간지 02 =====
   section("02 제안사 소개");
-  divider("02", "제안사 소개", ["일반현황", "수행 조직", "수행실적", "유사사업"]);
+  await divider("02", "제안사 소개", ["일반현황", "수행 조직", "수행실적", "유사사업"], "div02");
 
   // ===== 9. 회사 일반현황 =====
   {
@@ -408,7 +422,7 @@ function divider(num, title, items) {
 
   // ===== 13. 간지 03 =====
   section("03 프로그램 제안");
-  divider("03", "프로그램 제안", ["01  취업 특강", "02  1:1 멘토링", "03  맞춤 채용정보 사이트", "04  인사담당자 상담", "05  소규모 잡페어"]);
+  await divider("03", "프로그램 제안", ["01  취업 특강", "02  1:1 멘토링", "03  맞춤 채용정보 사이트", "04  인사담당자 상담", "05  소규모 잡페어"], "div03");
 
   // ===== 14. 특강 개요 =====
   const C1 = "03  프로그램 제안  /  01 취업 특강";
@@ -504,7 +518,8 @@ function divider(num, title, items) {
   const C2 = "03  프로그램 제안  /  02 1:1 멘토링";
   {
     const s = content(C2, "1:1 멘토링 운영 방식", "오프라인·온라인 모두 전문멘토 1명이 학생 1인당 1시간, 하루 최대 7명을 지도합니다");
-    const sw = (W - 2 * M - 0.6) / 3;
+    const sw = (7.6 - 0.6) / 3;
+    await photo(s, "mentoring", M + 7.6 + 0.3, 1.95, W - 2 * M - 7.9, 1.45, 0.35);
     stat(s, M, 1.95, sw, 1.45, "1", "명", "전문멘토", BG, NAVY, GRAY);
     stat(s, M + sw + 0.3, 1.95, sw, 1.45, "1", "시간", "학생 1인당", BG, NAVY, GRAY);
     stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.45, "7", "명", "하루 최대", ORANGE, WHITE, WHITE);
@@ -686,9 +701,9 @@ function divider(num, title, items) {
   const C4 = "03  프로그램 제안  /  04 인사담당자 상담";
   {
     const s = content(C4, "인사담당자 상담 개요", "외국인 채용 경험이 있는 기업 인사담당자만 멘토로 섭외");
-    card(s, M, 1.95, 7.2, 2.45, NAVY, { shadow: true });
-    T(s, "“", M + 0.3, 1.9, 1, 1, { fontSize: 72, bold: true, color: ORANGE });
-    T(s, [{ text: "유학생을 실제로 뽑아 본\n인사담당자에게 직접 듣는\n", options: { color: WHITE } }, { text: "채용 기준", options: { color: ORANGE } }], M + 1.1, 2.1, 5.9, 2.15, { fontSize: 26, bold: true, valign: "middle" });
+    card(s, M, 1.95, 4.75, 2.45, NAVY, { shadow: true });
+    T(s, [{ text: "유학생을 실제로 뽑아 본\n인사담당자에게 직접 듣는\n", options: { color: WHITE } }, { text: "채용 기준", options: { color: ORANGE } }], M + 0.35, 2.1, 4.2, 2.15, { fontSize: 22, bold: true, valign: "middle" });
+    await photo(s, "hr", M + 4.9, 1.95, 2.3, 2.45);
     const pts = [["01", "실제 채용 기준을 직접 설명", "LuMessagesSquare"], ["02", "기업이 망설이는 이유까지 공유", "LuCircleHelp"], ["03", "잡페어 참여 기업 발굴로 연결", "LuLink"]];
     for (let i = 0; i < 3; i++) {
       const x = M + i * 2.45, y = 4.6;
@@ -780,14 +795,16 @@ function divider(num, title, items) {
     stat(s, M, 1.95, sw, 1.7, "5", "개사", "참여 기업 · 기본형 3개사", ORANGE, WHITE, WHITE);
     stat(s, M + sw + 0.3, 1.95, sw, 1.7, "30~40", "명", "참여 유학생 · 사전 서류 등록자", NAVY, WHITE, "C9CED6");
     stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.7, "사전", "매칭", "행사 전 서류 검토·면접 일정 확정", BG, NAVY, GRAY);
-    T(s, "기업 발굴 기준", M, 3.95, 4, 0.38, { fontSize: 16, bold: true });
+    T(s, "기업 발굴 기준", M + 4.2, 3.95, 4, 0.38, { fontSize: 16, bold: true });
+    await photo(s, "jobfair", M, 3.95, 3.9, 2.75, 0.45);
+    const cw3 = (W - 2 * M - 4.2 - 0.6) / 3;
     const cr = [["충북 소재 기업", "지역 정주로 이어지는 채용 우선", "LuMapPin"], ["유학생 채용 의향", "실제 채용 계획이 있는 기업만 초청", "LuHeart"], ["E-7 고용 가능 업종", "외투기업·수출기업 포함", "LuIdCard"]];
     for (let i = 0; i < 3; i++) {
-      const x = M + i * (sw + 0.3), y = 4.45;
-      card(s, x, y, sw, 2.25, BG, { shadow: true });
-      await iconCircle(s, x + 0.35, y + 0.35, 0.9, cr[i][2], i === 0 ? ORANGE : NAVY);
-      T(s, cr[i][0], x + 0.35, y + 1.4, sw - 0.6, 0.42, { fontSize: 18, bold: true, valign: "middle" });
-      T(s, cr[i][1], x + 0.35, y + 1.82, sw - 0.6, 0.35, { fontSize: 13, color: GRAY });
+      const x = M + 4.2 + i * (cw3 + 0.3), y = 4.45;
+      card(s, x, y, cw3, 2.25, BG, { shadow: true });
+      await iconCircle(s, x + 0.25, y + 0.25, 0.75, cr[i][2], i === 0 ? ORANGE : NAVY);
+      T(s, cr[i][0], x + 0.25, y + 1.1, cw3 - 0.4, 0.45, { fontSize: 15, bold: true, valign: "middle" });
+      T(s, cr[i][1], x + 0.25, y + 1.55, cw3 - 0.4, 0.6, { fontSize: 12, color: GRAY });
     }
   }
 
@@ -846,7 +863,7 @@ function divider(num, title, items) {
 
   // ===== 29. 간지 04 =====
   section("04 도입 방식");
-  divider("04", "도입 방식", ["구성 옵션", "추천 조합"]);
+  await divider("04", "도입 방식", ["구성 옵션", "추천 조합"], "div04");
 
   // ===== 30. 구성 옵션 =====
   {
@@ -902,7 +919,7 @@ function divider(num, title, items) {
 
   // ===== 32. 간지 05 =====
   section("05 운영 관리");
-  divider("05", "운영 관리", ["인력·참여 관리", "개인정보 보호", "성과관리·보고"]);
+  await divider("05", "운영 관리", ["인력·참여 관리", "개인정보 보호", "성과관리·보고"], "div05");
 
   // ===== 33. 인력·참여 =====
   {
