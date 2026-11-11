@@ -351,3 +351,7 @@ body.next-entry main header{background:transparent}
  .next-landing .home-lecture-card:last-child:nth-child(even){grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:350px){body .entry-header>nav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* Operator details under every footer. */
+.jw-business{display:flex;flex-wrap:wrap;gap:4px 18px;max-width:1200px;margin:0 auto;padding:0 64px 28px;font-size:11px;line-height:1.7;color:#6b7566;word-break:keep-all}
+@media(max-width:760px){.jw-business{padding:0 24px 24px;font-size:10.5px;gap:2px 14px}}
+@media print{.jw-business{display:none}}
