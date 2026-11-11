@@ -1,0 +1,6 @@
+import {json,config} from '../../shared';
+import {syncFeed,readFeed} from '../feed';
+export const dynamic='force-dynamic';
+// Public Site: scheduled updates require a server-side credential in addition to dispatch service access.
+// The runtime credential mirrors the Site service credential. Refresh it after any deliberate service-token rotation.
+export async function POST(req:Request){const expected=config().JOB_REFRESH_TOKEN,provided=req.headers.get('X-Jobwave-Refresh-Token');if(!expected||!provided||provided.length>8192)return json({error:'자동 수집 권한이 필요합니다.'},401);const encode=new TextEncoder();const hashes=await Promise.all([expected,provided].map(s=>crypto.subtle.digest('SHA-256',encode.encode(s))));const a=new Uint8Array(hashes[0]),b=new Uint8Array(hashes[1]);let mismatch=0;for(let i=0;i<a.length;i++)mismatch|=a[i]^b[i];if(mismatch)return json({error:'자동 수집 권한이 필요합니다.'},401);const origin=req.headers.get('origin');if(origin&&origin!==new URL(req.url).origin)return json({error:'잘못된 요청입니다.'},403);try{const results=await syncFeed();const feed=await readFeed(false);return json({mode:feed.mode,count:feed.jobs.length,sources:feed.sources,results},feed.mode==='error'?502:200)}catch{return json({error:'자동 수집을 완료하지 못했습니다.'},503)}}

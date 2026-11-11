@@ -1,0 +1,677 @@
+[
+  {
+    "id": "job-posting",
+    "title": "채용공고를 읽으면 취업 준비가 보인다",
+    "category": "취업",
+    "description": "담당 업무와 필수·우대 조건을 구분하고, 내 경험을 연결해 이번 주 준비할 일을 정합니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/job-posting.png",
+    "bytes": 33048243,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "채용공고를 읽으면 취업 준비가 보인다_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 560356
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "채용공고를 읽으면 취업 준비가 보인다_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1617969
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "채용공고를 읽으면 취업 준비가 보인다_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1280385
+      }
+    ],
+    "published": true,
+    "outcome": "지원 여부 판단표와 이번 주 준비할 행동 세 가지",
+    "topics": [
+      "업무·필수·우대, 세 칸으로 읽기",
+      "업무를 행동과 결과물로 바꾸기",
+      "내 경험에서 근거 찾기",
+      "지원·보류·확인 필요로 판단하기",
+      "준비 목록을 일주일 행동으로 줄이기",
+      "다음 공고에도 쓰는 비교표"
+    ],
+    "practiceHref": "/api/lecture-material/job-posting/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "first-portfolio",
+    "title": "경험이 없어도 만드는 첫 취업 포트폴리오",
+    "category": "취업",
+    "description": "수업·아르바이트·동아리 경험에서 문제와 행동을 찾아 설명 가능한 프로젝트 한 장을 만듭니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/first-portfolio.png",
+    "bytes": 32950611,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "경험이 없어도 만드는 첫 취업 포트폴리오_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 566296
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "경험이 없어도 만드는 첫 취업 포트폴리오_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1640175
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "경험이 없어도 만드는 첫 취업 포트폴리오_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1308860
+      }
+    ],
+    "published": true,
+    "outcome": "프로젝트 한 장과 포트폴리오 구성표",
+    "topics": [
+      "누구에게 무엇을 보여 줄 것인가",
+      "작은 경험도 프로젝트로 읽기",
+      "문제·선택·행동·확인으로 설명하기",
+      "결과물 한 장을 읽히게 배치하기",
+      "경험이 부족할 때 만드는 개인 과제",
+      "제출 전에 열어 보고 설명해 보기"
+    ],
+    "practiceHref": "/api/lecture-material/first-portfolio/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "application-strategy",
+    "title": "인턴·신입 지원 전략",
+    "category": "취업",
+    "description": "근무 조건과 준비 정도로 지원 후보를 나누고, 실제로 쓸 수 있는 시간에 맞춰 2주 일정을 만듭니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/application-strategy.png",
+    "bytes": 32549591,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "인턴·신입 지원 전략_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 544459
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "인턴·신입 지원 전략_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1657004
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "인턴·신입 지원 전략_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1302200
+      }
+    ],
+    "published": true,
+    "outcome": "지원 후보표와 2주 지원 일정",
+    "topics": [
+      "이번 지원의 목적과 조건",
+      "기업 이름보다 직무로 후보 넓히기",
+      "지원할 준비 정도를 구분하기",
+      "마감에서 거꾸로 2주 배치하기",
+      "공통 재료와 맞춤 설명을 나누기",
+      "결과를 기록하고 다음 지원 조정하기"
+    ],
+    "practiceHref": "/api/lecture-material/application-strategy/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "aptitude-ncs-start",
+    "title": "인적성·NCS 첫걸음",
+    "category": "취업",
+    "description": "공식 시험 안내를 읽고 조건 해석·수리 문제를 풀며, 틀린 이유를 다음 공부 계획으로 바꿉니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/aptitude-ncs-start.png",
+    "bytes": 33022239,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "인적성·NCS 첫걸음_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 551544
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "인적성·NCS 첫걸음_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1664599
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "인적성·NCS 첫걸음_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1319413
+      }
+    ],
+    "published": true,
+    "outcome": "나의 진단표와 일주일 학습 계획",
+    "topics": [
+      "시험 안내부터 학습 범위 정하기",
+      "처음 진단은 정답 수보다 과정",
+      "문장을 읽고 조건을 남기는 연습",
+      "수리 문제는 기준과 단위부터",
+      "시간을 쓰는 순서도 연습하기",
+      "오답을 다음 주 계획으로 바꾸기"
+    ],
+    "practiceHref": "/api/lecture-material/aptitude-ncs-start/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "new-hire-basics",
+    "title": "첫 출근 전에 배우는 신입사원 업무 기본기",
+    "category": "취업",
+    "description": "업무의 완료 기준을 확인하고, 메일·진행 보고·질문·회의록과 일정 관리 양식을 직접 작성합니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/new-hire-basics.png",
+    "bytes": 33468823,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "첫 출근 전에 배우는 신입사원 업무 기본기_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 583110
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "첫 출근 전에 배우는 신입사원 업무 기본기_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1655125
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "첫 출근 전에 배우는 신입사원 업무 기본기_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1341000
+      }
+    ],
+    "published": true,
+    "outcome": "업무 확인 메모와 보고·메일 초안",
+    "topics": [
+      "업무를 받으면 완료 기준부터",
+      "메일은 상대가 할 행동이 보이게",
+      "진행 보고는 상태와 다음 판단",
+      "질문할 때 시도와 막힌 지점 남기기",
+      "회의록은 결론과 담당자를 남기기",
+      "일정과 파일을 함께 관리하기"
+    ],
+    "practiceHref": "/api/lecture-material/new-hire-basics/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "interests-strengths",
+    "title": "좋아하는 것과 잘하는 것 사이에서 진로 찾기",
+    "category": "진로",
+    "description": "관심과 수행 경험, 피드백과 생활 조건을 나누어 보고 다음에 확인할 작은 진로 질문을 만듭니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/interests-strengths.png",
+    "bytes": 32996692,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "좋아하는 것과 잘하는 것 사이에서 진로 찾기_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 572251
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "좋아하는 것과 잘하는 것 사이에서 진로 찾기_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1671025
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "좋아하는 것과 잘하는 것 사이에서 진로 찾기_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1348392
+      }
+    ],
+    "published": true,
+    "outcome": "경험 근거표와 다음에 확인할 진로 질문",
+    "topics": [
+      "좋아함과 잘함을 다른 질문으로",
+      "기억 대신 장면과 행동 모으기",
+      "피드백은 평가보다 구체적 질문",
+      "가치관은 선택 상황에서 확인",
+      "관심과 수행의 네 칸을 가설로",
+      "다음 경험에 확인 기준 붙이기"
+    ],
+    "practiceHref": "/api/lecture-material/interests-strengths/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "major-career-options",
+    "title": "전공과 직업이 꼭 같아야 할까?",
+    "category": "진로",
+    "description": "전공에서 배운 것과 직무의 조건을 비교하고, 유지·추가 학습·전공 변경의 선택지를 살펴봅니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/major-career-options.png",
+    "bytes": 32852163,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "전공과 직업이 꼭 같아야 할까?_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 556905
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "전공과 직업이 꼭 같아야 할까?_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1665244
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "전공과 직업이 꼭 같아야 할까?_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1326311
+      }
+    ],
+    "published": true,
+    "outcome": "선택지 비교표와 학교에 확인할 질문 목록",
+    "topics": [
+      "한 과목과 전공 전체 나누기",
+      "전공에서 배운 것을 행동으로",
+      "직무에서 필요한 조건 거꾸로 보기",
+      "선택지를 유지·추가·변경으로 비교",
+      "결정 전에 작은 학습 경험 만들기",
+      "상담과 확인을 거쳐 결정하기"
+    ],
+    "practiceHref": "/api/lecture-material/major-career-options/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "understand-job-roles",
+    "title": "직무를 알아야 진로가 보인다",
+    "category": "진로",
+    "description": "기획·영업·마케팅·인사·개발을 실제 행동과 결과물로 비교하고, 더 알아볼 질문과 체험을 정합니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/understand-job-roles.png",
+    "bytes": 32389957,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "직무를 알아야 진로가 보인다_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 550975
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "직무를 알아야 진로가 보인다_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1673833
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "직무를 알아야 진로가 보인다_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1328294
+      }
+    ],
+    "published": true,
+    "outcome": "직무 비교표와 현직자에게 물어볼 질문",
+    "topics": [
+      "직업·직무·산업을 나누어 보기",
+      "직무를 읽는 다섯 가지 질문",
+      "기획·영업·마케팅 비교하기",
+      "인사·개발과 협업 흐름 보기",
+      "공고와 현직자 설명을 함께 읽기",
+      "직무 비교를 작은 경험으로 연결"
+    ],
+    "practiceHref": "/api/lecture-material/understand-job-roles/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "career-experiments",
+    "title": "나에게 맞는 일을 확인하는 작은 진로 실험",
+    "category": "진로",
+    "description": "확인할 질문 하나를 골라 인터뷰와 작은 과제, 관찰 기준과 4주 실행 계획을 설계합니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/career-experiments.png",
+    "bytes": 32630518,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "나에게 맞는 일을 확인하는 작은 진로 실험_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 573407
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "나에게 맞는 일을 확인하는 작은 진로 실험_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1656727
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "나에게 맞는 일을 확인하는 작은 진로 실험_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1333641
+      }
+    ],
+    "published": true,
+    "outcome": "4주 진로 실험 계획과 회고표",
+    "topics": [
+      "직업 이름을 확인할 질문으로",
+      "인터뷰와 체험의 역할 구분",
+      "한 주 안에 끝낼 크기로 줄이기",
+      "실행 전 관찰할 기준 정하기",
+      "4주 계획에 실행과 회고 넣기",
+      "계속·변경·추가 확인 결정하기"
+    ],
+    "practiceHref": "/api/lecture-material/career-experiments/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "college-year-plan",
+    "title": "학년별 대학생활 설계",
+    "category": "진로",
+    "description": "학년별 탐색과 경험의 흐름을 살펴보고, 현재의 시간과 생활 조건에 맞춘 학기 계획을 만듭니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/college-year-plan.png",
+    "bytes": 32541605,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "학년별 대학생활 설계_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 547892
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "학년별 대학생활 설계_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1650414
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "학년별 대학생활 설계_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1299516
+      }
+    ],
+    "published": true,
+    "outcome": "학년별 경험 지도와 이번 학기 실행 계획",
+    "topics": [
+      "학년보다 현재 상태 먼저",
+      "1학년: 관심을 확인할 경험",
+      "2학년: 직무 가설과 작은 프로젝트",
+      "3학년: 경험을 깊게 만들기",
+      "4학년: 조건과 근거를 지원으로",
+      "이번 학기 계획 한 장으로"
+    ],
+    "practiceHref": "/api/lecture-material/college-year-plan/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "ai-prompting-basics",
+    "title": "AI에게 일을 잘 시키는 질문법",
+    "category": "AI 활용",
+    "description": "목표·맥락·조건·출력 형식으로 요청문을 쓰고, 결과를 검토하며 다음에도 쓸 양식으로 다듬습니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/ai-prompting-basics.png",
+    "bytes": 32459731,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "AI에게 일을 잘 시키는 질문법_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 556259
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "AI에게 일을 잘 시키는 질문법_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1650310
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "AI에게 일을 잘 시키는 질문법_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1309975
+      }
+    ],
+    "published": true,
+    "outcome": "재사용할 요청문과 결과 검토표",
+    "topics": [
+      "먼저 내가 끝내려는 일을 정하기",
+      "요청문을 네 칸으로 구성하기",
+      "자료는 필요한 범위만 제공하기",
+      "큰 일을 작은 단계로 나누기",
+      "좋은 답을 판단할 검토표",
+      "수정 기록을 재사용할 요청으로"
+    ],
+    "practiceHref": "/api/lecture-material/ai-prompting-basics/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "ai-study-research",
+    "title": "대학 과제와 자료 조사에 AI 활용하기",
+    "category": "AI 활용",
+    "description": "과제의 허용 범위를 확인하고 조사 질문, 실제 출처, 요약과 개요를 근거표로 연결합니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/ai-study-research.png",
+    "bytes": 32194144,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "대학 과제와 자료 조사에 AI 활용하기_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 565388
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "대학 과제와 자료 조사에 AI 활용하기_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1652215
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "대학 과제와 자료 조사에 AI 활용하기_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1319854
+      }
+    ],
+    "published": true,
+    "outcome": "조사 질문과 출처·근거 기록표",
+    "topics": [
+      "과제 요구와 사용 범위 확인",
+      "넓은 주제를 조사 질문으로",
+      "검색어를 만들고 실제 자료 찾기",
+      "요약은 원문의 범위 안에서",
+      "개요를 주장과 근거로 연결",
+      "제출 전 설명 가능성 점검"
+    ],
+    "practiceHref": "/api/lecture-material/ai-study-research/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "ai-reports-presentations",
+    "title": "AI로 보고서·발표 자료 초안 만들기",
+    "category": "AI 활용",
+    "description": "가상의 운영 자료로 사실과 해석을 나누고, 보고서 한 장과 5장 발표의 구조를 만듭니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/ai-reports-presentations.png",
+    "bytes": 32076678,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "AI로 보고서·발표 자료 초안 만들기_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 556605
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "AI로 보고서·발표 자료 초안 만들기_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1630390
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "AI로 보고서·발표 자료 초안 만들기_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1287690
+      }
+    ],
+    "published": true,
+    "outcome": "보고서 한 장과 5장 발표 구성안",
+    "topics": [
+      "독자의 결정에서 문서 시작하기",
+      "입력 자료를 사실표로 정리",
+      "보고서 한 장의 구조 정하기",
+      "발표 다섯 장에 질문 나누기",
+      "표와 차트는 비교 기준을 드러내기",
+      "최종 편집과 발표 리허설"
+    ],
+    "practiceHref": "/api/lecture-material/ai-reports-presentations/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "ai-excel-data",
+    "title": "AI로 엑셀과 데이터 정리 시작하기",
+    "category": "AI 활용",
+    "description": "여섯 건의 가상 거래로 데이터 정리와 조건 합계·건수 수식을 연습하고 손계산으로 검산합니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/ai-excel-data.png",
+    "bytes": 31952383,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "AI로 엑셀과 데이터 정리 시작하기_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 556427
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "AI로 엑셀과 데이터 정리 시작하기_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1694891
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "AI로 엑셀과 데이터 정리 시작하기_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1356035
+      }
+    ],
+    "published": true,
+    "outcome": "조건별 집계표와 수식 검산 기록",
+    "topics": [
+      "표의 구조와 질문 먼저 설명",
+      "정리 전에 원본과 규칙 보관",
+      "조건 합계 SUMIFS 이해하기",
+      "조건 건수 COUNTIFS와 검산",
+      "집계표와 차트의 목적 정하기",
+      "재사용 전 수식과 결과 점검"
+    ],
+    "practiceHref": "/api/lecture-material/ai-excel-data/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  },
+  {
+    "id": "ai-job-search-workflow",
+    "title": "취업 준비에 쓰는 AI",
+    "category": "AI 활용",
+    "description": "공개 근거로 기업을 분석하고 공고와 경험을 연결해, 준비 계획과 면접 복습 기록을 만듭니다.",
+    "duration": "25분 0초",
+    "seconds": 1500,
+    "poster": "/lectures/ai-job-search-workflow.png",
+    "bytes": 33247741,
+    "materials": [
+      {
+        "id": "worksheet",
+        "label": "실습 활동지 · PDF",
+        "filename": "취업 준비에 쓰는 AI_활동지.pdf",
+        "contentType": "application/pdf",
+        "bytes": 551355
+      },
+      {
+        "id": "slides",
+        "label": "강의안 · PDF",
+        "filename": "취업 준비에 쓰는 AI_강의안.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1677855
+      },
+      {
+        "id": "materials",
+        "label": "강의 자료 전체 · ZIP",
+        "filename": "취업 준비에 쓰는 AI_자료.zip",
+        "contentType": "application/zip",
+        "bytes": 1332993
+      }
+    ],
+    "published": true,
+    "outcome": "근거가 있는 기업 분석표와 주간 준비 계획",
+    "topics": [
+      "기업 분석은 질문부터 좁히기",
+      "공개 근거를 비교표로 정리",
+      "채용공고와 내 준비의 차이 찾기",
+      "준비 계획은 실제 시간에 맞추기",
+      "면접 연습은 답변의 근거 점검",
+      "지원 후 복습과 기록 관리"
+    ],
+    "practiceHref": "/api/lecture-material/ai-job-search-workflow/worksheet",
+    "practiceLabel": "활동지로 복습하기 ↓"
+  }
+]

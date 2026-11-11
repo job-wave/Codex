@@ -1,0 +1,37 @@
+/* Three compact groups, retaining every original destination. */
+body.compact-nav header.site-header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:30px;height:76px;min-height:0;padding:0 64px;overflow:visible;position:relative;z-index:50}
+body.compact-nav .site-header .wordmark{font-size:27px;letter-spacing:-1.5px}
+body.compact-nav .site-header .wordmark span{width:29px;height:29px;line-height:29px;vertical-align:middle}
+body.compact-nav nav.site-nav{display:flex;justify-content:center;align-items:center;gap:26px;width:auto;height:100%;order:0;overflow:visible;margin:0;padding:0}
+.site-nav-group{position:relative;margin:0;border:0;padding:0;flex:none}
+.site-nav-group>summary{display:flex;align-items:center;gap:8px;cursor:pointer;list-style:none;color:#69765f;font-size:12px;font-weight:600;line-height:1.6;padding:16px 0;white-space:nowrap;user-select:none}
+.site-nav-group>summary::-webkit-details-marker{display:none}
+.site-nav-group>summary svg{height:11px;width:11px;stroke:#87977a;fill:none;stroke-width:1.5;transition:transform .15s}
+.site-nav-group[open]>summary,.site-nav-group.is-current>summary{color:#263823}
+.site-nav-group[open]>summary svg{transform:rotate(180deg)}
+.site-nav-panel{position:absolute;top:calc(100% + 2px);left:50%;transform:translateX(-50%);width:210px;max-width:calc(100vw - 32px);padding:9px;background:#fafbf7;border:1px solid #d9e1d0;border-radius:5px;box-shadow:0 10px 30px #25351c14;z-index:100;display:flex;flex-direction:column;gap:2px}
+body.compact-nav .site-nav-panel button,body.compact-nav .site-nav-panel a{display:flex;align-items:center;text-align:left;justify-content:flex-start;min-height:40px;width:100%;height:auto;border:0;background:transparent;border-radius:3px;padding:10px 12px;font-size:12px;font-weight:500;color:#627653;line-height:1.6;text-decoration:none;letter-spacing:-.2px;white-space:normal;margin:0;box-sizing:border-box}
+body.compact-nav .site-nav-panel button.active,body.compact-nav .site-nav-panel button:hover,body.compact-nav .site-nav-panel a:hover{background:#edf2e5;color:#344d25}
+body.compact-nav .site-nav-panel button.active:after{display:none}
+body.compact-nav .site-nav-panel #savedCount{font-size:10px;margin-left:6px;border-radius:10px;background:#e7eddf;padding:0 6px;line-height:18px}
+body.compact-nav .site-header .join{margin:0;font-size:11px;padding:10px 14px;border-radius:3px}
+.site-nav-group>summary:focus-visible,.site-nav-panel a:focus-visible,.site-nav-panel button:focus-visible{outline:2px solid #8ea963;outline-offset:3px}
+@media(max-width:1100px){body.compact-nav header.site-header{padding:0 32px;gap:20px}body.compact-nav nav.site-nav{gap:22px}}
+@media(max-width:760px){
+ body.compact-nav header.site-header{grid-template-columns:1fr auto;grid-template-rows:42px 35px;height:auto;min-height:0;padding:7px 22px 0;gap:0 15px}
+ body.compact-nav .site-header .wordmark{font-size:24px;align-self:center;grid-row:1;grid-column:1;letter-spacing:-1.4px}
+ body.compact-nav .site-header .wordmark span{width:26px;height:26px;line-height:26px}
+ body.compact-nav .site-header .join{grid-row:1;grid-column:2;font-size:10px;padding:8px 11px;min-height:31px}
+ body.compact-nav nav.site-nav{grid-row:2;grid-column:1/-1;height:35px;width:100%;position:relative;gap:0;justify-content:space-between;order:0;overflow:visible}
+ .site-nav-group{position:static;flex:1;min-width:0}
+ .site-nav-group>summary{font-size:11px;gap:5px;padding:8px 0;justify-content:center;min-height:35px;box-sizing:border-box}
+ .site-nav-group:first-child>summary{justify-content:flex-start}
+ .site-nav-group:last-child>summary{justify-content:flex-end}
+ .site-nav-group>summary svg{height:10px;width:10px}
+ .site-nav-panel{left:0;right:0;top:100%;width:100%;max-width:none;transform:none;padding:8px;box-sizing:border-box;border-radius:0 0 5px 5px}
+ body.compact-nav .site-nav-panel button,body.compact-nav .site-nav-panel a{font-size:12px;min-height:42px;padding:11px 13px}
+}
+@media(prefers-reduced-motion:reduce){.site-nav-group>summary svg{transition:none}}
+
+body.compact-nav nav.site-nav .site-nav-direct{color:#26342d;font-size:13px;font-weight:700;min-height:44px;white-space:nowrap}
+@media(max-width:760px){body.compact-nav nav.site-nav{height:44px}body.compact-nav header.site-header{grid-template-rows:42px 44px}body.compact-nav nav.site-nav .site-nav-direct{font-size:11px;padding-inline:4px}body.compact-nav .site-nav-group>summary{min-height:44px}}

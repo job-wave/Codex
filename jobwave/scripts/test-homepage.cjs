@@ -1,0 +1,11 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const nodes=new Map();const $=s=>{if(!nodes.has(s))nodes.set(s,{innerHTML:'',textContent:'',setAttribute(){}});return nodes.get(s)};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const c={$, $$:()=>[],window:{},document:{addEventListener(){}},account:null,memberReady:false,careerProfile:null,cleanHomeMarkup(){},renderServiceHome(){},refreshAll(){},liveMode:true,feedState:{mode:'live',checkedAt:'2026-10-24T00:00:00Z'},base:new Date('2026-10-24T00:00:00Z'),data:[],esc,fmt:()=> '10. 30',formatSeoul:()=> '26. 10. 24.',sessionStorage:{},Date};
+vm.createContext(c);vm.runInContext(fs.readFileSync('public/homepage.js','utf8'),c);
+assert.match($('#homeJobsList').innerHTML,/현재 표시할 공고가 없어요/);
+const job=(id,extra={})=>({id,company:'Company',title:id,location:'서울',category:'개발',career:'경력',source:'공식 채용',published:'2026-10-20T00:00:00Z',end:null,...extra});
+c.data=[job('expired',{end:new Date('2026-10-01')}),job('stale',{stale:true,published:'2026-10-24'}),job('older'),job('new',{published:'2026-10-23',company:'<img onerror=alert(1)>',title:'<script>bad()</script>'}),job('no-source',{source:''})];c.window.renderHomeJobs();let html=$('#homeJobsList').innerHTML;assert.doesNotMatch(html,/data-job="expired"|data-job="no-source"|<script>|<img/);assert.match(html,/&lt;script&gt;/);assert(html.indexOf('data-job="new"')<html.indexOf('data-job="older"'));assert(html.indexOf('data-job="older"')<html.indexOf('data-job="stale"'));assert.match(html,/이전 확인 공고/);
+c.liveMode=false;c.window.renderHomeJobs();assert.doesNotMatch($('#homeJobsList').innerHTML,/data-job=/);c.feedState={mode:'error'};c.window.renderHomeJobs();assert.match($('#homeFeedStatus').textContent,/확인하지 못했습니다/);
+assert.match(c.cleanHomeMarkup(),/나의 커리어 시작하기/);c.account={name:'test'};c.careerProfile={type:'student'};assert.match(c.cleanHomeMarkup(),/내 커리어 이어가기/);
+console.log('PASS: live-only home feed, expired/source-less job exclusion, freshness ordering, source failure labels, escaped provider text and signed-in CTA.');

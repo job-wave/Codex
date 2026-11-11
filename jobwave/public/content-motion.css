@@ -1,0 +1,75 @@
+/* Six lightweight scenes. Motion is opt-in from the visibility controller. */
+.content-motion{width:100%;height:100%;color:var(--tone-ink,#4d6752);--motion-cycle:5s}
+.content-motion svg{display:block;width:100%;height:100%;max-height:170px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.content-motion .motion-paper{fill:#ffffffd9}
+.content-motion .motion-fill{fill:var(--tone-icon,#d0e4b4)}
+.content-motion .motion-solid{fill:currentColor;stroke:none}
+.content-motion .motion-faint{opacity:.3}
+.content-motion .motion-faint-fill{fill:currentColor;opacity:.18;stroke:none}
+.content-motion .motion-calendar-cells{opacity:.35}
+.content-motion .motion-draw{stroke-dasharray:40;stroke-dashoffset:0}
+.content-motion .motion-date-pick{animation:content-date var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-date-check{animation:content-check var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-date-badge{animation:content-badge var(--motion-cycle) ease-in-out infinite;transform-origin:183px 111px}
+.content-motion .motion-cost-item{animation:content-gather var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-cost-coin{animation:content-coin var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-route{stroke-dasharray:210;animation:content-route var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-step{animation:content-step var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-moon{animation:content-moon 6s ease-in-out infinite}
+.content-motion .motion-progress{transform-origin:65px 111px;animation:content-progress var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-learning-check{transform-origin:183px 113px;animation:content-badge var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-job-sheet{animation:content-sheets var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-bar{transform-box:fill-box;transform-origin:center bottom;animation:content-bars var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-market-trend{stroke-dasharray:90;animation:content-trend var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-messy{animation:content-messy var(--motion-cycle) ease-in-out infinite;opacity:0}
+.content-motion .motion-tidy{animation:content-tidy var(--motion-cycle) ease-in-out infinite}
+.content-motion .motion-tips-check{animation:content-badge var(--motion-cycle) ease-in-out infinite;transform-origin:176px 111px}
+.content-motion .motion-spark{animation:content-spark var(--motion-cycle) ease-in-out infinite;opacity:.5}
+.content-motion .motion-delay-one{animation-delay:0s}
+.content-motion .motion-delay-two{animation-delay:.35s}
+.content-motion .motion-delay-three{animation-delay:.7s}
+.content-motion svg *{animation-play-state:paused!important}
+.content-motion.is-playing svg *{animation-play-state:running!important}
+.content-motion-toggle{font:inherit;font-size:11px;color:#52616b;line-height:1.6;padding:6px 10px;border:1px solid #ccd5dc;background:#ffffffb8;border-radius:20px;white-space:nowrap;cursor:pointer}
+.content-motion-toggle[aria-pressed=true]{background:#e5eaf0;color:#384a59}
+.content-motion-toggle:disabled{cursor:default;opacity:.75}
+.resource-home-actions{display:flex;align-items:center;justify-content:flex-end;gap:14px}
+.resource-card .resource-card-art,.home-grouped .resource-card .resource-card-art{height:150px;position:relative;padding:8px 30px;display:flex;align-items:center;justify-content:center}
+.resource-card .resource-card-art>.content-motion{display:block;width:100%;height:134px;background:transparent;border:0;border-radius:0}
+.resource-card .resource-card-art>.content-motion svg{width:100%;height:100%;stroke:currentColor}
+.resource-card .resource-card-art>small{position:absolute;top:12px;right:15px;font-size:12px;letter-spacing:.05em}
+.resource-page .resource-detail-heading:has(.motion-detail){display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:25px}
+.resource-page .resource-detail-icon.motion-detail{display:flex;align-items:center;justify-content:center;flex-direction:column;background:none;width:230px;height:auto;border-radius:0;gap:8px}
+.resource-page .motion-detail>.content-motion{width:230px;height:144px}
+.resource-page .motion-detail svg{width:100%;height:100%;stroke:currentColor}
+@keyframes content-date{0%,10%,90%,100%{opacity:.1}25%,80%{opacity:1}}
+@keyframes content-check{0%,22%{stroke-dashoffset:40;opacity:0}40%,83%{stroke-dashoffset:0;opacity:1}95%,100%{opacity:0}}
+@keyframes content-badge{0%,40%,100%{transform:scale(.85);opacity:.2}57%,85%{transform:scale(1);opacity:1}}
+@keyframes content-gather{0%,100%{transform:translateY(0);opacity:.45}25%,70%{transform:translateY(7px);opacity:1}}
+@keyframes content-coin{0%,15%,100%{transform:translateY(-8px);opacity:0}30%{opacity:1}66%,82%{transform:translateY(25px);opacity:0}}
+@keyframes content-route{0%,8%{stroke-dashoffset:210;opacity:.3}68%,85%{stroke-dashoffset:0;opacity:.8}100%{stroke-dashoffset:0;opacity:.3}}
+@keyframes content-step{0%,100%{transform:translateY(0);opacity:.55}35%,72%{transform:translateY(-4px);opacity:1}}
+@keyframes content-moon{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes content-progress{0%,10%{transform:scaleX(.1)}65%,87%{transform:scaleX(1)}100%{transform:scaleX(.1)}}
+@keyframes content-sheets{0%,100%{transform:translateX(0);opacity:.65}35%,75%{transform:translateX(4px);opacity:1}}
+@keyframes content-bars{0%,10%,100%{transform:scaleY(.25);opacity:.45}58%,85%{transform:scaleY(1);opacity:1}}
+@keyframes content-trend{0%,25%{stroke-dashoffset:90;opacity:0}65%,87%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes content-messy{0%,28%{opacity:1}48%,90%{opacity:0}100%{opacity:1}}
+@keyframes content-tidy{0%,28%{opacity:0;transform:translateY(3px)}52%,90%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes content-spark{0%,35%,100%{opacity:.2}55%,75%{opacity:.9}}
+@media(max-width:760px){
+ .resource-home-heading{flex-wrap:wrap;gap:10px}.resource-home-actions{gap:10px}.content-motion-toggle{font-size:10px;padding:5px 8px}
+ .resource-card.student,.resource-card.professional{grid-template-columns:106px minmax(0,1fr)}
+ .resource-card .resource-card-art,.home-grouped .resource-card .resource-card-art{height:auto!important;min-height:145px;padding:12px 3px;overflow:hidden}
+ .resource-card .resource-card-art>.content-motion,.home-grouped .resource-card .resource-card-art>.content-motion{width:100px;height:92px}
+ .resource-card .resource-card-art>small{top:11px;right:12px;font-size:10px}
+ .resource-card h3,.home-grouped .resource-card h3{margin-left:13px;margin-right:13px}
+ .resource-card p,.resource-card>b{margin-left:13px;margin-right:13px}
+ .resource-page .resource-detail-heading:has(.motion-detail){grid-template-columns:minmax(0,1fr);gap:8px}
+ .resource-page .resource-detail-icon.motion-detail{width:100%;gap:4px}
+ .resource-page .motion-detail>.content-motion{width:200px;height:118px}
+}
+@media(prefers-reduced-motion:reduce){
+ .content-motion svg *{animation:none!important;transition:none!important}
+ .content-motion .motion-messy{opacity:0}.content-motion .motion-tidy{opacity:1}.content-motion .motion-cost-coin{opacity:0}
+}

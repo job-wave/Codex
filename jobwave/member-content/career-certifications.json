@@ -1,0 +1,288 @@
+{
+  "checked": "2026-10-26",
+  "roles": [
+    "사무·공기업",
+    "IT·데이터",
+    "회계·재무",
+    "마케팅·기획",
+    "무역·유통",
+    "공학·안전"
+  ],
+  "items": [
+    {
+      "id": "computer",
+      "title": "컴퓨터활용능력 1·2급",
+      "kind": "국가기술자격",
+      "roles": [
+        "사무·공기업"
+      ],
+      "skills": "스프레드시트 활용 · 1급은 데이터베이스까지",
+      "eligibility": "응시 제한 없음. 실기는 필기 합격 후 면제 유효기간 내 응시 요건을 확인하세요.",
+      "use": "사무·행정 지원의 기본기를 점검할 때. 지원 기업의 인정 급수·가점 기준부터 확인하세요.",
+      "source": "대한상공회의소",
+      "url": "https://license.korcham.net/co/examguide.do?cd=0103&mm=21",
+      "scheduleUrl": "https://license.korcham.net/co/examguide03.do?cd=0103&mm=21",
+      "applyUrl": "https://license.korcham.net/",
+      "scheduleMode": "상시·시험장별",
+      "proofUrl": "https://license.korcham.net/co/examguide.do?cd=0103&mm=21",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "word",
+      "title": "워드프로세서",
+      "kind": "국가기술자격",
+      "roles": [
+        "사무·공기업"
+      ],
+      "skills": "문서 편집·작성·관리",
+      "eligibility": "응시 제한 없음. 실기는 필기 합격 후 2년 이내 응시 조건을 확인하세요.",
+      "use": "문서를 정확하고 빠르게 작성하는 기초를 익히고 싶을 때.",
+      "source": "대한상공회의소",
+      "url": "https://license.korcham.net/co/examguide.do?cd=0102&mm=22",
+      "scheduleUrl": "https://license.korcham.net/co/examguide03.do?cd=0102&mm=22",
+      "applyUrl": "https://license.korcham.net/",
+      "scheduleMode": "상시·시험장별",
+      "proofUrl": "https://license.korcham.net/co/examguide.do?cd=0102&mm=22",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "information",
+      "title": "정보처리기사",
+      "kind": "국가기술자격",
+      "roles": [
+        "IT·데이터"
+      ],
+      "skills": "소프트웨어 설계·개발·데이터베이스·정보시스템",
+      "eligibility": "기사 등급의 학력·경력 등 응시 요건이 있어요. 정보처리 분야의 전공 인정 범위와 본인의 응시 가능 여부를 Q-Net에서 확인하세요.",
+      "use": "개발·정보시스템 분야의 이론을 체계적으로 정리할 때. 프로젝트 경험과 함께 준비해 보세요.",
+      "source": "한국산업인력공단",
+      "url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1320",
+      "scheduleUrl": "https://www.q-net.or.kr/crf021.do?id=crf02101&scheType=03",
+      "applyUrl": "https://www.q-net.or.kr/",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1320",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "bigdata",
+      "title": "빅데이터분석기사",
+      "kind": "국가기술자격",
+      "roles": [
+        "IT·데이터",
+        "마케팅·기획"
+      ],
+      "skills": "데이터 수집·전처리·분석·결과 해석",
+      "eligibility": "학력·경력 등 응시 요건과 필기·실기 절차를 DataQ에서 확인하세요. 학년만으로 응시 가능 여부가 확정되지는 않아요.",
+      "use": "분석 실무의 전 과정을 학습할 때. 분석 결과를 설명하는 포트폴리오와 연결해 보세요.",
+      "source": "한국데이터산업진흥원",
+      "url": "https://www.dataq.or.kr/www/main.do",
+      "scheduleUrl": "https://www.dataq.or.kr/www/main.do",
+      "applyUrl": "https://www.dataq.or.kr/www/main.do",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://www.dataq.or.kr/www/main.do",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "sqld",
+      "title": "SQLD · SQL 개발자",
+      "kind": "국가공인 민간자격",
+      "roles": [
+        "IT·데이터",
+        "마케팅·기획"
+      ],
+      "skills": "데이터 모델링·SQL 활용",
+      "eligibility": "접수 전 DataQ의 SQL 개발자 응시 안내·신분증·시험 유의사항을 확인하세요.",
+      "use": "데이터를 직접 조회하고 지표를 확인하는 업무를 준비할 때. SQL 예제 결과물도 남겨보세요.",
+      "source": "한국데이터산업진흥원",
+      "url": "https://www.dataq.or.kr/www/main.do",
+      "scheduleUrl": "https://www.dataq.or.kr/www/main.do",
+      "applyUrl": "https://www.dataq.or.kr/www/main.do",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://www.pqi.or.kr/inf/qul/infQulBasDetail.do?qulId=3675",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "adsp",
+      "title": "ADsP · 데이터분석 준전문가",
+      "kind": "국가공인 민간자격",
+      "roles": [
+        "IT·데이터",
+        "마케팅·기획"
+      ],
+      "skills": "데이터 이해·분석 기획·기초 통계",
+      "eligibility": "접수 전 DataQ의 데이터분석 준전문가 응시 안내·시험 유의사항을 확인하세요.",
+      "use": "기획·마케팅에서도 데이터를 해석하는 기초를 쌓고 싶을 때. 실제 지표를 읽는 연습과 병행하세요.",
+      "source": "한국데이터산업진흥원",
+      "url": "https://www.dataq.or.kr/www/main.do",
+      "scheduleUrl": "https://www.dataq.or.kr/www/main.do",
+      "applyUrl": "https://www.dataq.or.kr/www/main.do",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://www.pqi.or.kr/inf/qul/infQulBasDetail.do?qulId=13214",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "accounting",
+      "title": "전산회계 1·2급",
+      "kind": "국가공인 민간자격",
+      "roles": [
+        "회계·재무"
+      ],
+      "skills": "회계 기초·전표 입력·회계 프로그램 활용",
+      "eligibility": "응시 제한 없음. 1·2급의 평가 범위와 수험용 프로그램을 확인하세요.",
+      "use": "회계가 처음이면 2급 범위를 먼저 살펴보고, 회계 실무 범위를 넓히려면 1급과 비교해 보세요.",
+      "source": "한국세무사회",
+      "url": "https://license.kacpta.or.kr/web/info/info_outline.aspx",
+      "scheduleUrl": "https://license.kacpta.or.kr/web/info/info_diary_2026.aspx",
+      "applyUrl": "https://license.kacpta.or.kr/",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://license.kacpta.or.kr/web/info/info_outline.aspx",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "tax",
+      "title": "전산세무 2급",
+      "kind": "국가공인 민간자격",
+      "roles": [
+        "회계·재무"
+      ],
+      "skills": "재무회계·원가회계·세무회계 실무",
+      "eligibility": "응시 제한 없음. 이론·실무 평가 범위와 적용 세법·프로그램을 확인하세요.",
+      "use": "회계 기초 이후 세무 처리까지 준비하고 싶을 때. 전산회계와 다른 평가 범위를 먼저 비교하세요.",
+      "source": "한국세무사회",
+      "url": "https://license.kacpta.or.kr/web/info/info_outline.aspx",
+      "scheduleUrl": "https://license.kacpta.or.kr/web/info/info_diary_2026.aspx",
+      "applyUrl": "https://license.kacpta.or.kr/",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://license.kacpta.or.kr/web/info/info_outline.aspx",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "accounting-operator",
+      "title": "전산회계운용사 1·2·3급",
+      "kind": "국가기술자격",
+      "roles": [
+        "회계·재무"
+      ],
+      "skills": "회계시스템을 통한 회계정보 운용",
+      "eligibility": "응시 자격 제한 없음. 급수별 범위·필기 면제·실기 응시 조건을 확인하세요.",
+      "use": "국가기술자격으로 회계정보 운용 능력을 준비하고 싶을 때. 한국세무사회 전산회계와 시행기관·프로그램이 달라요.",
+      "source": "대한상공회의소",
+      "url": "https://license.korcham.net/co/examguide.do?cd=0104&mm=41",
+      "scheduleUrl": "https://license.korcham.net/co/examguide03.do?cd=0104&mm=41",
+      "applyUrl": "https://license.korcham.net/",
+      "scheduleMode": "상시·시험장별",
+      "proofUrl": "https://license.korcham.net/co/examguide.do?cd=0104&mm=41",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "survey",
+      "title": "사회조사분석사 2급",
+      "kind": "국가기술자격",
+      "roles": [
+        "마케팅·기획",
+        "IT·데이터"
+      ],
+      "skills": "조사 설계·자료 처리·통계 분석",
+      "eligibility": "응시 제한 없음. 필기와 실기 시험을 각각 준비하세요.",
+      "use": "리서치·설문·시장조사 업무에 관심이 있을 때. 직접 설계한 설문과 분석 보고서를 만들어 보세요.",
+      "source": "한국산업인력공단",
+      "url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=9521",
+      "scheduleUrl": "https://www.q-net.or.kr/crf021.do?id=crf02101&scheType=03",
+      "applyUrl": "https://www.q-net.or.kr/",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=9521",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "trade",
+      "title": "무역영어 1·2·3급",
+      "kind": "국가공인 민간자격",
+      "roles": [
+        "무역·유통"
+      ],
+      "skills": "무역 실무·영문 무역서류 이해",
+      "eligibility": "응시 제한 없음. 급수별 시험 범위와 시험장 개설 일정을 확인하세요.",
+      "use": "해외영업·무역사무의 계약·결제·서류 용어를 익히고 싶을 때. 일반 어학성적과 구분해 준비하세요.",
+      "source": "대한상공회의소",
+      "url": "https://license.korcham.net/co/examguide.do?cd=0301&mm=51",
+      "scheduleUrl": "https://license.korcham.net/co/examguide03.do?cd=0301&mm=51",
+      "applyUrl": "https://license.korcham.net/",
+      "scheduleMode": "상시·시험장별",
+      "proofUrl": "https://license.korcham.net/co/examguide.do?cd=0301&mm=51",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "distribution",
+      "title": "유통관리사 2급",
+      "kind": "국가전문자격",
+      "roles": [
+        "무역·유통",
+        "마케팅·기획"
+      ],
+      "skills": "유통물류·상권·유통마케팅·유통정보",
+      "eligibility": "2급은 응시 제한 없음. 1급은 경력 등 별도 요건이 있으므로 구분하세요.",
+      "use": "유통·리테일·영업관리 분야의 운영 구조를 이해하고 싶을 때.",
+      "source": "대한상공회의소",
+      "url": "https://license.korcham.net/co/examguide.do?cd=0201&mm=31",
+      "scheduleUrl": "https://license.korcham.net/co/examguide03.do?cd=0201&mm=31",
+      "applyUrl": "https://license.korcham.net/",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://license.korcham.net/co/examguide.do?cd=0201&mm=31",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "electrical",
+      "title": "전기기사",
+      "kind": "국가기술자격",
+      "roles": [
+        "공학·안전"
+      ],
+      "skills": "전기설비·전력·회로·설비 기준",
+      "eligibility": "기사 등급의 학력·경력 등 응시 요건이 있어요. 본인의 전공 인정 여부·기준일·증빙서류를 Q-Net에서 확인하세요.",
+      "use": "전기설비·시설·전력 분야를 목표로 할 때. 관련 전공과 목표 기업의 필수·우대 조건을 확인하세요.",
+      "source": "한국산업인력공단",
+      "url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1150",
+      "scheduleUrl": "https://www.q-net.or.kr/crf021.do?id=crf02101&scheType=03",
+      "applyUrl": "https://www.q-net.or.kr/",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1150",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "safety",
+      "title": "산업안전기사",
+      "kind": "국가기술자격",
+      "roles": [
+        "공학·안전"
+      ],
+      "skills": "산업재해 예방·안전관리·위험요인 파악",
+      "eligibility": "기사 등급의 학력·경력 등 응시 요건이 있어요. 본인의 전공 인정 여부·기준일·증빙서류를 Q-Net에서 확인하세요.",
+      "use": "제조·건설·사업장 안전 직무를 준비할 때. 산업과 현장의 특성을 함께 공부해 보세요.",
+      "source": "한국산업인력공단",
+      "url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1431",
+      "scheduleUrl": "https://www.q-net.or.kr/crf021.do?id=crf02101&scheType=03",
+      "applyUrl": "https://www.q-net.or.kr/",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1431",
+      "checked": "2026-10-26"
+    },
+    {
+      "id": "mechanical",
+      "title": "일반기계기사",
+      "kind": "국가기술자격",
+      "roles": [
+        "공학·안전"
+      ],
+      "skills": "기계공학 이론·설계·기계제작",
+      "eligibility": "기사 등급의 학력·경력 등 응시 요건이 있어요. 본인의 전공 인정 여부·기준일·증빙서류를 Q-Net에서 확인하세요.",
+      "use": "기계설계·생산기술 분야를 목표로 할 때. 설계 결과물과 전공 프로젝트를 함께 정리하세요.",
+      "source": "한국산업인력공단",
+      "url": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1021",
+      "scheduleUrl": "https://www.q-net.or.kr/crf021.do?id=crf02101&scheType=03",
+      "applyUrl": "https://www.q-net.or.kr/",
+      "scheduleMode": "정기·회차별",
+      "proofUrl": "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1021",
+      "checked": "2026-10-26"
+    }
+  ]
+}

@@ -1,0 +1,966 @@
+{
+  "checked": "2026-10-26",
+  "sections": [
+    {
+      "slug": "exams",
+      "audience": "student",
+      "title": "시험·자격증 캘린더",
+      "description": "직무별 국가자격·국가공인 자격증과 접수·시험 일정을 한눈에.",
+      "icon": "calendar"
+    },
+    {
+      "slug": "costs",
+      "audience": "student",
+      "title": "취업 준비 비용 아끼기",
+      "description": "응시료·정장·교육비, 내가 받을 수 있는 지원부터.",
+      "icon": "wallet"
+    },
+    {
+      "slug": "experiences",
+      "audience": "student",
+      "title": "이번 방학에 할 만한 경험",
+      "description": "학년과 관심 분야에 맞는 연구·교육·프로젝트를 찾아요.",
+      "icon": "spark"
+    },
+    {
+      "slug": "learning",
+      "audience": "professional",
+      "title": "퇴근 후 가능한 교육",
+      "description": "온라인·자율 학습부터, 업무에 필요한 배움을 골라요.",
+      "icon": "moon"
+    },
+    {
+      "slug": "market",
+      "audience": "professional",
+      "title": "내 직무 채용시장 한눈에",
+      "description": "실제 수집 공고에서 반복되는 도구와 요건을 확인해요.",
+      "icon": "chart"
+    },
+    {
+      "slug": "tips",
+      "audience": "professional",
+      "title": "회사에서 바로 쓰는 5분 팁",
+      "description": "엑셀·보고서·발표·AI, 예제를 복사해서 바로 써보세요.",
+      "icon": "bolt"
+    }
+  ],
+  "exams": [
+    {
+      "id": "토익-10/31-접수 시작",
+      "exam": "토익",
+      "session": "10/31",
+      "type": "접수 시작",
+      "at": "2026-09-14T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-10/31-접수 마감",
+      "exam": "토익",
+      "session": "10/31",
+      "type": "접수 마감",
+      "at": "2026-10-19T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-10/31-시험일",
+      "exam": "토익",
+      "session": "10/31",
+      "type": "시험일",
+      "at": "2026-10-31T09:20+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-10/31-성적 발표",
+      "exam": "토익",
+      "session": "10/31",
+      "type": "성적 발표",
+      "at": "2026-11-10T12:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-10/31-추가 접수 시작",
+      "exam": "토익",
+      "session": "10/31",
+      "type": "추가 접수 시작",
+      "at": "2026-10-21T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-10/31-추가 접수 마감",
+      "exam": "토익",
+      "session": "10/31",
+      "type": "추가 접수 마감",
+      "at": "2026-10-28T13:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/08-접수 시작",
+      "exam": "토익",
+      "session": "11/08",
+      "type": "접수 시작",
+      "at": "2026-09-21T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/08-접수 마감",
+      "exam": "토익",
+      "session": "11/08",
+      "type": "접수 마감",
+      "at": "2026-10-26T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/08-시험일",
+      "exam": "토익",
+      "session": "11/08",
+      "type": "시험일",
+      "at": "2026-11-08T09:20+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/08-성적 발표",
+      "exam": "토익",
+      "session": "11/08",
+      "type": "성적 발표",
+      "at": "2026-11-17T12:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/08-추가 접수 시작",
+      "exam": "토익",
+      "session": "11/08",
+      "type": "추가 접수 시작",
+      "at": "2026-10-28T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/08-추가 접수 마감",
+      "exam": "토익",
+      "session": "11/08",
+      "type": "추가 접수 마감",
+      "at": "2026-11-05T13:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/15-접수 시작",
+      "exam": "토익",
+      "session": "11/15",
+      "type": "접수 시작",
+      "at": "2026-09-28T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/15-접수 마감",
+      "exam": "토익",
+      "session": "11/15",
+      "type": "접수 마감",
+      "at": "2026-11-02T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/15-시험일",
+      "exam": "토익",
+      "session": "11/15",
+      "type": "시험일",
+      "at": "2026-11-15T09:20+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/15-성적 발표",
+      "exam": "토익",
+      "session": "11/15",
+      "type": "성적 발표",
+      "at": "2026-11-24T12:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/15-추가 접수 시작",
+      "exam": "토익",
+      "session": "11/15",
+      "type": "추가 접수 시작",
+      "at": "2026-11-04T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/15-추가 접수 마감",
+      "exam": "토익",
+      "session": "11/15",
+      "type": "추가 접수 마감",
+      "at": "2026-11-12T13:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/29-접수 시작",
+      "exam": "토익",
+      "session": "11/29",
+      "type": "접수 시작",
+      "at": "2026-10-12T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/29-접수 마감",
+      "exam": "토익",
+      "session": "11/29",
+      "type": "접수 마감",
+      "at": "2026-11-16T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/29-시험일",
+      "exam": "토익",
+      "session": "11/29",
+      "type": "시험일",
+      "at": "2026-11-29T09:20+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/29-성적 발표",
+      "exam": "토익",
+      "session": "11/29",
+      "type": "성적 발표",
+      "at": "2026-12-08T12:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/29-추가 접수 시작",
+      "exam": "토익",
+      "session": "11/29",
+      "type": "추가 접수 시작",
+      "at": "2026-11-18T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-11/29-추가 접수 마감",
+      "exam": "토익",
+      "session": "11/29",
+      "type": "추가 접수 마감",
+      "at": "2026-11-26T13:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/13-접수 시작",
+      "exam": "토익",
+      "session": "12/13",
+      "type": "접수 시작",
+      "at": "2026-10-26T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/13-접수 마감",
+      "exam": "토익",
+      "session": "12/13",
+      "type": "접수 마감",
+      "at": "2026-11-30T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/13-시험일",
+      "exam": "토익",
+      "session": "12/13",
+      "type": "시험일",
+      "at": "2026-12-13T09:20+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/13-성적 발표",
+      "exam": "토익",
+      "session": "12/13",
+      "type": "성적 발표",
+      "at": "2026-12-22T12:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/13-추가 접수 시작",
+      "exam": "토익",
+      "session": "12/13",
+      "type": "추가 접수 시작",
+      "at": "2026-12-02T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/13-추가 접수 마감",
+      "exam": "토익",
+      "session": "12/13",
+      "type": "추가 접수 마감",
+      "at": "2026-12-10T13:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/27-접수 시작",
+      "exam": "토익",
+      "session": "12/27",
+      "type": "접수 시작",
+      "at": "2026-11-09T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/27-접수 마감",
+      "exam": "토익",
+      "session": "12/27",
+      "type": "접수 마감",
+      "at": "2026-12-14T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/27-시험일",
+      "exam": "토익",
+      "session": "12/27",
+      "type": "시험일",
+      "at": "2026-12-27T09:20+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/27-성적 발표",
+      "exam": "토익",
+      "session": "12/27",
+      "type": "성적 발표",
+      "at": "2027-01-06T12:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/27-추가 접수 시작",
+      "exam": "토익",
+      "session": "12/27",
+      "type": "추가 접수 시작",
+      "at": "2026-12-16T10:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익-12/27-추가 접수 마감",
+      "exam": "토익",
+      "session": "12/27",
+      "type": "추가 접수 마감",
+      "at": "2026-12-23T13:00+09:00",
+      "url": "https://m.exam.toeic.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-10/31-접수 시작",
+      "exam": "토익스피킹",
+      "session": "10/31",
+      "type": "접수 시작",
+      "at": "2026-09-28T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-10/31-접수 마감",
+      "exam": "토익스피킹",
+      "session": "10/31",
+      "type": "접수 마감",
+      "at": "2026-10-28T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-10/31-시험일",
+      "exam": "토익스피킹",
+      "session": "10/31",
+      "type": "시험일",
+      "at": "2026-10-31",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-10/31-성적 발표",
+      "exam": "토익스피킹",
+      "session": "10/31",
+      "type": "성적 발표",
+      "at": "2026-11-05T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/01-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/01",
+      "type": "접수 시작",
+      "at": "2026-09-28T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/01-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/01",
+      "type": "접수 마감",
+      "at": "2026-10-29T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/01-시험일",
+      "exam": "토익스피킹",
+      "session": "11/01",
+      "type": "시험일",
+      "at": "2026-11-01",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/01-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/01",
+      "type": "성적 발표",
+      "at": "2026-11-06T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/07-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/07",
+      "type": "접수 시작",
+      "at": "2026-10-05T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/07-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/07",
+      "type": "접수 마감",
+      "at": "2026-11-04T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/07-시험일",
+      "exam": "토익스피킹",
+      "session": "11/07",
+      "type": "시험일",
+      "at": "2026-11-07",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/07-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/07",
+      "type": "성적 발표",
+      "at": "2026-11-12T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/08-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/08",
+      "type": "접수 시작",
+      "at": "2026-10-05T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/08-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/08",
+      "type": "접수 마감",
+      "at": "2026-11-05T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/08-시험일",
+      "exam": "토익스피킹",
+      "session": "11/08",
+      "type": "시험일",
+      "at": "2026-11-08",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/08-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/08",
+      "type": "성적 발표",
+      "at": "2026-11-13T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/14-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/14",
+      "type": "접수 시작",
+      "at": "2026-10-12T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/14-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/14",
+      "type": "접수 마감",
+      "at": "2026-11-11T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/14-시험일",
+      "exam": "토익스피킹",
+      "session": "11/14",
+      "type": "시험일",
+      "at": "2026-11-14",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/14-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/14",
+      "type": "성적 발표",
+      "at": "2026-11-19T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/15-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/15",
+      "type": "접수 시작",
+      "at": "2026-10-12T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/15-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/15",
+      "type": "접수 마감",
+      "at": "2026-11-12T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/15-시험일",
+      "exam": "토익스피킹",
+      "session": "11/15",
+      "type": "시험일",
+      "at": "2026-11-15",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/15-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/15",
+      "type": "성적 발표",
+      "at": "2026-11-20T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/21-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/21",
+      "type": "접수 시작",
+      "at": "2026-10-19T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/21-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/21",
+      "type": "접수 마감",
+      "at": "2026-11-18T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/21-시험일",
+      "exam": "토익스피킹",
+      "session": "11/21",
+      "type": "시험일",
+      "at": "2026-11-21",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/21-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/21",
+      "type": "성적 발표",
+      "at": "2026-11-26T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/22-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/22",
+      "type": "접수 시작",
+      "at": "2026-10-19T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/22-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/22",
+      "type": "접수 마감",
+      "at": "2026-11-19T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/22-시험일",
+      "exam": "토익스피킹",
+      "session": "11/22",
+      "type": "시험일",
+      "at": "2026-11-22",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/22-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/22",
+      "type": "성적 발표",
+      "at": "2026-11-27T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/28-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/28",
+      "type": "접수 시작",
+      "at": "2026-10-26T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/28-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/28",
+      "type": "접수 마감",
+      "at": "2026-11-25T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/28-시험일",
+      "exam": "토익스피킹",
+      "session": "11/28",
+      "type": "시험일",
+      "at": "2026-11-28",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/28-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/28",
+      "type": "성적 발표",
+      "at": "2026-12-03T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/29-접수 시작",
+      "exam": "토익스피킹",
+      "session": "11/29",
+      "type": "접수 시작",
+      "at": "2026-10-26T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/29-접수 마감",
+      "exam": "토익스피킹",
+      "session": "11/29",
+      "type": "접수 마감",
+      "at": "2026-11-26T10:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/29-시험일",
+      "exam": "토익스피킹",
+      "session": "11/29",
+      "type": "시험일",
+      "at": "2026-11-29",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "토익스피킹-11/29-성적 발표",
+      "exam": "토익스피킹",
+      "session": "11/29",
+      "type": "성적 발표",
+      "at": "2026-12-04T12:00+09:00",
+      "url": "https://m.toeicswt.co.kr/receipt/examSchList.php"
+    },
+    {
+      "id": "한국사-제81회·심화-접수 시작",
+      "exam": "한국사",
+      "session": "제81회·심화",
+      "type": "접수 시작",
+      "at": "2026-11-03T10:00+09:00",
+      "url": "https://www.historyexam.go.kr/pageLink.do?link=examSchedule"
+    },
+    {
+      "id": "한국사-제81회·심화-접수 마감",
+      "exam": "한국사",
+      "session": "제81회·심화",
+      "type": "접수 마감",
+      "at": "2026-11-10T17:00+09:00",
+      "url": "https://www.historyexam.go.kr/pageLink.do?link=examSchedule"
+    },
+    {
+      "id": "한국사-제81회·심화-시험일",
+      "exam": "한국사",
+      "session": "제81회·심화",
+      "type": "시험일",
+      "at": "2026-11-28",
+      "url": "https://www.historyexam.go.kr/pageLink.do?link=examSchedule"
+    },
+    {
+      "id": "한국사-제81회·심화-성적 발표",
+      "exam": "한국사",
+      "session": "제81회·심화",
+      "type": "성적 발표",
+      "at": "2026-12-11",
+      "url": "https://www.historyexam.go.kr/pageLink.do?link=examSchedule"
+    },
+    {
+      "id": "한국사-제81회·심화-추가 접수 시작",
+      "exam": "한국사",
+      "session": "제81회·심화",
+      "type": "추가 접수 시작",
+      "at": "2026-11-11T13:00+09:00",
+      "url": "https://www.historyexam.go.kr/pageLink.do?link=examSchedule"
+    },
+    {
+      "id": "한국사-제81회·심화-추가 접수 마감",
+      "exam": "한국사",
+      "session": "제81회·심화",
+      "type": "추가 접수 마감",
+      "at": "2026-11-13T17:00+09:00",
+      "url": "https://www.historyexam.go.kr/pageLink.do?link=examSchedule"
+    },
+    {
+      "id": "history-80-result",
+      "exam": "한국사",
+      "session": "제80회",
+      "type": "성적 발표",
+      "at": "2026-10-30",
+      "url": "https://www.historyexam.go.kr/pageLink.do?link=examSchedule"
+    },
+    {
+      "id": "distribution-3-접수 시작",
+      "exam": "유통관리사 2급",
+      "session": "2026 제3회",
+      "type": "접수 시작",
+      "at": "2026-10-22",
+      "url": "https://license.korcham.net/co/examguide03.do?cd=0201&mm=31"
+    },
+    {
+      "id": "distribution-3-접수 마감",
+      "exam": "유통관리사 2급",
+      "session": "2026 제3회",
+      "type": "접수 마감",
+      "at": "2026-10-28T18:00+09:00",
+      "url": "https://license.korcham.net/co/examguide03.do?cd=0201&mm=31"
+    },
+    {
+      "id": "distribution-3-시험일",
+      "exam": "유통관리사 2급",
+      "session": "2026 제3회",
+      "type": "시험일",
+      "at": "2026-11-14",
+      "url": "https://license.korcham.net/co/examguide03.do?cd=0201&mm=31"
+    },
+    {
+      "id": "distribution-3-성적 발표",
+      "exam": "유통관리사 2급",
+      "session": "2026 제3회",
+      "type": "성적 발표",
+      "at": "2026-12-15",
+      "url": "https://license.korcham.net/co/examguide03.do?cd=0201&mm=31"
+    }
+  ],
+  "lookups": [
+    {
+      "title": "오픽 (OPIc)",
+      "body": "시험장·좌석별로 일정을 선택하는 방식이에요. 접수 화면에서 시험일과 해당 회차의 성적 발표일을 확인하세요.",
+      "url": "https://www.opic.or.kr/opics/servlet/controller.opic.site.receipt.AnnualScheduleServlet?p_process=select-new-list"
+    },
+    {
+      "title": "컴퓨터활용능력",
+      "body": "상시 시험은 시험장별 개설 일정이 달라요. 개설일부터 시험 4일 전까지 접수하며, 좌석이 먼저 마감될 수 있어요.",
+      "url": "https://license.korcham.net/co/examguide03.do?cd=0103&mm=21"
+    },
+    {
+      "title": "기사·산업기사",
+      "body": "Q-Net에서 종목·회차와 응시 자격을 함께 확인하세요. 실기 일정은 종목별로 달라 일괄 날짜를 표시하지 않아요.",
+      "url": "https://www.q-net.or.kr/crf021.do?id=crf02101&scheType=03"
+    },
+    {
+      "title": "SQLD",
+      "body": "한국데이터산업진흥원 데이터자격검정의 시행 공고를 확인하세요. 이번 편집에서 세부 일정의 원문 확인이 되지 않아 날짜를 기재하지 않았어요.",
+      "url": "https://www.dataq.or.kr/www/main.do"
+    }
+  ],
+  "costs": [
+    {
+      "title": "경기청년 역량강화 기회지원",
+      "region": "경기",
+      "kind": "응시료",
+      "benefit": "최대 30만원 실비 지원",
+      "who": "경기도 내 미취업 청년. 연령·거주 요건은 시군별로 확인.",
+      "period": "2026년 5~12월 예정 · 시군별 예산 소진 시 마감",
+      "method": "공식 안내에서 거주 시군의 접수 공고를 확인하고 응시·결제 증빙을 준비하세요.",
+      "url": "https://www.gjf.or.kr/main/main_biz/view.do?lclsf_sn=115&main_biz_sn=16&sclsf_sn=305",
+      "source": "경기도일자리재단",
+      "status": "예산·원문 확인"
+    },
+    {
+      "title": "남양주시 청년 응시료 지원",
+      "region": "경기",
+      "kind": "응시료",
+      "benefit": "1인 최대 30만원 실비 지원",
+      "who": "남양주시 거주 19~39세 미취업 청년. 세부 기준은 공고 확인.",
+      "period": "2026.05.11~12.04 · 예산 소진 시 조기 마감",
+      "end": "2026-12-04",
+      "method": "시청 공식 안내의 신청 경로에서 신청하세요. 동일 시험 지원 횟수와 필수 서류를 확인하세요.",
+      "url": "https://www.nyj.go.kr/www/contents.do?key=2922",
+      "source": "남양주시",
+      "status": "예산·원문 확인"
+    },
+    {
+      "title": "서울 취업날개 서비스",
+      "region": "서울",
+      "kind": "면접 정장",
+      "benefit": "정장·구두 등 무료 대여",
+      "who": "서울 거주 구직자 · 고교 졸업 예정자부터 만 39세까지.",
+      "period": "대여 3박 4일 · 연 최대 10회 · 예약 가능 여부 확인",
+      "method": "공식 사이트에서 예약 → 방문·치수 측정 → 대여·반납. 신분·거주·면접 증빙과 연체료 조건을 확인하세요.",
+      "url": "https://job.seoul.go.kr/hmpg/spct/ewif/ewifInfo.do",
+      "source": "서울일자리포털",
+      "status": "예약 확인"
+    },
+    {
+      "title": "서울 중구 청년 응시료 지원",
+      "region": "서울",
+      "kind": "응시료",
+      "benefit": "2026년 안내는 마감 상태",
+      "who": "중구 거주 미취업 청년 대상 사업. 다음 모집의 조건은 새 공고로 확인.",
+      "period": "공식 목록에 마감 표시 · 현재 신청 가능 사업이 아니에요.",
+      "method": "새 모집 공고가 나오는지 중구청 공식 안내를 확인하세요.",
+      "url": "https://www.junggu.seoul.kr/content.do?cmsid=16581",
+      "source": "서울 중구청",
+      "status": "마감"
+    },
+    {
+      "title": "GSEEK 온라인 무료 학습",
+      "region": "전국",
+      "kind": "무료 교육",
+      "benefit": "온라인 강좌 누구나 무료 학습",
+      "who": "지역 제한 없이 온라인 학습을 원하는 분.",
+      "period": "온라인 강좌별 운영 기간 확인",
+      "method": "온라인 강좌 검색 → 강좌 선택 → 학습 시작. 수료증이 필요하면 회원·이수 조건을 확인하세요. 화상·오프라인 과정의 비용은 별도 확인.",
+      "url": "https://www.gseek.kr/user/course/online/list",
+      "source": "경기도 GSEEK",
+      "status": "강좌 확인"
+    }
+  ],
+  "experiences": [
+    {
+      "title": "POSTECH 기계공학 동계 연구인턴",
+      "grades": [
+        "3학년",
+        "4학년"
+      ],
+      "field": "공학·연구",
+      "period": "2027.01.11~02.05 · 4주",
+      "deadline": "2026-11-22",
+      "who": "국내 이공계 학부 3·4학년 재학생. 휴학생·졸업생 제외.",
+      "benefit": "연구실 프로젝트 경험 · 생활관·수료증 · 소정의 생활비",
+      "method": "참여 연구실 확인 → 지원서·자기소개 및 연구계획·성적증명 등 준비 → 공식 공지의 온라인 제출. 마감: 11/22 자정.",
+      "url": "https://me.postech.ac.kr/ko/board/view?bd_id=notice&wr_id=957",
+      "source": "POSTECH 기계공학과"
+    },
+    {
+      "title": "서울대 화학부 동계 학부생 연구인턴",
+      "grades": [
+        "2학년",
+        "3학년",
+        "4학년"
+      ],
+      "field": "자연과학·연구",
+      "period": "2026.12.14~2027.02.05 · 8주",
+      "deadline": "2026-11-12",
+      "who": "국내 대학 학부 2~4학년. 희망 연구실 교수 승인·추천 등 세부 요건 확인.",
+      "benefit": "화학 연구실에서 전일제 연구 경험 · 수료 조건 확인",
+      "method": "희망 교수에게 연구 참여 상담 → 승인·추천 확인 → 공식 공지의 신청서·PDF 서류 제출. 휴학·수료·졸업생은 선발 우선순위가 다릅니다.",
+      "url": "https://chem.snu.ac.kr/community/notice?bbsidx=10399&md=v",
+      "source": "서울대학교 화학부"
+    },
+    {
+      "title": "SSAFY 17기 SW·AI 교육",
+      "grades": [
+        "졸업예정·졸업"
+      ],
+      "field": "SW·AI",
+      "period": "2027년 1월부터 1년 · 전일제 장기 과정",
+      "start": "2026-10-26",
+      "deadline": "2026-11-09",
+      "who": "29세 이하 미취업자. 대학 또는 지정 마이스터고 졸업·졸업 예정 등 모집 요건 확인.",
+      "benefit": "SW·AI 교육 · 교육비 무료 · 단기 방학 활동과 구분",
+      "method": "SSAFY 공식 모집 안내에서 자격·선발 일정을 확인하고 지원하세요. 재학 학년만으로 지원 가능하다고 볼 수 없어요.",
+      "url": "https://www.ssafy.com/",
+      "source": "삼성청년SW·AI아카데미",
+      "reference": "https://news.samsung.com/kr/나의-가능성에-ai를-더하다-청년-sw∙ai-인재-키우는-ssafy"
+    }
+  ],
+  "learning": [
+    {
+      "title": "Power BI 시작하기",
+      "mode": "온라인·자율",
+      "cost": "학습 모듈 무료 · 실습 환경·제품 라이선스는 별도 확인",
+      "period": "자율 학습 · 고정 접수 마감 없음",
+      "skills": "데이터 연결, 보고서와 대시보드의 기본 흐름",
+      "who": "데이터로 업무 현황을 전달하고 싶은 입문자",
+      "method": "Microsoft Learn의 모듈을 순서대로 읽고, 회사 데이터 대신 연습용 데이터로 따라 해보세요. 야간·주말에도 원하는 시간에 학습할 수 있어요.",
+      "url": "https://learn.microsoft.com/ko-kr/training/modules/get-started-with-power-bi/",
+      "source": "Microsoft Learn"
+    },
+    {
+      "title": "GSEEK 컴퓨터·디지털 강좌",
+      "mode": "온라인·자율",
+      "cost": "온라인 학습 무료 · 화상·오프라인 과정 별도",
+      "period": "강좌별 운영 기간 확인",
+      "skills": "엑셀·문서·디지털 도구 등 필요한 주제 선택",
+      "who": "퇴근 후 짧게 나눠서 배우고 싶은 직장인",
+      "method": "온라인 학습 목록에서 컴퓨터·디지털 분야 선택 → 목차·수료 조건 확인. 개별 강좌 모집을 보장하는 목록이 아니라 공식 강좌 탐색 경로예요.",
+      "url": "https://www.gseek.kr/user/course/online/list",
+      "source": "경기도 GSEEK"
+    },
+    {
+      "title": "고용24 직업훈련 과정 찾기",
+      "mode": "야간·주말 과정 탐색",
+      "cost": "과정·개인 조건별 자부담 상이 · 무료로 단정하지 않아요",
+      "period": "과정별 개강·신청 마감 확인",
+      "skills": "관심 직무의 실무 훈련 · 과정별 교과목 확인",
+      "who": "국민내일배움카드 대상 여부를 확인한 재직자",
+      "method": "공식 안내에서 카드 대상 확인 → 훈련과정 검색 → 시간표·원격 여부·총 훈련비·자부담 확인. 재직 중 출석 가능한 과정을 고르세요.",
+      "url": "https://www.work24.go.kr/hr/h/a/1100/selectIssuGudn.do",
+      "source": "고용24"
+    }
+  ],
+  "tips": [
+    {
+      "id": "excel",
+      "title": "엑셀: 조건 2개로 매출 합계 내기",
+      "tag": "엑셀 · 5분",
+      "intro": "팀별·상태별 합계를 매번 필터링하고 있다면 SUMIFS를 써보세요. 아래 가상 데이터를 A1부터 붙여넣으세요.",
+      "template": "팀\t상태\t매출\n영업1팀\t완료\t120000\n영업2팀\t완료\t80000\n영업1팀\t진행\t50000\n영업1팀\t완료\t90000\n\n수식: =SUMIFS(C2:C5,A2:A5,\"영업1팀\",B2:B5,\"완료\")\n예상 결과: 210000",
+      "steps": [
+        "합계 범위 C2:C5와 조건 범위 A2:A5, B2:B5의 크기를 맞추세요.",
+        "숫자가 문자로 저장되어 있지 않은지 확인하세요.",
+        "팀 이름을 바꾸며 결과가 맞는지 검산하세요."
+      ],
+      "url": "https://support.microsoft.com/ko-kr/excel/functions/sumifs-function",
+      "source": "Microsoft SUMIFS 도움말"
+    },
+    {
+      "id": "report",
+      "title": "보고서: 결론이 먼저 보이는 5줄 보고",
+      "tag": "보고서 · 3분",
+      "intro": "진행 과정부터 길게 쓰기 전에, 결정해야 할 사항을 첫 줄에 두세요. 아래 수치는 작성법 설명을 위한 가상 예시예요.",
+      "template": "[요청] 고객 FAQ 문서 개편에 대한 승인을 요청드립니다.\n[근거] 지난주 문의 100건 중 동일 질문이 35건이었습니다. (가상 수치)\n[제안] 빈도 상위 5개 질문부터 도움말에 추가하겠습니다.\n[일정] 금요일 초안 공유 → 다음 주 월요일 반영 예정입니다.\n[결정 필요] 목요일 15시까지 담당자와 검토 시간을 확정해 주세요.",
+      "steps": [
+        "요청·사실·의견을 구분하세요.",
+        "수치에는 기간과 출처를 붙이세요.",
+        "받는 사람이 답해야 할 질문을 한 개로 좁히세요."
+      ]
+    },
+    {
+      "id": "presentation",
+      "title": "발표: 3장으로 의사결정 돕기",
+      "tag": "발표 · 5분",
+      "intro": "슬라이드를 늘리기 전에 문제·선택지·요청을 한 장씩 잡아보세요.",
+      "template": "1장 — 지금 결정해야 하는 문제\n현재 상황: [확인된 사실·기간·출처]\n영향: [그대로 두면 생기는 비용 또는 지연]\n\n2장 — 선택지 비교\nA안: 비용 [ ] / 소요 기간 [ ] / 위험 [ ]\nB안: 비용 [ ] / 소요 기간 [ ] / 위험 [ ]\n추천: [안] · 이유: [핵심 근거]\n\n3장 — 실행과 결정 요청\n담당: [ ] / 기한: [ ] / 확인 지표: [ ]\n오늘 필요한 결정: [한 문장]",
+      "steps": [
+        "각 장의 제목을 주장 한 문장으로 써보세요.",
+        "표는 비교 기준과 단위를 통일하세요.",
+        "발표 마지막에 승인·보류·추가 확인 중 필요한 행동을 명시하세요."
+      ]
+    },
+    {
+      "id": "ai",
+      "title": "업무용 AI: 회의 메모를 행동 목록으로",
+      "tag": "AI 활용 · 5분",
+      "intro": "사내 이용 규정을 확인하고, 이름·연락처·기밀을 제거한 메모만 사용하세요. 이 버튼은 프롬프트를 복사하며 AI에 자동 전송하지 않아요.",
+      "template": "다음은 비식별 처리된 회의 메모다.\n메모에 있는 사실만 사용하고 추측하지 마라.\n1. 확정된 결정 / 논의 중인 안건을 나눠라.\n2. 할 일 | 담당 역할 | 기한 | 근거 문장의 표를 만들어라.\n3. 담당이나 기한이 없으면 \"미정\"으로 표시하라.\n4. 확인이 필요한 질문을 마지막에 써라.\n\n[회의 메모]\n담당A가 다음 주 금요일까지 화면 초안을 공유하기로 했다.\n고객 배포 날짜는 아직 정하지 않았다.\n담당B는 비용 산정을 검토할 수 있는지 확인이 필요하다.",
+      "steps": [
+        "예상: 화면 초안 공유만 확정 할 일로, 배포 날짜는 미정으로 표시되어야 해요.",
+        "검토 가능 여부를 확인하는 발언을 업무 확정으로 바꾸면 고치세요.",
+        "결과를 원문과 대조하고 날짜·담당자를 직접 확인하세요."
+      ]
+    }
+  ]
+}

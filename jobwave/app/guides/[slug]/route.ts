@@ -1,0 +1,3 @@
+import {memberGate} from '../../member-access';
+import {guides,articleHtml,documentHtml,htmlResponse} from '../content';
+export async function GET(request:Request,context:{params:Promise<{slug:string}>}){const membership=await memberGate(new URL(request.url).pathname);if(membership)return membership;const {slug}=await context.params;const g=guides.find(x=>x.slug===slug);return g?htmlResponse(articleHtml(g)):htmlResponse(documentHtml('가이드를 찾을 수 없습니다','요청한 가이드를 찾을 수 없습니다.','/guides','<div class="guide-not-found"><h1>가이드를 찾을 수 없어요.</h1><p>주소를 확인하거나 다른 가이드를 읽어보세요.</p><a class="primary" href="/guides">커리어 가이드로 이동 ↗</a></div>'),404)}

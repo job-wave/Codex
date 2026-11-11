@@ -1,0 +1,3 @@
+import {memberGate} from '../../member-access';
+import {challenges,detailHtml,htmlResponse,documentHtml} from '../content';
+export async function GET(request:Request,context:{params:Promise<{track:string}>}){const membership=await memberGate(new URL(request.url).pathname);if(membership)return membership;const {track}=await context.params;const c=challenges.find(x=>x.track===track);return c?htmlResponse(detailHtml(c)):htmlResponse(documentHtml('챌린지를 찾을 수 없습니다','대학생과 직장인을 위한 7일 커리어 챌린지.','/challenges','<div class="guide-not-found"><h1>챌린지를 찾을 수 없어요.</h1><a href="/challenges" class="primary">7일 커리어 챌린지 보기 ↗</a></div>'),404)}

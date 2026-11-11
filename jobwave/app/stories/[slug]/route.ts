@@ -1,0 +1,3 @@
+import {memberGate} from '../../member-access';
+import {stories,detailHtml,htmlResponse,documentHtml} from '../content';
+export async function GET(request:Request,context:{params:Promise<{slug:string}>}){const membership=await memberGate(new URL(request.url).pathname);if(membership)return membership;const {slug}=await context.params;const story=stories.find(s=>s.slug===slug);return story?htmlResponse(detailHtml(story)):htmlResponse(documentHtml('사례를 찾을 수 없습니다','다른 자소서 사례를 확인해 보세요.','/stories','<div class="guide-not-found"><h1>사례를 찾을 수 없어요.</h1><a class="primary" href="/stories">자소서 비포·애프터로 이동 ↗</a></div>'),404)}

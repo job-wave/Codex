@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360">
+ <defs><pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0v16" fill="none" stroke="#08482D" stroke-opacity=".09"/></pattern></defs>
+ <path fill="#CFE2D9" d="M0 0h240v360H0z"/><path fill="url(#grid)" d="M0 0h240v360H0z"/>
+ <circle cx="120" cy="158" r="80" fill="none" stroke="#08482D" stroke-opacity=".24" stroke-dasharray="3 6"/><circle cx="120" cy="158" r="65" fill="#F5F8EF" fill-opacity=".84"/>
+ <path d="M12 13v42h45 M20 47V36h8v11 M33 47V28h8v19 M46 47V19h8v28" transform="translate(69 107) scale(1.5)" fill="none" stroke="#08482D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M188 69v18m-9-9h18M41 238v12m-6-6h12" stroke="#08482D" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+ </svg>
