@@ -6,3 +6,5 @@ body{padding-bottom:106px}
 #jobwaveKakaoContact:focus-visible{outline:3px solid #173e36;outline-offset:4px}
 @media(max-width:700px){#jobwaveKakaoContact.jobwave-kakao-contact{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:59.4px;height:59.4px;min-height:59.4px;padding:8px 0;border-radius:50%}#jobwaveKakaoContact span{display:block;text-align:center}body{padding-bottom:98px}}
 @media print{#jobwaveKakaoContact{display:none!important}body{padding-bottom:0}}
+/* Phones: smaller button so it covers less of the content. */
+@media(max-width:700px){#jobwaveKakaoContact.jobwave-kakao-contact{width:50px;height:50px;min-height:50px;padding:0;gap:2px;font-size:10px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}#jobwaveKakaoContact svg{width:22px;height:22px}body{padding-bottom:78px}}
