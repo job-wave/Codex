@@ -137,11 +137,25 @@ async function divider(num, title, items, img) {
 }
 
 (async () => {
-  // ===== 1. 표지 (Canva 디자인 DAHaYb7AgMU 에서 내보낸 이미지) =====
+  // ===== 1. 표지 (충북대학교 공식 심볼마크 시그니처 + 캐릭터 CBNU FRIENDS, chungbuk.ac.kr 상징/UI) =====
   section("표지");
   {
     const s = pres.addSlide({ masterName: "DARK", sectionTitle: curSection });
-    s.addImage({ path: path.resolve(__dirname, "cover_canva.jpg"), x: 0, y: 0, w: W, h: 7.5, altText: "충북대학교 외국인 유학생 취업지원 프로그램 제안서 표지" });
+    s.background = { color: WHITE };
+    const A = (f) => path.resolve(__dirname, "assets", f);
+    // 상단: 충북대 로고(좌) + JobWave(우)
+    s.addImage({ path: A("cbnu_logo.png"), x: M, y: 0.55, w: 2.9, h: 2.9 * 245 / 742, altText: "충북대학교 심볼마크 시그니처" });
+    T(s, "JobWave", W - M - 2.5, 0.7, 2.5, 0.5, { fontSize: 20, bold: true, color: NAVY, align: "right", valign: "middle" });
+    // 왼쪽: 제목
+    pill(s, "제안서", M, 2.2, 1.15, 0.42, NAVY, WHITE, { fs: 14 });
+    T(s, "2026. 11.", M + 1.3, 2.2, 2, 0.42, { fontSize: 14, color: GRAY, valign: "middle" });
+    T(s, "충북대학교\n외국인 유학생\n취업지원 프로그램", M, 2.8, 6.4, 2.3, { fontSize: 40, bold: true, color: NAVY, lineSpacingMultiple: 1.05, valign: "middle" });
+    T(s, "공부한 충북에서, 일하는 충북으로", M, 5.25, 6.4, 0.45, { fontSize: 18, color: GRAY, valign: "middle" });
+    T(s, "잡웨이브(JobWave)", M, 6.55, 4, 0.4, { fontSize: 15, bold: true, color: NAVY, valign: "middle" });
+    // 오른쪽: 캐릭터
+    s.addShape(pres.shapes.OVAL, { x: 7.2, y: 1.8, w: 5.5, h: 5.5, fill: { color: BG }, line: { color: BG } });
+    const cw = 5.3, ch = cw * 307 / 802;
+    s.addImage({ path: A("cbnu_friends.png"), x: 7.3, y: 3.55, w: cw, h: ch, altText: "충북대학교 캐릭터 CBNU FRIENDS" });
   }
 
   // ===== 2. 핵심 메시지 =====
