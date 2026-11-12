@@ -355,3 +355,4 @@ body.next-entry main header{background:transparent}
 .jw-business{display:flex;flex-wrap:wrap;gap:4px 18px;max-width:1200px;margin:0 auto;padding:0 64px 28px;font-size:11px;line-height:1.7;color:#6b7566;word-break:keep-all}
 @media(max-width:760px){.jw-business{padding:0 24px 24px;font-size:10.5px;gap:2px 14px}}
 @media print{.jw-business{display:none}}
+.jw-business-links{display:inline-flex;gap:14px;flex-basis:100%;margin-top:4px}.jw-business-links a{color:#3f4b41;text-decoration:underline;text-underline-offset:3px}
