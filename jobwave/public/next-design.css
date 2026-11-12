@@ -356,3 +356,6 @@ body.next-entry main header{background:transparent}
 @media(max-width:760px){.jw-business{padding:0 24px 24px;font-size:10.5px;gap:2px 14px}}
 @media print{.jw-business{display:none}}
 .jw-business-links{display:inline-flex;gap:14px;flex-basis:100%;margin-top:4px}.jw-business-links a{color:#3f4b41;text-decoration:underline;text-underline-offset:3px}
+/* Logo mark: dark arrow on the brand's light circle (#d5f861), as in the official logo. */
+body .wordmark span,body .entry-logo>span{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.08em;height:1.08em;border-radius:50%;background:#d5f861;color:#20231f;font-size:inherit;line-height:1;margin:0}
+body .wordmark span svg,body .entry-logo>span svg{display:block;width:56%;height:56%;flex:none}
