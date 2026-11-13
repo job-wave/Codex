@@ -359,3 +359,11 @@ body.next-entry main header{background:transparent}
 /* Logo mark: dark arrow on the brand's light circle (#d5f861), as in the official logo. */
 body .wordmark span,body .entry-logo>span{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.08em;height:1.08em;border-radius:50%;background:#d5f861;color:#20231f;font-size:inherit;line-height:1;margin:0}
 body .wordmark span svg,body .entry-logo>span svg{display:block;width:56%;height:56%;flex:none}
+/* ---- launch readiness ---- */
+.skip-link{position:absolute;left:12px;top:-60px;z-index:100;padding:10px 16px;border-radius:8px;background:#173f30;color:#fff;font-size:14px;font-weight:600}
+.skip-link:focus{top:12px}
+/* Small grey text met only ~3:1 contrast on white. */
+body .next-entry footer,body.next-entry footer{color:#5c6759}
+body.next-entry .next-access-note{color:#5c6759}
+@media(max-width:760px){body.next-entry .next-access-note{font-size:12px}body.next-entry footer>span,body.next-entry footer small{font-size:11px}}
+body .notfound-main{text-align:left;max-width:600px}.notfound-links{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:26px}.notfound-links a:not(.entry-button){text-decoration:underline;text-underline-offset:4px;color:#2b362e;font-size:14px}
