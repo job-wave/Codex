@@ -175,7 +175,7 @@ async function divider(num, title, items, img) {
       ["01", "진단", "사전진단 · 취업플랜", "LuSearch"],
       ["02", "역량강화", "심화 특강 · 1:1 멘토링", "LuGraduationCap"],
       ["03", "매칭", "채용정보 사이트 · 인사담당자 상담", "LuHandshake"],
-      ["04", "채용", "소규모 잡페어 · 사후관리", "LuBriefcase"],
+      ["04", "채용", "미니 K유학생 잡페어 · 사후관리", "LuBriefcase"],
     ];
     const fills = [BG, NTINT, NAVY, ACCENT];
     const cw = 2.75, gap = 0.33, y = 3.3, h = 3.35;
@@ -281,7 +281,7 @@ async function divider(num, title, items, img) {
     const rows = [
       ["비자·채용 정보 부족", "E-7·F-2-R 요건과 유학생 채용 기업을 알기 어려움", "LuCircleHelp", "정보", "채용정보 사이트 · 특강 1~3강", "LuInfo"],
       ["서류·면접 경험 부족", "한국식 자기소개서와 면접 방식이 낯섦", "LuFileText", "역량", "특강 4~8강 · 1:1 멘토링", "LuTrendingUp"],
-      ["채용 기업 접점 부족", "유학생을 뽑으려는 기업을 만날 기회가 없음", "LuHandshake", "연결", "인사담당자 상담 · 소규모 잡페어", "LuLink"],
+      ["채용 기업 접점 부족", "유학생을 뽑으려는 기업을 만날 기회가 없음", "LuHandshake", "연결", "인사담당자 상담 ·\n미니 K유학생 잡페어", "LuLink"],
     ];
     for (let i = 0; i < 3; i++) {
       const y = 2.4 + i * 1.45, h = 1.25;
@@ -306,7 +306,7 @@ async function divider(num, title, items, img) {
       ["01", "취업 특강", "8강 심화 커리큘럼", "LuPresentation", M, 2.05],
       ["04", "인사담당자 상담", "외국인 채용 담당자 소그룹 상담", "LuMessagesSquare", W - M - 3.9, 2.05],
       ["02", "1:1 멘토링", "1인 1시간 전문멘토 지도", "LuUsers", M, 4.55],
-      ["05", "소규모 잡페어", "5개사 사전매칭 현장면접", "LuBuilding2", W - M - 3.9, 4.55],
+      ["05", "미니 K유학생 잡페어", "5개사 사전매칭 현장면접", "LuBuilding2", W - M - 3.9, 4.55],
     ];
     // 연결선
     items.forEach(([, , , , x, y]) => {
@@ -321,7 +321,7 @@ async function divider(num, title, items, img) {
       card(s, x, y, 3.9, 1.8, BG, { shadow: true });
       await iconCircle(s, x + 0.3, y + 0.3, 0.8, ic);
       T(s, n, x + 1.3, y + 0.28, 1, 0.3, { fontSize: 13, bold: true, color: ACCENT });
-      T(s, t, x + 1.3, y + 0.58, 2.5, 0.5, { fontSize: 20, bold: true, valign: "middle" });
+      T(s, t, x + 1.3, y + 0.58, 2.5, 0.5, { fontSize: 16, bold: true, valign: "middle" });
       T(s, d, x + 1.3, y + 1.1, 2.5, 0.5, { fontSize: 13, color: GRAY });
     }
     const chips = ["공고", "예약", "이력서", "매칭", "성과"];
@@ -442,7 +442,7 @@ async function divider(num, title, items, img) {
 
   // ===== 13. 간지 03 =====
   section("03 프로그램 제안");
-  await divider("03", "프로그램 제안", ["01  취업 특강", "02  1:1 멘토링", "03  맞춤 채용정보 사이트", "04  인사담당자 상담", "05  소규모 잡페어"], "div03");
+  await divider("03", "프로그램 제안", ["01  취업 특강", "02  1:1 멘토링", "03  맞춤 채용정보 사이트", "04  인사담당자 상담", "05  미니 K유학생 잡페어"], "div03");
 
   // ===== 14. 특강 개요 =====
   const C1 = "03  프로그램 제안  /  01 취업 특강";
@@ -817,9 +817,9 @@ async function divider(num, title, items, img) {
   await D.addHrRoundDetail(ctx, C4);
 
   // ===== 26. 잡페어 개요 =====
-  const C5 = "03  프로그램 제안  /  05 소규모 잡페어";
+  const C5 = "03  프로그램 제안  /  05 미니 K유학생 잡페어";
   {
-    const s = content(C5, "소규모 잡페어 개요", "유학생 채용 의향이 있는 기업 5개사 내외, 유학생 30~40명 규모");
+    const s = content(C5, "미니 K유학생 잡페어 개요", "유학생 채용 의향이 있는 기업 5개사 내외, 유학생 30~40명 규모");
     const sw = (W - 2 * M - 0.6) / 3;
     stat(s, M, 1.95, sw, 1.7, "5", "개사", "참여 기업 · 기본형 3개사", ACCENT, WHITE, WHITE);
     stat(s, M + sw + 0.3, 1.95, sw, 1.7, "30~40", "명", "참여 유학생 · 사전 서류 등록자", NAVY, WHITE, "C9CED6");
@@ -900,7 +900,7 @@ async function divider(num, title, items, img) {
   // ===== 30. 구성 옵션 =====
   {
     const s = content("04  도입 방식", "프로그램별 구성 옵션", "프로그램마다 기본형과 확장형 중 선택 · 영어 강사와 통역은 추가 옵션");
-    const rows = [["01", "취업 특강", "4강, 한국어", "8강 전체, 한국어", "LuPresentation"], ["02", "1:1 멘토링", "오프라인, 1인 2회", "오프라인과 온라인, 1인 3회", "LuUsers"], ["03", "채용정보 사이트", "공고·프로그램 신청", "매칭·이력서 빌더·대시보드", "LuMonitor"], ["04", "인사담당자 상담", "1회, 인사담당자 3명", "2회, 인사담당자 5명", "LuMessagesSquare"], ["05", "소규모 잡페어", "3개사", "5개사 + 사전매칭", "LuBuilding2"]];
+    const rows = [["01", "취업 특강", "4강, 한국어", "8강 전체, 한국어", "LuPresentation"], ["02", "1:1 멘토링", "오프라인, 1인 2회", "오프라인과 온라인, 1인 3회", "LuUsers"], ["03", "채용정보 사이트", "공고·프로그램 신청", "매칭·이력서 빌더·대시보드", "LuMonitor"], ["04", "인사담당자 상담", "1회, 인사담당자 3명", "2회, 인사담당자 5명", "LuMessagesSquare"], ["05", "미니 K유학생 잡페어", "3개사", "5개사 + 사전매칭", "LuBuilding2"]];
     const c0 = 4.0, c1 = 3.95, c2 = W - 2 * M - c0 - c1 - 0.3;
     const x1 = M + c0 + 0.15, x2 = x1 + c1 + 0.15;
     card(s, x1, 1.9, c1, 0.6, NAVY);
@@ -928,7 +928,7 @@ async function divider(num, title, items, img) {
   // ===== 31. 추천 조합 =====
   {
     const s = content("04  도입 방식", "목적별 추천 조합", "운영 목적과 예산에 따라 세 가지 조합 제안");
-    const progs = ["01  특강", "02  멘토링", "03  사이트", "04  상담", "05  잡페어"];
+    const progs = ["01  특강", "02  멘토링", "03  사이트", "04  상담", "05  미니 K유학생 잡페어"];
     await icon("LuCircleCheck", WHITE);
     const combos = [["A", "역량집중형", [1, 1, 0, 0, 0], "서류·면접 준비를 단기간에 끌어올려야 할 때"], ["B", "채용연계형", [0, 0, 1, 1, 1], "기업 연결과 실제 채용 성과를 우선할 때"], ["C", "통합형", [1, 1, 1, 1, 1], "진단부터 채용까지 전 단계를 연결해 운영할 때"]];
     const cw = (W - 2 * M - 0.6) / 3, y = 1.95, h = 4.9;
