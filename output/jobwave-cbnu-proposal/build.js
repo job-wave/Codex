@@ -42,8 +42,10 @@ pres.defineSlideMaster({
     { text: { text: "JobWave", options: { x: W - M - 2, y: 0.32, w: 2, h: 0.3, fontSize: 12, bold: true, color: NAVY, align: "right", margin: 0 } } },
     { text: { text: FOOT, options: { x: M, y: 7.05, w: 6, h: 0.25, fontSize: 9, color: MUTED, margin: 0 } } },
     { placeholder: { options: { name: "crumb", type: "body", x: M, y: 0.32, w: 8, h: 0.3, fontSize: 11, bold: true, color: ORANGE, margin: 0, valign: "middle" }, text: "" } },
-    { placeholder: { options: { name: "title", type: "title", x: M, y: 0.68, w: W - 2 * M, h: 0.62, fontSize: 28, bold: true, color: NAVY, margin: 0, valign: "middle", align: "left" }, text: "" } },
-    { placeholder: { options: { name: "sub", type: "body", x: M + 0.22, y: 1.3, w: W - 2 * M - 0.22, h: 0.42, fontSize: 14, bold: true, color: WHITE, margin: 0, valign: "middle" }, text: "" } },
+    // 제목 띠: 모든 내용 페이지에서 같은 위치·크기, 왼쪽 끝부터 오른쪽 끝까지
+    { rect: { x: 0, y: 0.66, w: W, h: 0.68, fill: { color: NAVY }, line: { color: NAVY } } },
+    { placeholder: { options: { name: "title", type: "title", x: M, y: 0.66, w: W - 2 * M, h: 0.68, fontSize: 26, bold: true, color: WHITE, margin: 0, valign: "middle", align: "left" }, text: "" } },
+    { placeholder: { options: { name: "sub", type: "body", x: M, y: 1.42, w: W - 2 * M, h: 0.36, fontSize: 14, color: GRAY, margin: 0, valign: "middle" }, text: "" } },
   ],
   slideNumber: { x: W - M - 0.6, y: 7.05, w: 0.6, h: 0.25, fontSize: 9, color: MUTED, align: "right" },
 });
@@ -106,13 +108,7 @@ function content(crumb, title, sub) {
   const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: curSection });
   s.addText(crumb, { placeholder: "crumb" });
   s.addText(title, { placeholder: "title" });
-  if (sub) {
-    // 소제목: 오렌지 배경 + 흰 글자. 글자 폭을 어림해 배경 길이를 맞춘다 (14pt bold 기준)
-    const est = [...sub].reduce((w, c) => w + (c === " " ? 0.07 : /[\u3131-\uD79D「」·]/.test(c) ? 0.205 : 0.115), 0);
-    const bw = Math.min(W - 2 * M, est + 0.5);
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: M, y: 1.3, w: bw, h: 0.42, fill: { color: ORANGE }, line: { color: ORANGE }, rectRadius: 0.08 });
-    s.addText(sub, { placeholder: "sub" });
-  }
+  if (sub) s.addText(sub, { placeholder: "sub" });
   return s;
 }
 let curSection = "표지";
@@ -623,7 +619,7 @@ async function divider(num, title, items, img) {
   const C3 = "03  프로그램 제안  /  03 채용정보 사이트";
   {
     const s = content(C3, "맞춤 채용정보 사이트 (가칭 CBNU K-Job Hub)", "유학생·기업·대학 관리자별 기능 제공");
-    ["한국어", "English", "中文", "Tiếng Việt"].forEach((l, i) => pill(s, l, 5.05 + i * 1.25, 1.33, 1.12, 0.36, i === 0 ? ORANGE : OTINT, i === 0 ? WHITE : ORANGE, { fs: 12 }));
+    ["한국어", "English", "中文", "Tiếng Việt"].forEach((l, i) => pill(s, l, 5.05 + i * 1.25, 1.42, 1.12, 0.34, i === 0 ? ORANGE : OTINT, i === 0 ? WHITE : ORANGE, { fs: 12 }));
     const cols = [
       ["01", "유학생", "LuGraduationCap", NAVY, [["비자·언어·지역·직무 공고 필터", "LuFilter"], ["한국형 이력서 빌더", "LuIdCard"], ["프로그램 신청·멘토링 예약", "LuCalendarCheck"], ["QR 출석 체크", "LuQrCode"]]],
       ["02", "기업", "LuBuilding2", ORANGE, [["동의한 유학생 이력서 열람", "LuEye"], ["잡페어 참가 신청", "LuClipboardList"], ["면접 요청·일정 확정", "LuSend"]]],
