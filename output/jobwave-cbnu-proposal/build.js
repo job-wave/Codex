@@ -140,6 +140,9 @@ async function divider(num, title, items, img) {
 }
 
 (async () => {
+  const D = require("./detail_slides.js");
+  const ctx = { pres, content, T, card, pill, iconCircle, numCircle, chevron, W, M,
+    colors: { BG, ACCENT, NAVY, NAVY2, WHITE, GRAY, MUTED, OTINT } };
   // ===== 1. 표지 (충북대학교 공식 심볼마크 시그니처 + 캐릭터 CBNU FRIENDS, chungbuk.ac.kr 상징/UI) =====
   section("표지");
   {
@@ -502,6 +505,9 @@ async function divider(num, title, items, img) {
     }
   }
 
+  // ===== 강의별 세부 내용 (2장) =====
+  await D.addLectureDetails(ctx, C1);
+
   // ===== 16. 결과물 연계 =====
   {
     const s = content(C1, "특강 결과물의 후속 프로그램 연계", "강의 중 작성한 결과물을 멘토링 첨삭과 잡페어 지원 서류로 사용");
@@ -581,6 +587,9 @@ async function divider(num, title, items, img) {
       if (i < 2) chevron(s, x + cw + 0.1, y + h / 2 - 0.15, 0.2, 0.3, ACCENT);
     }
   }
+
+  // ===== 멘토링 회차별 60분 진행안 =====
+  await D.addMentoringTimetable(ctx, C2);
 
   // ===== 19. 예약·운영일수 =====
   {
@@ -804,6 +813,9 @@ async function divider(num, title, items, img) {
     T(s, "사이트 게시로 미참석 학생도 열람", x0 + 0.7, 6.15, w0 - 0.7, 0.55, { fontSize: 14, bold: true, valign: "middle" });
   }
 
+  // ===== 인사담당자 상담 라운드 진행안 =====
+  await D.addHrRoundDetail(ctx, C4);
+
   // ===== 26. 잡페어 개요 =====
   const C5 = "03  프로그램 제안  /  05 소규모 잡페어";
   {
@@ -877,6 +889,9 @@ async function divider(num, title, items, img) {
     });
     pill(s, "통역은 필요 시 별도 예산", lx, 6.25, 2.8, 0.4, OTINT, ACCENT, { fs: 12 });
   }
+
+  // ===== 잡페어 당일 운영안 =====
+  await D.addJobfairDay(ctx, C5);
 
   // ===== 29. 간지 04 =====
   section("04 도입 방식");
