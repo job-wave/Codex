@@ -43,7 +43,7 @@ pres.defineSlideMaster({
     { text: { text: FOOT, options: { x: M, y: 7.05, w: 6, h: 0.25, fontSize: 9, color: MUTED, margin: 0 } } },
     { placeholder: { options: { name: "crumb", type: "body", x: M, y: 0.32, w: 8, h: 0.3, fontSize: 11, bold: true, color: ORANGE, margin: 0, valign: "middle" }, text: "" } },
     { placeholder: { options: { name: "title", type: "title", x: M, y: 0.68, w: W - 2 * M, h: 0.62, fontSize: 28, bold: true, color: NAVY, margin: 0, valign: "middle", align: "left" }, text: "" } },
-    { placeholder: { options: { name: "sub", type: "body", x: M, y: 1.32, w: W - 2 * M, h: 0.38, fontSize: 14, color: GRAY, margin: 0, valign: "middle" }, text: "" } },
+    { placeholder: { options: { name: "sub", type: "body", x: M + 0.22, y: 1.3, w: W - 2 * M - 0.22, h: 0.42, fontSize: 14, bold: true, color: WHITE, margin: 0, valign: "middle" }, text: "" } },
   ],
   slideNumber: { x: W - M - 0.6, y: 7.05, w: 0.6, h: 0.25, fontSize: 9, color: MUTED, align: "right" },
 });
@@ -106,7 +106,13 @@ function content(crumb, title, sub) {
   const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: curSection });
   s.addText(crumb, { placeholder: "crumb" });
   s.addText(title, { placeholder: "title" });
-  if (sub) s.addText(sub, { placeholder: "sub" });
+  if (sub) {
+    // 소제목: 오렌지 배경 + 흰 글자. 글자 폭을 어림해 배경 길이를 맞춘다 (14pt bold 기준)
+    const est = [...sub].reduce((w, c) => w + (c === " " ? 0.07 : /[\u3131-\uD79D「」·]/.test(c) ? 0.205 : 0.115), 0);
+    const bw = Math.min(W - 2 * M, est + 0.5);
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: M, y: 1.3, w: bw, h: 0.42, fill: { color: ORANGE }, line: { color: ORANGE }, rectRadius: 0.08 });
+    s.addText(sub, { placeholder: "sub" });
+  }
   return s;
 }
 let curSection = "표지";
