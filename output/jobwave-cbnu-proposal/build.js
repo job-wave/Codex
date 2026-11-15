@@ -625,90 +625,14 @@ async function divider(num, title, items, img) {
     T(s, "확장형 기준 · 인원은 협의 후 확정", bx + 0.35, 6.2, bw - 0.7, 0.35, { fontSize: 11, color: "C9CED6" });
   }
 
-  // ===== 20. 사이트 =====
+  // ===== 20~21. 채용정보 사이트 (실제 시안 사이트 스크린샷) =====
   const C3 = "03  프로그램 제안  /  03 채용정보 사이트";
-  {
-    const s = content(C3, "맞춤 채용정보 사이트 (가칭 CBNU K-Job Hub)", "유학생·기업·대학 관리자별 기능 제공");
-    ["한국어", "English", "中文", "Tiếng Việt"].forEach((l, i) => pill(s, l, 5.05 + i * 1.25, 1.42, 1.12, 0.34, i === 0 ? ACCENT : OTINT, i === 0 ? WHITE : ACCENT, { fs: 12 }));
-    const cols = [
-      ["01", "유학생", "LuGraduationCap", NAVY, [["비자·언어·지역·직무 공고 필터", "LuFilter"], ["한국형 이력서 빌더", "LuIdCard"], ["프로그램 신청·멘토링 예약", "LuCalendarCheck"], ["QR 출석 체크", "LuQrCode"]]],
-      ["02", "기업", "LuBuilding2", ACCENT, [["동의한 유학생 이력서 열람", "LuEye"], ["잡페어 참가 신청", "LuClipboardList"], ["면접 요청·일정 확정", "LuSend"]]],
-      ["03", "대학 관리자", "LuSchool", NAVY2, [["참여·출석 통계", "LuChartBar"], ["만족도 결과", "LuCircleCheck"], ["취업 성과 대시보드", "LuTrendingUp"]]],
-    ];
-    const cw = (W - 2 * M - 0.6) / 3;
-    for (let c = 0; c < 3; c++) {
-      const x = M + c * (cw + 0.3), y = 2.0;
-      const [n, t, ic, col, feats] = cols[c];
-      card(s, x, y, cw, 4.85, BG, { shadow: true });
-      card(s, x, y, cw, 1.2, col);
-      s.addShape(pres.shapes.RECTANGLE, { x, y: y + 1.0, w: cw, h: 0.2, fill: { color: col }, line: { color: col } });
-      await iconCircle(s, x + 0.3, y + 0.2, 0.8, ic, WHITE, col);
-      T(s, n, x + 1.3, y + 0.2, 1, 0.3, { fontSize: 12, bold: true, color: c === 1 ? WHITE : ACCENT });
-      T(s, t, x + 1.3, y + 0.48, cw - 1.5, 0.5, { fontSize: 22, bold: true, color: WHITE, valign: "middle" });
-      for (let k = 0; k < feats.length; k++) {
-        const fy = y + 1.45 + k * 0.82;
-        card(s, x + 0.25, fy, cw - 0.5, 0.68, WHITE, { r: 0.08 });
-        s.addImage({ data: await icon(feats[k][1], col === NAVY2 ? NAVY : col), x: x + 0.42, y: fy + 0.16, w: 0.36, h: 0.36 });
-        T(s, feats[k][0], x + 0.95, fy, cw - 1.3, 0.68, { fontSize: 13, valign: "middle" });
-      }
-    }
-  }
-
-  // ===== 21. 와이어프레임 =====
-  {
-    const s = content(C3, "주요 화면 구성 (와이어프레임)", "공고 필터 / 멘토링 예약 / 관리자 대시보드 · 실제 화면은 착수 후 대학과 협의해 설계");
-    const fw = (W - 2 * M - 0.8) / 3, fy = 1.95, fh = 4.3;
-    const frame = (x, label) => {
-      card(s, x, fy, fw, fh, WHITE, { line: "C9CED6", lineW: 1, shadow: true, r: 0.1 });
-      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.02, y: fy + 0.02, w: fw - 0.04, h: 0.4, fill: { color: BG }, line: { color: BG } });
-      ["F26B5B", "F5C04A", "5CC77A"].forEach((c, i) => s.addShape(pres.shapes.OVAL, { x: x + 0.18 + i * 0.22, y: fy + 0.14, w: 0.13, h: 0.13, fill: { color: c }, line: { color: c } }));
-      card(s, x, fy + fh + 0.15, fw, 0.5, NAVY, { r: 0.1 });
-      T(s, label, x, fy + fh + 0.15, fw, 0.5, { fontSize: 14, bold: true, color: WHITE, align: "center", valign: "middle" });
-    };
-    // 1. 공고 필터
-    let x = M;
-    frame(x, "01  맞춤 공고 필터");
-    [["E-7 가능", ACCENT, WHITE], ["한국어 중급", NAVY, WHITE], ["충북", WHITE, NAVY], ["해외영업", WHITE, NAVY]].forEach(([t, f, c], i) => pill(s, t, x + 0.25 + (i % 2) * ((fw - 0.6) / 2 + 0.1), fy + 0.6 + Math.floor(i / 2) * 0.45, (fw - 0.6) / 2, 0.35, f, c, { fs: 11, line: f === WHITE ? "C9CED6" : f }));
-    for (let i = 0; i < 4; i++) {
-      const ry = fy + 1.65 + i * 0.62;
-      card(s, x + 0.25, ry, fw - 0.5, 0.5, BG, { r: 0.06 });
-      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.4, y: ry + 0.12, w: 2.0, h: 0.1, fill: { color: NAVY }, line: { color: NAVY } });
-      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.4, y: ry + 0.3, w: 1.3, h: 0.07, fill: { color: "C9CED6" }, line: { color: "C9CED6" } });
-      T(s, "보기", x + fw - 0.95, ry, 0.55, 0.5, { fontSize: 11, bold: true, color: ACCENT, valign: "middle", align: "right" });
-    }
-    // 2. 예약
-    x = M + fw + 0.4;
-    frame(x, "02  멘토링 예약");
-    T(s, "11월", x + 0.25, fy + 0.55, 2, 0.35, { fontSize: 14, bold: true });
-    const filled = [1, 4, 7, 12, 15, 18, 21];
-    const cs = (fw - 0.5) / 5;
-    for (let i = 0; i < 20; i++) {
-      const cx = x + 0.25 + (i % 5) * cs, cy = fy + 1.0 + Math.floor(i / 5) * 0.52;
-      const f = filled.includes(i) ? NAVY : i === 8 ? ACCENT : BG;
-      s.addShape(pres.shapes.RECTANGLE, { x: cx + 0.03, y: cy + 0.03, w: cs - 0.06, h: 0.46, fill: { color: f }, line: { color: WHITE } });
-    }
-    card(s, x + 0.25, fy + 3.2, fw - 0.5, 0.55, ACCENT, { r: 0.08 });
-    T(s, "예약하기", x + 0.25, fy + 3.2, fw - 0.5, 0.55, { fontSize: 14, bold: true, color: WHITE, align: "center", valign: "middle" });
-    // 3. 대시보드 (네이티브 차트)
-    x = M + 2 * (fw + 0.4);
-    frame(x, "03  관리자 대시보드");
-    [["참여", "—"], ["이수", "—"], ["면접", "—"]].forEach(([l, v], i) => {
-      const kx = x + 0.25 + i * ((fw - 0.5) / 3);
-      card(s, kx + 0.04, fy + 0.6, (fw - 0.5) / 3 - 0.08, 0.75, BG, { r: 0.06 });
-      T(s, v, kx, fy + 0.62, (fw - 0.5) / 3, 0.4, { fontSize: 18, bold: true, align: "center", valign: "middle" });
-      T(s, l, kx, fy + 1.0, (fw - 0.5) / 3, 0.3, { fontSize: 11, color: GRAY, align: "center" });
-    });
-    const bars = [0.35, 0.6, 0.5, 0.8, 0.7, 1.0];
-    bars.forEach((v, i) => {
-      const bwid = (fw - 0.7) / 6, bh = 2.3 * v;
-      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.35 + i * bwid + 0.05, y: fy + 4.0 - bh, w: bwid - 0.1, h: bh, fill: { color: i === 5 ? ACCENT : "C9CED6" }, line: { color: i === 5 ? ACCENT : "C9CED6" } });
-    });
-  }
+  await require("./site_slides.js").addSiteSlides(ctx, C3);
 
   // ===== 22. 사이트 운영 =====
   {
-    const s = content(C3, "사이트 운영 방식과 구성 옵션", "주 1회 공고 갱신, 동의 기반 이력서 공개, 사업 종료 후 대학 이관");
-    const f = [["채용정보 큐레이션", "공공 채용정보와 직접 발굴한 기업 공고를 주 1회 갱신", "LuRefreshCw", NAVY], ["동의 기반 공개", "이력서는 학생이 동의한 기업에만 공개", "LuShieldCheck", ACCENT], ["대학 이관", "사업 종료 후 운영 매뉴얼과 함께 대학에 이관", "LuHouse", NAVY2]];
+    const s = content(C3, "사이트 운영 방식과 구성 옵션", "주 1회 공고 갱신, 동의 기반 이력서 공개, 사업 종료 후 대학 이관 · 다국어 공고 게시·필터는 시안 구현 완료");
+    const f = [["채용정보 큐레이션", "사람인·잡코리아·KOWORK 등 공고를 원문 확인 후 게시, 주 1회 갱신", "LuRefreshCw", NAVY], ["동의 기반 공개", "이력서는 학생이 동의한 기업에만 공개", "LuShieldCheck", ACCENT], ["대학 이관", "사업 종료 후 운영 매뉴얼과 함께 대학에 이관", "LuHouse", NAVY2]];
     for (let i = 0; i < 3; i++) {
       const y = 2.0 + i * 1.6;
       card(s, M, y, 5.6, 1.4, BG, { shadow: true });
