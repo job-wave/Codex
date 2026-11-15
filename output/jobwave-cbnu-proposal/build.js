@@ -13,6 +13,7 @@ const OUT = path.resolve(__dirname, "JobWave_proposal_visual.pptx");
 const NAVY = "151B26", ORANGE = "E5532D", GRAY = "5B6472", LINE = "E3E6EA",
   MUTED = "9AA1AC", NAVY2 = "2A3342", BG = "F4F5F7", WHITE = "FFFFFF", OTINT = "FDECE6", NTINT = "E8EAF0";
 const FONT = "맑은 고딕";
+const CBNU_RED = "B72654"; // 충북대학교 전용색상 CBNU Red (PANTONE 7425C, R183 G38 B84)
 
 const THEME = {
   name: "JobWave",
@@ -43,7 +44,7 @@ pres.defineSlideMaster({
     { text: { text: FOOT, options: { x: M, y: 7.05, w: 6, h: 0.25, fontSize: 9, color: MUTED, margin: 0 } } },
     { placeholder: { options: { name: "crumb", type: "body", x: M, y: 0.32, w: 8, h: 0.3, fontSize: 11, bold: true, color: ORANGE, margin: 0, valign: "middle" }, text: "" } },
     // 제목 띠: 모든 내용 페이지에서 같은 위치·크기, 왼쪽 끝부터 오른쪽 끝까지
-    { rect: { x: 0, y: 0.66, w: W, h: 0.68, fill: { color: NAVY }, line: { color: NAVY } } },
+    { rect: { x: 0, y: 0.66, w: W, h: 0.68, fill: { color: CBNU_RED }, line: { color: CBNU_RED } } },
     { placeholder: { options: { name: "title", type: "title", x: M, y: 0.66, w: W - 2 * M, h: 0.68, fontSize: 26, bold: true, color: WHITE, margin: 0, valign: "middle", align: "left" }, text: "" } },
     { placeholder: { options: { name: "sub", type: "body", x: M, y: 1.42, w: W - 2 * M, h: 0.36, fontSize: 14, color: GRAY, margin: 0, valign: "middle" }, text: "" } },
   ],
