@@ -10,8 +10,8 @@ const ARC = path.resolve(__dirname, "arc.png");
 const OUT = path.resolve(__dirname, "JobWave_proposal_visual.pptx");
 
 // palette (원본 색 유지)
-const NAVY = "151B26", ORANGE = "E5532D", GRAY = "5B6472", LINE = "E3E6EA",
-  MUTED = "9AA1AC", NAVY2 = "2A3342", BG = "F4F5F7", WHITE = "FFFFFF", OTINT = "FDECE6", NTINT = "E8EAF0";
+const NAVY = "151B26", ACCENT = "B72654" /* 강조색: 충북대 CBNU Red */, GRAY = "5B6472", LINE = "E3E6EA",
+  MUTED = "9AA1AC", NAVY2 = "2A3342", BG = "F4F5F7", WHITE = "FFFFFF", OTINT = "F8E5EB", NTINT = "E8EAF0";
 const FONT = "맑은 고딕";
 const CBNU_RED = "B72654"; // 충북대학교 전용색상 CBNU Red (PANTONE 7425C, R183 G38 B84)
 
@@ -21,8 +21,8 @@ const THEME = {
   bodyFontFace: FONT,
   colors: {
     dk1: NAVY, lt1: WHITE, dk2: NAVY2, lt2: BG,
-    accent1: ORANGE, accent2: NAVY, accent3: GRAY, accent4: MUTED, accent5: "F2A38C", accent6: NAVY2,
-    hlink: ORANGE, folHlink: GRAY,
+    accent1: ACCENT, accent2: NAVY, accent3: GRAY, accent4: MUTED, accent5: "D98AA3", accent6: NAVY2,
+    hlink: ACCENT, folHlink: GRAY,
   },
 };
 
@@ -42,7 +42,7 @@ pres.defineSlideMaster({
   objects: [
     { text: { text: "JobWave", options: { x: W - M - 2, y: 0.32, w: 2, h: 0.3, fontSize: 12, bold: true, color: NAVY, align: "right", margin: 0 } } },
     { text: { text: FOOT, options: { x: M, y: 7.05, w: 6, h: 0.25, fontSize: 9, color: MUTED, margin: 0 } } },
-    { placeholder: { options: { name: "crumb", type: "body", x: M, y: 0.32, w: 8, h: 0.3, fontSize: 11, bold: true, color: ORANGE, margin: 0, valign: "middle" }, text: "" } },
+    { placeholder: { options: { name: "crumb", type: "body", x: M, y: 0.32, w: 8, h: 0.3, fontSize: 11, bold: true, color: ACCENT, margin: 0, valign: "middle" }, text: "" } },
     // 제목 띠: 모든 내용 페이지에서 같은 위치·크기, 왼쪽 끝부터 오른쪽 끝까지
     { rect: { x: 0, y: 0.66, w: W, h: 0.68, fill: { color: CBNU_RED }, line: { color: CBNU_RED } } },
     { placeholder: { options: { name: "title", type: "title", x: M, y: 0.66, w: W - 2 * M, h: 0.68, fontSize: 26, bold: true, color: WHITE, margin: 0, valign: "middle", align: "left" }, text: "" } },
@@ -81,12 +81,12 @@ function T(s, text, x, y, w, h, o = {}) {
 function card(s, x, y, w, h, fill = BG, o = {}) {
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w, h, fill: { color: fill }, line: { color: o.line || fill, width: o.lineW || 1 }, rectRadius: o.r ?? 0.12, shadow: o.shadow ? shadow() : undefined });
 }
-async function iconCircle(s, x, y, d, name, bg = ORANGE, fg = WHITE) {
+async function iconCircle(s, x, y, d, name, bg = ACCENT, fg = WHITE) {
   s.addShape(pres.shapes.OVAL, { x, y, w: d, h: d, fill: { color: bg }, line: { color: bg } });
   const p = d * 0.26;
   s.addImage({ data: await icon(name, fg), x: x + p, y: y + p, w: d - 2 * p, h: d - 2 * p });
 }
-function numCircle(s, x, y, d, n, bg = ORANGE, fg = WHITE, fs) {
+function numCircle(s, x, y, d, n, bg = ACCENT, fg = WHITE, fs) {
   s.addShape(pres.shapes.OVAL, { x, y, w: d, h: d, fill: { color: bg }, line: { color: bg } });
   T(s, n, x, y, d, d, { fontSize: fs || Math.round(d * 30), bold: true, color: fg, align: "center", valign: "middle" });
 }
@@ -97,7 +97,7 @@ function pill(s, text, x, y, w, h, fill, color, o = {}) {
 function chevron(s, x, y, w, h, fill) {
   s.addShape(pres.shapes.CHEVRON, { x, y, w, h, fill: { color: fill }, line: { color: fill } });
 }
-function arrowR(s, x, y, w, color = ORANGE) {
+function arrowR(s, x, y, w, color = ACCENT) {
   s.addShape(pres.shapes.LINE, { x, y, w, h: 0, line: { color, width: 2.25, endArrowType: "triangle" } });
 }
 function stat(s, x, y, w, h, num, unit, label, fill, numColor, labelColor) {
@@ -131,7 +131,7 @@ async function photo(s, name, x, y, w, h, focusY = 0.5) {
 async function divider(num, title, items, img) {
   const s = pres.addSlide({ masterName: "DARK", sectionTitle: curSection });
   await photo(s, img, 6.2, 0, W - 6.2, 7.5);
-  T(s, num, M, 1.5, 4, 1.4, { fontSize: 96, bold: true, color: ORANGE, valign: "bottom" });
+  T(s, num, M, 1.5, 4, 1.4, { fontSize: 96, bold: true, color: ACCENT, valign: "bottom" });
   T(s, title, M, 3.0, 6, 0.9, { fontSize: 44, bold: true, color: WHITE, valign: "middle" });
   items.forEach((it, i) => {
     pill(s, it, M, 4.25 + i * 0.5, 3.6, 0.38, NAVY2, "D7DBE2", { fs: 13, bold: false });
@@ -164,8 +164,8 @@ async function divider(num, title, items, img) {
   // ===== 2. 핵심 메시지 =====
   {
     const s = pres.addSlide({ masterName: "BLANK", sectionTitle: curSection });
-    T(s, "Study in Chungbuk, Work in Korea", M, 0.55, 8, 0.35, { fontSize: 14, bold: true, color: ORANGE });
-    T(s, [{ text: "공부한 충북에서,", options: { color: NAVY, breakLine: true } }, { text: "일하는 충북으로", options: { color: ORANGE } }], M, 0.95, 7.4, 1.35, { fontSize: 36, bold: true, valign: "middle" });
+    T(s, "Study in Chungbuk, Work in Korea", M, 0.55, 8, 0.35, { fontSize: 14, bold: true, color: ACCENT });
+    T(s, [{ text: "공부한 충북에서,", options: { color: NAVY, breakLine: true } }, { text: "일하는 충북으로", options: { color: ACCENT } }], M, 0.95, 7.4, 1.35, { fontSize: 36, bold: true, valign: "middle" });
     T(s, "충북대에서 공부한 유학생이 충북 기업에서 첫 직장을 갖도록, 진단부터 채용까지 네 단계로 지원합니다.", M, 2.4, 7.4, 0.65, { fontSize: 15, color: GRAY });
     await photo(s, "handshake", 8.45, 0.5, W - M - 8.45, 2.55, 0.4);
     const steps = [
@@ -174,17 +174,17 @@ async function divider(num, title, items, img) {
       ["03", "매칭", "채용정보 사이트 · 인사담당자 상담", "LuHandshake"],
       ["04", "채용", "소규모 잡페어 · 사후관리", "LuBriefcase"],
     ];
-    const fills = [BG, NTINT, NAVY, ORANGE];
+    const fills = [BG, NTINT, NAVY, ACCENT];
     const cw = 2.75, gap = 0.33, y = 3.3, h = 3.35;
     for (let i = 0; i < 4; i++) {
       const x = M + i * (cw + gap);
       const dark = i >= 2;
       card(s, x, y, cw, h, fills[i], { shadow: true });
-      await iconCircle(s, x + 0.35, y + 0.4, 1.0, steps[i][3], dark ? WHITE : ORANGE, dark ? fills[i] : WHITE);
+      await iconCircle(s, x + 0.35, y + 0.4, 1.0, steps[i][3], dark ? WHITE : ACCENT, dark ? fills[i] : WHITE);
       T(s, steps[i][0], x + cw - 1.1, y + 0.35, 0.8, 0.5, { fontSize: 22, bold: true, color: dark ? "FFFFFF" : MUTED, align: "right" });
       T(s, steps[i][1], x + 0.35, y + 1.75, cw - 0.6, 0.6, { fontSize: 28, bold: true, color: dark ? WHITE : NAVY });
       T(s, steps[i][2], x + 0.35, y + 2.45, cw - 0.6, 0.8, { fontSize: 14, color: dark ? "E6E8EC" : GRAY });
-      if (i < 3) chevron(s, x + cw + 0.06, y + h / 2 - 0.18, 0.22, 0.36, ORANGE);
+      if (i < 3) chevron(s, x + cw + 0.06, y + h / 2 - 0.18, 0.22, 0.36, ACCENT);
     }
   }
 
@@ -193,7 +193,7 @@ async function divider(num, title, items, img) {
     const s = pres.addSlide({ masterName: "BLANK", sectionTitle: curSection });
     card(s, 0, 0, 4.2, 7.5, NAVY, { r: 0 });
     T(s, "목차", M, 1.0, 3, 0.9, { fontSize: 40, bold: true, color: WHITE });
-    T(s, "Contents", M, 1.9, 3, 0.4, { fontSize: 16, color: ORANGE, bold: true });
+    T(s, "Contents", M, 1.9, 3, 0.4, { fontSize: 16, color: ACCENT, bold: true });
     s.addImage({ path: ARC, x: -1.8, y: 3.0, w: 6.0, h: 4.56, transparency: 30 });
     const rows = [
       ["01", "제안 개요", "제안 배경 / 해결 방향 / 프로그램 구성", "LuTarget"],
@@ -206,7 +206,7 @@ async function divider(num, title, items, img) {
     for (let i = 0; i < 5; i++) {
       const y = 0.75 + i * (h + g);
       card(s, x, y, w, h, BG);
-      numCircle(s, x + 0.25, y + 0.15, 0.7, rows[i][0], ORANGE, WHITE, 18);
+      numCircle(s, x + 0.25, y + 0.15, 0.7, rows[i][0], ACCENT, WHITE, 18);
       T(s, rows[i][1], x + 1.2, y + 0.12, 5, 0.45, { fontSize: 20, bold: true, valign: "middle" });
       T(s, rows[i][2], x + 1.2, y + 0.55, 6.4, 0.35, { fontSize: 13, color: GRAY, valign: "middle" });
       await iconCircle(s, x + w - 0.85, y + 0.2, 0.6, rows[i][3], WHITE, NAVY);
@@ -226,20 +226,20 @@ async function divider(num, title, items, img) {
     card(s, x, y, w, h, BG);
     T(s, "유학생 신규 입학자", x + 0.3, y + 0.25, w - 0.6, 0.35, { fontSize: 15, bold: true });
     s.addChart(pres.charts.BAR, [{ name: "입학", labels: ["2019", "2025"], values: [66915, 117333] }], {
-      x: x + 0.2, y: y + 0.65, w: w - 0.4, h: 2.75, barDir: "col", chartColors: ["9AA1AC", ORANGE], barGapWidthPct: 60,
+      x: x + 0.2, y: y + 0.65, w: w - 0.4, h: 2.75, barDir: "col", chartColors: ["9AA1AC", ACCENT], barGapWidthPct: 60,
       showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 13, dataLabelFontBold: true, dataLabelColor: NAVY, dataLabelFormatCode: "#,##0",
       catAxisLabelColor: GRAY, catAxisLabelFontSize: 13, valAxisHidden: true, valGridLine: { style: "none" }, catGridLine: { style: "none" },
       showLegend: false, catAxisLineShow: false, dataLabelFontFace: "+mn-lt", catAxisLabelFontFace: "+mn-lt", valAxisMaxVal: 140000,
     });
     // pptxgenjs: invertedColors 대신 단일 시리즈 다색 처리
-    T(s, [{ text: "+75.3%", options: { fontSize: 36, bold: true, color: ORANGE } }, { text: "  2019년 대비", options: { fontSize: 13, color: GRAY } }], x + 0.3, y + 3.55, w - 0.6, 0.8, { valign: "middle" });
+    T(s, [{ text: "+75.3%", options: { fontSize: 36, bold: true, color: ACCENT } }, { text: "  2019년 대비", options: { fontSize: 13, color: GRAY } }], x + 0.3, y + 3.55, w - 0.6, 0.8, { valign: "middle" });
 
     // 카드 2: 414.7%
     x += w + g;
     card(s, x, y, w, h, NAVY);
     T(s, "충북 유학생 입학 증가율", x + 0.3, y + 0.25, w - 0.6, 0.35, { fontSize: 15, bold: true, color: WHITE });
-    T(s, "414.7%", x + 0.3, y + 0.65, w - 0.6, 1.0, { fontSize: 60, bold: true, color: ORANGE, valign: "middle" });
-    pill(s, "전국 시도 중 1위", x + 0.3, y + 1.75, 1.9, 0.38, ORANGE, WHITE, { fs: 12 });
+    T(s, "414.7%", x + 0.3, y + 0.65, w - 0.6, 1.0, { fontSize: 60, bold: true, color: ACCENT, valign: "middle" });
+    pill(s, "전국 시도 중 1위", x + 0.3, y + 1.75, 1.9, 0.38, ACCENT, WHITE, { fs: 12 });
     T(s, "2019년 대비 2025년", x + 2.3, y + 1.75, 1.4, 0.38, { fontSize: 12, color: "C9CED6", valign: "middle" });
     const reg = [["충북", 414.7], ["경북", 305.2], ["전남", 254], ["경기", 140.3]];
     reg.forEach(([n, v], i) => {
@@ -247,25 +247,25 @@ async function divider(num, title, items, img) {
       T(s, n, x + 0.3, ry, 0.6, 0.35, { fontSize: 13, bold: true, color: WHITE, valign: "middle" });
       const bw = 1.9 * v / 414.7;
       s.addShape(pres.shapes.RECTANGLE, { x: x + 0.95, y: ry + 0.07, w: 1.9, h: 0.22, fill: { color: NAVY2 }, line: { color: NAVY2 } });
-      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.95, y: ry + 0.07, w: bw, h: 0.22, fill: { color: i === 0 ? ORANGE : "7A8392" }, line: { color: i === 0 ? ORANGE : "7A8392" } });
-      T(s, (v === 254 ? "254" : v.toFixed(1)) + "%", x + 2.95, ry, 0.75, 0.35, { fontSize: 12, color: i === 0 ? ORANGE : "C9CED6", bold: i === 0, valign: "middle", align: "right" });
+      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.95, y: ry + 0.07, w: bw, h: 0.22, fill: { color: i === 0 ? ACCENT : "7A8392" }, line: { color: i === 0 ? ACCENT : "7A8392" } });
+      T(s, (v === 254 ? "254" : v.toFixed(1)) + "%", x + 2.95, ry, 0.75, 0.35, { fontSize: 12, color: i === 0 ? ACCENT : "C9CED6", bold: i === 0, valign: "middle", align: "right" });
     });
 
     // 카드 3: 10명 중 7명
     x += w + g;
     card(s, x, y, w, h, OTINT);
     T(s, "졸업 후 출국 비율", x + 0.3, y + 0.25, w - 0.6, 0.35, { fontSize: 15, bold: true });
-    T(s, [{ text: "10명 중 ", options: { fontSize: 20, color: NAVY, bold: true } }, { text: "7명", options: { fontSize: 36, color: ORANGE, bold: true } }, { text: " 출국", options: { fontSize: 20, color: NAVY, bold: true } }], x + 0.3, y + 0.65, w - 0.6, 0.75, { valign: "middle" });
+    T(s, [{ text: "10명 중 ", options: { fontSize: 20, color: NAVY, bold: true } }, { text: "7명", options: { fontSize: 36, color: ACCENT, bold: true } }, { text: " 출국", options: { fontSize: 20, color: NAVY, bold: true } }], x + 0.3, y + 0.65, w - 0.6, 0.75, { valign: "middle" });
     for (let i = 0; i < 10; i++) {
       const px = x + 0.3 + (i % 5) * 0.66, py = y + 1.5 + Math.floor(i / 5) * 0.62;
-      s.addImage({ data: await icon("LuUser", i < 7 ? ORANGE : MUTED), x: px, y: py, w: 0.52, h: 0.52 });
+      s.addImage({ data: await icon("LuUser", i < 7 ? ACCENT : MUTED), x: px, y: py, w: 0.52, h: 0.52 });
     }
     [["학사", 71.8], ["석사", 71.3], ["박사", 81.3]].forEach(([n, v], i) => {
       const ry = y + 2.9 + i * 0.5;
       T(s, n, x + 0.3, ry, 0.6, 0.35, { fontSize: 13, bold: true, valign: "middle" });
       s.addShape(pres.shapes.RECTANGLE, { x: x + 0.95, y: ry + 0.07, w: 2.0, h: 0.22, fill: { color: WHITE }, line: { color: WHITE } });
-      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.95, y: ry + 0.07, w: 2.0 * v / 100, h: 0.22, fill: { color: i === 0 ? ORANGE : NAVY }, line: { color: i === 0 ? ORANGE : NAVY } });
-      T(s, v + "%", x + 3.0, ry, 0.6, 0.35, { fontSize: 12, bold: true, color: i === 0 ? ORANGE : NAVY, valign: "middle", align: "right" });
+      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.95, y: ry + 0.07, w: 2.0 * v / 100, h: 0.22, fill: { color: i === 0 ? ACCENT : NAVY }, line: { color: i === 0 ? ACCENT : NAVY } });
+      T(s, v + "%", x + 3.0, ry, 0.6, 0.35, { fontSize: 12, bold: true, color: i === 0 ? ACCENT : NAVY, valign: "middle", align: "right" });
     });
     T(s, "출처: 법무부 출입국·외국인정책본부 「외국인 유학생 체류·정주 현황 분석」(2026. 9. 4.)   |   충북대 유학생 현황: 확인 후 추가", M, 6.7, 12, 0.28, { fontSize: 10, color: MUTED });
   }
@@ -274,7 +274,7 @@ async function divider(num, title, items, img) {
   {
     const s = content("01  제안 개요", "학생 애로사항별 세 가지 지원 축", "비자·채용 정보 부족, 한국식 서류·면접 경험 부족, 채용 기업 접점 부족에 각각 대응");
     T(s, "유학생 애로사항", M, 1.95, 5, 0.35, { fontSize: 13, bold: true, color: GRAY });
-    T(s, "지원 축", 7.2, 1.95, 5, 0.35, { fontSize: 13, bold: true, color: ORANGE });
+    T(s, "지원 축", 7.2, 1.95, 5, 0.35, { fontSize: 13, bold: true, color: ACCENT });
     const rows = [
       ["비자·채용 정보 부족", "E-7·F-2-R 요건과 유학생 채용 기업을 알기 어려움", "LuCircleHelp", "정보", "채용정보 사이트 · 특강 1~3강", "LuInfo"],
       ["서류·면접 경험 부족", "한국식 자기소개서와 면접 방식이 낯섦", "LuFileText", "역량", "특강 4~8강 · 1:1 멘토링", "LuTrendingUp"],
@@ -286,8 +286,8 @@ async function divider(num, title, items, img) {
       await iconCircle(s, M + 0.3, y + 0.25, 0.75, rows[i][2], WHITE, GRAY);
       T(s, rows[i][0], M + 1.3, y + 0.2, 4.3, 0.45, { fontSize: 18, bold: true, valign: "middle" });
       T(s, rows[i][1], M + 1.3, y + 0.68, 4.3, 0.4, { fontSize: 13, color: GRAY, valign: "middle" });
-      chevron(s, 6.6, y + 0.4, 0.35, 0.45, ORANGE);
-      const fill = i === 2 ? ORANGE : NAVY;
+      chevron(s, 6.6, y + 0.4, 0.35, 0.45, ACCENT);
+      const fill = i === 2 ? ACCENT : NAVY;
       card(s, 7.2, y, W - M - 7.2, h, fill, { shadow: true });
       await iconCircle(s, 7.5, y + 0.25, 0.75, rows[i][5], WHITE, fill);
       T(s, rows[i][3], 8.45, y + 0.15, 1.2, h - 0.3, { fontSize: 30, bold: true, color: WHITE, valign: "middle" });
@@ -312,17 +312,17 @@ async function divider(num, title, items, img) {
     });
     s.addShape(pres.shapes.OVAL, { x: cx - R - 0.25, y: cy - R - 0.25, w: 2 * R + 0.5, h: 2 * R + 0.5, fill: { color: OTINT }, line: { color: OTINT } });
     s.addShape(pres.shapes.OVAL, { x: cx - R, y: cy - R, w: 2 * R, h: 2 * R, fill: { color: NAVY }, line: { color: NAVY } });
-    T(s, "03", cx - R, cy - 0.85, 2 * R, 0.35, { fontSize: 14, bold: true, color: ORANGE, align: "center" });
+    T(s, "03", cx - R, cy - 0.85, 2 * R, 0.35, { fontSize: 14, bold: true, color: ACCENT, align: "center" });
     T(s, "채용정보\n사이트", cx - R, cy - 0.5, 2 * R, 1.0, { fontSize: 22, bold: true, color: WHITE, align: "center", valign: "middle" });
     for (const [n, t, d, ic, x, y] of items) {
       card(s, x, y, 3.9, 1.8, BG, { shadow: true });
       await iconCircle(s, x + 0.3, y + 0.3, 0.8, ic);
-      T(s, n, x + 1.3, y + 0.28, 1, 0.3, { fontSize: 13, bold: true, color: ORANGE });
+      T(s, n, x + 1.3, y + 0.28, 1, 0.3, { fontSize: 13, bold: true, color: ACCENT });
       T(s, t, x + 1.3, y + 0.58, 2.5, 0.5, { fontSize: 20, bold: true, valign: "middle" });
       T(s, d, x + 1.3, y + 1.1, 2.5, 0.5, { fontSize: 13, color: GRAY });
     }
     const chips = ["공고", "예약", "이력서", "매칭", "성과"];
-    chips.forEach((c, i) => pill(s, c, cx - 2.35 + i * 0.96, 6.25, 0.86, 0.38, ORANGE, WHITE, { fs: 12 }));
+    chips.forEach((c, i) => pill(s, c, cx - 2.35 + i * 0.96, 6.25, 0.86, 0.38, ACCENT, WHITE, { fs: 12 }));
   }
 
   // ===== 8. 간지 02 =====
@@ -341,9 +341,9 @@ async function divider(num, title, items, img) {
     const bw = 2.85, bh = 2.0;
     for (let i = 0; i < 4; i++) {
       const x = 6.75 + (i % 2) * (bw + 0.28), y = 2.4 + Math.floor(i / 2) * (bh + 0.25);
-      const fill = i === 2 ? ORANGE : BG, dark = i === 2;
+      const fill = i === 2 ? ACCENT : BG, dark = i === 2;
       card(s, x, y, bw, bh, fill, { shadow: true });
-      await iconCircle(s, x + 0.3, y + 0.3, 0.8, biz[i][2], dark ? WHITE : ORANGE, dark ? ORANGE : WHITE);
+      await iconCircle(s, x + 0.3, y + 0.3, 0.8, biz[i][2], dark ? WHITE : ACCENT, dark ? ACCENT : WHITE);
       T(s, biz[i][0], x + 0.3, y + 1.2, bw - 0.5, 0.4, { fontSize: 17, bold: true, color: dark ? WHITE : NAVY });
       T(s, biz[i][1], x + 0.3, y + 1.57, bw - 0.5, 0.35, { fontSize: 13, color: dark ? WHITE : GRAY });
     }
@@ -356,9 +356,9 @@ async function divider(num, title, items, img) {
     card(s, tx, 1.95, 3.8, 1.0, NAVY, { shadow: true });
     T(s, "사업 총괄 책임자", tx, 2.05, 3.8, 0.45, { fontSize: 18, bold: true, color: WHITE, align: "center", valign: "middle" });
     T(s, "성명·직급 확인 필요", tx, 2.48, 3.8, 0.35, { fontSize: 12, color: "C9CED6", align: "center", valign: "middle" });
-    card(s, W - M - 2.9, 2.1, 2.9, 0.7, WHITE, { line: ORANGE, lineW: 1.5 });
-    T(s, [{ text: "발주처  ", options: { color: GRAY } }, { text: "충북대학교", options: { color: ORANGE, bold: true } }], W - M - 2.9, 2.1, 2.9, 0.7, { fontSize: 15, align: "center", valign: "middle" });
-    s.addShape(pres.shapes.LINE, { x: tx + 3.8, y: 2.45, w: W - M - 2.9 - tx - 3.8, h: 0, line: { color: ORANGE, width: 1.5, dashType: "dash" } });
+    card(s, W - M - 2.9, 2.1, 2.9, 0.7, WHITE, { line: ACCENT, lineW: 1.5 });
+    T(s, [{ text: "발주처  ", options: { color: GRAY } }, { text: "충북대학교", options: { color: ACCENT, bold: true } }], W - M - 2.9, 2.1, 2.9, 0.7, { fontSize: 15, align: "center", valign: "middle" });
+    s.addShape(pres.shapes.LINE, { x: tx + 3.8, y: 2.45, w: W - M - 2.9 - tx - 3.8, h: 0, line: { color: ACCENT, width: 1.5, dashType: "dash" } });
     const teams = [
       ["기획·운영팀", ["일정·모집 관리", "현장 운영", "발주처 소통"], "LuClipboardList"],
       ["교육·멘토링팀", ["강사·멘토 섭외", "커리큘럼 관리", "만족도 조사"], "LuPresentation"],
@@ -382,14 +382,14 @@ async function divider(num, title, items, img) {
   // ===== 11. 수행실적 =====
   {
     const s = content("02  제안사 소개", "대학 취업지원 분야 수행실적", "2026년 수행 사업 (실적 명의·연도 확인 후 확정)");
-    const st = [["8", "건", "2026년 수행 사업", NAVY, WHITE, "C9CED6", "LuClipboardCheck"], ["6", "개", "발주 대학", BG, NAVY, GRAY, "LuSchool"], ["1", "건", "유학생 대상 사업", ORANGE, WHITE, WHITE, "LuGlobe"]];
+    const st = [["8", "건", "2026년 수행 사업", NAVY, WHITE, "C9CED6", "LuClipboardCheck"], ["6", "개", "발주 대학", BG, NAVY, GRAY, "LuSchool"], ["1", "건", "유학생 대상 사업", ACCENT, WHITE, WHITE, "LuGlobe"]];
     const sw = 3.0, sh = 1.4;
     for (let i = 0; i < 3; i++) {
       const y = 2.0 + i * (sh + 0.2);
       card(s, M, y, sw, sh, st[i][3], { shadow: true });
       T(s, [{ text: st[i][0], options: { fontSize: 44, bold: true } }, { text: " " + st[i][1], options: { fontSize: 18, bold: true } }], M + 0.3, y + 0.12, 1.9, 0.8, { color: st[i][4], valign: "bottom" });
       T(s, st[i][2], M + 0.3, y + 0.93, 2.4, 0.35, { fontSize: 13, color: st[i][5] });
-      s.addImage({ data: await icon(st[i][6], st[i][4] === WHITE ? WHITE : ORANGE), x: M + sw - 0.85, y: y + 0.3, w: 0.55, h: 0.55, transparency: 0 });
+      s.addImage({ data: await icon(st[i][6], st[i][4] === WHITE ? WHITE : ACCENT), x: M + sw - 0.85, y: y + 0.3, w: 0.55, h: 0.55, transparency: 0 });
     }
     const rows = [
       ["1", "2026", "K-유학생 취업캠프 (RISE 연계)", "한국교통대학교"],
@@ -405,7 +405,7 @@ async function divider(num, title, items, img) {
     const data = [[hd("No"), hd("연도"), hd("사업명"), hd("발주처")]];
     rows.forEach((r, i) => {
       const hl = i === 0;
-      const o = hl ? { fill: { color: OTINT }, bold: true, color: ORANGE } : { fill: { color: i % 2 ? BG : WHITE } };
+      const o = hl ? { fill: { color: OTINT }, bold: true, color: ACCENT } : { fill: { color: i % 2 ? BG : WHITE } };
       data.push(r.map((c, k) => ({ text: hl && k === 2 ? c + "  ★ 유학생" : c, options: { ...o, align: k < 2 ? "center" : "left" } })));
     });
     s.addTable(data, { x: 3.9, y: 2.0, w: W - M - 3.9, colW: [0.6, 0.9, 4.4, 2.93], rowH: 0.5, fontSize: 13, color: NAVY, fontFace: FONT, border: { type: "solid", pt: 0.5, color: LINE }, valign: "middle", margin: [0, 0.12, 0, 0.12] });
@@ -425,15 +425,15 @@ async function divider(num, title, items, img) {
     for (let i = 0; i < 5; i++) {
       const x = M + i * (cw + g);
       card(s, x, y, cw, h, BG, { shadow: true });
-      await iconCircle(s, x + cw / 2 - 0.45, y + 0.3, 0.9, st[i][3], i === 0 ? ORANGE : NAVY);
-      T(s, st[i][0], x, y + 1.3, cw, 0.3, { fontSize: 12, bold: true, color: ORANGE, align: "center" });
+      await iconCircle(s, x + cw / 2 - 0.45, y + 0.3, 0.9, st[i][3], i === 0 ? ACCENT : NAVY);
+      T(s, st[i][0], x, y + 1.3, cw, 0.3, { fontSize: 12, bold: true, color: ACCENT, align: "center" });
       T(s, st[i][1], x, y + 1.58, cw, 0.42, { fontSize: 17, bold: true, align: "center", valign: "middle" });
       T(s, st[i][2], x + 0.1, y + 2.03, cw - 0.2, 0.62, { fontSize: 12, color: GRAY, align: "center" });
-      if (i < 4) chevron(s, x + cw + g / 2 - 0.08, y + h / 2 - 0.15, 0.16, 0.3, ORANGE);
+      if (i < 4) chevron(s, x + cw + g / 2 - 0.08, y + h / 2 - 0.15, 0.16, 0.3, ACCENT);
     }
     card(s, M, 5.15, W - 2 * M, 1.55, NAVY);
-    await iconCircle(s, M + 0.35, 5.5, 0.85, "LuArrowRight", ORANGE);
-    T(s, "충북대 사업에 적용", M + 1.5, 5.32, 6, 0.4, { fontSize: 16, bold: true, color: ORANGE, valign: "middle" });
+    await iconCircle(s, M + 0.35, 5.5, 0.85, "LuArrowRight", ACCENT);
+    T(s, "충북대 사업에 적용", M + 1.5, 5.32, 6, 0.4, { fontSize: 16, bold: true, color: ACCENT, valign: "middle" });
     T(s, "캠프용 진단 플랫폼(camp.jobwave.kr)을 채용정보 사이트로 확장하고, 캠프에서 쓴 멘토링 워크시트와 모의면접 평가표를 1:1 멘토링 교재로 사용합니다.", M + 1.5, 5.75, W - 2 * M - 1.8, 0.8, { fontSize: 15, color: WHITE, valign: "middle" });
   }
 
@@ -449,8 +449,8 @@ async function divider(num, title, items, img) {
     for (let i = 0; i < 4; i++) {
       const y = 2.0 + i * 1.18, x = M, w = 6.6;
       card(s, x, y, w, 1.02, i === 3 ? OTINT : BG);
-      await iconCircle(s, x + 0.22, y + 0.16, 0.7, rows[i][2], i === 3 ? ORANGE : NAVY);
-      T(s, rows[i][0], x + 1.1, y + 0.1, 1.4, 0.82, { fontSize: 16, bold: true, color: i === 3 ? ORANGE : NAVY, valign: "middle" });
+      await iconCircle(s, x + 0.22, y + 0.16, 0.7, rows[i][2], i === 3 ? ACCENT : NAVY);
+      T(s, rows[i][0], x + 1.1, y + 0.1, 1.4, 0.82, { fontSize: 16, bold: true, color: i === 3 ? ACCENT : NAVY, valign: "middle" });
       T(s, rows[i][1], x + 2.4, y + 0.1, w - 2.6, 0.82, { fontSize: 14, valign: "middle" });
     }
     const x0 = 7.6, ow = (W - M - x0 - 0.25) / 2;
@@ -460,12 +460,12 @@ async function divider(num, title, items, img) {
     T(s, [{ text: "4", options: { fontSize: 60, bold: true } }, { text: " 강", options: { fontSize: 20, bold: true } }], x0 + 0.3, 2.85, ow - 0.6, 1.0, { valign: "bottom" });
     T(s, "1·2·4·6강", x0 + 0.3, 3.92, ow - 0.6, 0.35, { fontSize: 13, color: GRAY });
     const x1 = x0 + ow + 0.25;
-    card(s, x1, 2.35, ow, 2.1, ORANGE, { shadow: true });
+    card(s, x1, 2.35, ow, 2.1, ACCENT, { shadow: true });
     T(s, "확장형", x1 + 0.3, 2.5, ow - 0.6, 0.35, { fontSize: 14, bold: true, color: WHITE });
     T(s, [{ text: "8", options: { fontSize: 60, bold: true } }, { text: " 강", options: { fontSize: 20, bold: true } }], x1 + 0.3, 2.85, ow - 0.6, 1.0, { valign: "bottom", color: WHITE });
     T(s, "전체 과정", x1 + 0.3, 3.92, ow - 0.6, 0.35, { fontSize: 13, color: WHITE });
     T(s, "언어", x0, 4.7, 3, 0.35, { fontSize: 14, bold: true, color: GRAY });
-    const lang = [["한국어 진행", "기본 (TOPIK 4급 이상 권장)", NAVY], ["영어 가능 강사", "강의 단가 소폭 증가", ORANGE], ["통역", "별도 예산 (언어·시간 단위 견적)", ORANGE]];
+    const lang = [["한국어 진행", "기본 (TOPIK 4급 이상 권장)", NAVY], ["영어 가능 강사", "강의 단가 소폭 증가", ACCENT], ["통역", "별도 예산 (언어·시간 단위 견적)", ACCENT]];
     lang.forEach(([a, b, c], i) => {
       const y = 5.1 + i * 0.55;
       pill(s, a, x0, y, 1.75, 0.42, i === 0 ? NAVY : WHITE, i === 0 ? WHITE : NAVY, { fs: 12, line: i === 0 ? NAVY : "C9CED6" });
@@ -488,16 +488,16 @@ async function divider(num, title, items, img) {
       const x = M + c * (cw + g);
       const dark = c >= 2;
       card(s, x, 1.9, cw, 0.72, hdFill[c]);
-      T(s, cols[c][0], x + 0.25, 1.9, 1.2, 0.72, { fontSize: 12, bold: true, color: ORANGE, valign: "middle" });
+      T(s, cols[c][0], x + 0.25, 1.9, 1.2, 0.72, { fontSize: 12, bold: true, color: dark ? "F2A6BC" : ACCENT, valign: "middle" });
       T(s, cols[c][1], x + 1.25, 1.9, cw - 1.45, 0.72, { fontSize: 22, bold: true, color: dark ? WHITE : NAVY, valign: "middle", align: "right" });
       cols[c][2].forEach((L, k) => {
         const y = 2.75 + k * 1.37, h = 1.25;
-        card(s, x, y, cw, h, L[1] ? OTINT : BG, { line: L[1] ? "F6C3B2" : BG });
+        card(s, x, y, cw, h, L[1] ? OTINT : BG, { line: L[1] ? "E9B8C7" : BG });
         T(s, L[0], x + 0.18, y + 0.1, 0.8, 0.3, { fontSize: 12, bold: true, color: GRAY });
-        if (L[1]) pill(s, "기본", x + cw - 0.8, y + 0.1, 0.62, 0.28, ORANGE, WHITE, { fs: 10 });
+        if (L[1]) pill(s, "기본", x + cw - 0.8, y + 0.1, 0.62, 0.28, ACCENT, WHITE, { fs: 10 });
         T(s, L[2], x + 0.18, y + 0.38, cw - 0.3, 0.32, { fontSize: 14, bold: true });
         T(s, L[3], x + 0.18, y + 0.68, cw - 0.3, 0.25, { fontSize: 10.5, color: GRAY });
-        T(s, "→ " + L[4], x + 0.18, y + 0.92, cw - 0.3, 0.26, { fontSize: 11, bold: true, color: ORANGE });
+        T(s, "→ " + L[4], x + 0.18, y + 0.92, cw - 0.3, 0.26, { fontSize: 11, bold: true, color: ACCENT });
       });
     }
   }
@@ -507,7 +507,7 @@ async function divider(num, title, items, img) {
     const s = content(C1, "특강 결과물의 후속 프로그램 연계", "강의 중 작성한 결과물을 멘토링 첨삭과 잡페어 지원 서류로 사용");
     const fl = [["강의", "채용 정보·개념"], ["실습", "현장 작성·응시"], ["저장", "개인별 사이트 저장"], ["멘토링", "결과물 기반 첨삭"], ["잡페어", "지원 서류로 활용"]];
     const cw = 2.45, ov = 0.2;
-    const fills = ["C9CED6", "9AA1AC", NAVY2, NAVY, ORANGE];
+    const fills = ["C9CED6", "9AA1AC", NAVY2, NAVY, ACCENT];
     fl.forEach(([a, b], i) => {
       const x = M + i * (cw - ov + 0.05);
       s.addShape(i === 0 ? pres.shapes.PENTAGON : pres.shapes.CHEVRON, { x, y: 1.95, w: cw, h: 1.15, fill: { color: fills[i] }, line: { color: WHITE, width: 2 } });
@@ -522,12 +522,12 @@ async function divider(num, title, items, img) {
       const x = M + (i % 4) * (gw + gg), y = 3.9 + Math.floor(i / 4) * (gh + 0.2);
       const hl = i === 3 || i === 5;
       card(s, x, y, gw, gh, hl ? OTINT : BG);
-      await iconCircle(s, x + 0.25, y + 0.3, 0.7, it[i][2], hl ? ORANGE : NAVY);
-      T(s, it[i][0], x + 1.1, y + 0.25, 1, 0.3, { fontSize: 12, bold: true, color: ORANGE });
+      await iconCircle(s, x + 0.25, y + 0.3, 0.7, it[i][2], hl ? ACCENT : NAVY);
+      T(s, it[i][0], x + 1.1, y + 0.25, 1, 0.3, { fontSize: 12, bold: true, color: ACCENT });
       T(s, it[i][1], x + 1.1, y + 0.55, gw - 1.2, 0.5, { fontSize: 15, bold: true, valign: "middle" });
     }
     const x = M + 3 * (gw + gg), y = 3.9 + gh + 0.2;
-    card(s, x, y, gw, gh, ORANGE, { shadow: true });
+    card(s, x, y, gw, gh, ACCENT, { shadow: true });
     T(s, "자소서 초안과 평가표는\n멘토링 2·3회차 교재로\n그대로 사용", x + 0.25, y + 0.1, gw - 0.5, gh - 0.2, { fontSize: 13, bold: true, color: WHITE, valign: "middle" });
   }
 
@@ -539,9 +539,9 @@ async function divider(num, title, items, img) {
     await photo(s, "mentoring", M + 7.6 + 0.3, 1.95, W - 2 * M - 7.9, 1.45, 0.35);
     stat(s, M, 1.95, sw, 1.45, "1", "명", "전문멘토", BG, NAVY, GRAY);
     stat(s, M + sw + 0.3, 1.95, sw, 1.45, "1", "시간", "학생 1인당", BG, NAVY, GRAY);
-    stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.45, "7", "명", "하루 최대", ORANGE, WHITE, WHITE);
+    stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.45, "7", "명", "하루 최대", ACCENT, WHITE, WHITE);
     const mw = (W - 2 * M - 0.3) / 2;
-    const mo = [["오프라인", "충북대 교내 상담 공간 (대학 협조)", ["표정·태도까지 보는 대면 피드백", "서류 출력본 첨삭"], "LuBuilding", NAVY], ["온라인", "Zoom 화상 멘토링", ["시험 기간·원거리에도 참여", "화면 공유로 서류 동시 첨삭"], "LuVideo", ORANGE]];
+    const mo = [["오프라인", "충북대 교내 상담 공간 (대학 협조)", ["표정·태도까지 보는 대면 피드백", "서류 출력본 첨삭"], "LuBuilding", NAVY], ["온라인", "Zoom 화상 멘토링", ["시험 기간·원거리에도 참여", "화면 공유로 서류 동시 첨삭"], "LuVideo", ACCENT]];
     for (let i = 0; i < 2; i++) {
       const x = M + i * (mw + 0.3), y = 3.65, h = 2.2;
       card(s, x, y, mw, h, BG, { shadow: true });
@@ -551,10 +551,10 @@ async function divider(num, title, items, img) {
       T(s, mo[i][2].map((b, k) => ({ text: b, options: { bullet: true, breakLine: k < 1 } })), x + 1.6, y + 1.3, mw - 1.8, 0.8, { fontSize: 14, paraSpaceAfter: 4 });
     }
     card(s, M, 6.1, W - 2 * M, 0.75, NAVY);
-    T(s, "구성 옵션", M + 0.3, 6.1, 1.3, 0.75, { fontSize: 14, bold: true, color: ORANGE, valign: "middle" });
+    T(s, "구성 옵션", M + 0.3, 6.1, 1.3, 0.75, { fontSize: 14, bold: true, color: ACCENT, valign: "middle" });
     pill(s, "기본형", M + 1.65, 6.28, 0.95, 0.38, WHITE, NAVY, { fs: 12 });
     T(s, "오프라인, 1인 2회 (진단·서류)", M + 2.75, 6.1, 3.3, 0.75, { fontSize: 13, color: WHITE, valign: "middle" });
-    pill(s, "확장형", M + 6.2, 6.28, 0.95, 0.38, ORANGE, WHITE, { fs: 12 });
+    pill(s, "확장형", M + 6.2, 6.28, 0.95, 0.38, ACCENT, WHITE, { fs: 12 });
     T(s, "오프라인과 온라인, 1인 3회 (진단·서류·모의면접)", M + 7.3, 6.1, 4.8, 0.75, { fontSize: 13, color: WHITE, valign: "middle" });
   }
 
@@ -571,14 +571,14 @@ async function divider(num, title, items, img) {
       const x = M + i * (cw + 0.4);
       const [n, lab, t, bl, out, fill, tc, ic] = ss[i];
       card(s, x, y, cw, h, fill, { shadow: true });
-      T(s, n, x + 0.3, y + 0.1, 1.2, 1.3, { fontSize: 80, bold: true, color: i === 2 ? ORANGE : "C9CED6", valign: "middle" });
-      await iconCircle(s, x + cw - 1.1, y + 0.35, 0.8, ic, i === 2 ? ORANGE : NAVY);
-      T(s, lab, x + 0.35, y + 1.45, 2, 0.3, { fontSize: 13, bold: true, color: ORANGE });
+      T(s, n, x + 0.3, y + 0.1, 1.2, 1.3, { fontSize: 80, bold: true, color: i === 2 ? ACCENT : "C9CED6", valign: "middle" });
+      await iconCircle(s, x + cw - 1.1, y + 0.35, 0.8, ic, i === 2 ? ACCENT : NAVY);
+      T(s, lab, x + 0.35, y + 1.45, 2, 0.3, { fontSize: 13, bold: true, color: ACCENT });
       T(s, t, x + 0.35, y + 1.75, cw - 0.6, 0.5, { fontSize: 22, bold: true, color: tc, valign: "middle" });
       T(s, bl.map((b, k) => ({ text: b, options: { bullet: true, breakLine: k < 2 } })), x + 0.35, y + 2.45, cw - 0.6, 1.3, { fontSize: 14, color: i === 2 ? "E6E8EC" : NAVY2, paraSpaceAfter: 6 });
-      card(s, x + 0.3, y + h - 0.95, cw - 0.6, 0.65, i === 2 ? ORANGE : WHITE, { r: 0.1 });
+      card(s, x + 0.3, y + h - 0.95, cw - 0.6, 0.65, i === 2 ? ACCENT : WHITE, { r: 0.1 });
       T(s, [{ text: "산출물   ", options: { fontSize: 12, color: i === 2 ? WHITE : GRAY } }, { text: out, options: { fontSize: 16, bold: true, color: i === 2 ? WHITE : NAVY } }], x + 0.5, y + h - 0.95, cw - 1, 0.65, { valign: "middle" });
-      if (i < 2) chevron(s, x + cw + 0.1, y + h / 2 - 0.15, 0.2, 0.3, ORANGE);
+      if (i < 2) chevron(s, x + cw + 0.1, y + h / 2 - 0.15, 0.2, 0.3, ACCENT);
     }
   }
 
@@ -590,11 +590,11 @@ async function divider(num, title, items, img) {
     for (let i = 0; i < 4; i++) {
       const x = M + i * step;
       card(s, x + 0.05, 2.0, step - 0.25, 2.0, BG);
-      await iconCircle(s, x + (step - 0.2) / 2 - 0.4, 2.25, 0.8, fl[i][1], i === 3 ? ORANGE : NAVY);
+      await iconCircle(s, x + (step - 0.2) / 2 - 0.4, 2.25, 0.8, fl[i][1], i === 3 ? ACCENT : NAVY);
       T(s, fl[i][0], x + 0.1, 3.2, step - 0.35, 0.6, { fontSize: 14, bold: true, align: "center", valign: "middle" });
-      if (i < 3) chevron(s, x + step - 0.17, 2.85, 0.13, 0.3, ORANGE);
+      if (i < 3) chevron(s, x + step - 0.17, 2.85, 0.13, 0.3, ACCENT);
     }
-    const info = [["노쇼 대응", "취소·불참 시 대기자에게 자동으로 슬롯 배정", "LuRefreshCw", OTINT, ORANGE], ["회차별 방식 선택 (확장형)", "1회차 오프라인, 2~3회차 온라인처럼 혼합 참여", "LuShuffle", BG, NAVY]];
+    const info = [["노쇼 대응", "취소·불참 시 대기자에게 자동으로 슬롯 배정", "LuRefreshCw", OTINT, ACCENT], ["회차별 방식 선택 (확장형)", "1회차 오프라인, 2~3회차 온라인처럼 혼합 참여", "LuShuffle", BG, NAVY]];
     for (let i = 0; i < 2; i++) {
       const y = 4.3 + i * 1.25;
       card(s, M, y, lw - 0.2, 1.1, info[i][3]);
@@ -612,7 +612,7 @@ async function divider(num, title, items, img) {
       T(s, l, bx + bw - 1.6, y, 1.25, 0.62, { fontSize: 13, color: "C9CED6", align: "right", valign: "middle" });
     });
     s.addShape(pres.shapes.LINE, { x: bx + 0.35, y: 4.95, w: bw - 0.7, h: 0, line: { color: "4A5466", width: 1 } });
-    T(s, [{ text: "약 ", options: { fontSize: 24, bold: true } }, { text: "9", options: { fontSize: 60, bold: true } }, { text: " 일", options: { fontSize: 24, bold: true } }], bx + 0.35, 5.0, bw - 0.7, 1.15, { color: ORANGE, valign: "middle" });
+    T(s, [{ text: "약 ", options: { fontSize: 24, bold: true } }, { text: "9", options: { fontSize: 60, bold: true } }, { text: " 일", options: { fontSize: 24, bold: true } }], bx + 0.35, 5.0, bw - 0.7, 1.15, { color: ACCENT, valign: "middle" });
     T(s, "확장형 기준 · 인원은 협의 후 확정", bx + 0.35, 6.2, bw - 0.7, 0.35, { fontSize: 11, color: "C9CED6" });
   }
 
@@ -620,10 +620,10 @@ async function divider(num, title, items, img) {
   const C3 = "03  프로그램 제안  /  03 채용정보 사이트";
   {
     const s = content(C3, "맞춤 채용정보 사이트 (가칭 CBNU K-Job Hub)", "유학생·기업·대학 관리자별 기능 제공");
-    ["한국어", "English", "中文", "Tiếng Việt"].forEach((l, i) => pill(s, l, 5.05 + i * 1.25, 1.42, 1.12, 0.34, i === 0 ? ORANGE : OTINT, i === 0 ? WHITE : ORANGE, { fs: 12 }));
+    ["한국어", "English", "中文", "Tiếng Việt"].forEach((l, i) => pill(s, l, 5.05 + i * 1.25, 1.42, 1.12, 0.34, i === 0 ? ACCENT : OTINT, i === 0 ? WHITE : ACCENT, { fs: 12 }));
     const cols = [
       ["01", "유학생", "LuGraduationCap", NAVY, [["비자·언어·지역·직무 공고 필터", "LuFilter"], ["한국형 이력서 빌더", "LuIdCard"], ["프로그램 신청·멘토링 예약", "LuCalendarCheck"], ["QR 출석 체크", "LuQrCode"]]],
-      ["02", "기업", "LuBuilding2", ORANGE, [["동의한 유학생 이력서 열람", "LuEye"], ["잡페어 참가 신청", "LuClipboardList"], ["면접 요청·일정 확정", "LuSend"]]],
+      ["02", "기업", "LuBuilding2", ACCENT, [["동의한 유학생 이력서 열람", "LuEye"], ["잡페어 참가 신청", "LuClipboardList"], ["면접 요청·일정 확정", "LuSend"]]],
       ["03", "대학 관리자", "LuSchool", NAVY2, [["참여·출석 통계", "LuChartBar"], ["만족도 결과", "LuCircleCheck"], ["취업 성과 대시보드", "LuTrendingUp"]]],
     ];
     const cw = (W - 2 * M - 0.6) / 3;
@@ -634,7 +634,7 @@ async function divider(num, title, items, img) {
       card(s, x, y, cw, 1.2, col);
       s.addShape(pres.shapes.RECTANGLE, { x, y: y + 1.0, w: cw, h: 0.2, fill: { color: col }, line: { color: col } });
       await iconCircle(s, x + 0.3, y + 0.2, 0.8, ic, WHITE, col);
-      T(s, n, x + 1.3, y + 0.2, 1, 0.3, { fontSize: 12, bold: true, color: c === 1 ? WHITE : ORANGE });
+      T(s, n, x + 1.3, y + 0.2, 1, 0.3, { fontSize: 12, bold: true, color: c === 1 ? WHITE : ACCENT });
       T(s, t, x + 1.3, y + 0.48, cw - 1.5, 0.5, { fontSize: 22, bold: true, color: WHITE, valign: "middle" });
       for (let k = 0; k < feats.length; k++) {
         const fy = y + 1.45 + k * 0.82;
@@ -659,13 +659,13 @@ async function divider(num, title, items, img) {
     // 1. 공고 필터
     let x = M;
     frame(x, "01  맞춤 공고 필터");
-    [["E-7 가능", ORANGE, WHITE], ["한국어 중급", NAVY, WHITE], ["충북", WHITE, NAVY], ["해외영업", WHITE, NAVY]].forEach(([t, f, c], i) => pill(s, t, x + 0.25 + (i % 2) * ((fw - 0.6) / 2 + 0.1), fy + 0.6 + Math.floor(i / 2) * 0.45, (fw - 0.6) / 2, 0.35, f, c, { fs: 11, line: f === WHITE ? "C9CED6" : f }));
+    [["E-7 가능", ACCENT, WHITE], ["한국어 중급", NAVY, WHITE], ["충북", WHITE, NAVY], ["해외영업", WHITE, NAVY]].forEach(([t, f, c], i) => pill(s, t, x + 0.25 + (i % 2) * ((fw - 0.6) / 2 + 0.1), fy + 0.6 + Math.floor(i / 2) * 0.45, (fw - 0.6) / 2, 0.35, f, c, { fs: 11, line: f === WHITE ? "C9CED6" : f }));
     for (let i = 0; i < 4; i++) {
       const ry = fy + 1.65 + i * 0.62;
       card(s, x + 0.25, ry, fw - 0.5, 0.5, BG, { r: 0.06 });
       s.addShape(pres.shapes.RECTANGLE, { x: x + 0.4, y: ry + 0.12, w: 2.0, h: 0.1, fill: { color: NAVY }, line: { color: NAVY } });
       s.addShape(pres.shapes.RECTANGLE, { x: x + 0.4, y: ry + 0.3, w: 1.3, h: 0.07, fill: { color: "C9CED6" }, line: { color: "C9CED6" } });
-      T(s, "보기", x + fw - 0.95, ry, 0.55, 0.5, { fontSize: 11, bold: true, color: ORANGE, valign: "middle", align: "right" });
+      T(s, "보기", x + fw - 0.95, ry, 0.55, 0.5, { fontSize: 11, bold: true, color: ACCENT, valign: "middle", align: "right" });
     }
     // 2. 예약
     x = M + fw + 0.4;
@@ -675,10 +675,10 @@ async function divider(num, title, items, img) {
     const cs = (fw - 0.5) / 5;
     for (let i = 0; i < 20; i++) {
       const cx = x + 0.25 + (i % 5) * cs, cy = fy + 1.0 + Math.floor(i / 5) * 0.52;
-      const f = filled.includes(i) ? NAVY : i === 8 ? ORANGE : BG;
+      const f = filled.includes(i) ? NAVY : i === 8 ? ACCENT : BG;
       s.addShape(pres.shapes.RECTANGLE, { x: cx + 0.03, y: cy + 0.03, w: cs - 0.06, h: 0.46, fill: { color: f }, line: { color: WHITE } });
     }
-    card(s, x + 0.25, fy + 3.2, fw - 0.5, 0.55, ORANGE, { r: 0.08 });
+    card(s, x + 0.25, fy + 3.2, fw - 0.5, 0.55, ACCENT, { r: 0.08 });
     T(s, "예약하기", x + 0.25, fy + 3.2, fw - 0.5, 0.55, { fontSize: 14, bold: true, color: WHITE, align: "center", valign: "middle" });
     // 3. 대시보드 (네이티브 차트)
     x = M + 2 * (fw + 0.4);
@@ -692,14 +692,14 @@ async function divider(num, title, items, img) {
     const bars = [0.35, 0.6, 0.5, 0.8, 0.7, 1.0];
     bars.forEach((v, i) => {
       const bwid = (fw - 0.7) / 6, bh = 2.3 * v;
-      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.35 + i * bwid + 0.05, y: fy + 4.0 - bh, w: bwid - 0.1, h: bh, fill: { color: i === 5 ? ORANGE : "C9CED6" }, line: { color: i === 5 ? ORANGE : "C9CED6" } });
+      s.addShape(pres.shapes.RECTANGLE, { x: x + 0.35 + i * bwid + 0.05, y: fy + 4.0 - bh, w: bwid - 0.1, h: bh, fill: { color: i === 5 ? ACCENT : "C9CED6" }, line: { color: i === 5 ? ACCENT : "C9CED6" } });
     });
   }
 
   // ===== 22. 사이트 운영 =====
   {
     const s = content(C3, "사이트 운영 방식과 구성 옵션", "주 1회 공고 갱신, 동의 기반 이력서 공개, 사업 종료 후 대학 이관");
-    const f = [["채용정보 큐레이션", "공공 채용정보와 직접 발굴한 기업 공고를 주 1회 갱신", "LuRefreshCw", NAVY], ["동의 기반 공개", "이력서는 학생이 동의한 기업에만 공개", "LuShieldCheck", ORANGE], ["대학 이관", "사업 종료 후 운영 매뉴얼과 함께 대학에 이관", "LuHouse", NAVY2]];
+    const f = [["채용정보 큐레이션", "공공 채용정보와 직접 발굴한 기업 공고를 주 1회 갱신", "LuRefreshCw", NAVY], ["동의 기반 공개", "이력서는 학생이 동의한 기업에만 공개", "LuShieldCheck", ACCENT], ["대학 이관", "사업 종료 후 운영 매뉴얼과 함께 대학에 이관", "LuHouse", NAVY2]];
     for (let i = 0; i < 3; i++) {
       const y = 2.0 + i * 1.6;
       card(s, M, y, 5.6, 1.4, BG, { shadow: true });
@@ -708,9 +708,9 @@ async function divider(num, title, items, img) {
       T(s, f[i][1], M + 1.35, y + 0.68, 4.05, 0.55, { fontSize: 13, color: GRAY });
     }
     const rows = [["다국어 공고 게시·필터", 1, 1], ["프로그램 신청·QR 출석", 1, 1], ["멘토링 예약", 1, 1], ["한국형 이력서 빌더", 0, 1], ["기업 매칭·면접 요청", 0, 1], ["관리자 대시보드", 0, 1]];
-    const mk = (v) => ({ text: v ? "●" : "–", options: { color: v ? ORANGE : "C9CED6", align: "center", fontSize: v ? 18 : 16, bold: true } });
-    const data = [[{ text: "기능", options: { bold: true, color: WHITE, fill: { color: NAVY } } }, { text: "기본형", options: { bold: true, color: WHITE, fill: { color: NAVY }, align: "center" } }, { text: "확장형", options: { bold: true, color: WHITE, fill: { color: ORANGE }, align: "center" } }]];
-    rows.forEach((r, i) => data.push([{ text: r[0], options: { fill: { color: i % 2 ? BG : WHITE } } }, { ...mk(r[1]), options: { ...mk(r[1]).options, fill: { color: i % 2 ? BG : WHITE } } }, { ...mk(r[2]), options: { ...mk(r[2]).options, fill: { color: i % 2 ? OTINT : "FEF6F3" } } }]));
+    const mk = (v) => ({ text: v ? "●" : "–", options: { color: v ? ACCENT : "C9CED6", align: "center", fontSize: v ? 18 : 16, bold: true } });
+    const data = [[{ text: "기능", options: { bold: true, color: WHITE, fill: { color: NAVY } } }, { text: "기본형", options: { bold: true, color: WHITE, fill: { color: NAVY }, align: "center" } }, { text: "확장형", options: { bold: true, color: WHITE, fill: { color: ACCENT }, align: "center" } }]];
+    rows.forEach((r, i) => data.push([{ text: r[0], options: { fill: { color: i % 2 ? BG : WHITE } } }, { ...mk(r[1]), options: { ...mk(r[1]).options, fill: { color: i % 2 ? BG : WHITE } } }, { ...mk(r[2]), options: { ...mk(r[2]).options, fill: { color: i % 2 ? OTINT : "FBF1F4" } } }]));
     s.addTable(data, { x: 6.6, y: 2.0, w: W - M - 6.6, colW: [3.13, 1.5, 1.5], rowH: 0.64, fontSize: 14, color: NAVY, fontFace: FONT, border: { type: "solid", pt: 0.5, color: LINE }, valign: "middle", margin: [0, 0.12, 0, 0.2] });
   }
 
@@ -719,13 +719,13 @@ async function divider(num, title, items, img) {
   {
     const s = content(C4, "인사담당자 상담 개요", "외국인 채용 경험이 있는 기업 인사담당자만 멘토로 섭외");
     card(s, M, 1.95, 4.75, 2.45, NAVY, { shadow: true });
-    T(s, [{ text: "유학생을 실제로 뽑아 본\n인사담당자에게 직접 듣는\n", options: { color: WHITE } }, { text: "채용 기준", options: { color: ORANGE } }], M + 0.35, 2.1, 4.2, 2.15, { fontSize: 22, bold: true, valign: "middle" });
+    T(s, [{ text: "유학생을 실제로 뽑아 본\n인사담당자에게 직접 듣는\n", options: { color: WHITE } }, { text: "채용 기준", options: { color: ACCENT } }], M + 0.35, 2.1, 4.2, 2.15, { fontSize: 22, bold: true, valign: "middle" });
     await photo(s, "hr", M + 4.9, 1.95, 2.3, 2.45);
     const pts = [["01", "실제 채용 기준을 직접 설명", "LuMessagesSquare"], ["02", "기업이 망설이는 이유까지 공유", "LuCircleHelp"], ["03", "잡페어 참여 기업 발굴로 연결", "LuLink"]];
     for (let i = 0; i < 3; i++) {
       const x = M + i * 2.45, y = 4.6;
       card(s, x, y, 2.3, 2.1, BG);
-      await iconCircle(s, x + 0.25, y + 0.25, 0.7, pts[i][2], ORANGE);
+      await iconCircle(s, x + 0.25, y + 0.25, 0.7, pts[i][2], ACCENT);
       T(s, pts[i][0], x + 1.6, y + 0.3, 0.5, 0.3, { fontSize: 13, bold: true, color: MUTED, align: "right" });
       T(s, pts[i][1], x + 0.25, y + 1.1, 1.9, 0.85, { fontSize: 14, bold: true, valign: "middle" });
     }
@@ -735,7 +735,7 @@ async function divider(num, title, items, img) {
     T(s, "기본형", x0 + 0.3, 2.5, 2, 0.35, { fontSize: 14, bold: true, color: GRAY });
     T(s, "1회 운영", x0 + 0.3, 2.85, 2, 0.4, { fontSize: 18, bold: true });
     T(s, [{ text: "3", options: { fontSize: 60, bold: true } }, { text: " 명", options: { fontSize: 20, bold: true } }], x0 + 1.8, 2.5, ow - 2.1, 1.7, { align: "right", valign: "middle" });
-    card(s, x0, 4.55, ow, 2.0, ORANGE, { shadow: true });
+    card(s, x0, 4.55, ow, 2.0, ACCENT, { shadow: true });
     T(s, "확장형", x0 + 0.3, 4.7, 2, 0.35, { fontSize: 14, bold: true, color: WHITE });
     T(s, "2회 운영", x0 + 0.3, 5.05, 2, 0.4, { fontSize: 18, bold: true, color: WHITE });
     T(s, [{ text: "5", options: { fontSize: 60, bold: true } }, { text: " 명", options: { fontSize: 20, bold: true } }], x0 + 1.8, 4.7, ow - 2.1, 1.7, { align: "right", valign: "middle", color: WHITE });
@@ -752,20 +752,20 @@ async function divider(num, title, items, img) {
       for (let k = 0; k < 5; k++) {
         const a = -Math.PI / 2 + (k * 2 * Math.PI) / 5;
         const px = cxs[i] + Math.cos(a) * R - 0.2, py = cy + Math.sin(a) * R - 0.2;
-        s.addShape(pres.shapes.OVAL, { x: px, y: py, w: 0.4, h: 0.4, fill: { color: WHITE }, line: { color: i === 1 ? ORANGE : NAVY, width: 1.5 } });
-        s.addImage({ data: await icon("LuUser", i === 1 ? ORANGE : NAVY), x: px + 0.08, y: py + 0.08, w: 0.24, h: 0.24 });
+        s.addShape(pres.shapes.OVAL, { x: px, y: py, w: 0.4, h: 0.4, fill: { color: WHITE }, line: { color: i === 1 ? ACCENT : NAVY, width: 1.5 } });
+        s.addImage({ data: await icon("LuUser", i === 1 ? ACCENT : NAVY), x: px + 0.08, y: py + 0.08, w: 0.24, h: 0.24 });
       }
-      const f = i === 1 ? ORANGE : NAVY;
+      const f = i === 1 ? ACCENT : NAVY;
       s.addShape(pres.shapes.OVAL, { x: cxs[i] - r, y: cy - r, w: 2 * r, h: 2 * r, fill: { color: f }, line: { color: f } });
       T(s, "인사담당자\n" + lbl[i], cxs[i] - r, cy - r, 2 * r, 2 * r, { fontSize: 14, bold: true, color: WHITE, align: "center", valign: "middle" });
       if (i < 2) {
         const ax = cxs[i] + R + 0.4, aw = cxs[i + 1] - cxs[i] - 2 * R - 0.8;
         arrowR(s, ax, cy, aw);
-        pill(s, "40분", ax + aw / 2 - 0.45, cy - 0.55, 0.9, 0.36, ORANGE, WHITE, { fs: 12 });
+        pill(s, "40분", ax + aw / 2 - 0.45, cy - 0.55, 0.9, 0.36, ACCENT, WHITE, { fs: 12 });
       }
     }
-    T(s, [{ text: "진행 시간표", options: { bold: true } }, { text: "   총 140분", options: { color: ORANGE, bold: true } }], M, 5.2, 6, 0.35, { fontSize: 14 });
-    const segs = [["10분", "오리엔테이션", 10, "C9CED6", NAVY], ["40분", "라운드 1", 40, NAVY, WHITE], ["40분", "라운드 2", 40, ORANGE, WHITE], ["40분", "라운드 3", 40, NAVY, WHITE], ["10분", "마무리·설문", 10, "C9CED6", NAVY]];
+    T(s, [{ text: "진행 시간표", options: { bold: true } }, { text: "   총 140분", options: { color: ACCENT, bold: true } }], M, 5.2, 6, 0.35, { fontSize: 14 });
+    const segs = [["10분", "오리엔테이션", 10, "C9CED6", NAVY], ["40분", "라운드 1", 40, NAVY, WHITE], ["40분", "라운드 2", 40, ACCENT, WHITE], ["40분", "라운드 3", 40, NAVY, WHITE], ["10분", "마무리·설문", 10, "C9CED6", NAVY]];
     const tw = W - 2 * M;
     let x = M;
     segs.forEach(([a, b, m, f, c]) => {
@@ -785,18 +785,18 @@ async function divider(num, title, items, img) {
     q.forEach((t, i) => {
       const y = 1.95 + i * 0.95;
       card(s, M, y, 7.0, 0.8, BG);
-      card(s, M, y, 1.0, 0.8, i % 2 ? NAVY : ORANGE);
-      s.addShape(pres.shapes.RECTANGLE, { x: M + 0.8, y, w: 0.2, h: 0.8, fill: { color: i % 2 ? NAVY : ORANGE }, line: { color: i % 2 ? NAVY : ORANGE } });
+      card(s, M, y, 1.0, 0.8, i % 2 ? NAVY : ACCENT);
+      s.addShape(pres.shapes.RECTANGLE, { x: M + 0.8, y, w: 0.2, h: 0.8, fill: { color: i % 2 ? NAVY : ACCENT }, line: { color: i % 2 ? NAVY : ACCENT } });
       T(s, "Q" + (i + 1), M, y, 1.0, 0.8, { fontSize: 20, bold: true, color: WHITE, align: "center", valign: "middle" });
       T(s, t, M + 1.3, y, 5.5, 0.8, { fontSize: 16, bold: true, valign: "middle" });
     });
     const x0 = 8.2, w0 = W - M - x0;
-    T(s, "산출물 · 인사담당자 Q&A 카드", x0, 1.95, w0, 0.35, { fontSize: 14, bold: true, color: ORANGE });
+    T(s, "산출물 · 인사담당자 Q&A 카드", x0, 1.95, w0, 0.35, { fontSize: 14, bold: true, color: ACCENT });
     // 카드 스택
     card(s, x0 + 0.3, 2.45, w0 - 0.3, 3.2, "C9CED6", { r: 0.12 });
     card(s, x0 + 0.15, 2.6, w0 - 0.3, 3.2, "E1E4E9", { r: 0.12 });
     card(s, x0, 2.75, w0 - 0.3, 3.2, WHITE, { line: NAVY, lineW: 1.5, shadow: true, r: 0.12 });
-    pill(s, "Q2", x0 + 0.3, 3.0, 0.7, 0.4, ORANGE, WHITE, { fs: 14 });
+    pill(s, "Q2", x0 + 0.3, 3.0, 0.7, 0.4, ACCENT, WHITE, { fs: 14 });
     T(s, "기업명 · 담당 직무", x0 + 1.15, 3.0, 2.7, 0.4, { fontSize: 13, color: GRAY, valign: "middle" });
     s.addShape(pres.shapes.RECTANGLE, { x: x0 + 0.3, y: 3.7, w: w0 - 0.95, h: 0.14, fill: { color: NAVY }, line: { color: NAVY } });
     [0.9, 0.75, 0.85, 0.5].forEach((p, i) => s.addShape(pres.shapes.RECTANGLE, { x: x0 + 0.3, y: 4.1 + i * 0.32, w: (w0 - 0.95) * p, h: 0.1, fill: { color: "C9CED6" }, line: { color: "C9CED6" } }));
@@ -809,7 +809,7 @@ async function divider(num, title, items, img) {
   {
     const s = content(C5, "소규모 잡페어 개요", "유학생 채용 의향이 있는 기업 5개사 내외, 유학생 30~40명 규모");
     const sw = (W - 2 * M - 0.6) / 3;
-    stat(s, M, 1.95, sw, 1.7, "5", "개사", "참여 기업 · 기본형 3개사", ORANGE, WHITE, WHITE);
+    stat(s, M, 1.95, sw, 1.7, "5", "개사", "참여 기업 · 기본형 3개사", ACCENT, WHITE, WHITE);
     stat(s, M + sw + 0.3, 1.95, sw, 1.7, "30~40", "명", "참여 유학생 · 사전 서류 등록자", NAVY, WHITE, "C9CED6");
     stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.7, "사전", "매칭", "행사 전 서류 검토·면접 일정 확정", BG, NAVY, GRAY);
     T(s, "기업 발굴 기준", M + 4.2, 3.95, 4, 0.38, { fontSize: 16, bold: true });
@@ -819,7 +819,7 @@ async function divider(num, title, items, img) {
     for (let i = 0; i < 3; i++) {
       const x = M + 4.2 + i * (cw3 + 0.3), y = 4.45;
       card(s, x, y, cw3, 2.25, BG, { shadow: true });
-      await iconCircle(s, x + 0.25, y + 0.25, 0.75, cr[i][2], i === 0 ? ORANGE : NAVY);
+      await iconCircle(s, x + 0.25, y + 0.25, 0.75, cr[i][2], i === 0 ? ACCENT : NAVY);
       T(s, cr[i][0], x + 0.25, y + 1.1, cw3 - 0.4, 0.45, { fontSize: 15, bold: true, valign: "middle" });
       T(s, cr[i][1], x + 0.25, y + 1.55, cw3 - 0.4, 0.6, { fontSize: 12, color: GRAY });
     }
@@ -831,22 +831,22 @@ async function divider(num, title, items, img) {
     const st = [["기업 모집", "채용 직무·인원 확인", "LuBuilding2"], ["공고 게시", "사이트 잡페어 공고", "LuMegaphone"], ["이력서 등록", "지원·열람 동의", "LuFileText"], ["서류 검토", "면접 대상 선정", "LuFileSearch"], ["일정 확정", "면접 시간 안내", "LuCalendarCheck"], ["현장 면접", "잡페어 당일", "LuHandshake"], ["결과 추적", "3개월 합격 추적", "LuTrendingUp"]];
     const cw = (W - 2 * M) / 7;
     // phase band
-    const ph = [["행사 전", 0, 5, NAVY], ["당일", 5, 1, ORANGE], ["사후", 6, 1, GRAY]];
+    const ph = [["행사 전", 0, 5, NAVY], ["당일", 5, 1, ACCENT], ["사후", 6, 1, GRAY]];
     ph.forEach(([t, a, n, c]) => {
       card(s, M + a * cw + 0.05, 1.95, n * cw - 0.1, 0.5, c, { r: 0.08 });
       T(s, t, M + a * cw, 1.95, n * cw, 0.5, { fontSize: 15, bold: true, color: WHITE, align: "center", valign: "middle" });
     });
     s.addShape(pres.shapes.LINE, { x: M + cw / 2, y: 3.25, w: 6 * cw, h: 0, line: { color: "C9CED6", width: 3 } });
     for (let i = 0; i < 7; i++) {
-      const x = M + i * cw, c = i < 5 ? NAVY : i === 5 ? ORANGE : GRAY;
+      const x = M + i * cw, c = i < 5 ? NAVY : i === 5 ? ACCENT : GRAY;
       await iconCircle(s, x + cw / 2 - 0.45, 2.8, 0.9, st[i][2], c);
-      T(s, String(i + 1).padStart(2, "0"), x, 3.85, cw, 0.3, { fontSize: 12, bold: true, color: ORANGE, align: "center" });
+      T(s, String(i + 1).padStart(2, "0"), x, 3.85, cw, 0.3, { fontSize: 12, bold: true, color: ACCENT, align: "center" });
       T(s, st[i][0], x, 4.12, cw, 0.4, { fontSize: 16, bold: true, align: "center", valign: "middle" });
       T(s, st[i][1], x + 0.05, 4.52, cw - 0.1, 0.55, { fontSize: 12, color: GRAY, align: "center" });
     }
     card(s, M, 5.4, W - 2 * M, 1.3, OTINT);
-    await iconCircle(s, M + 0.35, 5.6, 0.9, "LuBookOpen", ORANGE);
-    T(s, "기업용 외국인 고용 안내자료", M + 1.5, 5.55, 8, 0.45, { fontSize: 17, bold: true, color: ORANGE, valign: "middle" });
+    await iconCircle(s, M + 0.35, 5.6, 0.9, "LuBookOpen", ACCENT);
+    T(s, "기업용 외국인 고용 안내자료", M + 1.5, 5.55, 8, 0.45, { fontSize: 17, bold: true, color: ACCENT, valign: "middle" });
     T(s, "E-7 신청 요건, 필요 서류, 소요 기간을 정리해 참여 기업에 미리 배포합니다.", M + 1.5, 6.0, 10, 0.5, { fontSize: 15, valign: "middle" });
   }
 
@@ -863,10 +863,10 @@ async function divider(num, title, items, img) {
     zone(fx + 2.0, fy + 0.2, fw - 2.2, 1.0, "C9CED6", "기업설명", NAVY);
     zone(fx + 0.2, fy + 1.4, 1.6, 2.95, WHITE, "대기석", NAVY);
     const iw = (fw - 2.2 - 0.4) / 5;
-    for (let i = 0; i < 5; i++) zone(fx + 2.0 + i * (iw + 0.1), fy + 1.4, iw, 1.5, ORANGE, "면접 " + (i + 1), WHITE, 14);
+    for (let i = 0; i < 5; i++) zone(fx + 2.0 + i * (iw + 0.1), fy + 1.4, iw, 1.5, ACCENT, "면접 " + (i + 1), WHITE, 14);
     zone(fx + 2.0, fy + 3.1, fw - 2.2, 1.25, NTINT, "이력서 컨설팅", NAVY);
     T(s, "▲ 출입구", fx, fy + fh + 0.05, 2, 0.3, { fontSize: 11, bold: true, color: GRAY });
-    const lg = [["접수", "사전매칭 명단 확인·순서 안내", NAVY], ["기업설명", "기업별 직무·채용 조건 소개", "C9CED6"], ["현장면접", "기업별 독립 면접 공간 5곳", ORANGE], ["이력서 컨설팅", "멘토링 멘토가 현장 보완", NTINT], ["대기석", "면접 대기·자료 열람", WHITE]];
+    const lg = [["접수", "사전매칭 명단 확인·순서 안내", NAVY], ["기업설명", "기업별 직무·채용 조건 소개", "C9CED6"], ["현장면접", "기업별 독립 면접 공간 5곳", ACCENT], ["이력서 컨설팅", "멘토링 멘토가 현장 보완", NTINT], ["대기석", "면접 대기·자료 열람", WHITE]];
     const lx = 8.85;
     T(s, "공간 안내", lx, 1.95, 3, 0.35, { fontSize: 14, bold: true, color: GRAY });
     lg.forEach(([a, b, c], i) => {
@@ -875,7 +875,7 @@ async function divider(num, title, items, img) {
       T(s, a, lx + 0.6, y, 3.2, 0.3, { fontSize: 14, bold: true });
       T(s, b, lx + 0.6, y + 0.3, 3.3, 0.3, { fontSize: 12, color: GRAY });
     });
-    pill(s, "통역은 필요 시 별도 예산", lx, 6.25, 2.8, 0.4, OTINT, ORANGE, { fs: 12 });
+    pill(s, "통역은 필요 시 별도 예산", lx, 6.25, 2.8, 0.4, OTINT, ACCENT, { fs: 12 });
   }
 
   // ===== 29. 간지 04 =====
@@ -890,20 +890,20 @@ async function divider(num, title, items, img) {
     const x1 = M + c0 + 0.15, x2 = x1 + c1 + 0.15;
     card(s, x1, 1.9, c1, 0.6, NAVY);
     T(s, "기본형", x1, 1.9, c1, 0.6, { fontSize: 17, bold: true, color: WHITE, align: "center", valign: "middle" });
-    card(s, x2, 1.9, c2, 0.6, ORANGE);
+    card(s, x2, 1.9, c2, 0.6, ACCENT);
     T(s, "확장형", x2, 1.9, c2, 0.6, { fontSize: 17, bold: true, color: WHITE, align: "center", valign: "middle" });
     for (let i = 0; i < 5; i++) {
       const y = 2.62 + i * 0.75, h = 0.65;
       card(s, M, y, c0, h, BG);
-      s.addImage({ data: await icon(rows[i][4], ORANGE), x: M + 0.2, y: y + 0.14, w: 0.37, h: 0.37 });
-      T(s, rows[i][0], M + 0.75, y, 0.5, h, { fontSize: 13, bold: true, color: ORANGE, valign: "middle" });
+      s.addImage({ data: await icon(rows[i][4], ACCENT), x: M + 0.2, y: y + 0.14, w: 0.37, h: 0.37 });
+      T(s, rows[i][0], M + 0.75, y, 0.5, h, { fontSize: 13, bold: true, color: ACCENT, valign: "middle" });
       T(s, rows[i][1], M + 1.25, y, c0 - 1.35, h, { fontSize: 16, bold: true, valign: "middle" });
       card(s, x1, y, c1, h, BG);
       T(s, rows[i][2], x1, y, c1, h, { fontSize: 14, align: "center", valign: "middle" });
       card(s, x2, y, c2, h, OTINT);
       T(s, rows[i][3], x2, y, c2, h, { fontSize: 14, bold: true, color: NAVY, align: "center", valign: "middle" });
     }
-    T(s, "추가 옵션", M, 6.45, 1.3, 0.45, { fontSize: 14, bold: true, color: ORANGE, valign: "middle" });
+    T(s, "추가 옵션", M, 6.45, 1.3, 0.45, { fontSize: 14, bold: true, color: ACCENT, valign: "middle" });
     card(s, M + 1.3, 6.42, 4.9, 0.5, WHITE, { line: "C9CED6" });
     T(s, [{ text: "영어 가능 강사 진행   ", options: { bold: true } }, { text: "강의 단가 소폭 증가", options: { color: GRAY } }], M + 1.5, 6.42, 4.6, 0.5, { fontSize: 13, valign: "middle" });
     card(s, M + 6.4, 6.42, 5.7, 0.5, WHITE, { line: "C9CED6" });
@@ -920,13 +920,13 @@ async function divider(num, title, items, img) {
     combos.forEach(([L, n, inc, d], i) => {
       const x = M + i * (cw + 0.3), dark = i === 2;
       card(s, x, y, cw, h, dark ? NAVY : BG, { shadow: true });
-      numCircle(s, x + 0.3, y + 0.3, 0.85, L, ORANGE, WHITE, 26);
-      if (dark) pill(s, "추천", x + cw - 1.15, y + 0.4, 0.85, 0.38, ORANGE, WHITE, { fs: 13 });
+      numCircle(s, x + 0.3, y + 0.3, 0.85, L, ACCENT, WHITE, 26);
+      if (dark) pill(s, "추천", x + cw - 1.15, y + 0.4, 0.85, 0.38, ACCENT, WHITE, { fs: 13 });
       T(s, n, x + 1.35, y + 0.3, cw - 1.6, 0.85, { fontSize: 22, bold: true, color: dark ? WHITE : NAVY, valign: "middle" });
       inc.forEach((v, k) => {
         const py = y + 1.45 + k * 0.5;
-        const f = v ? ORANGE : dark ? NAVY2 : WHITE, c = v ? WHITE : dark ? "6B7484" : "B5BBC4";
-        card(s, x + 0.3, py, cw - 0.6, 0.4, f, { r: 0.08, line: v ? ORANGE : dark ? NAVY2 : "D7DBE2" });
+        const f = v ? ACCENT : dark ? NAVY2 : WHITE, c = v ? WHITE : dark ? "6B7484" : "B5BBC4";
+        card(s, x + 0.3, py, cw - 0.6, 0.4, f, { r: 0.08, line: v ? ACCENT : dark ? NAVY2 : "D7DBE2" });
         T(s, progs[k], x + 0.5, py, cw - 1.2, 0.4, { fontSize: 13, bold: true, color: c, valign: "middle" });
         if (v) s.addImage({ data: iconCache["LuCircleCheckFFFFFF"], x: x + cw - 0.68, y: py + 0.08, w: 0.24, h: 0.24 });
       });
@@ -943,7 +943,7 @@ async function divider(num, title, items, img) {
     const s = content("05  운영 관리", "인력 운영과 참여 관리", "강사·멘토 선정 기준과 모집·예약·이수 관리 방안");
     const cols = [
       ["인력 운영", NAVY, [["강사·전문멘토", "유학생 취업지도 경력자 우선 배정", "LuCircleCheck"], ["인사담당자", "외국인 채용 경험 기업으로 한정", "LuUserCheck"], ["사전 교육", "유학생 특성·비자 기초·개인정보 보호", "LuBookOpen"]]],
-      ["참여 관리", ORANGE, [["모집", "국제교류 부서 협조, 교내 채널·사이트 다국어 공지", "LuMegaphone"], ["예약·노쇼", "사전 알림, 취소 시 대기자 자동 배정", "LuBell"], ["이수 혜택", "6강 이상 이수 시 잡페어 사전매칭·멘토링 우선 예약", "LuGift"]]],
+      ["참여 관리", ACCENT, [["모집", "국제교류 부서 협조, 교내 채널·사이트 다국어 공지", "LuMegaphone"], ["예약·노쇼", "사전 알림, 취소 시 대기자 자동 배정", "LuBell"], ["이수 혜택", "6강 이상 이수 시 잡페어 사전매칭·멘토링 우선 예약", "LuGift"]]],
     ];
     const cw = (W - 2 * M - 0.4) / 2;
     for (let c = 0; c < 2; c++) {
@@ -969,13 +969,13 @@ async function divider(num, title, items, img) {
     for (let i = 0; i < 4; i++) {
       const x = M + i * (cw + 0.3), y = 1.95, h = 3.0;
       const hl = i === 1;
-      card(s, x, y, cw, h, hl ? ORANGE : BG, { shadow: true });
-      await iconCircle(s, x + 0.3, y + 0.3, 0.95, it[i][3], hl ? WHITE : NAVY, hl ? ORANGE : WHITE);
+      card(s, x, y, cw, h, hl ? ACCENT : BG, { shadow: true });
+      await iconCircle(s, x + 0.3, y + 0.3, 0.95, it[i][3], hl ? WHITE : NAVY, hl ? ACCENT : WHITE);
       T(s, it[i][0], x + cw - 0.9, y + 0.3, 0.6, 0.4, { fontSize: 18, bold: true, color: hl ? WHITE : "C9CED6", align: "right" });
       T(s, it[i][1], x + 0.3, y + 1.45, cw - 0.6, 0.5, { fontSize: 20, bold: true, color: hl ? WHITE : NAVY, valign: "middle" });
       T(s, it[i][2], x + 0.3, y + 1.98, cw - 0.6, 0.85, { fontSize: 13, color: hl ? WHITE : GRAY });
     }
-    T(s, "이력서 열람 흐름", M, 5.25, 4, 0.38, { fontSize: 15, bold: true, color: ORANGE });
+    T(s, "이력서 열람 흐름", M, 5.25, 4, 0.38, { fontSize: 15, bold: true, color: ACCENT });
     const fl = ["학생 이력서 등록", "기업별 공개 동의", "동의 기업만 열람", "열람 이력 기록"];
     const fw = (W - 2 * M + 0.15 * 3) / 4;
     fl.forEach((t, i) => {
@@ -989,12 +989,12 @@ async function divider(num, title, items, img) {
   // ===== 35. 성과지표 =====
   {
     const s = content("05  운영 관리", "성과지표와 보고 체계", "정량 목표를 정하고 단계별로 보고");
-    const k = [["4.5", "점 이상", "프로그램 만족도 (5점 만점)", ORANGE, WHITE, WHITE, "LuStar"], ["100", "%", "멘토링 참여자 이력서 완성률", NAVY, WHITE, "C9CED6", "LuFileText"], ["—", "건 이상", "잡페어 현장면접 연계 (목표 협의)", BG, NAVY, GRAY, "LuHandshake"], ["3", "개월", "종료 후 취업 결과 추적", BG, NAVY, GRAY, "LuTrendingUp"]];
+    const k = [["4.5", "점 이상", "프로그램 만족도 (5점 만점)", ACCENT, WHITE, WHITE, "LuStar"], ["100", "%", "멘토링 참여자 이력서 완성률", NAVY, WHITE, "C9CED6", "LuFileText"], ["—", "건 이상", "잡페어 현장면접 연계 (목표 협의)", BG, NAVY, GRAY, "LuHandshake"], ["3", "개월", "종료 후 취업 결과 추적", BG, NAVY, GRAY, "LuTrendingUp"]];
     const cw = (W - 2 * M - 0.9) / 4;
     for (let i = 0; i < 4; i++) {
       const x = M + i * (cw + 0.3), y = 1.95, h = 1.85;
       card(s, x, y, cw, h, k[i][3], { shadow: true });
-      s.addImage({ data: await icon(k[i][6], k[i][4] === WHITE ? WHITE : ORANGE), x: x + cw - 0.75, y: y + 0.25, w: 0.45, h: 0.45 });
+      s.addImage({ data: await icon(k[i][6], k[i][4] === WHITE ? WHITE : ACCENT), x: x + cw - 0.75, y: y + 0.25, w: 0.45, h: 0.45 });
       T(s, [{ text: k[i][0], options: { fontSize: 44, bold: true } }, { text: " " + k[i][1], options: { fontSize: 16, bold: true } }], x + 0.3, y + 0.2, cw - 0.6, 0.95, { color: k[i][4], valign: "bottom" });
       T(s, k[i][2], x + 0.3, y + 1.22, cw - 0.4, 0.5, { fontSize: 12.5, color: k[i][5] });
     }
@@ -1003,26 +1003,26 @@ async function divider(num, title, items, img) {
     for (let i = 0; i < 4; i++) {
       const x = M + i * (cw + 0.3), y = 4.5, last = i === 3;
       card(s, x, y, cw, 1.55, last ? NAVY : BG);
-      pill(s, rp[i][1], x + 0.3, y + 0.22, 1.5, 0.34, last ? ORANGE : WHITE, last ? WHITE : ORANGE, { fs: 11, line: last ? ORANGE : "F6C3B2" });
+      pill(s, rp[i][1], x + 0.3, y + 0.22, 1.5, 0.34, last ? ACCENT : WHITE, last ? WHITE : ACCENT, { fs: 11, line: last ? ACCENT : "E9B8C7" });
       T(s, rp[i][0], x + 0.3, y + 0.65, cw - 0.6, 0.45, { fontSize: 19, bold: true, color: last ? WHITE : NAVY, valign: "middle" });
       T(s, rp[i][2], x + 0.3, y + 1.1, cw - 0.6, 0.35, { fontSize: 13, color: last ? "C9CED6" : GRAY, valign: "middle" });
-      if (i < 3) chevron(s, x + cw + 0.07, y + 0.62, 0.16, 0.3, ORANGE);
+      if (i < 3) chevron(s, x + cw + 0.07, y + 0.62, 0.16, 0.3, ACCENT);
     }
     card(s, M, 6.25, W - 2 * M, 0.6, OTINT);
-    T(s, [{ text: "결과보고서 목차(안)   ", options: { bold: true, color: ORANGE } }, { text: "사업 개요 · 프로그램별 운영 결과 · 만족도 조사 · 취업 성과 · 현장 사진 · 개선 제안", options: { color: NAVY } }], M + 0.3, 6.25, W - 2 * M - 0.6, 0.6, { fontSize: 13, valign: "middle" });
+    T(s, [{ text: "결과보고서 목차(안)   ", options: { bold: true, color: ACCENT } }, { text: "사업 개요 · 프로그램별 운영 결과 · 만족도 조사 · 취업 성과 · 현장 사진 · 개선 제안", options: { color: NAVY } }], M + 0.3, 6.25, W - 2 * M - 0.6, 0.6, { fontSize: 13, valign: "middle" });
   }
 
   // ===== 36. Contact =====
   {
     const s = pres.addSlide({ masterName: "DARK", sectionTitle: curSection });
     s.addImage({ path: ARC, x: 5.13, y: 0.15, w: 8.2, h: 6.23 });
-    T(s, "Contact", M, 1.2, 4, 0.4, { fontSize: 16, bold: true, color: ORANGE });
+    T(s, "Contact", M, 1.2, 4, 0.4, { fontSize: 16, bold: true, color: ACCENT });
     T(s, "잡웨이브(JobWave)", M, 1.65, 8, 0.9, { fontSize: 44, bold: true, color: WHITE, valign: "middle" });
     T(s, "공부한 충북에서, 일하는 충북으로", M, 2.6, 8, 0.45, { fontSize: 18, color: "C9CED6" });
     const rows = [["담당자", "확인 필요", "LuUser"], ["전화", "확인 필요", "LuPhone"], ["이메일", "확인 필요", "LuMail"], ["홈페이지", "jobwave.kr", "LuGlobe"]];
     for (let i = 0; i < 4; i++) {
       const y = 3.55 + i * 0.75;
-      await iconCircle(s, M, y, 0.55, rows[i][2], ORANGE);
+      await iconCircle(s, M, y, 0.55, rows[i][2], ACCENT);
       T(s, rows[i][0], M + 0.8, y, 1.4, 0.55, { fontSize: 14, color: "C9CED6", valign: "middle" });
       T(s, rows[i][1], M + 2.2, y, 4, 0.55, { fontSize: 17, bold: true, color: WHITE, valign: "middle" });
     }
