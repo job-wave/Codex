@@ -36,6 +36,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#000;font-family
 .card .d{font-size:22px;font-weight:600;opacity:.9;line-height:1.4}
 </style></head><body>
 <div id="root"></div>
+<script src="intro.js"></script>
 <script>
 const C={blue:'#2f6fd6',red:'#e5483f',purple:'#7b45d1',yellow:'#efa52c',green:'#22553a',orange:'#ef6a3a',teal:'#1f9c8a'};
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
@@ -46,26 +47,12 @@ const el=h=>{const d=document.createElement('div');d.innerHTML=h.trim();const e=
 const parts=[];
 function add(s,e,html,fn){const n=el(html);parts.push({s,e,n,fn});return n}
 
-/* ---------- INTRO 0-6 ---------- */
-add(0,3.9,`<div class="shot"><img src="assets/cover.jpg" style="filter:blur(30px) brightness(.8);transform:scale(1.2)"><img class="m" src="assets/cover.jpg" style="object-fit:contain"></div>`,(n,t)=>{
-  n.querySelector('.m').style.transform=`scale(${1+.035*eio(t/3.9)})`;n.style.opacity=clamp(t/0.5);
-});
-add(3.5,6.3,`<div class="L green">
- <div class="bar"><span style="background:${C.blue}"></span><span style="background:${C.red}"></span><span style="background:${C.purple}"></span><span style="background:${C.yellow}"></span></div>
- <div style="position:absolute;left:0;right:0;top:330px;text-align:center">
-  <div class="l1" style="font-size:34px;font-weight:700;letter-spacing:.2em;color:#f6d98a">2026. 11. 11. WED · 건국체육관 K7</div>
-  <div class="l2" style="font-size:104px;font-weight:900;letter-spacing:-.03em;margin-top:30px;line-height:1.1">그날의 현장,<br>1,090명이 문을 열었다</div>
- </div></div>`,(n,t)=>{
-  n.style.clipPath=`circle(${eo(t/0.55)*120}% at 78% 50%)`;
-  n.querySelector('.l1').style.cssText+=`;opacity:${clamp((t-.35)/.4)};transform:translateY(${(1-eo((t-.35)/.5))*30}px)`;
-  n.querySelector('.l2').style.cssText+=`;opacity:${clamp((t-.6)/.4)};transform:translateY(${(1-eo((t-.6)/.6))*50}px)`;
-  n.querySelectorAll('.bar span').forEach((s,i)=>s.style.transform=`scaleY(${eo((t-.3-i*.1)/.4)})`);
-});
+buildIntro();
 
 /* ---------- CHAPTERS 6-48 : 6 x 7s, 1 photo per second ---------- */
 const CH=[
- {c:C.teal,  name:'전날 홍보 · 오픈 대기', head:'하루 전부터 시작된 잡페어', sub:'11.10 전날 홍보 · 사전등록 <b>572명</b>',
-  ph:[['0211','11.10 전날 홍보 부스'],['0213','전날 홍보 · 사전등록 안내'],['0215','전날 홍보 부스'],['0299','개장 전 입장 대기'],['0289','체육관 앞 대기 줄'],['0291','체육관 입구 대기'],['0293','로비 입장 대기']]},
+ {c:C.teal,  name:'전날 홍보 → 당일 오픈', head:'하루 전부터 시작된 잡페어', sub:'11.10 전날 홍보 · 11.11 당일 오픈 대기',
+  ph:[['0211','11.10 전날 · 홍보 부스'],['0213','11.10 전날 · 사전등록 안내'],['0215','11.10 전날 · 홍보 부스'],['0299','11.11 당일 · 체육관 앞 대기'],['0289','11.11 당일 · 푸드트럭 앞 대기 줄'],['0291','11.11 당일 · 체육관 입구 대기'],['0293','11.11 당일 · 로비 입장 대기']]},
  {c:C.red,   name:'등록 · 입장', head:'QR 하나로 등록부터 입장까지', sub:'현장등록 <b>669명</b> · 총 <b>1,090명</b>',
   ph:[['0277','로비 등록 대기'],['0279','안내데스크'],['0301','QR 현장등록'],['0281','로비 등록 대기'],['0283','리플렛 · 추첨권 배부'],['0285','리플렛 · 추첨권 배부'],['0287','행사장 입장']]},
  {c:C.blue,  name:'행사장 전경', head:'6개 존, 55개 부스', sub:'기업 · 기관 <b>48</b> · 체험 <b>7</b>',
@@ -157,6 +144,8 @@ add(54,60,`<div class="L green">
   n.querySelectorAll('.bar span').forEach((s,i)=>s.style.transform=`scaleY(${eo((t-.5-i*.1)/.4)})`);
   n.querySelector('.blk').style.opacity=clamp((t-5.2)/.8);
 });
+
+buildGrain();
 
 window.setTime=function(T){
   parts.forEach((p,i)=>{const on=T>=p.s&&T<p.e;p.n.style.display=on?'':'none';p.n.style.zIndex=i;if(on)p.fn(p.n,T-p.s)});
