@@ -121,6 +121,59 @@ function buildIntro(SC){
     const s3=sl.querySelector('.s3');s3.style.opacity=clamp((t-5.0)/.25);s3.style.transform=`translateY(${(1-eo((t-5.0)/.4))*20}px)`;
     sl.querySelector('.cnt').textContent=Math.round(1090*eo((t-5.0)/.9)).toLocaleString('en-US');
   });
+
+  /* Outro in the same visual language: photo shrinks back into the door, arches + slogan + thanks */
+  window.buildOutro=function(S0,D){
+    document.head.insertAdjacentHTML('beforeend',`<style>
+    .ot{position:absolute;left:0;right:0;top:110px;text-align:center}
+    .ot .s0{font-size:26px;font-weight:800;letter-spacing:.32em;color:#f6d98a}
+    .ot .ln{overflow:hidden;line-height:1.1;padding:6px 0;margin-top:10px}
+    .ot .ln b{display:inline-block;font-size:92px;font-weight:900;letter-spacing:-.03em}
+    .ot .s3{font-size:32px;font-weight:700;margin-top:14px;opacity:.95}
+    .ocred{position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(0deg,rgba(6,20,13,.92) 35%,rgba(6,20,13,0));display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:34px;font-size:20px;font-weight:600;line-height:1.7;color:rgba(255,255,255,.85)}
+    .ocred b{color:#f6d98a;font-weight:800;letter-spacing:.08em}
+    .oblk{position:absolute;inset:0;background:#000;opacity:0}
+    </style>`);
+    add(S0,S0+D+.1,`<div class="intro">
+      <div class="wall">${cols}</div><div class="wdim"></div><div class="leak"></div>
+      <div class="stage">${floorSVG}${archHTML}</div>
+      <div class="portal"><img src="assets/d/2302.jpg"><div class="pshade" style="opacity:.35"></div></div>
+      <div class="ot"><div class="s0">2026 GLOCAL JOB FAIR</div>
+        <div class="ln"><b>충북 청년, 내일의 문을 열다</b></div>
+        <div class="s3">함께해 주신 모든 분께 감사드립니다.</div></div>
+      <div class="ocred"><div>주최 · 지원&nbsp;&nbsp;건국대학교 GLOCAL캠퍼스 · 대학혁신지원사업 · KU ANCHOR사업단 · 고용노동부</div><b>glocaljobfair.kr</b></div>
+      <div class="oblk"></div>
+    </div>`,(n,t)=>{
+      n.style.opacity=clamp(t/.4);
+      const wall=n.querySelector('.wall');
+      wall.style.transform=`perspective(1600px) rotateX(18deg) rotateZ(-12deg) scale(${1.12+.04*t/D})`;
+      wall.style.opacity=.4;wall.style.filter='blur(5px)';
+      n.querySelectorAll('.wc').forEach((c,i)=>{const d=i%2?1:-1;c.style.transform=`translateY(${-1500+(i%2?-150:0)+d*t*60}px)`});
+      const lk=n.querySelector('.leak');lk.style.left=`${900-t*120}px`;lk.style.top=`${-600+Math.sin(t*.8)*100}px`;lk.style.opacity=.5;
+      // reverse portal: full-frame photo shrinks back into the 학교 door
+      const g=1-eio(t/1.6), s0=1+g*1.6, cxp=px+pw/2, cyp=py+ph/2;
+      const st=n.querySelector('.stage');st.style.transform=`scale(${s0})`;st.style.transformOrigin=`${cxp}px ${cyp}px`;
+      const L=px+(-600-px)*g, Tp=py+(-700-py)*g, Wd=pw+(3120-pw)*g, Ht=(AB-py)+(2400-(AB-py))*g;
+      const L2=cxp+(L-cxp)*s0, T2=cyp+(Tp-cyp)*s0, W2=Wd*s0, H2=Ht*s0;
+      const pt=n.querySelector('.portal');
+      pt.style.left=L2+'px';pt.style.top=T2+'px';pt.style.width=W2+'px';pt.style.height=H2+'px';pt.style.borderRadius=`${W2/2}px ${W2/2}px 0 0`;
+      pt.style.opacity=1-clamp((t-1.5)/.5);pt.style.display=t<2.1?'':'none';
+      const im=pt.querySelector('img');im.style.left=-L2+'px';im.style.top=-T2+'px';
+      n.querySelectorAll('.floor polygon').forEach(p=>{p.style.transform='none'});
+      n.querySelectorAll('.arch').forEach((a,i)=>{
+        const d=a.querySelector('.door');d.style.filter=`brightness(${1+.2*Math.sin(t*4+i)+.6*eio((t-D+2.2)/1.4)})`;
+        a.style.transform=`translateY(${Math.sin(t*1.6+i*.8)*4}px)`;
+        a.querySelector('.lab').style.opacity=1;});
+      n.querySelectorAll('.beam').forEach((b,i)=>{b.style.opacity=(.75+.25*Math.sin(t*3+i))*(1+eio((t-D+2.2)/1.4));b.style.transform=`scaleX(${1+.3*Math.sin(t*2+i)})`});
+      const ot=n.querySelector('.ot');
+      ot.querySelector('.s0').style.opacity=clamp((t-1.6)/.4);
+      ot.querySelector('.s0').style.letterSpacing=`${.6-.28*eo((t-1.6)/1.0)}em`;
+      ot.querySelector('.ln b').style.transform=`translateY(${(1-eo((t-1.9)/.7))*110}%)`;
+      const s3=ot.querySelector('.s3');s3.style.opacity=clamp((t-2.9)/.5);s3.style.transform=`translateY(${(1-eo((t-2.9)/.6))*20}px)`;
+      const cr=n.querySelector('.ocred');cr.style.opacity=clamp((t-3.6)/.6);
+      n.querySelector('.oblk').style.opacity=clamp((t-(D-1.0))/1.0);
+    });
+  };
 }
 function buildGrain(){
   const cv=document.createElement('canvas');cv.width=cv.height=256;const x=cv.getContext('2d'),im=x.createImageData(256,256);

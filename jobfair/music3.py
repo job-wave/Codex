@@ -6,7 +6,7 @@ SR=44100; BPM=116; B=60/BPM
 L=float(sys.argv[1]) if len(sys.argv)>1 else 60.0
 OUT=sys.argv[2] if len(sys.argv)>2 else 'music3.wav'
 INTRO=float(sys.argv[3]) if len(sys.argv)>3 else 9.0   # drums/bass enter here
-END=L-4.0                                                # ring-out from here
+END=L-3.5                                                # ring-out from here
 N=int(SR*L); out=np.zeros((N,2))
 mf=lambda m:440*2**((m-69)/12)
 
