@@ -51,26 +51,27 @@ buildIntro();
 
 /* ---------- CHAPTERS 6-48 : 6 x 7s, 1 photo per second ---------- */
 const CH=[
- {c:C.teal,  name:'전날 홍보 → 당일 오픈', head:'하루 전부터 시작된 잡페어', sub:'11.10 전날 홍보 · 11.11 당일 오픈 대기',
-  ph:[['0211','11.10 전날 · 홍보 부스'],['0213','11.10 전날 · 사전등록 안내'],['0215','11.10 전날 · 홍보 부스'],['0299','11.11 당일 · 체육관 앞 대기'],['0289','11.11 당일 · 푸드트럭 앞 대기 줄'],['0291','11.11 당일 · 체육관 입구 대기'],['0293','11.11 당일 · 로비 입장 대기']]},
- {c:C.red,   name:'등록 · 입장', head:'QR 하나로 등록부터 입장까지', sub:'현장등록 <b>669명</b> · 총 <b>1,090명</b>',
-  ph:[['0277','로비 등록 대기'],['0279','안내데스크'],['0301','QR 현장등록'],['0281','로비 등록 대기'],['0283','리플렛 · 추첨권 배부'],['0285','리플렛 · 추첨권 배부'],['0287','행사장 입장']]},
+ {c:C.teal,  name:'11.10 전날 홍보', head:'하루 전부터 시작된 잡페어', sub:'11.10 캠퍼스 홍보 부스 · 사전등록 <b>572명</b>',
+  ph:[['0211','11.10 전날 · 홍보 부스'],['0212','11.10 전날 · 사전등록 안내'],['0214','11.10 전날 · 팝콘 나눔 홍보'],['0216','11.10 전날 · 홍보 부스']]},
+ {c:C.red,   name:'11.11 당일 · 입장', head:'문 열기 전부터 이어진 줄', sub:'현장등록 <b>669명</b> · 총 <b>1,090명</b>',
+  ph:[['0299','11.11 당일 · 체육관 앞 대기'],['0289','11.11 당일 · 푸드트럭 앞 대기 줄'],['0291','체육관 입구 대기'],['0293','로비 입장 대기'],['0277','로비 등록 대기'],['0279','안내데스크'],['0301','QR 현장등록'],['0283','리플렛 · 추첨권 배부']]},
  {c:C.blue,  name:'행사장 전경', head:'6개 존, 55개 부스', sub:'기업 · 기관 <b>48</b> · 체험 <b>7</b>',
-  ph:[['0330','행사장 전경'],['0332','대기업군 C존 통로'],['0303','현황판 · 대기업군 통로'],['0322','대기업군 C존'],['0312','대기업군 C존'],['0340','C01 LG그룹 IT계열사'],['0326','지역기업군 A존']]},
+  ph:[['0330','행사장 전경'],['0332','대기업군 C존 통로'],['0303','현황판 · 대기업군 통로'],['0322','대기업군 C존'],['0312','대기업군 C존'],['0340','C01 LG그룹 IT계열사']]},
  {c:C.purple,name:'기업 상담', head:'현직자와 마주 앉은 1:1 상담', sub:'참여기업 <b>35곳</b> · 상담 <b>1,713건</b>',
-  ph:[['6333','현직자 1:1 상담'],['0346','현직자 상담'],['6342','공기업군 상담'],['6352','공기업군 상담'],['6325','세명대 대학일자리플러스센터'],['6361','현직자 상담'],['0334','지역기업군 상담 대기']]},
+  ph:[['6333','현직자 1:1 상담'],['0346','현직자 상담'],['6342','공기업군 상담'],['6352','공기업군 상담'],['6325','세명대 대학일자리플러스센터'],['6361','현직자 상담']]},
  {c:C.yellow,name:'기관 · 이벤트관', head:'기관 상담부터 취업 준비 체험까지', sub:'D존 유관기관 <b>7</b> · E존 교내기관 <b>6</b> · F존 이벤트관 <b>7</b>',
-  ph:[['0305','D존 지역유관기관 · E존 교내기관'],['0328','D07 대한민국 공군'],['0308','이벤트관 F존 대기'],['0310','퍼스널컬러 · 취업타로'],['0314','F01 퍼스널컬러진단'],['0336','헤어 · 메이크업 · 이력서 사진'],['0338','휴게 공간']]},
+  ph:[['0305','D존 지역유관기관 · E존 교내기관'],['0328','D07 대한민국 공군'],['0308','이벤트관 F존 대기'],['0310','퍼스널컬러 · 취업타로'],['0314','F01 퍼스널컬러진단'],['0336','헤어 · 메이크업 · 이력서 사진']]},
  {c:C.orange,name:'이벤트 · 경품 · 푸드트럭', head:'끝까지 즐거웠던 하루', sub:'이벤트 참여 <b>227건</b> · 경품 추첨 2회 · 당첨 <b>19명</b>',
   ph:[['0324','팝콘 증정'],['0344','푸드트럭'],['0342','푸드트럭 대기'],['2298','경품 추첨'],['2302','경품 추첨 현장'],['2304','추첨 결과 발표'],['0320','경품 전달']]},
 ];
-const CS=6, CL=7;
+const CS=6, CT=42, PD=CT/CH.reduce((n,c)=>n+c.ph.length,0);
+let acc=CS; CH.forEach(c=>{c.S=acc;c.L=c.ph.length*PD;acc+=c.L});
 CH.forEach((ch,ci)=>{
-  const S=CS+ci*CL;
+  const S=ch.S, CL=ch.L;
   ch.ph.forEach(([id,lbl],pi)=>{
-    const s=S+pi, e=s+1, mode=(ci*7+pi)%4, dir=(pi%2)?1:-1;
+    const s=S+pi*PD, e=s+PD, mode=(ci*7+pi)%4, dir=(pi%2)?1:-1;
     add(s,e+0.3,`<div class="shot"><img src="assets/d/${id}.jpg"><div class="shade"></div><div class="tag">${lbl}</div></div>`,(n,t)=>{
-      const k=t/1.3, img=n.querySelector('img');
+      const k=t/(PD+.3), img=n.querySelector('img');
       img.style.transform=`scale(${1.14-.08*k}) translateX(${dir*(k-.5)*40}px)`;
       const w=eo(t/0.28);
       if(pi==0) n.style.clipPath='none';
@@ -83,13 +84,13 @@ CH.forEach((ch,ci)=>{
   });
   add(S,S+CL,`<div class="L">
     <div class="brand">GLOCAL JOB FAIR<small>2026 · 건국대학교 GLOCAL캠퍼스</small></div>
-    <div class="rec"><i></i>SKETCH 0${ci+1} / 06</div>
+    <div class="rec"><i></i>SKETCH 0${ci+1} / 0${CH.length}</div>
     <div class="prog">${ch.ph.map(()=>'<span><i></i></span>').join('')}</div>
     <div class="cap"><div class="chip" style="background:${ch.c}">SKETCH 0${ci+1} · ${ch.name}</div>
       <div class="head">${ch.head}</div><div class="sub">${ch.sub}</div></div></div>`,(n,t)=>{
     const out=clamp((CL-t)/.3);
     n.querySelector('.rec i').style.opacity=(Math.floor(t*2)%2)?.3:1;
-    n.querySelectorAll('.prog i').forEach((b,i)=>b.style.transform=`scaleX(${clamp(t-i)})`);
+    n.querySelectorAll('.prog i').forEach((b,i)=>b.style.transform=`scaleX(${clamp((t-i*PD)/PD)})`);
     n.querySelector('.prog').style.opacity=out;
     const chip=n.querySelector('.chip'),hd=n.querySelector('.head'),sb=n.querySelector('.sub');
     chip.style.opacity=clamp((t-.5)/.25)*out;chip.style.transform=`translateX(${(1-eo((t-.5)/.4))*-60}px)`;
