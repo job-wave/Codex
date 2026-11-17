@@ -47,24 +47,24 @@ const el=h=>{const d=document.createElement('div');d.innerHTML=h.trim();const e=
 const parts=[];
 function add(s,e,html,fn){const n=el(html);parts.push({s,e,n,fn});return n}
 
-buildIntro();
+buildIntro(1.5);
 
 /* ---------- CHAPTERS 6-48 : 6 x 7s, 1 photo per second ---------- */
 const CH=[
  {c:C.teal,  name:'11.10 전날 홍보', head:'하루 전부터 시작된 잡페어', sub:'11.10 캠퍼스 홍보 부스 · 사전등록 <b>572명</b>',
-  ph:[['0211','11.10 전날 · 홍보 부스'],['0212','11.10 전날 · 사전등록 안내'],['0214','11.10 전날 · 팝콘 나눔 홍보'],['0216','11.10 전날 · 홍보 부스']]},
+  ph:[['0211','11.10 전날 · 홍보 부스'],['0214','11.10 전날 · 팝콘 나눔 홍보'],['0216','11.10 전날 · 사전등록 안내']]},
  {c:C.red,   name:'11.11 당일 · 입장', head:'문 열기 전부터 이어진 줄', sub:'현장등록 <b>669명</b> · 총 <b>1,090명</b>',
-  ph:[['0299','11.11 당일 · 체육관 앞 대기'],['0289','11.11 당일 · 푸드트럭 앞 대기 줄'],['0291','체육관 입구 대기'],['0293','로비 입장 대기'],['0277','로비 등록 대기'],['0279','안내데스크'],['0301','QR 현장등록'],['0283','리플렛 · 추첨권 배부']]},
+  ph:[['0289','11.11 당일 · 체육관 앞 대기 줄'],['0277','로비 등록 대기'],['0301','QR 현장등록']]},
  {c:C.blue,  name:'행사장 전경', head:'6개 존, 55개 부스', sub:'기업 · 기관 <b>48</b> · 체험 <b>7</b>',
-  ph:[['0330','행사장 전경'],['0332','대기업군 C존 통로'],['0303','현황판 · 대기업군 통로'],['0322','대기업군 C존'],['0312','대기업군 C존'],['0340','C01 LG그룹 IT계열사']]},
+  ph:[['0330','행사장 전경'],['0322','대기업군 C존'],['0340','C01 LG그룹 IT계열사']]},
  {c:C.purple,name:'기업 상담', head:'현직자와 마주 앉은 1:1 상담', sub:'참여기업 <b>35곳</b> · 상담 <b>1,713건</b>',
-  ph:[['6333','현직자 1:1 상담'],['0346','현직자 상담'],['6342','공기업군 상담'],['6352','공기업군 상담'],['6325','세명대 대학일자리플러스센터'],['6361','현직자 상담']]},
+  ph:[['6333','현직자 1:1 상담'],['0346','현직자 상담'],['6352','공기업군 상담']]},
  {c:C.yellow,name:'기관 · 이벤트관', head:'기관 상담부터 취업 준비 체험까지', sub:'D존 유관기관 <b>7</b> · E존 교내기관 <b>6</b> · F존 이벤트관 <b>7</b>',
-  ph:[['0305','D존 지역유관기관 · E존 교내기관'],['0328','D07 대한민국 공군'],['0308','이벤트관 F존 대기'],['0310','퍼스널컬러 · 취업타로'],['0314','F01 퍼스널컬러진단'],['0336','헤어 · 메이크업 · 이력서 사진']]},
+  ph:[['0328','D07 대한민국 공군'],['0310','퍼스널컬러 · 취업타로'],['0336','헤어 · 메이크업 · 이력서 사진']]},
  {c:C.orange,name:'이벤트 · 경품 · 푸드트럭', head:'끝까지 즐거웠던 하루', sub:'이벤트 참여 <b>227건</b> · 경품 추첨 2회 · 당첨 <b>19명</b>',
-  ph:[['0324','팝콘 증정'],['0344','푸드트럭'],['0342','푸드트럭 대기'],['2298','경품 추첨'],['2302','경품 추첨 현장'],['2304','추첨 결과 발표'],['0320','경품 전달']]},
+  ph:[['0344','푸드트럭'],['2304','경품 추첨 현장'],['0320','경품 전달']]},
 ];
-const CS=6, CT=42, PD=CT/CH.reduce((n,c)=>n+c.ph.length,0);
+const CS=9, CT=42, PD=CT/CH.reduce((n,c)=>n+c.ph.length,0);
 let acc=CS; CH.forEach(c=>{c.S=acc;c.L=c.ph.length*PD;acc+=c.L});
 CH.forEach((ch,ci)=>{
   const S=ch.S, CL=ch.L;
@@ -73,7 +73,7 @@ CH.forEach((ch,ci)=>{
     add(s,e+0.3,`<div class="shot"><img src="assets/d/${id}.jpg"><div class="shade"></div><div class="tag">${lbl}</div></div>`,(n,t)=>{
       const k=t/(PD+.3), img=n.querySelector('img');
       img.style.transform=`scale(${1.14-.08*k}) translateX(${dir*(k-.5)*40}px)`;
-      const w=eo(t/0.28);
+      const w=eo(t/0.5);
       if(pi==0) n.style.clipPath='none';
       else if(mode==0) n.style.clipPath=`inset(0 0 0 ${(1-w)*100}%)`;
       else if(mode==1) n.style.clipPath=`inset(0 ${(1-w)*100}% 0 0)`;
@@ -109,7 +109,7 @@ const ST=[{k:'총 참여 인원',v:1090,f:0,u:'명',d:'사전등록 후 현장 3
  {k:'부스 참여',v:1940,f:0,u:'건',d:'부스 QR 참여 기준 · 참여자 796명, 1인 평균 2.4곳',c:C.red},
  {k:'행사 전체 만족도',v:4.58,f:2,u:'점',d:'5점 척도 · 응답 462건 · 만족 이상 90.3%',c:C.purple},
  {k:'추천 의향',v:97.0,f:1,u:'%',d:'응답 462건 중 448건 “추천하겠다”',c:C.yellow}];
-add(47.7,54.4,`<div class="L cream">
+add(50.7,56.4,`<div class="L cream">
   <div style="position:absolute;left:96px;top:150px">
    <div class="ey" style="font-size:24px;font-weight:800;letter-spacing:.2em;color:${C.orange}">RESULT · 숫자로 본 글로컬 잡페어</div>
    <div class="tt" style="font-size:88px;font-weight:900;letter-spacing:-.03em;margin-top:18px">목표를 넘어선 하루</div></div>
@@ -126,7 +126,7 @@ add(47.7,54.4,`<div class="L cream">
 });
 
 /* ---------- OUTRO 54-60 ---------- */
-add(54,60,`<div class="L green">
+add(56,60,`<div class="L green">
   <div class="dr" style="position:absolute;right:0;top:0;bottom:0;width:1100px;overflow:hidden">
     <img src="assets/cover.jpg" style="position:absolute;height:115%;right:-40px;top:-10px;transform-origin:right top"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,#22553a 46%,rgba(34,85,58,0) 62%)"></div>
@@ -143,7 +143,7 @@ add(54,60,`<div class="L green">
   n.querySelector('.dr img').style.transform=`scale(${1.04+.05*t/6})`;n.querySelector('.dr').style.opacity=clamp((t-.3)/.6);
   ['.o1','.o2','.o3','.o4'].forEach((q,i)=>{const e=n.querySelector(q),s0=.45+i*.25;e.style.opacity=clamp((t-s0)/.35);e.style.transform=`translateY(${(1-eo((t-s0)/.6))*36}px)`});
   n.querySelectorAll('.bar span').forEach((s,i)=>s.style.transform=`scaleY(${eo((t-.5-i*.1)/.4)})`);
-  n.querySelector('.blk').style.opacity=clamp((t-5.2)/.8);
+  n.querySelector('.blk').style.opacity=clamp((t-3.3)/.7);
 });
 
 buildGrain();

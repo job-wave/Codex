@@ -1,6 +1,7 @@
 /* Motion-graphic intro (0–6s) + global film grain / vignette.
    Uses globals from the page script: add, clamp, eo, eio, back, C. */
-function buildIntro(){
+function buildIntro(SC){
+  SC=SC||1;
   const W=['0330','0322','6333','0277','2302','0344','0312','6342','0301','0314','0289','2298',
            '0340','6352','0283','0336','0342','0305','0332','0346','0287','0328','2304','0303',
            '6325','0293','0310','0326','6361','0324'];
@@ -61,7 +62,7 @@ function buildIntro(){
   const spans=s=>[...s].map(ch=>`<span>${ch===' '?'&nbsp;':ch}</span>`).join('');
   const PI=2, px=AX0+PI*(AW+GAP)+IN, py=AB-AH+IN, pw=AW-2*IN, ph=AH-IN;
 
-  add(0,6.35,`<div class="intro">
+  add(0,6.35*SC,`<div class="intro">
     <div class="wall">${cols}</div><div class="wdim"></div>
     <div class="big2026">2026 GLOCAL JOB FAIR 2026 GLOCAL JOB FAIR</div>
     <div class="leak"></div>
@@ -75,7 +76,7 @@ function buildIntro(){
       <div class="ln"><b>충북 청년,</b></div><div class="ln"><b>내일의 문을 열다</b></div>
       <div class="s3">11.11 하루, <em class="cnt">0</em>명이 문을 열었다</div></div>
     <div class="flash"></div>
-  </div>`,(n,t)=>{
+  </div>`,(n,t)=>{ t=t/SC;
     // photo wall: tilted, columns scrolling opposite ways
     const wall=n.querySelector('.wall'), wOut=eio((t-2.0)/.6);
     wall.style.transform=`perspective(1600px) rotateX(${22-6*t/6}deg) rotateZ(-12deg) scale(${1.25-.12*eo(t/4)})`;
