@@ -55,7 +55,7 @@ const LECTURES = [
 async function addLectureDetails(ctx, crumb) {
   const { content, T, card, pill, W, M, colors: C } = ctx;
   for (let page = 0; page < 2; page++) {
-    const s = content(crumb, `강의별 세부 내용 (${page === 0 ? "1~4강" : "5~8강"})`, "강의마다 목표, 주요 내용, 현장 실습, 결과물을 정해 운영 · 세부 내용은 협의 후 확정");
+    const s = content(crumb, `강의별 세부 내용 (${page === 0 ? "1~4강" : "5~8강"})`, "강의당 2시간 · 목표, 주요 내용, 현장 실습, 결과물을 정해 운영 · 세부 내용은 협의 후 확정");
     const cw = (W - 2 * M - 0.3) / 2, ch = 2.37;
     for (let i = 0; i < 4; i++) {
       const L = LECTURES[page * 4 + i];
@@ -64,7 +64,7 @@ async function addLectureDetails(ctx, crumb) {
       // 머리줄: 강 번호 + 제목 + STEP + 기본 배지
       pill(s, L.no, x + 0.2, y + 0.17, 0.72, 0.38, L.basic ? C.ACCENT : C.NAVY, C.WHITE, { fs: 13 });
       T(s, L.title, x + 1.05, y + 0.12, 3.2, 0.48, { fontSize: 17, bold: true, valign: "middle" });
-      T(s, L.step, x + cw - 2.45, y + 0.17, 1.65, 0.38, { fontSize: 11, bold: true, color: C.GRAY, align: "right", valign: "middle" });
+      T(s, L.step + " · 2시간", x + cw - 2.95, y + 0.17, 2.15, 0.38, { fontSize: 11, bold: true, color: C.GRAY, align: "right", valign: "middle" });
       if (L.basic) pill(s, "기본", x + cw - 0.68, y + 0.2, 0.5, 0.32, C.ACCENT, C.WHITE, { fs: 10 });
       T(s, [{ text: "목표  ", options: { bold: true, color: C.ACCENT } }, { text: L.goal, options: { color: C.NAVY2 } }], x + 0.22, y + 0.62, cw - 0.4, 0.3, { fontSize: 12, valign: "middle" });
       T(s, L.items.map((b, k) => ({ text: b, options: { bullet: true, breakLine: k < L.items.length - 1 } })), x + 0.22, y + 0.95, cw - 0.4, 0.98, { fontSize: 12, color: C.NAVY, paraSpaceAfter: 2 });
@@ -91,7 +91,7 @@ const SESSIONS = [
       ["0~10분", "과제(자소서 초안) 확인"],
       ["10~40분", "문항별 자기소개서 첨삭"],
       ["40~55분", "한국형 이력서 항목 완성"],
-      ["55~60분", "수정본 사이트 제출 안내(2회까지)"],
+      ["55~60분", "수정본 사이트 제출 (2회까지)"],
     ],
   },
   {

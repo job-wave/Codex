@@ -12,7 +12,8 @@ const OUT = path.resolve(__dirname, "JobWave_proposal_visual.pptx");
 // palette (원본 색 유지)
 const NAVY = "151B26", ACCENT = "B72654" /* 강조색: 충북대 CBNU Red */, GRAY = "5B6472", LINE = "E3E6EA",
   MUTED = "9AA1AC", NAVY2 = "2A3342", BG = "F4F5F7", WHITE = "FFFFFF", OTINT = "F8E5EB", NTINT = "E8EAF0";
-const FONT = "맑은 고딕";
+const FONT = "Pretendard Variable";
+const LOGO_R = 892 / 162; // 잡웨이브 로고(assets/jobwave_*.png) 가로/세로 비율, jobwave.kr 헤더 로고 캡처
 const CBNU_RED = "B72654"; // 충북대학교 전용색상 CBNU Red (PANTONE 7425C, R183 G38 B84)
 
 const THEME = {
@@ -40,7 +41,7 @@ pres.defineSlideMaster({
   title: "CONTENT",
   background: { color: WHITE },
   objects: [
-    { text: { text: "JobWave", options: { x: W - M - 2, y: 0.32, w: 2, h: 0.3, fontSize: 12, bold: true, color: NAVY, align: "right", margin: 0 } } },
+    { image: { path: path.resolve(__dirname, "assets", "jobwave_dark.png"), x: W - M - 0.24 * LOGO_R, y: 0.35, w: 0.24 * LOGO_R, h: 0.24 } },
     { text: { text: FOOT, options: { x: M, y: 7.05, w: 6, h: 0.25, fontSize: 9, color: MUTED, margin: 0 } } },
     { placeholder: { options: { name: "crumb", type: "body", x: M, y: 0.32, w: 8, h: 0.3, fontSize: 11, bold: true, color: ACCENT, margin: 0, valign: "middle" }, text: "" } },
     // 제목 띠: 모든 내용 페이지에서 같은 위치·크기, 왼쪽 끝부터 오른쪽 끝까지
@@ -102,8 +103,8 @@ function arrowR(s, x, y, w, color = ACCENT) {
 }
 function stat(s, x, y, w, h, num, unit, label, fill, numColor, labelColor) {
   card(s, x, y, w, h, fill);
-  T(s, [{ text: num, options: { fontSize: 44, bold: true, color: numColor } }, { text: " " + unit, options: { fontSize: 18, bold: true, color: numColor } }], x + 0.3, y + 0.2, w - 0.6, h * 0.55, { valign: "bottom" });
-  T(s, label, x + 0.3, y + h * 0.62, w - 0.6, h * 0.3, { fontSize: 13, color: labelColor });
+  T(s, [{ text: num, options: { fontSize: 44, bold: true, color: numColor } }, { text: " " + unit, options: { fontSize: 18, bold: true, color: numColor } }], x + 0.3, y + 0.12, w - 0.6, h * 0.52, { valign: "bottom" });
+  T(s, label, x + 0.3, y + h * 0.66, w - 0.6, h * 0.26, { fontSize: 13, color: labelColor, valign: "middle" });
 }
 function content(crumb, title, sub) {
   const s = pres.addSlide({ masterName: "CONTENT", sectionTitle: curSection });
@@ -150,9 +151,9 @@ async function divider(num, title, items, img) {
     const s = pres.addSlide({ masterName: "DARK", sectionTitle: curSection });
     s.background = { color: WHITE };
     const A = (f) => path.resolve(__dirname, "assets", f);
-    // 상단: 충북대 로고(좌) + JobWave(우)
+    // 상단: 충북대 로고(좌) + 잡웨이브 로고(우)
     s.addImage({ path: A("cbnu_logo.png"), x: M, y: 0.55, w: 2.9, h: 2.9 * 245 / 742, altText: "충북대학교 심볼마크 시그니처" });
-    T(s, "JobWave", W - M - 2.5, 0.7, 2.5, 0.5, { fontSize: 20, bold: true, color: NAVY, align: "right", valign: "middle" });
+    s.addImage({ path: A("jobwave_dark.png"), x: W - M - 0.36 * LOGO_R, y: 0.78, w: 0.36 * LOGO_R, h: 0.36, altText: "잡웨이브 로고" });
     // 왼쪽: 제목
     pill(s, "제안서", M, 2.2, 1.15, 0.42, NAVY, WHITE, { fs: 14 });
     T(s, "2026. 11.", M + 1.3, 2.2, 2, 0.42, { fontSize: 14, color: GRAY, valign: "middle" });
@@ -201,15 +202,14 @@ async function divider(num, title, items, img) {
     s.addImage({ path: ARC, x: -1.8, y: 3.0, w: 6.0, h: 4.56, transparency: 30 });
     const rows = [
       ["01", "제안 개요", "제안 배경 / 해결 방향 / 프로그램 구성", "LuTarget"],
-      ["02", "제안사 소개", "일반현황 / 수행 조직 / 수행실적 / 유사사업", "LuBuilding2"],
-      ["03", "프로그램 제안", "특강 / 멘토링 / 채용정보 사이트 / 인사담당자 상담 / 잡페어", "LuLayoutDashboard"],
-      ["04", "도입 방식", "구성 옵션 / 추천 조합", "LuListChecks"],
-      ["05", "운영 관리", "인력·참여 관리 / 개인정보 보호 / 성과관리·보고", "LuShieldCheck"],
-      ["06", "예산서(안)", "예산 요약 / 프로그램별 산출 내역", "LuCalculator"],
+      ["02", "프로그램 제안", "특강 / 멘토링 / 채용정보 사이트 / 인사담당자 상담 / 잡페어", "LuLayoutDashboard"],
+      ["03", "도입 방식", "구성 옵션 / 추천 조합", "LuListChecks"],
+      ["04", "운영 관리", "인력·참여 관리 / 개인정보 보호 / 성과관리·보고", "LuShieldCheck"],
+      ["05", "예산서(안)", "예산 요약 / 프로그램별 산출 내역", "LuCalculator"],
     ];
-    const x = 4.8, w = W - x - M, h = 0.88, g = 0.14;
+    const x = 4.8, w = W - x - M, h = 1.0, g = 0.2;
     for (let i = 0; i < rows.length; i++) {
-      const y = 0.65 + i * (h + g);
+      const y = 0.75 + i * (h + g);
       card(s, x, y, w, h, BG);
       numCircle(s, x + 0.25, y + 0.12, 0.64, rows[i][0], ACCENT, WHITE, 17);
       T(s, rows[i][1], x + 1.15, y + 0.08, 5, 0.42, { fontSize: 19, bold: true, valign: "middle" });
@@ -224,7 +224,7 @@ async function divider(num, title, items, img) {
 
   // ===== 5. 데이터 =====
   {
-    const s = content("01  제안 개요", "유학생 유입은 늘었으나, 국내 취업·정착은 저조", "충북은 유학생 입학 증가율 전국 1위지만, 학사 졸업 유학생 10명 중 7명은 졸업 후 출국");
+    const s = content("01 제안 개요", "유학생 유입은 늘었으나, 국내 취업·정착은 저조", "충북은 유학생 입학 증가율 전국 1위지만, 학사 졸업 유학생 10명 중 7명은 졸업 후 출국");
     const y = 1.95, h = 4.65, w = 3.85, g = 0.3;
     // 카드 1: 신규 입학자 차트
     let x = M;
@@ -245,7 +245,7 @@ async function divider(num, title, items, img) {
     T(s, "충북 유학생 입학 증가율", x + 0.3, y + 0.25, w - 0.6, 0.35, { fontSize: 15, bold: true, color: WHITE });
     T(s, "414.7%", x + 0.3, y + 0.65, w - 0.6, 1.0, { fontSize: 60, bold: true, color: ACCENT, valign: "middle" });
     pill(s, "전국 시도 중 1위", x + 0.3, y + 1.75, 1.9, 0.38, ACCENT, WHITE, { fs: 12 });
-    T(s, "2019년 대비 2025년", x + 2.3, y + 1.75, 1.4, 0.38, { fontSize: 12, color: "C9CED6", valign: "middle" });
+    T(s, "2019년 대비\n2025년", x + 2.3, y + 1.72, 1.4, 0.44, { fontSize: 12, color: "C9CED6", valign: "middle" });
     const reg = [["충북", 414.7], ["경북", 305.2], ["전남", 254], ["경기", 140.3]];
     reg.forEach(([n, v], i) => {
       const ry = y + 2.45 + i * 0.5;
@@ -277,7 +277,7 @@ async function divider(num, title, items, img) {
 
   // ===== 6. 세 가지 지원 축 =====
   {
-    const s = content("01  제안 개요", "학생 애로사항별 세 가지 지원 축", "비자·채용 정보 부족, 한국식 서류·면접 경험 부족, 채용 기업 접점 부족에 각각 대응");
+    const s = content("01 제안 개요", "학생 애로사항별 세 가지 지원 축", "비자·채용 정보 부족, 한국식 서류·면접 경험 부족, 채용 기업 접점 부족에 각각 대응");
     T(s, "유학생 애로사항", M, 1.95, 5, 0.35, { fontSize: 13, bold: true, color: GRAY });
     T(s, "지원 축", 7.2, 1.95, 5, 0.35, { fontSize: 13, bold: true, color: ACCENT });
     const rows = [
@@ -302,7 +302,7 @@ async function divider(num, title, items, img) {
 
   // ===== 7. 허브 =====
   {
-    const s = content("01  제안 개요", "채용정보 사이트를 중심으로 연결되는 5개 프로그램", "각 프로그램의 참여 기록이 사이트에 쌓여, 다음 단계 신청과 기업 매칭에 쓰입니다");
+    const s = content("01 제안 개요", "채용정보 사이트를 중심으로 연결되는 5개 프로그램", "각 프로그램의 참여 기록이 사이트에 쌓여, 다음 단계 신청과 기업 매칭에 쓰입니다");
     const cx = W / 2, cy = 4.15, R = 1.25;
     const items = [
       ["01", "취업 특강", "8강 심화 커리큘럼", "LuPresentation", M, 2.05],
@@ -330,127 +330,15 @@ async function divider(num, title, items, img) {
     chips.forEach((c, i) => pill(s, c, cx - 2.35 + i * 0.96, 6.25, 0.86, 0.38, ACCENT, WHITE, { fs: 12 }));
   }
 
-  // ===== 8. 간지 02 =====
-  section("02 제안사 소개");
-  await divider("02", "제안사 소개", ["일반현황", "수행 조직", "수행실적", "유사사업"], "div02");
-
-  // ===== 9. 회사 일반현황 =====
-  {
-    const s = content("02  제안사 소개", "회사 일반현황", "대학·공공기관 취업지원 프로그램 기획·운영");
-    const rows = [["회사명", "잡웨이브(JobWave)"], ["대표자", "확인 필요"], ["설립일", "확인 필요"], ["사업자등록번호", "확인 필요"], ["소재지", "확인 필요"], ["홈페이지", "jobwave.kr"], ["연락처", "확인 필요"]];
-    const data = [[{ text: "항목", options: { bold: true, color: WHITE, fill: { color: NAVY } } }, { text: "내용", options: { bold: true, color: WHITE, fill: { color: NAVY } } }]];
-    rows.forEach((r) => data.push([{ text: r[0], options: { bold: true, fill: { color: BG } } }, { text: r[1], options: { color: r[1] === "확인 필요" ? MUTED : NAVY, bold: r[1] !== "확인 필요" } }]));
-    s.addTable(data, { x: M, y: 2.0, w: 5.6, colW: [1.9, 3.7], rowH: 0.56, fontSize: 14, color: NAVY, fontFace: FONT, border: { type: "solid", pt: 0.75, color: LINE }, valign: "middle", margin: [0, 0.15, 0, 0.2] });
-    T(s, "주요 사업분야", 6.75, 1.95, 4, 0.35, { fontSize: 15, bold: true });
-    const biz = [["잡페어·채용박람회", "대학·지자체 채용행사", "LuTrophy"], ["대학 취업 프로그램", "취업캠프·특강·공모전", "LuGraduationCap"], ["유학생 취업지원", "K-유학생 취업캠프", "LuGlobe"], ["운영 웹 플랫폼", "사전진단·등록·예약", "LuMonitor"]];
-    const bw = 2.85, bh = 2.0;
-    for (let i = 0; i < 4; i++) {
-      const x = 6.75 + (i % 2) * (bw + 0.28), y = 2.4 + Math.floor(i / 2) * (bh + 0.25);
-      const fill = i === 2 ? ACCENT : BG, dark = i === 2;
-      card(s, x, y, bw, bh, fill, { shadow: true });
-      await iconCircle(s, x + 0.3, y + 0.3, 0.8, biz[i][2], dark ? WHITE : ACCENT, dark ? ACCENT : WHITE);
-      T(s, biz[i][0], x + 0.3, y + 1.2, bw - 0.5, 0.4, { fontSize: 17, bold: true, color: dark ? WHITE : NAVY });
-      T(s, biz[i][1], x + 0.3, y + 1.57, bw - 0.5, 0.35, { fontSize: 13, color: dark ? WHITE : GRAY });
-    }
-  }
-
-  // ===== 10. 수행 조직 =====
-  {
-    const s = content("02  제안사 소개", "사업 수행 조직", "총괄 책임자 아래 4개 팀이 프로그램별로 전담");
-    const tx = W / 2 - 1.9;
-    card(s, tx, 1.95, 3.8, 1.0, NAVY, { shadow: true });
-    T(s, "사업 총괄 책임자", tx, 2.05, 3.8, 0.45, { fontSize: 18, bold: true, color: WHITE, align: "center", valign: "middle" });
-    T(s, "성명·직급 확인 필요", tx, 2.48, 3.8, 0.35, { fontSize: 12, color: "C9CED6", align: "center", valign: "middle" });
-    card(s, W - M - 2.9, 2.1, 2.9, 0.7, WHITE, { line: ACCENT, lineW: 1.5 });
-    T(s, [{ text: "발주처  ", options: { color: GRAY } }, { text: "충북대학교", options: { color: ACCENT, bold: true } }], W - M - 2.9, 2.1, 2.9, 0.7, { fontSize: 15, align: "center", valign: "middle" });
-    s.addShape(pres.shapes.LINE, { x: tx + 3.8, y: 2.45, w: W - M - 2.9 - tx - 3.8, h: 0, line: { color: ACCENT, width: 1.5, dashType: "dash" } });
-    const teams = [
-      ["기획·운영팀", ["일정·모집 관리", "현장 운영", "발주처 소통"], "LuClipboardList"],
-      ["교육·멘토링팀", ["강사·멘토 섭외", "커리큘럼 관리", "만족도 조사"], "LuPresentation"],
-      ["플랫폼팀", ["사이트 구축·운영", "예약·데이터 관리", "대학 이관"], "LuMonitor"],
-      ["기업협력팀", ["인사담당자 섭외", "참여기업 발굴", "매칭·결과 추적"], "LuHandshake"],
-    ];
-    const cw = 2.85, g = (W - 2 * M - 4 * cw) / 3, y = 3.65;
-    s.addShape(pres.shapes.LINE, { x: W / 2, y: 2.95, w: 0, h: 0.35, line: { color: NAVY, width: 1.5 } });
-    s.addShape(pres.shapes.LINE, { x: M + cw / 2, y: 3.3, w: 3 * (cw + g), h: 0, line: { color: NAVY, width: 1.5 } });
-    for (let i = 0; i < 4; i++) {
-      const x = M + i * (cw + g);
-      s.addShape(pres.shapes.LINE, { x: x + cw / 2, y: 3.3, w: 0, h: 0.35, line: { color: NAVY, width: 1.5 } });
-      card(s, x, y, cw, 2.95, BG, { shadow: true });
-      await iconCircle(s, x + cw / 2 - 0.42, y + 0.25, 0.84, teams[i][2]);
-      T(s, teams[i][0], x, y + 1.18, cw, 0.45, { fontSize: 18, bold: true, align: "center", valign: "middle" });
-      T(s, teams[i][1].map((b, k) => ({ text: b, options: { bullet: true, breakLine: k < 2 } })), x + 0.45, y + 1.75, cw - 0.7, 1.05, { fontSize: 14, color: NAVY2, paraSpaceAfter: 3 });
-    }
-    T(s, "팀별 담당자 성명·직급은 확인 후 기재", M, 6.72, 6, 0.28, { fontSize: 11, color: MUTED });
-  }
-
-  // ===== 11. 수행실적 =====
-  {
-    const s = content("02  제안사 소개", "대학 취업지원 분야 수행실적", "2026년 수행 사업 (실적 명의·연도 확인 후 확정)");
-    const st = [["8", "건", "2026년 수행 사업", NAVY, WHITE, "C9CED6", "LuClipboardCheck"], ["6", "개", "발주 대학", BG, NAVY, GRAY, "LuSchool"], ["1", "건", "유학생 대상 사업", ACCENT, WHITE, WHITE, "LuGlobe"]];
-    const sw = 3.0, sh = 1.4;
-    for (let i = 0; i < 3; i++) {
-      const y = 2.0 + i * (sh + 0.2);
-      card(s, M, y, sw, sh, st[i][3], { shadow: true });
-      T(s, [{ text: st[i][0], options: { fontSize: 44, bold: true } }, { text: " " + st[i][1], options: { fontSize: 18, bold: true } }], M + 0.3, y + 0.12, 1.9, 0.8, { color: st[i][4], valign: "bottom" });
-      T(s, st[i][2], M + 0.3, y + 0.93, 2.4, 0.35, { fontSize: 13, color: st[i][5] });
-      s.addImage({ data: await icon(st[i][6], st[i][4] === WHITE ? WHITE : ACCENT), x: M + sw - 0.85, y: y + 0.3, w: 0.55, h: 0.55, transparency: 0 });
-    }
-    const rows = [
-      ["1", "2026", "K-유학생 취업캠프 (RISE 연계)", "한국교통대학교"],
-      ["2", "2026", "충청북도 지역청년 직무박람회", "건국대학교 글로컬캠퍼스"],
-      ["3", "2026", "KU 커리어 공모전 11기", "건국대학교 글로컬캠퍼스"],
-      ["4", "2026", "반도체 부트캠프 잡페어", "경기과학기술대학교"],
-      ["5", "2026", "한성 JOB 톡톡 현직자 취업 특강", "한성대학교"],
-      ["6", "2026", "기업분석 공모전", "한성대학교"],
-      ["7", "2026", "SK하이닉스 토의면접 대비 특강", "인하대학교"],
-      ["8", "2026", "JOB FIESTA", "서경대학교"],
-    ];
-    const hd = (t) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: NAVY } } });
-    const data = [[hd("No"), hd("연도"), hd("사업명"), hd("발주처")]];
-    rows.forEach((r, i) => {
-      const hl = i === 0;
-      const o = hl ? { fill: { color: OTINT }, bold: true, color: ACCENT } : { fill: { color: i % 2 ? BG : WHITE } };
-      data.push(r.map((c, k) => ({ text: hl && k === 2 ? c + "  ★ 유학생" : c, options: { ...o, align: k < 2 ? "center" : "left" } })));
-    });
-    s.addTable(data, { x: 3.9, y: 2.0, w: W - M - 3.9, colW: [0.6, 0.9, 4.4, 2.93], rowH: 0.5, fontSize: 13, color: NAVY, fontFace: FONT, border: { type: "solid", pt: 0.5, color: LINE }, valign: "middle", margin: [0, 0.12, 0, 0.12] });
-  }
-
-  // ===== 12. 유사사업 =====
-  {
-    const s = content("02  제안사 소개", "유사사업: 한국교통대학교 K-유학생 취업캠프", "충북 RISE 「충북형 K-유학생 유치 및 정주 지원」 연계, 사전진단부터 모의면접까지 직접 운영");
-    const st = [
-      ["01", "사전진단", "camp.jobwave.kr로\n진단·취업인식 조사", "LuSearch"],
-      ["02", "1박 2일 캠프", "외국인 유학생 대상\n집중 프로그램", "LuCalendarDays"],
-      ["03", "멘토링", "워크시트·\n취업플랜 작성", "LuUsers"],
-      ["04", "모의면접", "평가표 기반\n피드백", "LuMic"],
-      ["05", "통역", "중국어·영어\n통역 운영", "LuLanguages"],
-    ];
-    const cw = 2.15, g = (W - 2 * M - 5 * cw) / 4, y = 2.05, h = 2.75;
-    for (let i = 0; i < 5; i++) {
-      const x = M + i * (cw + g);
-      card(s, x, y, cw, h, BG, { shadow: true });
-      await iconCircle(s, x + cw / 2 - 0.45, y + 0.3, 0.9, st[i][3], i === 0 ? ACCENT : NAVY);
-      T(s, st[i][0], x, y + 1.3, cw, 0.3, { fontSize: 12, bold: true, color: ACCENT, align: "center" });
-      T(s, st[i][1], x, y + 1.58, cw, 0.42, { fontSize: 17, bold: true, align: "center", valign: "middle" });
-      T(s, st[i][2], x + 0.1, y + 2.03, cw - 0.2, 0.62, { fontSize: 12, color: GRAY, align: "center" });
-      if (i < 4) chevron(s, x + cw + g / 2 - 0.08, y + h / 2 - 0.15, 0.16, 0.3, ACCENT);
-    }
-    card(s, M, 5.15, W - 2 * M, 1.55, NAVY);
-    await iconCircle(s, M + 0.35, 5.5, 0.85, "LuArrowRight", ACCENT);
-    T(s, "충북대 사업에 적용", M + 1.5, 5.32, 6, 0.4, { fontSize: 16, bold: true, color: ACCENT, valign: "middle" });
-    T(s, "캠프용 진단 플랫폼(camp.jobwave.kr)을 채용정보 사이트로 확장하고, 캠프에서 쓴 멘토링 워크시트와 모의면접 평가표를 1:1 멘토링 교재로 사용합니다.", M + 1.5, 5.75, W - 2 * M - 1.8, 0.8, { fontSize: 15, color: WHITE, valign: "middle" });
-  }
-
   // ===== 13. 간지 03 =====
-  section("03 프로그램 제안");
-  await divider("03", "프로그램 제안", ["01  취업 특강", "02  1:1 멘토링", "03  맞춤 채용정보 사이트", "04  인사담당자 상담", "05  미니 K유학생 잡페어"], "div03");
+  section("02 프로그램 제안");
+  await divider("02", "프로그램 제안", ["01 취업 특강", "02 1:1 멘토링", "03 맞춤 채용정보 사이트", "04 인사담당자 상담", "05 미니 K유학생 잡페어"], "div03");
 
   // ===== 14. 특강 개요 =====
-  const C1 = "03  프로그램 제안  /  01 취업 특강";
+  const C1 = "02 프로그램 제안 / 01 취업 특강";
   {
     const s = content(C1, "취업 특강 개요", "비자, 서류, 면접, 입사까지 4단계 8강. 강의마다 실습 결과물 작성");
-    const rows = [["목적", "한국 취업 과정 단계별 심화 학습", "LuTarget"], ["대상", "한국 취업 희망 유학생 (학부·대학원)", "LuUsers"], ["운영", "회당 2시간 내외 대면 강의 (협의 후 확정)", "LuClock"], ["이수 혜택", "6강 이상 이수 시 잡페어 사전매칭, 멘토링 우선 예약", "LuGift"]];
+    const rows = [["목적", "한국 취업 과정 단계별 심화 학습", "LuTarget"], ["대상", "한국 취업 희망 유학생 (학부·대학원)", "LuUsers"], ["운영", "강의당 2시간 대면 강의", "LuClock"], ["이수 혜택", "6강 이상 이수 시\n잡페어 사전매칭·멘토링 우선 예약", "LuGift"]];
     for (let i = 0; i < 4; i++) {
       const y = 2.0 + i * 1.18, x = M, w = 6.6;
       card(s, x, y, w, 1.02, i === 3 ? OTINT : BG);
@@ -480,7 +368,7 @@ async function divider(num, title, items, img) {
 
   // ===== 15. 커리큘럼 =====
   {
-    const s = content(C1, "단계별 8강 커리큘럼", "기본형은 표시된 4강(1·2·4·6강), 확장형은 8강 전체 운영 · 세부 내용과 강사는 협의 후 확정");
+    const s = content(C1, "단계별 8강 커리큘럼", "기본형 4강(1·2·4·6강), 확장형 8강 전체 · 강의당 2시간 · 세부 내용과 강사는 협의 후 확정");
     const cols = [
       ["STEP 01", "전략", [["1강", true, "채용 구조 해부", "공채·수시 채용, 외국인 전형", "지원 경로 맵"], ["2강", true, "비자 연계 취업전략", "D-10·E-7·F-2-R 요건", "비자 로드맵"], ["3강", false, "직무 분석·타겟 기업", "충북 주력산업 수요 직무", "타겟 기업 10곳"]]],
       ["STEP 02", "서류", [["4강", true, "한국형 자기소개서", "STAR 작성, 지원동기 논리", "자소서 초안"], ["5강", false, "AI 역량검사·인적성", "게임형 검사, 한국어 독해", "진단 리포트"]]],
@@ -540,7 +428,7 @@ async function divider(num, title, items, img) {
   }
 
   // ===== 17. 멘토링 운영 방식 =====
-  const C2 = "03  프로그램 제안  /  02 1:1 멘토링";
+  const C2 = "02 프로그램 제안 / 02 1:1 멘토링";
   {
     const s = content(C2, "1:1 멘토링 운영 방식", "오프라인·온라인 모두 전문멘토 1명이 학생 1인당 1시간, 하루 최대 7명을 지도합니다");
     const sw = (7.6 - 0.6) / 3;
@@ -628,7 +516,7 @@ async function divider(num, title, items, img) {
   }
 
   // ===== 20~21. 채용정보 사이트 (실제 시안 사이트 스크린샷) =====
-  const C3 = "03  프로그램 제안  /  03 채용정보 사이트";
+  const C3 = "02 프로그램 제안 / 03 채용정보 사이트";
   await require("./site_slides.js").addSiteSlides(ctx, C3);
 
   // ===== 22. 사이트 운영 =====
@@ -650,13 +538,13 @@ async function divider(num, title, items, img) {
   }
 
   // ===== 23. 인사담당자 상담 개요 =====
-  const C4 = "03  프로그램 제안  /  04 인사담당자 상담";
+  const C4 = "02 프로그램 제안 / 04 인사담당자 상담";
   {
     const s = content(C4, "인사담당자 상담 개요", "외국인 채용 경험이 있는 기업 인사담당자만 멘토로 섭외");
     card(s, M, 1.95, 4.75, 2.45, NAVY, { shadow: true });
     T(s, [{ text: "유학생을 실제로 뽑아 본\n인사담당자에게 직접 듣는\n", options: { color: WHITE } }, { text: "채용 기준", options: { color: ACCENT } }], M + 0.35, 2.1, 4.2, 2.15, { fontSize: 22, bold: true, valign: "middle" });
     await photo(s, "hr", M + 4.9, 1.95, 2.3, 2.45);
-    const pts = [["01", "실제 채용 기준을 직접 설명", "LuMessagesSquare"], ["02", "기업이 망설이는 이유까지 공유", "LuCircleHelp"], ["03", "잡페어 참여 기업 발굴로 연결", "LuLink"]];
+    const pts = [["01", "실제 채용 기준을\n직접 설명", "LuMessagesSquare"], ["02", "기업이 망설이는\n이유까지 공유", "LuCircleHelp"], ["03", "잡페어 참여 기업\n발굴로 연결", "LuLink"]];
     for (let i = 0; i < 3; i++) {
       const x = M + i * 2.45, y = 4.6;
       card(s, x, y, 2.3, 2.1, BG);
@@ -743,7 +631,7 @@ async function divider(num, title, items, img) {
   await D.addHrRoundDetail(ctx, C4);
 
   // ===== 26. 잡페어 개요 =====
-  const C5 = "03  프로그램 제안  /  05 미니 K유학생 잡페어";
+  const C5 = "02 프로그램 제안 / 05 미니 K유학생 잡페어";
   {
     const s = content(C5, "미니 K유학생 잡페어 개요", "유학생 채용 의향이 있는 기업 5개사 내외, 유학생 30~40명 규모");
     const sw = (W - 2 * M - 0.6) / 3;
@@ -753,7 +641,7 @@ async function divider(num, title, items, img) {
     T(s, "기업 발굴 기준", M + 4.2, 3.95, 4, 0.38, { fontSize: 16, bold: true });
     await photo(s, "jobfair", M, 3.95, 3.9, 2.75, 0.45);
     const cw3 = (W - 2 * M - 4.2 - 0.6) / 3;
-    const cr = [["충북 소재 기업", "지역 정주로 이어지는 채용 우선", "LuMapPin"], ["유학생 채용 의향", "실제 채용 계획이 있는 기업만 초청", "LuHeart"], ["E-7 고용 가능 업종", "외투기업·수출기업 포함", "LuIdCard"]];
+    const cr = [["충북 소재 기업", "지역 정주로 이어지는 채용 우선", "LuMapPin"], ["유학생 채용 의향", "채용 계획이 있는 기업만 초청", "LuHeart"], ["E-7 고용 가능 업종", "외투기업·수출기업 포함", "LuIdCard"]];
     for (let i = 0; i < 3; i++) {
       const x = M + 4.2 + i * (cw3 + 0.3), y = 4.45;
       card(s, x, y, cw3, 2.25, BG, { shadow: true });
@@ -820,12 +708,12 @@ async function divider(num, title, items, img) {
   await D.addJobfairDay(ctx, C5);
 
   // ===== 29. 간지 04 =====
-  section("04 도입 방식");
-  await divider("04", "도입 방식", ["구성 옵션", "추천 조합"], "div04");
+  section("03 도입 방식");
+  await divider("03", "도입 방식", ["구성 옵션", "추천 조합"], "div04");
 
   // ===== 30. 구성 옵션 =====
   {
-    const s = content("04  도입 방식", "프로그램별 구성 옵션", "프로그램마다 기본형과 확장형 중 선택 · 영어 강사와 통역은 추가 옵션");
+    const s = content("03 도입 방식", "프로그램별 구성 옵션", "프로그램마다 기본형과 확장형 중 선택 · 영어 강사와 통역은 추가 옵션");
     const rows = [["01", "취업 특강", "4강, 한국어", "8강 전체, 한국어", "LuPresentation"], ["02", "1:1 멘토링", "오프라인, 1인 2회", "오프라인과 온라인, 1인 3회", "LuUsers"], ["03", "채용정보 사이트", "공고·프로그램 신청", "매칭·이력서 빌더·대시보드", "LuMonitor"], ["04", "인사담당자 상담", "1회, 인사담당자 3명", "2회, 인사담당자 5명", "LuMessagesSquare"], ["05", "미니 K유학생 잡페어", "3개사", "5개사 + 사전매칭", "LuBuilding2"]];
     const c0 = 4.0, c1 = 3.95, c2 = W - 2 * M - c0 - c1 - 0.3;
     const x1 = M + c0 + 0.15, x2 = x1 + c1 + 0.15;
@@ -853,10 +741,10 @@ async function divider(num, title, items, img) {
 
   // ===== 31. 추천 조합 =====
   {
-    const s = content("04  도입 방식", "목적별 추천 조합", "운영 목적과 예산에 따라 세 가지 조합 제안");
-    const progs = ["01  특강", "02  멘토링", "03  사이트", "04  상담", "05  미니 K유학생 잡페어"];
+    const s = content("03 도입 방식", "목적별 추천 조합", "운영 목적과 예산에 따라 세 가지 조합 제안");
+    const progs = ["01 특강", "02 멘토링", "03 사이트", "04 상담", "05 미니 K유학생 잡페어"];
     await icon("LuCircleCheck", WHITE);
-    const combos = [["A", "역량집중형", [1, 1, 0, 0, 0], "서류·면접 준비를 단기간에 끌어올려야 할 때"], ["B", "채용연계형", [0, 0, 1, 1, 1], "기업 연결과 실제 채용 성과를 우선할 때"], ["C", "통합형", [1, 1, 1, 1, 1], "진단부터 채용까지 전 단계를 연결해 운영할 때"]];
+    const combos = [["A", "역량집중형", [1, 1, 0, 0, 0], "서류·면접 역량을\n단기간에 높여야 할 때"], ["B", "채용연계형", [0, 0, 1, 1, 1], "기업 연결과\n실제 채용 성과가 우선일 때"], ["C", "통합형", [1, 1, 1, 1, 1], "진단부터 채용까지\n전 단계를 연결할 때"]];
     const cw = (W - 2 * M - 0.6) / 3, y = 1.95, h = 4.9;
     combos.forEach(([L, n, inc, d], i) => {
       const x = M + i * (cw + 0.3), dark = i === 2;
@@ -876,12 +764,12 @@ async function divider(num, title, items, img) {
   }
 
   // ===== 32. 간지 05 =====
-  section("05 운영 관리");
-  await divider("05", "운영 관리", ["인력·참여 관리", "개인정보 보호", "성과관리·보고"], "div05");
+  section("04 운영 관리");
+  await divider("04", "운영 관리", ["인력·참여 관리", "개인정보 보호", "성과관리·보고"], "div05");
 
   // ===== 33. 인력·참여 =====
   {
-    const s = content("05  운영 관리", "인력 운영과 참여 관리", "강사·멘토 선정 기준과 모집·예약·이수 관리 방안");
+    const s = content("04 운영 관리", "인력 운영과 참여 관리", "강사·멘토 선정 기준과 모집·예약·이수 관리 방안");
     const cols = [
       ["인력 운영", NAVY, [["강사·전문멘토", "유학생 취업지도 경력자 우선 배정", "LuCircleCheck"], ["인사담당자", "외국인 채용 경험 기업으로 한정", "LuUserCheck"], ["사전 교육", "유학생 특성·비자 기초·개인정보 보호", "LuBookOpen"]]],
       ["참여 관리", ACCENT, [["모집", "국제교류 부서 협조, 교내 채널·사이트 다국어 공지", "LuMegaphone"], ["예약·노쇼", "사전 알림, 취소 시 대기자 자동 배정", "LuBell"], ["이수 혜택", "6강 이상 이수 시 잡페어 사전매칭·멘토링 우선 예약", "LuGift"]]],
@@ -904,8 +792,8 @@ async function divider(num, title, items, img) {
 
   // ===== 34. 개인정보 =====
   {
-    const s = content("05  운영 관리", "개인정보 보호 방안", "「개인정보 보호법」 준수, 학생이 동의한 범위 안에서만 정보 활용");
-    const it = [["01", "수집 최소화", "운영에 필요한 항목만 수집", "LuClipboardList"], ["02", "열람 동의", "동의한 기업에만 이력서 공개", "LuPenLine"], ["03", "접근 권한", "담당자별 권한 분리, 접속 기록 관리", "LuKey"], ["04", "보관·파기", "사업 종료 후 이관 또는 협의 기한 내 파기", "LuTrash2"]];
+    const s = content("04 운영 관리", "개인정보 보호 방안", "「개인정보 보호법」 준수, 학생이 동의한 범위 안에서만 정보 활용");
+    const it = [["01", "수집 최소화", "운영에 필요한 항목만 수집", "LuClipboardList"], ["02", "열람 동의", "동의한 기업에만 이력서 공개", "LuPenLine"], ["03", "접근 권한", "담당자별 권한 분리,\n접속 기록 관리", "LuKey"], ["04", "보관·파기", "사업 종료 후 대학 이관\n또는 협의 기한 내 파기", "LuTrash2"]];
     const cw = (W - 2 * M - 0.9) / 4;
     for (let i = 0; i < 4; i++) {
       const x = M + i * (cw + 0.3), y = 1.95, h = 3.0;
@@ -929,7 +817,7 @@ async function divider(num, title, items, img) {
 
   // ===== 35. 성과지표 =====
   {
-    const s = content("05  운영 관리", "성과지표와 보고 체계", "정량 목표를 정하고 단계별로 보고");
+    const s = content("04 운영 관리", "성과지표와 보고 체계", "정량 목표를 정하고 단계별로 보고");
     const k = [["4.5", "점 이상", "프로그램 만족도 (5점 만점)", ACCENT, WHITE, WHITE, "LuStar"], ["100", "%", "멘토링 참여자 이력서 완성률", NAVY, WHITE, "C9CED6", "LuFileText"], ["—", "건 이상", "잡페어 현장면접 연계 (목표 협의)", BG, NAVY, GRAY, "LuHandshake"], ["3", "개월", "종료 후 취업 결과 추적", BG, NAVY, GRAY, "LuTrendingUp"]];
     const cw = (W - 2 * M - 0.9) / 4;
     for (let i = 0; i < 4; i++) {
@@ -954,16 +842,16 @@ async function divider(num, title, items, img) {
   }
 
   // ===== 06 예산서(안) =====
-  section("06 예산서(안)");
-  await divider("06", "예산서(안)", ["예산 요약", "프로그램별 산출 내역"], null);
+  section("05 예산서(안)");
+  await divider("05", "예산서(안)", ["예산 요약", "프로그램별 산출 내역"], null);
   await require("./budget_slides.js").addBudgetSlides(ctx);
 
-  // ===== 36. Contact =====
+  // ===== Contact =====
   {
     const s = pres.addSlide({ masterName: "DARK", sectionTitle: curSection });
     s.addImage({ path: ARC, x: 5.13, y: 0.15, w: 8.2, h: 6.23 });
     T(s, "Contact", M, 1.2, 4, 0.4, { fontSize: 16, bold: true, color: ACCENT });
-    T(s, "잡웨이브(JobWave)", M, 1.65, 8, 0.9, { fontSize: 44, bold: true, color: WHITE, valign: "middle" });
+    s.addImage({ path: path.resolve(__dirname, "assets", "jobwave_white.png"), x: M, y: 1.75, w: 0.62 * LOGO_R, h: 0.62, altText: "잡웨이브 로고" });
     T(s, "공부한 충북에서, 일하는 충북으로", M, 2.6, 8, 0.45, { fontSize: 18, color: "C9CED6" });
     const rows = [["담당자", "확인 필요", "LuUser"], ["전화", "확인 필요", "LuPhone"], ["이메일", "확인 필요", "LuMail"], ["홈페이지", "jobwave.kr", "LuGlobe"]];
     for (let i = 0; i < 4; i++) {
@@ -976,5 +864,18 @@ async function divider(num, title, items, img) {
 
   await pres.writeFile({ fileName: OUT });
   await applyTheme(OUT, THEME);
+  // 테마의 한글(Hang)·동아시아(ea) 글꼴도 Pretendard Variable로 지정 (기본값은 맑은 고딕/빈칸)
+  {
+    const JSZip = require(require.resolve("jszip", { paths: [require.resolve("pptxgenjs")] }));
+    const fs = require("fs");
+    const zip = await JSZip.loadAsync(fs.readFileSync(OUT));
+    for (const name of Object.keys(zip.files).filter((n) => /^ppt\/theme\/theme\d+\.xml$/.test(n))) {
+      let xml = await zip.file(name).async("string");
+      xml = xml.replace(/<a:ea typeface="[^"]*"\/>/g, `<a:ea typeface="${FONT}"/>`)
+               .replace(/<a:font script="Hang" typeface="[^"]*"\/>/g, `<a:font script="Hang" typeface="${FONT}"/>`);
+      zip.file(name, xml);
+    }
+    fs.writeFileSync(OUT, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
+  }
   console.log("wrote", OUT);
 })();

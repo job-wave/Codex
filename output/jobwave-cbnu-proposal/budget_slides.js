@@ -1,11 +1,11 @@
 // 06 예산서(안) 슬라이드: budget/JobWave_budget.xlsx 를 recalc 한 뒤 export_json.py 로 뽑은 값을 그린다.
 const path = require("path");
 const B = require(path.resolve(__dirname, "budget", "budget_values.json"));
-const FONT = "맑은 고딕", LINE = "E3E6EA";
+const FONT = "Pretendard Variable", LINE = "E3E6EA";
 const won = (v) => (v ? Math.round(v).toLocaleString("ko-KR") : "-");
 const man = (v) => (v / 10000).toLocaleString("ko-KR", { maximumFractionDigits: 1 }) + "만 원";
 const SRC = "단가 근거: 유사사업 「2026학년도 K-유학생 취업캠프」 견적(국립한국교통대학교, 2026.10.16) · 부가세 별도 · * 표시는 유사사업에 없는 항목의 가정 단가";
-const CRUMB = "06  예산서(안)";
+const CRUMB = "05 예산서(안)";
 
 function qty(q, c) {
   if (!q || !c) return "-";
@@ -65,7 +65,7 @@ async function addBudgetSlides(ctx) {
     const data = [[H("항목", C.NAVY, "left"), H("단가", C.NAVY), H("기본 수량", C.NAVY), H("기본형 금액", C.NAVY), H("확장 수량", C.ACCENT), H("확장형 금액", C.ACCENT), H("산출 근거", C.NAVY, "left")]];
     for (const i of ids) {
       const p = P[i];
-      data.push([{ text: `${p.title}  ·  ${p.desc}`, options: { colspan: 7, bold: true, color: C.ACCENT, fill: { color: C.OTINT }, fontSize: 11 } }]);
+      data.push([{ text: `${p.title} · ${p.desc}`, options: { colspan: 7, bold: true, color: C.ACCENT, fill: { color: C.OTINT }, fontSize: 11 } }]);
       p.items.forEach((it) => {
         data.push([
           { text: it.name + (it.assumed ? " *" : ""), options: {} },
