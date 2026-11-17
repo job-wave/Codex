@@ -47,7 +47,7 @@ const el=h=>{const d=document.createElement('div');d.innerHTML=h.trim();const e=
 const parts=[];
 function add(s,e,html,fn){const n=el(html);parts.push({s,e,n,fn});return n}
 
-buildIntro(1.5);
+buildIntro(1.5,2);
 
 /* ---------- CHAPTERS 6-48 : 6 x 7s, 1 photo per second ---------- */
 const CH=[
@@ -64,7 +64,7 @@ const CH=[
  {c:C.orange,name:'이벤트 · 경품 · 푸드트럭', head:'끝까지 즐거웠던 하루', sub:'이벤트 참여 <b>227건</b> · 경품 추첨 2회 · 당첨 <b>19명</b>',
   ph:[['0344','푸드트럭'],['2304','경품 추첨 현장']]},
 ];
-const CS=9, CT=33, PD=CT/CH.reduce((n,c)=>n+c.ph.length,0);
+const CS=11, CT=33, PD=CT/CH.reduce((n,c)=>n+c.ph.length,0);
 let acc=CS; CH.forEach(c=>{c.S=acc;c.L=c.ph.length*PD;acc+=c.L});
 CH.forEach((ch,ci)=>{
   const S=ch.S, CL=ch.L;
@@ -109,7 +109,7 @@ const ST=[{k:'총 참여 인원',v:1090,f:0,u:'명',d:'사전등록 후 현장 3
  {k:'부스 참여',v:1940,f:0,u:'건',d:'부스 QR 참여 기준 · 참여자 796명, 1인 평균 2.4곳',c:C.red},
  {k:'행사 전체 만족도',v:4.58,f:2,u:'점',d:'5점 척도 · 응답 462건 · 만족 이상 90.3%',c:C.purple},
  {k:'추천 의향',v:97.0,f:1,u:'%',d:'응답 462건 중 448건 “추천하겠다”',c:C.yellow}];
-add(41.7,50.4,`<div class="L cream">
+add(43.7,49.4,`<div class="L cream">
   <div style="position:absolute;left:96px;top:150px">
    <div class="ey" style="font-size:24px;font-weight:800;letter-spacing:.2em;color:${C.orange}">RESULT · 숫자로 본 글로컬 잡페어</div>
    <div class="tt" style="font-size:88px;font-weight:900;letter-spacing:-.03em;margin-top:18px">목표를 넘어선 하루</div></div>
@@ -125,8 +125,8 @@ add(41.7,50.4,`<div class="L cream">
     c.querySelector('.v span').textContent=st.f?v.toFixed(st.f):Math.round(v).toLocaleString('en-US');});
 });
 
-/* ---------- OUTRO 50-60 ---------- */
-buildOutro(50,10);
+/* ---------- OUTRO 49-60 ---------- */
+buildOutro(49,11);
 
 buildGrain();
 

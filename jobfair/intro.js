@@ -1,7 +1,7 @@
 /* Motion-graphic intro (0–6s) + global film grain / vignette.
    Uses globals from the page script: add, clamp, eo, eio, back, C. */
-function buildIntro(SC){
-  SC=SC||1;
+function buildIntro(SC,EX){
+  SC=SC||1; EX=EX||0;
   const W=['0330','0322','6333','0277','2302','0344','0312','6342','0301','0314','0289','2298',
            '0340','6352','0283','0336','0342','0305','0332','0346','0287','0328','2304','0303',
            '6325','0293','0310','0326','6361','0324'];
@@ -62,7 +62,7 @@ function buildIntro(SC){
   const spans=s=>[...s].map(ch=>`<span>${ch===' '?'&nbsp;':ch}</span>`).join('');
   const PI=2, px=AX0+PI*(AW+GAP)+IN, py=AB-AH+IN, pw=AW-2*IN, ph=AH-IN;
 
-  add(0,6.35*SC,`<div class="intro">
+  add(0,6.35*SC+EX,`<div class="intro">
     <div class="wall">${cols}</div><div class="wdim"></div>
     <div class="big2026">2026 GLOCAL JOB FAIR 2026 GLOCAL JOB FAIR</div>
     <div class="leak"></div>
@@ -137,7 +137,6 @@ function buildIntro(SC){
     add(S0,S0+D+.1,`<div class="intro">
       <div class="wall">${cols}</div><div class="wdim"></div><div class="leak"></div>
       <div class="stage">${floorSVG}${archHTML}</div>
-      <div class="portal"><img src="assets/d/2302.jpg"><div class="pshade" style="opacity:.35"></div></div>
       <div class="ot"><div class="s0">2026 GLOCAL JOB FAIR</div>
         <div class="ln"><b>충북 청년, 내일의 문을 열다</b></div>
         <div class="s3">함께해 주신 모든 분께 감사드립니다.</div></div>
@@ -150,21 +149,15 @@ function buildIntro(SC){
       wall.style.opacity=.4;wall.style.filter='blur(5px)';
       n.querySelectorAll('.wc').forEach((c,i)=>{const d=i%2?1:-1;c.style.transform=`translateY(${-1500+(i%2?-150:0)+d*t*60}px)`});
       const lk=n.querySelector('.leak');lk.style.left=`${900-t*120}px`;lk.style.top=`${-600+Math.sin(t*.8)*100}px`;lk.style.opacity=.5;
-      // reverse portal: full-frame photo shrinks back into the 학교 door
-      const g=1-eio(t/1.6), s0=1+g*1.6, cxp=px+pw/2, cyp=py+ph/2;
-      const st=n.querySelector('.stage');st.style.transform=`scale(${s0})`;st.style.transformOrigin=`${cxp}px ${cyp}px`;
-      const L=px+(-600-px)*g, Tp=py+(-700-py)*g, Wd=pw+(3120-pw)*g, Ht=(AB-py)+(2400-(AB-py))*g;
-      const L2=cxp+(L-cxp)*s0, T2=cyp+(Tp-cyp)*s0, W2=Wd*s0, H2=Ht*s0;
-      const pt=n.querySelector('.portal');
-      pt.style.left=L2+'px';pt.style.top=T2+'px';pt.style.width=W2+'px';pt.style.height=H2+'px';pt.style.borderRadius=`${W2/2}px ${W2/2}px 0 0`;
-      pt.style.opacity=1-clamp((t-1.5)/.5);pt.style.display=t<2.1?'':'none';
-      const im=pt.querySelector('img');im.style.left=-L2+'px';im.style.top=-T2+'px';
-      n.querySelectorAll('.floor polygon').forEach(p=>{p.style.transform='none'});
+      // arches rise like the intro
+      n.querySelectorAll('.floor polygon').forEach((p,i)=>{const a=eo((t-.3-i*.08)/.6);p.style.transform=`scaleY(${a})`;p.style.transformOrigin=`960px ${AB}px`});
       n.querySelectorAll('.arch').forEach((a,i)=>{
+        const r=back((t-.4-i*.12)/.7);
         const d=a.querySelector('.door');d.style.filter=`brightness(${1+.2*Math.sin(t*4+i)+.6*eio((t-D+2.2)/1.4)})`;
-        a.style.transform=`translateY(${Math.sin(t*1.6+i*.8)*4}px)`;
-        a.querySelector('.lab').style.opacity=1;});
-      n.querySelectorAll('.beam').forEach((b,i)=>{b.style.opacity=(.75+.25*Math.sin(t*3+i))*(1+eio((t-D+2.2)/1.4));b.style.transform=`scaleX(${1+.3*Math.sin(t*2+i)})`});
+        a.style.transform=`translateY(${(1-r)*560+Math.sin(t*1.6+i*.8)*4}px)`;
+        a.querySelector('.p').style.transform=`translateY(${(1-eo((t-1.0-i*.1)/.5))*150}px)`;
+        a.querySelector('.lab').style.opacity=clamp((t-1.0-i*.08)/.3);});
+      n.querySelectorAll('.beam').forEach((b,i)=>{b.style.opacity=clamp((t-1.1-i*.08)/.5)*(.75+.25*Math.sin(t*3+i))*(1+eio((t-D+2.2)/1.4));b.style.transform=`scaleX(${1+.3*Math.sin(t*2+i)})`});
       const ot=n.querySelector('.ot');
       ot.querySelector('.s0').style.opacity=clamp((t-1.6)/.4);
       ot.querySelector('.s0').style.letterSpacing=`${.6-.28*eo((t-1.6)/1.0)}em`;
