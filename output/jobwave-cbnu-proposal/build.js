@@ -130,7 +130,8 @@ async function photo(s, name, x, y, w, h, focusY = 0.5) {
 
 async function divider(num, title, items, img) {
   const s = pres.addSlide({ masterName: "DARK", sectionTitle: curSection });
-  await photo(s, img, 6.2, 0, W - 6.2, 7.5);
+  if (img) await photo(s, img, 6.2, 0, W - 6.2, 7.5);
+  else s.addImage({ path: ARC, x: 4.33, y: 0.6, w: 9.0, h: 6.84 });
   T(s, num, M, 1.5, 4, 1.4, { fontSize: 96, bold: true, color: ACCENT, valign: "bottom" });
   T(s, title, M, 3.0, 6, 0.9, { fontSize: 44, bold: true, color: WHITE, valign: "middle" });
   items.forEach((it, i) => {
@@ -204,15 +205,16 @@ async function divider(num, title, items, img) {
       ["03", "프로그램 제안", "특강 / 멘토링 / 채용정보 사이트 / 인사담당자 상담 / 잡페어", "LuLayoutDashboard"],
       ["04", "도입 방식", "구성 옵션 / 추천 조합", "LuListChecks"],
       ["05", "운영 관리", "인력·참여 관리 / 개인정보 보호 / 성과관리·보고", "LuShieldCheck"],
+      ["06", "예산서(안)", "예산 요약 / 프로그램별 산출 내역", "LuCalculator"],
     ];
-    const x = 4.8, w = W - x - M, h = 1.0, g = 0.2;
-    for (let i = 0; i < 5; i++) {
-      const y = 0.75 + i * (h + g);
+    const x = 4.8, w = W - x - M, h = 0.88, g = 0.14;
+    for (let i = 0; i < rows.length; i++) {
+      const y = 0.65 + i * (h + g);
       card(s, x, y, w, h, BG);
-      numCircle(s, x + 0.25, y + 0.15, 0.7, rows[i][0], ACCENT, WHITE, 18);
-      T(s, rows[i][1], x + 1.2, y + 0.12, 5, 0.45, { fontSize: 20, bold: true, valign: "middle" });
-      T(s, rows[i][2], x + 1.2, y + 0.55, 6.4, 0.35, { fontSize: 13, color: GRAY, valign: "middle" });
-      await iconCircle(s, x + w - 0.85, y + 0.2, 0.6, rows[i][3], WHITE, NAVY);
+      numCircle(s, x + 0.25, y + 0.12, 0.64, rows[i][0], ACCENT, WHITE, 17);
+      T(s, rows[i][1], x + 1.15, y + 0.08, 5, 0.42, { fontSize: 19, bold: true, valign: "middle" });
+      T(s, rows[i][2], x + 1.15, y + 0.48, 6.4, 0.32, { fontSize: 13, color: GRAY, valign: "middle" });
+      await iconCircle(s, x + w - 0.8, y + 0.17, 0.54, rows[i][3], WHITE, NAVY);
     }
   }
 
@@ -950,6 +952,11 @@ async function divider(num, title, items, img) {
     card(s, M, 6.25, W - 2 * M, 0.6, OTINT);
     T(s, [{ text: "결과보고서 목차(안)   ", options: { bold: true, color: ACCENT } }, { text: "사업 개요 · 프로그램별 운영 결과 · 만족도 조사 · 취업 성과 · 현장 사진 · 개선 제안", options: { color: NAVY } }], M + 0.3, 6.25, W - 2 * M - 0.6, 0.6, { fontSize: 13, valign: "middle" });
   }
+
+  // ===== 06 예산서(안) =====
+  section("06 예산서(안)");
+  await divider("06", "예산서(안)", ["예산 요약", "프로그램별 산출 내역"], null);
+  await require("./budget_slides.js").addBudgetSlides(ctx);
 
   // ===== 36. Contact =====
   {
