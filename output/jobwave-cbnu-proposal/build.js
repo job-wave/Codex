@@ -272,7 +272,7 @@ async function divider(num, title, items, img) {
       s.addShape(pres.shapes.RECTANGLE, { x: x + 0.95, y: ry + 0.07, w: 2.0 * v / 100, h: 0.22, fill: { color: i === 0 ? ACCENT : NAVY }, line: { color: i === 0 ? ACCENT : NAVY } });
       T(s, v + "%", x + 3.0, ry, 0.6, 0.35, { fontSize: 12, bold: true, color: i === 0 ? ACCENT : NAVY, valign: "middle", align: "right" });
     });
-    T(s, "출처: 법무부 출입국·외국인정책본부 「외국인 유학생 체류·정주 현황 분석」(2026. 9. 4.)   |   충북대 유학생 현황: 확인 후 추가", M, 6.7, 12, 0.28, { fontSize: 10, color: MUTED });
+    T(s, "출처: 법무부 출입국·외국인정책본부 「외국인 유학생 체류·정주 현황 분석」(2026. 9. 4.)", M, 6.7, 12, 0.28, { fontSize: 10, color: MUTED });
   }
 
   // ===== 6. 세 가지 지원 축 =====
@@ -853,8 +853,8 @@ async function divider(num, title, items, img) {
     T(s, "Contact", M, 1.2, 4, 0.4, { fontSize: 16, bold: true, color: ACCENT });
     s.addImage({ path: path.resolve(__dirname, "assets", "jobwave_white.png"), x: M, y: 1.75, w: 0.62 * LOGO_R, h: 0.62, altText: "잡웨이브 로고" });
     T(s, "공부한 충북에서, 일하는 충북으로", M, 2.6, 8, 0.45, { fontSize: 18, color: "C9CED6" });
-    const rows = [["담당자", "확인 필요", "LuUser"], ["전화", "확인 필요", "LuPhone"], ["이메일", "확인 필요", "LuMail"], ["홈페이지", "jobwave.kr", "LuGlobe"]];
-    for (let i = 0; i < 4; i++) {
+    const rows = [["담당자", "허성훈 실장", "LuUser"], ["연락처", "010-5939-4362", "LuPhone"], ["홈페이지", "jobwave.kr", "LuGlobe"]];
+    for (let i = 0; i < rows.length; i++) {
       const y = 3.55 + i * 0.75;
       await iconCircle(s, M, y, 0.55, rows[i][2], ACCENT);
       T(s, rows[i][0], M + 0.8, y, 1.4, 0.55, { fontSize: 14, color: "C9CED6", valign: "middle" });
