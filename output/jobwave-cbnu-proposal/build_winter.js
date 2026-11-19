@@ -13,7 +13,7 @@ const OUT = path.resolve(__dirname, "JobWave_winter_program.pptx");
 // palette (원본 색 유지)
 const NAVY = "151B26", ACCENT = "B72654" /* 강조색: 충북대 CBNU Red */, GRAY = "5B6472", LINE = "E3E6EA",
   MUTED = "9AA1AC", NAVY2 = "2A3342", BG = "F4F5F7", WHITE = "FFFFFF", OTINT = "F8E5EB", NTINT = "E8EAF0";
-const FONT = "Pretendard Variable";
+const FONT = "Pretendard"; // 일반 설치판 Pretendard(정적 폰트) 패밀리 이름
 const LOGO_R = 892 / 162; // 잡웨이브 로고(assets/jobwave_*.png) 가로/세로 비율, jobwave.kr 헤더 로고 캡처
 const CBNU_RED = "B72654"; // 충북대학교 전용색상 CBNU Red (PANTONE 7425C, R183 G38 B84)
 
@@ -703,7 +703,7 @@ async function divider(num, title, items, img) {
 
   await pres.writeFile({ fileName: OUT });
   await applyTheme(OUT, THEME);
-  // 테마의 한글(Hang)·동아시아(ea) 글꼴도 Pretendard Variable로 지정 (기본값은 맑은 고딕/빈칸)
+  // 테마의 한글(Hang)·동아시아(ea) 글꼴도 Pretendard로 지정 (기본값은 맑은 고딕/빈칸)
   {
     const JSZip = require(require.resolve("jszip", { paths: [require.resolve("pptxgenjs")] }));
     const fs = require("fs");
@@ -713,6 +713,16 @@ async function divider(num, title, items, img) {
       xml = xml.replace(/<a:ea typeface="[^"]*"\/>/g, `<a:ea typeface="${FONT}"/>`)
                .replace(/<a:font script="Hang" typeface="[^"]*"\/>/g, `<a:font script="Hang" typeface="${FONT}"/>`);
       zip.file(name, xml);
+    }
+    // 차트(pptxgenjs 기본값 Arial) 글꼴도 Pretendard로
+    for (const name of Object.keys(zip.files).filter((n) => /^ppt\/charts\/chart\d+\.xml$/.test(n))) {
+      const xml = await zip.file(name).async("string");
+      zip.file(name, xml.replace(/typeface="Arial"/g, `typeface="${FONT}"`));
+    }
+    // 글머리 기호 글꼴(마스터·레이아웃·슬라이드의 buFont Arial)도 Pretendard로
+    for (const name of Object.keys(zip.files).filter((n) => /^ppt\/(slideMasters|slideLayouts|slides)\/[^/]+\.xml$/.test(n))) {
+      const xml = await zip.file(name).async("string");
+      if (xml.includes('<a:buFont typeface="Arial"')) zip.file(name, xml.replace(/<a:buFont typeface="Arial"/g, `<a:buFont typeface="${FONT}"`));
     }
     for (const n of Object.keys(zip.files)) if (zip.files[n].dir) delete zip.files[n]; // 폴더 항목 제거 (클라우드 공동편집 호환)
     fs.writeFileSync(OUT, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
