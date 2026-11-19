@@ -123,7 +123,7 @@
       ["대상", "충북대 외국인 유학생 30명 내외\n(학부·대학원, TOPIK 3급 이상 권장)", "LuUsers"],
       ["기간", "2027. 1. 4.(월) ~ 2. 12.(금), 6주\n설 연휴(2/6~2/9) 제외", "LuCalendarDays"],
       ["장소", "충북대 교내 강의실·상담실 (멘토링은 온라인 병행 가능)", "LuMapPin"],
-      ["언어", "한국어 진행 · 영어·중국어·베트남어 통역은 선택 옵션", "LuLanguages"],
+      ["언어", "한국어 진행 · 기업 멘토링 데이는 영어·중국어 통역 지원", "LuLanguages"],
       ["수료 기준", "특강 3회 이상 + 1:1 멘토링 + 기업 멘토링 데이 참여", "LuCircleCheck"],
       ["수료 혜택", "수료증 발급, 희망 기업 우선 배정\n동의 시 참여 기업에 이력서 추천", "LuGift"],
     ];
@@ -273,11 +273,11 @@
 
   // STEP 3 기업 멘토링 데이 (1)
   {
-    const s = content("03 단계별 운영 / STEP 3 기업 멘토링 데이", "STEP 3  기업 멘토링 데이", "6주차 2/11(목) 하루 · 유학생 채용 기업 3곳 + 대기업 인사팀 2곳이 동시에 참여하는 라운드 테이블");
+    const s = content("03 단계별 운영 / STEP 3 기업 멘토링 데이", "STEP 3  기업 멘토링 데이", "6주차 2/11(목) 하루 · 유학생 채용 기업 3곳 + 대기업 인사팀 2곳, 기업별 인사담당자 2명 · 영어·중국어 통역 지원");
     const sw = (W - 2 * M - 0.6) / 3;
     stat(s, M, 1.95, sw, 1.5, "5", "개사", "유학생 채용 기업 3 + 대기업 인사팀 2", ACCENT, WHITE, WHITE);
     stat(s, M + sw + 0.3, 1.95, sw, 1.5, "3", "라운드", "학생 1인당 희망 기업 3곳 상담", NAVY, WHITE, "C9CED6");
-    stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.5, "6", "명", "테이블당 학생 수 (40분 소그룹)", BG, NAVY, GRAY);
+    stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.5, "10", "명", "인사담당자 (기업별 2명)", BG, NAVY, GRAY);
     // 5개 테이블 그림
     const tx = M, ty = 3.75, tw = 7.2;
     card(s, tx, ty, tw, 3.0, BG);
@@ -423,65 +423,97 @@
 
   // ===== 06 예산서(안) =====
   section("06 예산서(안)");
-  await divider("06", "예산서(안)", ["항목별 산출 내역"], "div02");
+  await divider("06", "예산서(안)", ["예산 요약", "항목별 산출 내역"], "div02");
   {
-    // 단가: 유사사업 「2026학년도 K-유학생 취업캠프」 견적(국립한국교통대학교, 2026.10.16). * 는 유사사업에 없는 항목의 가정 단가
+    // 단가 근거: 유사사업 「2026학년도 K-유학생 취업캠프」 견적(국립한국교통대학교, 2026.10.16)
+    // * 는 유사사업에 없는 항목이거나 회당 단가를 하루로 환산한 가정 단가
     const G = [
       ["STEP 1 취업 특강 4회", [
-        ["특강 강사료", 250000, "1×4", 4, "강의 4회 (회당 2시간)"],
-        ["교재·워크북", 15000, "30", 30, "수강 인원 30명"],
-        ["다과", 150000, "1×4", 4, "강의 회차마다 1회"],
+        ["특강 강사료", 250000, "1×4", 4, "회당 2시간"],
+        ["교재·워크북", 15000, "30", 30, "수강 30명"],
+        ["다과", 150000, "1×4", 4, "회차마다"],
       ]],
       ["STEP 2 1:1 전문가 멘토링", [
-        ["전문멘토 수당 (1일 7명) *", 300000, "3×2", 6, "멘토 3명 × 2일"],
-        ["다과", 150000, "1×2", 2, "운영일마다 1회"],
+        ["전문멘토 수당 (하루) *", 300000, "3×2", 6, "멘토 3명 × 2일"],
+        ["다과", 150000, "1×2", 2, "운영일마다"],
       ]],
       ["STEP 3 기업 멘토링 데이", [
-        ["인사담당자 사례비 (하루) *", 300000, "5", 5, "5개사 × 1명"],
-        ["식사", 10000, "40", 40, "학생 30 + 인사담당자 5 + 운영 5"],
+        ["인사담당자 사례비 (하루) *", 300000, "5×2", 10, "5개사 × 2명"],
+        ["통역 (영어·중국어) *", 300000, "2", 2, "언어별 1명"],
+        ["식사", 10000, "45", 45, "학생·인사·운영 45명"],
         ["다과", 150000, "1", 1, "행사 1회"],
         ["기업용 외국인 고용 안내자료", 15000, "5", 5, "참여 기업 수"],
       ]],
       ["채용공고 안내 사이트", [
-        ["사이트 기능 보완 (신청·예약·기업 선택) *", 1500000, "1", 1, "시안 사이트 기반"],
+        ["기능 보완 (신청·예약·기업 선택) *", 1500000, "1", 1, "시안 사이트 기반"],
         ["호스팅·도메인 *", 300000, "1", 1, "1년"],
-        ["공고 큐레이션 운영 *", 100000, "1×8", 8, "사전 2주 + 6주, 주 1회 갱신"],
+        ["공고 큐레이션 운영 *", 100000, "1×8", 8, "주 1회 × 8주"],
       ]],
       ["공통 운영", [
-        ["홍보물 (현수막·배너·포스터)", 150000, "2", 2, "모집 홍보·행사장"],
-        ["운영제반비", 800000, "1", 1, "기획·운영 인력·결과보고 (유사사업 준용)"],
+        ["현장 운영 보조 인력 *", 150000, "1×7", 7, "운영일 7일"],
+        ["홍보물 (현수막·배너·포스터)", 150000, "2", 2, "모집·행사장"],
+        ["수료증·우수 수료자 시상 *", 400000, "1", 1, "수료증 30·시상 5명"],
+        ["운영제반비", 800000, "1", 1, "기획·결과보고"],
       ]],
     ];
     const won = (v) => (v ? v.toLocaleString("ko-KR") : "-");
-    const s = content("06 예산서(안)", "항목별 산출 내역", "단위: 원 · 공급가 합산 후 부가세 10% 포함, 만 원 단위 절사");
-    const H = (t, f = NAVY, al = "center") => ({ text: t, options: { bold: true, color: WHITE, fill: { color: f }, align: al, fontSize: 11 } });
-    const data = [[H("항목", NAVY, "left"), H("단가"), H("수량"), H("금액", ACCENT), H("산출 근거", NAVY, "left")]];
     let total = 0;
-    const subs = [];
-    for (const [g, items] of G) {
-      let sub = 0;
-      data.push([{ text: g, options: { colspan: 5, bold: true, color: ACCENT, fill: { color: OTINT }, fontSize: 11 } }]);
-      for (const [n, p, q, qn, note] of items) {
-        const amt = p * qn; sub += amt;
-        data.push([{ text: n, options: {} }, { text: won(p), options: { align: "right" } }, { text: q, options: { align: "center", color: GRAY } }, { text: won(amt), options: { align: "right", bold: true } }, { text: note, options: { color: GRAY, fontSize: 9.5 } }]);
-      }
-      total += sub; subs.push([g, sub]);
-    }
-    s.addTable(data, { x: M, y: 1.88, w: 8.3, colW: [2.95, 0.95, 0.7, 1.1, 2.6], rowH: 0.235, fontSize: 10, fontFace: FONT, color: NAVY, border: { type: "solid", pt: 0.5, color: LINE }, valign: "middle", margin: [0, 0.06, 0, 0.08] });
-    // 오른쪽 요약
-    const x0 = M + 8.55, w0 = W - M - x0;
-    card(s, x0, 1.88, w0, 3.3, BG);
-    T(s, "단계별 소계 (공급가)", x0 + 0.25, 1.98, w0 - 0.5, 0.35, { fontSize: 13, bold: true, color: GRAY, valign: "middle" });
-    subs.forEach(([g, v], k) => {
-      const y = 2.42 + k * 0.52;
-      T(s, g, x0 + 0.25, y, w0 - 1.6, 0.42, { fontSize: 12, color: NAVY, valign: "middle" });
-      T(s, won(v), x0 + w0 - 1.45, y, 1.2, 0.42, { fontSize: 13, bold: true, align: "right", valign: "middle" });
-    });
+    const subs = G.map(([g, items]) => { const v = items.reduce((a, [, p, , q]) => a + p * q, 0); total += v; return [g, v]; });
     const vat = Math.round(total * 0.1), grand = Math.floor((total + vat) / 10000) * 10000;
-    card(s, x0, 5.33, w0, 1.42, NAVY, { shadow: true });
-    T(s, [{ text: "공급가 " + won(total) + "  ·  부가세 " + won(vat), options: { fontSize: 11.5, color: "C9CED6" } }], x0 + 0.25, 5.43, w0 - 0.5, 0.35, { valign: "middle" });
-    T(s, "총계 (VAT 포함)", x0 + 0.25, 5.8, w0 - 0.5, 0.35, { fontSize: 13, bold: true, color: WHITE, valign: "middle" });
-    T(s, [{ text: (grand / 10000).toLocaleString("ko-KR"), options: { fontSize: 30, bold: true, color: PINK2 } }, { text: " 만 원", options: { fontSize: 16, bold: true, color: WHITE } }], x0 + 0.25, 6.1, w0 - 0.5, 0.55, { valign: "middle" });
-    T(s, "단가 근거: 유사사업 「2026학년도 K-유학생 취업캠프」 견적(국립한국교통대학교, 2026.10.16) · * 가정 단가(멘토·인사담당자 하루 단가는 회당 단가 × 2회) · 통역은 별도", M, 6.86, W - 2 * M, 0.2, { fontSize: 9, color: MUTED });
+    const SRC = "단가 근거: 유사사업 「2026학년도 K-유학생 취업캠프」 견적(국립한국교통대학교, 2026.10.16) · * 유사사업에 없는 항목이거나 회당 단가를 하루로 환산(× 2회)한 가정 단가";
+
+    // --- 예산 요약 ---
+    {
+      const s = content("06 예산서(안)", "예산 요약", "총 1,500만 원 내외 (VAT 포함) · 공급가 합산 후 부가세 10% 포함, 만 원 단위 절사");
+      const desc = ["강사료·교재·다과", "전문멘토 3명 × 2일", "인사담당자 10명·통역·식사", "기능 보완·호스팅·공고 큐레이션", "운영 보조·홍보·수료·운영제반"];
+      const icons = ["LuPresentation", "LuUsers", "LuBuilding2", "LuGlobe", "LuClipboardList"];
+      const max = Math.max(...subs.map((x) => x[1]));
+      for (let k = 0; k < subs.length; k++) {
+        const [g, v] = subs[k], y = 1.95 + k * 0.92;
+        card(s, M, y, 7.9, 0.8, BG);
+        await iconCircle(s, M + 0.18, y + 0.14, 0.52, icons[k], k === 2 ? ACCENT : NAVY);
+        T(s, g, M + 0.85, y + 0.07, 3.3, 0.36, { fontSize: 14, bold: true, valign: "middle" });
+        T(s, desc[k], M + 0.85, y + 0.42, 3.3, 0.3, { fontSize: 11, color: GRAY, valign: "middle" });
+        const bx = M + 4.2, bw = 2.2 * v / max;
+        s.addShape(pres.shapes.RECTANGLE, { x: bx, y: y + 0.3, w: 2.2, h: 0.2, fill: { color: "E3E6EA" }, line: { color: "E3E6EA" } });
+        s.addShape(pres.shapes.RECTANGLE, { x: bx, y: y + 0.3, w: bw, h: 0.2, fill: { color: k === 2 ? ACCENT : NAVY }, line: { color: k === 2 ? ACCENT : NAVY } });
+        T(s, won(v), M + 6.5, y, 1.25, 0.8, { fontSize: 14, bold: true, align: "right", valign: "middle" });
+      }
+      const x0 = M + 8.25, w0 = W - M - x0;
+      card(s, x0, 1.95, w0, 4.5, NAVY, { shadow: true });
+      T(s, "총 예산 (VAT 포함)", x0 + 0.3, 2.15, w0 - 0.6, 0.4, { fontSize: 15, bold: true, color: WHITE, valign: "middle" });
+      T(s, [{ text: (grand / 10000).toLocaleString("ko-KR"), options: { fontSize: 54, bold: true, color: PINK2 } }, { text: " 만 원", options: { fontSize: 20, bold: true, color: WHITE } }], x0 + 0.3, 2.65, w0 - 0.6, 1.1, { valign: "middle" });
+      s.addShape(pres.shapes.LINE, { x: x0 + 0.3, y: 3.95, w: w0 - 0.6, h: 0, line: { color: "4A5466", width: 1 } });
+      [["공급가액", total], ["부가세 (10%)", vat], ["합계", total + vat]].forEach(([l, v], k) => {
+        const y = 4.1 + k * 0.5;
+        T(s, l, x0 + 0.3, y, 1.8, 0.42, { fontSize: 13, color: "C9CED6", valign: "middle" });
+        T(s, won(v) + " 원", x0 + 1.9, y, w0 - 2.2, 0.42, { fontSize: 13, bold: true, color: WHITE, align: "right", valign: "middle" });
+      });
+      T(s, "만 원 단위 절사 · 참여 인원 30명 기준", x0 + 0.3, 5.75, w0 - 0.6, 0.4, { fontSize: 11, color: "C9CED6", valign: "middle" });
+      T(s, SRC, M, 6.8, W - 2 * M, 0.22, { fontSize: 9, color: MUTED });
+    }
+
+    // --- 항목별 산출 내역 (두 열) ---
+    {
+      const s = content("06 예산서(안)", "항목별 산출 내역", "단위: 원 · 부가세 별도 · 수량은 인원(명)·횟수 기준");
+      const H = (t, f = NAVY, al = "center") => ({ text: t, options: { bold: true, color: WHITE, fill: { color: f }, align: al, fontSize: 10.5 } });
+      const table = (groups, x, w) => {
+        const data = [[H("항목", NAVY, "left"), H("단가"), H("수량"), H("금액", ACCENT), H("산출 근거", NAVY, "left")]];
+        for (const [g, items] of groups) {
+          const sub = items.reduce((a, [, p, , q]) => a + p * q, 0);
+          data.push([{ text: g, options: { colspan: 3, bold: true, color: ACCENT, fill: { color: OTINT } } }, { text: won(sub), options: { bold: true, color: ACCENT, align: "right", fill: { color: OTINT } } }, { text: "", options: { fill: { color: OTINT } } }]);
+          for (const [n, p, q, qn, note] of items) data.push([{ text: n }, { text: won(p), options: { align: "right" } }, { text: q, options: { align: "center", color: GRAY } }, { text: won(p * qn), options: { align: "right", bold: true } }, { text: note, options: { color: GRAY, fontSize: 9.5 } }]);
+        }
+        s.addTable(data, { x, y: 1.95, w, colW: [2.35, 0.8, 0.55, 0.9, w - 4.6], rowH: 0.3, fontSize: 10, fontFace: FONT, color: NAVY, border: { type: "solid", pt: 0.5, color: LINE }, valign: "middle", margin: [0, 0.06, 0, 0.08] });
+      };
+      const cw = (W - 2 * M - 0.25) / 2;
+      table(G.slice(0, 3), M, cw);
+      table(G.slice(3), M + cw + 0.25, cw);
+      // 오른쪽 아래 합계 상자
+      const x0 = M + cw + 0.25, y0 = 1.95 + 0.3 * 12 + 0.25;
+      card(s, x0, y0, cw, 0.95, NAVY);
+      T(s, [{ text: "공급가 " + won(total) + "  +  부가세 " + won(vat), options: { fontSize: 11.5, color: "C9CED6", breakLine: true } }, { text: "총계 (VAT 포함, 만 원 단위 절사)  ", options: { fontSize: 13, bold: true, color: WHITE } }, { text: won(grand) + " 원", options: { fontSize: 16, bold: true, color: PINK2 } }], x0 + 0.3, y0, cw - 0.6, 0.95, { valign: "middle" });
+      T(s, SRC, M, 6.8, W - 2 * M, 0.22, { fontSize: 9, color: MUTED });
+    }
     console.log("budget total", total, vat, grand);
   }
