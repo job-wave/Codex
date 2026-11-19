@@ -2,7 +2,7 @@
   const C = { BG, ACCENT, NAVY, NAVY2, WHITE, GRAY, MUTED, OTINT };
   const PINK2 = "F2A6BC";
 
-  // ---------- 일정 (2027년 동계방학, 6주) ----------
+  // ---------- 일정 (2027년 동계방학, 7주 · 6주차 설 연휴 휴식) ----------
   const LECT = [
     { wk: "1주차", date: "1/6(수)", d: [2027, 1, 6], title: "한국 채용 구조와 비자 연계 취업전략", items: ["공채·수시·외국인 전형 등 채용 방식", "D-2 → D-10 → E-7 체류자격 전환 흐름", "F-2-R 등 지역 정주 비자와 졸업 시점별 일정"], out: "취업·비자 로드맵", icon: "LuRoute" },
     { wk: "2주차", date: "1/13(수)", d: [2027, 1, 13], title: "직무 분석과 충북 타깃 기업 찾기", items: ["충북 주력산업(반도체·이차전지·바이오 등) 직무", "채용공고·직무기술서 읽는 법", "채용정보 사이트로 외국인 채용 기업 찾기"], out: "타깃 기업 10곳", icon: "LuTarget" },
@@ -10,7 +10,7 @@
     { wk: "4주차", date: "1/27(수)", d: [2027, 1, 27], title: "면접 전략과 AI 역량검사", items: ["인성·직무 면접과 외국인 빈출 질문", "AI 역량검사 유형 체험", "2인 1조 모의면접·상호 평가"], out: "모의면접 평가표", icon: "LuMic" },
   ];
   const DAY_MENTOR = [[2027, 2, 2], [2027, 2, 3]];
-  const DAY_COMPANY = [2027, 2, 11];
+  const DAY_COMPANY = [2027, 2, 17];
   const HOLI = { "2027-1-1": "신정", "2027-2-6": "설 연휴", "2027-2-7": "설날", "2027-2-8": "설 연휴", "2027-2-9": "대체공휴일" };
 
   // ===== 1. 표지 =====
@@ -24,7 +24,7 @@
     pill(s, "제안서", M, 2.2, 1.15, 0.42, NAVY, WHITE, { fs: 14 });
     T(s, "2026. 11.", M + 1.3, 2.2, 2, 0.42, { fontSize: 14, color: GRAY, valign: "middle" });
     T(s, "충북대 외국인 유학생\n동계방학\n취업 프로그램", M, 2.8, 6.4, 2.3, { fontSize: 40, bold: true, color: NAVY, lineSpacingMultiple: 1.05, valign: "middle" });
-    T(s, "특강 4회 → 1:1 전문가 멘토링 → 기업 멘토링 데이, 6주 연계 과정", M, 5.25, 6.4, 0.45, { fontSize: 16, color: GRAY, valign: "middle" });
+    T(s, "특강 4회 → 1:1 전문가 멘토링 → 기업 멘토링 데이, 7주 연계 과정", M, 5.25, 6.4, 0.45, { fontSize: 16, color: GRAY, valign: "middle" });
     T(s, "잡웨이브(JobWave)", M, 6.55, 4, 0.4, { fontSize: 15, bold: true, color: NAVY, valign: "middle" });
     s.addShape(pres.shapes.OVAL, { x: 7.2, y: 1.8, w: 5.5, h: 5.5, fill: { color: BG }, line: { color: BG } });
     const cw = 5.3, ch = cw * 307 / 802;
@@ -35,12 +35,12 @@
   {
     const s = pres.addSlide({ masterName: "BLANK", sectionTitle: curSection });
     T(s, "Winter Career Program 2027", M, 0.55, 8, 0.35, { fontSize: 14, bold: true, color: ACCENT });
-    T(s, [{ text: "방학 6주 동안,", options: { color: NAVY, breakLine: true } }, { text: "배우고 · 고치고 · 기업을 만난다", options: { color: ACCENT } }], M, 0.95, 9, 1.35, { fontSize: 36, bold: true, valign: "middle" });
+    T(s, [{ text: "방학 7주 동안,", options: { color: NAVY, breakLine: true } }, { text: "배우고 · 고치고 · 기업을 만난다", options: { color: ACCENT } }], M, 0.95, 9, 1.35, { fontSize: 36, bold: true, valign: "middle" });
     T(s, "주 1회 특강으로 준비하고, 전문가와 1:1로 서류·면접을 다듬은 뒤, 유학생 채용 기업과 대기업 인사팀을 하루에 만납니다.", M, 2.4, 11.5, 0.4, { fontSize: 15, color: GRAY });
     const ph = [
       ["1~4주차", "취업 특강 4회", "주 1회 · 2시간 · 실습 결과물", "LuPresentation", BG, NAVY],
       ["5주차", "1:1 전문가 멘토링", "2일 · 1인 60분 · 서류·면접 코칭", "LuUsers", NAVY, WHITE],
-      ["6주차", "기업 멘토링 데이", "하루 · 5개사 인사담당자 동시 참여", "LuBuilding2", ACCENT, WHITE],
+      ["7주차", "기업 멘토링 데이", "하루 · 5개사 인사담당자 1:1 상담", "LuBuilding2", ACCENT, WHITE],
     ];
     const cw = 3.75, gap = 0.44, y = 3.05, h = 2.75;
     for (let i = 0; i < 3; i++) {
@@ -65,7 +65,7 @@
     T(s, "Contents", M, 1.9, 3, 0.4, { fontSize: 16, color: ACCENT, bold: true });
     s.addImage({ path: ARC, x: -1.8, y: 3.0, w: 6.0, h: 4.56, transparency: 30 });
     const rows = [
-      ["01", "프로그램 개요", "추진 배경 / 6주 연계 구조 / 운영 개요", "LuTarget"],
+      ["01", "프로그램 개요", "추진 배경 / 7주 연계 구조 / 운영 개요", "LuTarget"],
       ["02", "전체 일정", "달력으로 보는 커리큘럼 / 주차별 일정", "LuCalendarDays"],
       ["03", "단계별 운영", "취업 특강 4회 / 1:1 전문가 멘토링 / 기업 멘토링 데이", "LuLayoutDashboard"],
       ["04", "채용공고 안내 사이트", "CBNU K-Job Hub / 기간 중 사이트 활용", "LuGlobe"],
@@ -85,17 +85,17 @@
 
   // ===== 01 프로그램 개요 =====
   section("01 프로그램 개요");
-  await divider("01", "프로그램 개요", ["추진 배경", "6주 연계 구조", "운영 개요"], "div01");
+  await divider("01", "프로그램 개요", ["추진 배경", "7주 연계 구조", "운영 개요"], "div01");
 
   //__DATA_SLIDE__
 
-  // 6주 연계 구조
+  // 7주 연계 구조
   {
-    const s = content("01 프로그램 개요", "6주 연계 구조", "앞 단계의 결과물을 다음 단계에서 그대로 쓰도록 설계 · 채용정보 사이트에 모든 기록을 저장");
+    const s = content("01 프로그램 개요", "7주 연계 구조", "앞 단계의 결과물을 다음 단계에서 그대로 쓰도록 설계 · 채용정보 사이트에 모든 기록을 저장");
     const st = [
       ["STEP 1", "취업 특강 4회", "1~4주차 · 매주 수요일", ["채용 구조·비자", "직무·타깃 기업", "자소서·이력서", "면접·AI 역량검사"], "로드맵 · 타깃 기업 · 서류 초안 · 평가표", BG, NAVY],
       ["STEP 2", "1:1 전문가 멘토링", "5주차 · 2일", ["특강 서류 초안 첨삭", "평가표 기반 모의면접", "기업 멘토링 데이 준비"], "최종 이력서·자소서 · 면접 피드백", NAVY, WHITE],
-      ["STEP 3", "기업 멘토링 데이", "6주차 · 하루", ["5개사 인사담당자 동시 참여", "라운드 테이블 3회", "희망자 개별 채용 상담"], "기업 Q&A 카드 · 채용 연계 후보", ACCENT, WHITE],
+      ["STEP 3", "기업 멘토링 데이", "7주차 · 하루", ["5개사 인사담당자 동시 참여", "1인 30분 1:1 상담", "학생 1인당 희망 기업 3곳"], "기업 Q&A 카드 · 채용 연계 후보", ACCENT, WHITE],
     ];
     const cw = 3.7, gap = 0.515, y = 1.95, h = 3.75;
     for (let i = 0; i < 3; i++) {
@@ -118,10 +118,10 @@
 
   // 운영 개요
   {
-    const s = content("01 프로그램 개요", "운영 개요", "충북대 외국인 유학생 30명 내외 · 2027년 1월 4일 ~ 2월 12일 (6주) · 일정은 협의 후 확정");
+    const s = content("01 프로그램 개요", "운영 개요", "충북대 외국인 유학생 30명 내외 · 2027년 1월 4일 ~ 2월 19일 (7주) · 일정은 협의 후 확정");
     const rows = [
       ["대상", "충북대 외국인 유학생 30명 내외\n(학부·대학원, TOPIK 3급 이상 권장)", "LuUsers"],
-      ["기간", "2027. 1. 4.(월) ~ 2. 12.(금), 6주\n설 연휴(2/6~2/9) 제외", "LuCalendarDays"],
+      ["기간", "2027. 1. 4.(월) ~ 2. 19.(금), 7주\n6주차 설 연휴(2/6~2/9) 휴식", "LuCalendarDays"],
       ["장소", "충북대 교내 강의실·상담실 (멘토링은 온라인 병행 가능)", "LuMapPin"],
       ["언어", "한국어 진행 · 기업 멘토링 데이는 영어·중국어 통역 지원", "LuLanguages"],
       ["수료 기준", "특강 3회 이상 + 1:1 멘토링 + 기업 멘토링 데이 참여", "LuCircleCheck"],
@@ -143,12 +143,12 @@
 
   // 달력
   {
-    const s = content("02 전체 일정", "달력으로 보는 전체 커리큘럼", "2027년 1월 4일 ~ 2월 12일 · 특강은 매주 수요일 14:00~16:00 · 일정은 협의 후 확정");
+    const s = content("02 전체 일정", "달력으로 보는 전체 커리큘럼", "2027년 1월 4일 ~ 2월 19일 · 특강은 매주 수요일 14:00~16:00 · 일정은 협의 후 확정");
     const ev = {};
     LECT.forEach((l, i) => (ev[l.d.join("-")] = { t: `특강 ${i + 1}`, f: NAVY }));
     DAY_MENTOR.forEach((d) => (ev[d.join("-")] = { t: "1:1\n멘토링", f: NAVY2 }));
     ev[DAY_COMPANY.join("-")] = { t: "기업\n멘토링 데이", f: ACCENT };
-    const inRange = (y, m, d) => { const t = new Date(y, m - 1, d).getTime(); return t >= new Date(2027, 0, 4).getTime() && t <= new Date(2027, 1, 12).getTime(); };
+    const inRange = (y, m, d) => { const t = new Date(y, m - 1, d).getTime(); return t >= new Date(2027, 0, 4).getTime() && t <= new Date(2027, 1, 19).getTime(); };
     const drawMonth = (x, y, w, h, yr, mo) => {
       T(s, `${yr}년 ${mo}월`, x, y, w, 0.4, { fontSize: 18, bold: true, valign: "middle" });
       const days = ["일", "월", "화", "수", "목", "금", "토"];
@@ -176,7 +176,7 @@
     drawMonth(M, 1.88, mw, 4.35, 2027, 1);
     drawMonth(M + mw + 0.45, 1.88, mw, 4.35, 2027, 2);
     // 범례
-    const lg = [[NAVY, "취업 특강 (매주 수, 2시간)"], [NAVY2, "1:1 전문가 멘토링 (2/2~2/3)"], [ACCENT, "기업 멘토링 데이 (2/11)"], ["FBF1F4", "프로그램 기간 · 채용정보 사이트 운영"], ["EDEEF1", "공휴일"]];
+    const lg = [[NAVY, "취업 특강 (매주 수, 2시간)"], [NAVY2, "1:1 전문가 멘토링 (2/2~2/3)"], [ACCENT, "기업 멘토링 데이 (2/17)"], ["FBF1F4", "프로그램 기간 · 채용정보 사이트 운영"], ["EDEEF1", "공휴일"]];
     let lx = M;
     const lw = [2.55, 2.75, 2.35, 3.05, 1.0];
     lg.forEach(([c, t], i) => {
@@ -189,7 +189,7 @@
 
   // 주차별 일정표
   {
-    const s = content("02 전체 일정", "주차별 일정", "주 1회 특강 4회 → 5주차 1:1 멘토링 2일 → 6주차 기업 멘토링 데이, 결과물이 다음 단계로 이어짐");
+    const s = content("02 전체 일정", "주차별 일정", "주 1회 특강 4회 → 5주차 1:1 멘토링 2일 → 7주차 기업 멘토링 데이, 결과물이 다음 단계로 이어짐");
     const H = (t, f = NAVY) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: f }, align: "center" } });
     const data = [[H("주차"), H("일정"), H("프로그램"), H("주요 내용"), H("결과물", ACCENT)]];
     const row = (a, b, c, d, e, hl) => {
@@ -205,9 +205,10 @@
     row("사전", "12월", "모집·신청", "사이트 신청, 사전진단(관심 직무·비자·한국어 수준)", "사전진단 결과", 2);
     LECT.forEach((l, i) => row(l.wk, `${l.date} 14:00~16:00`, `특강 ${i + 1}`, l.title, l.out, 0));
     row("5주차", "2/2(화)~2/3(수)", "1:1 전문가 멘토링", "1인 60분 · 서류 첨삭 + 모의면접 · 기업 멘토링 데이 준비", "최종 서류·면접 피드백", 1);
-    row("6주차", "2/11(목) 10:00~16:30", "기업 멘토링 데이", "5개사 인사담당자 라운드 테이블 3회 + 개별 채용 상담", "Q&A 카드·채용 연계", 1);
+    row("6주차", "2/8(월)~2/12(금)", "설 연휴 휴식", "멘토링 결과 반영해 서류 최종 수정 (사이트 제출)", "최종 서류 제출", 2);
+    row("7주차", "2/17(수) 10:00~16:00", "기업 멘토링 데이", "5개사 인사담당자 1:1 상담 (1인 30분, 12~13시 제외)", "Q&A 카드·채용 연계", 1);
     row("사후", "2~5월", "결과 추적", "채용공고 안내 지속, 지원·합격 현황 3개월 추적", "결과보고서", 2);
-    s.addTable(data, { x: M, y: 1.95, w: W - 2 * M, colW: [1.0, 2.25, 2.2, 4.6, 2.08], rowH: 0.52, fontSize: 12.5, fontFace: FONT, color: NAVY, border: { type: "solid", pt: 0.5, color: LINE }, valign: "middle", margin: [0, 0.1, 0, 0.14] });
+    s.addTable(data, { x: M, y: 1.95, w: W - 2 * M, colW: [1.0, 2.25, 2.2, 4.6, 2.08], rowH: 0.47, fontSize: 12.5, fontFace: FONT, color: NAVY, border: { type: "solid", pt: 0.5, color: LINE }, valign: "middle", margin: [0, 0.1, 0, 0.14] });
   }
 
   // ===== 03 단계별 운영 =====
@@ -273,32 +274,35 @@
 
   // STEP 3 기업 멘토링 데이 (1)
   {
-    const s = content("03 단계별 운영 / STEP 3 기업 멘토링 데이", "STEP 3  기업 멘토링 데이", "6주차 2/11(목) 하루 · 유학생 채용 기업 3곳 + 대기업 인사팀 2곳, 기업별 인사담당자 2명 · 영어·중국어 통역 지원");
+    const s = content("03 단계별 운영 / STEP 3 기업 멘토링 데이", "STEP 3  기업 멘토링 데이", "7주차 2/17(수) 10:00~16:00 · 유학생 채용 기업 3곳 + 대기업 인사팀 2곳, 기업별 인사담당자 2명이 1인 30분씩 1:1 상담");
     const sw = (W - 2 * M - 0.6) / 3;
     stat(s, M, 1.95, sw, 1.5, "5", "개사", "유학생 채용 기업 3 + 대기업 인사팀 2", ACCENT, WHITE, WHITE);
-    stat(s, M + sw + 0.3, 1.95, sw, 1.5, "3", "라운드", "학생 1인당 희망 기업 3곳 상담", NAVY, WHITE, "C9CED6");
-    stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.5, "10", "명", "인사담당자 (기업별 2명)", BG, NAVY, GRAY);
-    // 5개 테이블 그림
-    const tx = M, ty = 3.75, tw = 7.2;
+    stat(s, M + sw + 0.3, 1.95, sw, 1.5, "30", "분", "1인당 1:1 상담 · 학생별 희망 기업 3곳", NAVY, WHITE, "C9CED6");
+    stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.5, "100", "회", "5개사 × 2명 × 10타임", BG, NAVY, GRAY);
+    // 기업별 1:1 상담 시간표 (기업당 인사담당자 2명 → 타임당 2명 상담)
+    const tx = M, ty = 3.75, tw = 7.6;
     card(s, tx, ty, tw, 3.0, BG);
-    T(s, "동시 운영 테이블", tx + 0.25, ty + 0.12, 3, 0.35, { fontSize: 13, bold: true, color: GRAY });
-    const tl = [["A", "유학생 채용 기업"], ["B", "유학생 채용 기업"], ["C", "유학생 채용 기업"], ["D", "대기업 인사팀"], ["E", "대기업 인사팀"]];
-    for (let i = 0; i < 5; i++) {
-      const cx = tx + 0.75 + i * 1.33, cy = ty + 1.45, big = i >= 3, f = big ? ACCENT : NAVY;
-      s.addShape(pres.shapes.OVAL, { x: cx - 0.4, y: cy - 0.4, w: 0.8, h: 0.8, fill: { color: f }, line: { color: f } });
-      T(s, tl[i][0], cx - 0.4, cy - 0.4, 0.8, 0.8, { fontSize: 22, bold: true, color: WHITE, align: "center", valign: "middle" });
-      for (let k = 0; k < 6; k++) {
-        const a = -Math.PI / 2 + (k * 2 * Math.PI) / 6, px = cx + Math.cos(a) * 0.55 - 0.09, py = cy + Math.sin(a) * 0.55 - 0.09;
-        s.addShape(pres.shapes.OVAL, { x: px, y: py, w: 0.18, h: 0.18, fill: { color: WHITE }, line: { color: f, width: 1.25 } });
-      }
-      T(s, tl[i][1], cx - 0.66, cy + 0.72, 1.32, 0.45, { fontSize: 10, color: NAVY2, align: "center", valign: "top" });
-    }
+    T(s, "기업별 1:1 상담 시간표 (타임당 학생 2명)", tx + 0.25, ty + 0.12, 5, 0.35, { fontSize: 13, bold: true, color: GRAY });
+    const slots = ["10:00", "10:30", "11:00", "11:30", "점심", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"];
+    const lx = tx + 1.55, gw = (tw - 1.75) / slots.length, gy = ty + 0.5, rh = 0.34;
+    slots.forEach((t, k) => T(s, t, lx + k * gw, gy, gw, 0.3, { fontSize: 8.5, bold: true, color: t === "점심" ? MUTED : NAVY2, align: "center", valign: "middle" }));
+    const co = [["A", "유학생 채용 기업", NAVY], ["B", "유학생 채용 기업", NAVY], ["C", "유학생 채용 기업", NAVY], ["D", "대기업 인사팀", ACCENT], ["E", "대기업 인사팀", ACCENT]];
+    co.forEach(([l, n, f], i) => {
+      const y = gy + 0.33 + i * (rh + 0.06);
+      numCircle(s, tx + 0.22, y + 0.02, 0.3, l, f, WHITE, 11);
+      T(s, n, tx + 0.64, y, 0.9, rh, { fontSize: 8.5, color: NAVY2, valign: "middle" });
+      slots.forEach((t, k) => {
+        const lunch = t === "점심", c = lunch ? "E3E6EA" : f;
+        s.addShape(pres.shapes.RECTANGLE, { x: lx + k * gw + 0.02, y, w: gw - 0.04, h: rh, fill: { color: c }, line: { color: c } });
+        if (!lunch) T(s, "2명", lx + k * gw, y, gw, rh, { fontSize: 8.5, bold: true, color: WHITE, align: "center", valign: "middle" });
+      });
+    });
     // 오른쪽: 하루 일정
-    const x0 = tx + tw + 0.3, w0 = W - M - x0;
+    const x0 = tx + tw + 0.25, w0 = W - M - x0;
     T(s, "하루 일정 (안)", x0, 3.75, w0, 0.35, { fontSize: 13, bold: true, color: GRAY });
-    const tt = [["10:00", "오리엔테이션·참여 기업 소개"], ["10:20", "기업 설명회 (기업별 12분)"], ["11:30", "점심·기업별 네트워킹"], ["13:00", "라운드 테이블 1·2·3 (각 40분)"], ["15:40", "개별 채용 상담·이력서 피드백"], ["16:30", "마무리·만족도 조사"]];
+    const tt = [["09:30", "접수·상담 순서표 배부"], ["10:00", "오전 1:1 상담 (30분 × 4타임)"], ["12:00", "점심 (상담 없음)"], ["13:00", "오후 1:1 상담 (30분 × 6타임)"], ["16:00", "상담 종료·만족도 조사"], ["", "대기 학생: 이력서 보완·기업 자료 열람"]];
     tt.forEach(([t, d], k) => {
-      const y = 4.15 + k * 0.44, main = k === 3;
+      const y = 4.15 + k * 0.44, main = k === 1 || k === 3;
       card(s, x0, y, w0, 0.38, main ? OTINT : WHITE, { line: main ? "E9B8C7" : LINE, r: 0.06 });
       T(s, t, x0 + 0.12, y, 0.75, 0.38, { fontSize: 12, bold: true, color: ACCENT, valign: "middle" });
       T(s, d, x0 + 0.9, y, w0 - 1.0, 0.38, { fontSize: 12, color: NAVY, bold: main, valign: "middle" });
@@ -310,9 +314,9 @@
     const s = content("03 단계별 운영 / STEP 3 기업 멘토링 데이", "기업 멘토링 데이 준비와 연계", "행사 전 기업 선택과 서류 공유, 행사 후 Q&A 카드와 채용 연계까지 한 흐름으로 운영");
     const st = [
       ["기업 섭외", "5주 전", "유학생 채용 기업 3곳\n대기업 인사팀 2곳 확정", "LuBuilding2"],
-      ["기업 선택", "5주차", "사이트에서 희망 기업\n3곳 선택, 라운드 배정", "LuListChecks"],
-      ["서류 공유", "6주차 전", "동의한 학생의 최종 이력서를\n참여 기업에 미리 전달", "LuFileText"],
-      ["멘토링 데이", "2/11(목)", "라운드 테이블 3회\n+ 개별 채용 상담", "LuHandshake"],
+      ["기업 선택", "5주차", "사이트에서 희망 기업\n3곳 선택, 상담 시간 배정", "LuListChecks"],
+      ["서류 공유", "6주차", "동의한 학생의 최종 이력서를\n참여 기업에 미리 전달", "LuFileText"],
+      ["멘토링 데이", "2/17(수)", "기업별 1인 30분\n1:1 상담", "LuHandshake"],
       ["사후 연계", "2~5월", "Q&A 카드 사이트 게시\n채용 연계 후보 결과 추적", "LuTrendingUp"],
     ];
     const cw = (W - 2 * M) / 5;
@@ -350,7 +354,7 @@
       ["사전", "12월", ["프로그램 신청", "사전진단"]],
       ["1~4주차", "특강", ["특강 자료·과제 제출", "결과물 개인별 저장"]],
       ["5주차", "멘토링", ["시간 슬롯 예약·알림", "첨삭 결과 리포트 저장"]],
-      ["6주차", "기업 멘토링", ["희망 기업 3곳 선택", "이력서 공개 동의"]],
+      ["7주차", "기업 멘토링", ["희망 기업 3곳 선택", "이력서 공개 동의"]],
       ["사후", "2~5월", ["Q&A 카드·공고 안내", "지원·합격 현황 입력"]],
     ];
     const cw = (W - 2 * M + 0.15 * 4) / 5;
