@@ -13,7 +13,7 @@ function browserFrame(ctx, s, x, y, w, h, img) {
   s.addImage({ path: img, x: x + 0.02, y: y + bar, w: w - 0.04, h: h - 0.02 });
 }
 
-async function addSiteSlides(ctx, crumb) {
+async function addSiteSlides(ctx, crumb, opts = {}) {
   const { content, T, card, pill, iconCircle, numCircle, W, M, colors: C } = ctx;
 
   // ---- 1. 개요: 홈 화면 + 주요 기능 ----
@@ -40,7 +40,7 @@ async function addSiteSlides(ctx, crumb) {
   }
 
   // ---- 2. 주요 화면과 메뉴 구성 ----
-  {
+  if (!opts.overviewOnly) {
     const s = content(crumb, "주요 화면과 메뉴 구성", "채용공고 메뉴는 시안 구현 완료 · 나머지 4개 메뉴는 착수 후 대학과 협의해 단계별 구축");
     const h = 2.0, gap = 0.27;
     const shots = [["list.jpg", 2280 / 1160, "채용공고 목록 · 요건 태그와 마감일"], ["detail.jpg", 1080 / 740, "상세 보기 · 공고 원문 연결"], ["vi.jpg", 1440 / 650, "4개 언어 전환 (베트남어 화면)"]];

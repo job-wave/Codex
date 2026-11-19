@@ -875,6 +875,7 @@ async function divider(num, title, items, img) {
                .replace(/<a:font script="Hang" typeface="[^"]*"\/>/g, `<a:font script="Hang" typeface="${FONT}"/>`);
       zip.file(name, xml);
     }
+    for (const n of Object.keys(zip.files)) if (zip.files[n].dir) delete zip.files[n]; // 폴더 항목 제거 (클라우드 공동편집 호환)
     fs.writeFileSync(OUT, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
   }
   console.log("wrote", OUT);
