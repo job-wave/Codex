@@ -14,12 +14,12 @@ function qty(q, c) {
 
 async function addBudgetSlides(ctx) {
   const { content, T, card, pill, W, M, colors: C } = ctx;
-  const P = B.programs;
-  const short = { "01 취업 특강": "기본 4강 / 확장 8강", "02 1:1 멘토링": "학생 20명 · 1인 2회 / 3회", "03 채용정보 사이트": "구축·호스팅·큐레이션 *", "04 인사담당자 상담": "3명 1회 / 5명 2회", "05 미니 K유학생 잡페어": "참여 기업 3개사 / 5개사", "06 공통 운영": "기획·홍보·결과보고" };
+  const P = B.programs.map((p) => ({ ...p, title: p.title.replace(/^06 /, "") }));
+  const short = { "01 취업 특강": "기본 4강 / 확장 8강", "02 1:1 멘토링": "학생 20명 · 1인 2회 / 3회", "03 채용정보 사이트": "구축·호스팅·큐레이션 *", "04 인사담당자 상담": "3명 1회 / 5명 2회", "05 미니 K유학생 잡페어": "참여 기업 3개사 / 5개사", "공통 운영": "기획·홍보·결과보고" };
 
   // ---------------- 예산 요약 ----------------
   {
-    const s = content(CRUMB, "예산 요약", "프로그램별 기본형·확장형 예산 · 공급가 합산 후 부가세 10% 포함, 만원 단위 절사");
+    const s = content(CRUMB, "예산 요약", "프로그램별 기본형·확장형 예산 · 공급가 합산 후 부가세 10% 포함, 만 원 단위 절사");
     const H = (t, fill, align = "center") => ({ text: t, options: { bold: true, color: C.WHITE, fill: { color: fill }, align } });
     const data = [[H("프로그램", C.NAVY, "left"), H("기본형 (원)", C.NAVY), H("확장형 (원)", C.ACCENT), H("산출 기준", C.NAVY, "left")]];
     P.forEach((p, i) => {

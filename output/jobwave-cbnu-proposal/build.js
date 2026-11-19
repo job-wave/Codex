@@ -370,7 +370,7 @@ async function divider(num, title, items, img) {
   {
     const s = content(C1, "단계별 8강 커리큘럼", "기본형 4강(1·2·4·6강), 확장형 8강 전체 · 강의당 2시간 · 세부 내용과 강사는 협의 후 확정");
     const cols = [
-      ["STEP 01", "전략", [["1강", true, "채용 구조 해부", "공채·수시 채용, 외국인 전형", "지원 경로 맵"], ["2강", true, "비자 연계 취업전략", "D-10·E-7·F-2-R 요건", "비자 로드맵"], ["3강", false, "직무 분석·타겟 기업", "충북 주력산업 수요 직무", "타겟 기업 10곳"]]],
+      ["STEP 01", "전략", [["1강", true, "채용 구조 해부", "공채·수시 채용, 외국인 전형", "지원 경로 맵"], ["2강", true, "비자 연계 취업전략", "D-10·E-7·F-2-R 요건", "비자 로드맵"], ["3강", false, "직무 분석·타깃 기업", "충북 주력산업 수요 직무", "타깃 기업 10곳"]]],
       ["STEP 02", "서류", [["4강", true, "한국형 자기소개서", "STAR 작성, 지원동기 논리", "자소서 초안"], ["5강", false, "AI 역량검사·인적성", "게임형 검사, 한국어 독해", "진단 리포트"]]],
       ["STEP 03", "면접", [["6강", true, "면접 심화", "인성·직무·PT·토론 면접", "모의면접 평가표"], ["7강", false, "실전 모의면접", "인사담당자 참여 평가", "개별 피드백"]]],
       ["STEP 04", "정착", [["8강", false, "근로계약·직장생활", "계약서, 4대보험, 체류자격", "입사 전 체크리스트"]]],
@@ -412,7 +412,7 @@ async function divider(num, title, items, img) {
       T(s, b, x + 0.3, 2.5, cw - 0.6, 0.45, { fontSize: 12, color: tc, align: "center", valign: "middle" });
     });
     T(s, "학생별 결과물 7종", M, 3.4, 5, 0.38, { fontSize: 16, bold: true });
-    const it = [["01", "지원 경로 맵", "LuRoute"], ["02", "비자 로드맵", "LuPlane"], ["03", "타겟 기업 10곳", "LuTarget"], ["04", "자소서 초안", "LuPenLine"], ["05", "역량검사 진단 리포트", "LuChartBar"], ["06", "모의면접 평가표", "LuClipboardCheck"], ["07", "입사 전 체크리스트", "LuListChecks"]];
+    const it = [["01", "지원 경로 맵", "LuRoute"], ["02", "비자 로드맵", "LuPlane"], ["03", "타깃 기업 10곳", "LuTarget"], ["04", "자소서 초안", "LuPenLine"], ["05", "진단 리포트", "LuChartBar"], ["06", "모의면접 평가표", "LuClipboardCheck"], ["07", "입사 전 체크리스트", "LuListChecks"]];
     const gw = 2.85, gg = (W - 2 * M - 4 * gw) / 3, gh = 1.3;
     for (let i = 0; i < 7; i++) {
       const x = M + (i % 4) * (gw + gg), y = 3.9 + Math.floor(i / 4) * (gh + 0.2);
@@ -458,7 +458,7 @@ async function divider(num, title, items, img) {
   {
     const s = content(C2, "회차별 멘토링 구성", "진단, 서류, 모의면접 3회차. 회차마다 산출물 제공 (기본형은 1·2회차)");
     const ss = [
-      ["1", "1회차", "진단·목표 설정", ["사전진단 결과 해석", "비자 경로·타겟 직무 확정", "개인 취업플랜 작성"], "취업플랜", BG, NAVY, "LuSearch"],
+      ["1", "1회차", "진단·목표 설정", ["사전진단 결과 해석", "비자 경로·타깃 직무 확정", "개인 취업플랜 작성"], "취업플랜", BG, NAVY, "LuSearch"],
       ["2", "2회차", "서류 클리닉", ["특강 자소서 초안 첨삭", "한국형 이력서 완성", "2회 수정까지 지원"], "최종 서류", BG, NAVY, "LuFileText"],
       ["3", "3회차", "실전 모의면접", ["예상 질문 기반 면접", "영상 녹화 후 복기", "질문별 개선 포인트"], "피드백 리포트", NAVY, WHITE, "LuMic"],
     ];
@@ -637,7 +637,7 @@ async function divider(num, title, items, img) {
     const sw = (W - 2 * M - 0.6) / 3;
     stat(s, M, 1.95, sw, 1.7, "5", "개사", "참여 기업 · 기본형 3개사", ACCENT, WHITE, WHITE);
     stat(s, M + sw + 0.3, 1.95, sw, 1.7, "30~40", "명", "참여 유학생 · 사전 서류 등록자", NAVY, WHITE, "C9CED6");
-    stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.7, "사전", "매칭", "행사 전 서류 검토·면접 일정 확정", BG, NAVY, GRAY);
+    stat(s, M + 2 * (sw + 0.3), 1.95, sw, 1.7, "사전매칭", "", "행사 전 서류 검토·면접 일정 확정", BG, NAVY, GRAY);
     T(s, "기업 발굴 기준", M + 4.2, 3.95, 4, 0.38, { fontSize: 16, bold: true });
     await photo(s, "jobfair", M, 3.95, 3.9, 2.75, 0.45);
     const cw3 = (W - 2 * M - 4.2 - 0.6) / 3;
@@ -654,7 +654,7 @@ async function divider(num, title, items, img) {
   // ===== 27. 사전매칭 절차 =====
   {
     const s = content(C5, "사전매칭 절차", "행사 전 서류 검토와 면접 일정 확정까지 마치고, 행사 후 3개월간 결과 추적");
-    const st = [["기업 모집", "채용 직무·인원 확인", "LuBuilding2"], ["공고 게시", "사이트 잡페어 공고", "LuMegaphone"], ["이력서 등록", "지원·열람 동의", "LuFileText"], ["서류 검토", "면접 대상 선정", "LuFileSearch"], ["일정 확정", "면접 시간 안내", "LuCalendarCheck"], ["현장 면접", "잡페어 당일", "LuHandshake"], ["결과 추적", "3개월 합격 추적", "LuTrendingUp"]];
+    const st = [["기업 모집", "채용 직무·인원 확인", "LuBuilding2"], ["공고 게시", "사이트 잡페어 공고", "LuMegaphone"], ["이력서 등록", "지원·열람 동의", "LuFileText"], ["서류 검토", "면접 대상 선정", "LuFileSearch"], ["일정 확정", "면접 시간 안내", "LuCalendarCheck"], ["현장면접", "잡페어 당일", "LuHandshake"], ["결과 추적", "3개월 합격 추적", "LuTrendingUp"]];
     const cw = (W - 2 * M) / 7;
     // phase band
     const ph = [["행사 전", 0, 5, NAVY], ["당일", 5, 1, ACCENT], ["사후", 6, 1, GRAY]];
@@ -678,7 +678,7 @@ async function divider(num, title, items, img) {
 
   // ===== 28. 현장 배치 =====
   {
-    const s = content(C5, "현장 배치 (안)", "접수, 기업설명, 현장면접, 이력서 컨설팅, 대기 공간 · 장소와 배치는 협의 후 확정");
+    const s = content(C5, "현장 배치 (안)", "접수, 기업 설명, 현장면접, 이력서 컨설팅, 대기 공간 · 장소와 배치는 협의 후 확정");
     const fx = M, fy = 1.95, fw = 7.9, fh = 4.55;
     card(s, fx, fy, fw, fh, BG, { line: NAVY, lineW: 2, r: 0.05 });
     const zone = (x, y, w, h, fill, text, tc, fs = 14) => {
@@ -686,13 +686,13 @@ async function divider(num, title, items, img) {
       T(s, text, x, y, w, h, { fontSize: fs, bold: true, color: tc, align: "center", valign: "middle" });
     };
     zone(fx + 0.2, fy + 0.2, 1.6, 1.0, NAVY, "접수", WHITE);
-    zone(fx + 2.0, fy + 0.2, fw - 2.2, 1.0, "C9CED6", "기업설명", NAVY);
+    zone(fx + 2.0, fy + 0.2, fw - 2.2, 1.0, "C9CED6", "기업 설명", NAVY);
     zone(fx + 0.2, fy + 1.4, 1.6, 2.95, WHITE, "대기석", NAVY);
     const iw = (fw - 2.2 - 0.4) / 5;
     for (let i = 0; i < 5; i++) zone(fx + 2.0 + i * (iw + 0.1), fy + 1.4, iw, 1.5, ACCENT, "면접 " + (i + 1), WHITE, 14);
     zone(fx + 2.0, fy + 3.1, fw - 2.2, 1.25, NTINT, "이력서 컨설팅", NAVY);
     T(s, "▲ 출입구", fx, fy + fh + 0.05, 2, 0.3, { fontSize: 11, bold: true, color: GRAY });
-    const lg = [["접수", "사전매칭 명단 확인·순서 안내", NAVY], ["기업설명", "기업별 직무·채용 조건 소개", "C9CED6"], ["현장면접", "기업별 독립 면접 공간 5곳", ACCENT], ["이력서 컨설팅", "멘토링 멘토가 현장 보완", NTINT], ["대기석", "면접 대기·자료 열람", WHITE]];
+    const lg = [["접수", "사전매칭 명단 확인·순서 안내", NAVY], ["기업 설명", "기업별 직무·채용 조건 소개", "C9CED6"], ["현장면접", "기업별 독립 면접 공간 5곳", ACCENT], ["이력서 컨설팅", "멘토링 멘토가 현장 보완", NTINT], ["대기석", "면접 대기·자료 열람", WHITE]];
     const lx = 8.85;
     T(s, "공간 안내", lx, 1.95, 3, 0.35, { fontSize: 14, bold: true, color: GRAY });
     lg.forEach(([a, b, c], i) => {
@@ -843,7 +843,7 @@ async function divider(num, title, items, img) {
 
   // ===== 06 예산서(안) =====
   section("05 예산서(안)");
-  await divider("05", "예산서(안)", ["예산 요약", "프로그램별 산출 내역"], null);
+  await divider("05", "예산서(안)", ["예산 요약", "프로그램별 산출 내역"], "div02");
   await require("./budget_slides.js").addBudgetSlides(ctx);
 
   // ===== Contact =====
