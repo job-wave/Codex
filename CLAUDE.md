@@ -11,3 +11,6 @@
 # 견적서 작성 규칙
 - 견적서 엑셀을 만들 때는 항상 '수익률 분석' 시트를 함께 만든다 (`output/jobwave-cbnu-proposal/budget/margin_sheet.py`의 add_margin_sheet 사용).
 - 원가 기준: 인건비(강사·멘토·인사담당자 등) = 투입 시간 × 시간당 10만 원 / 운영 인력비 = 0 / 현수막·배너·교재·다과·홍보물·시상 = 견적 단가 그대로 / 운영제반비(운영재정비) = 전액 수익.
+
+# 동계방학 제안서 기준본
+- 최신본은 사용자가 직접 고친 `output/jobwave-cbnu-proposal/user_edited/` 파일이다 (winter_program_user.pptx, winter_quote_user.xlsx). 스크립트로 다시 생성하면 사용자가 추가한 슬라이드(강사 프로필, 대기업 현직자 후보군)가 사라지므로, 이후 수정은 이 파일을 직접 고친다.
