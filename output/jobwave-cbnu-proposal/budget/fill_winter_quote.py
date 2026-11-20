@@ -80,6 +80,7 @@ put(r, S_HEAD, {"A": "구분", "B": "내역", "C": "단가", "E": "수량", "G":
     ["C{r}:D{r}", "E{r}:F{r}", "G{r}:H{r}", "J{r}:K{r}"])
 r += 1
 subs = []
+item_rows = []  # (구분, 항목, 행) — 수익률 분석 시트용
 for name, key, items in GROUPS:
     first = r
     for i, (n, p, q, t, note, uq, ut) in enumerate(items):
@@ -88,6 +89,7 @@ for name, key, items in GROUPS:
             ["C{r}:D{r}", "E{r}:F{r}", "G{r}:H{r}", "J{r}:K{r}"])
         ws[f"E{r}"].number_format = f'General"{uq}"'
         ws[f"G{r}"].number_format = f'General"{ut}"'
+        item_rows.append((name, n, r))
         r += 1
     ws[f"A{first}"] = name
     ws.merge_cells(f"A{first}:A{r-1}")
@@ -110,5 +112,11 @@ put(r, S_NOTE3, {"F": "- 일정: 2027. 1. 4. ~ 2. 19. (7주, 기업 멘토링 �
 ws["B13"] = "일금 일천사백팔십삼만 원정"
 ws["C13"] = f"=I{tot}"
 ws.print_area = f"A1:K{r}"
+
+# 수익률 분석 시트 (견적서 엑셀에는 항상 함께 만든다)
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
+from margin_sheet import add_margin_sheet
+_, flagged = add_margin_sheet(wb, ws, item_rows, sup, vat, tot)
+print("margin sheet flagged:", flagged)
 wb.save(out)
 print("total row", tot, "last row", r)
